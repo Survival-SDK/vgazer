@@ -56,7 +56,20 @@ def CheckGithub(auth, project):
          + project
         )
 
-    if len(releases) == 0:
-        return CheckLastCommit(auth, user, repo)
+    if len(releases) != 0:
+        return utils.GetVersionFromTag(releases[0]["tag_name"])
 
-    return utils.GetVersionFromTag(releases[0]["tag_name"])
+    tags = auth.GetJson(
+     "https://api.github.com/repos/" + user + "/" + repo + "/tags")
+
+    if ApiRateLimitExceeded(tags):
+        raise GithubApiRateLimitExceeded(
+         "Github API rate limit reached while searching last version of resource: "
+         + project
+        )
+
+    if len(tags) != 0:
+        return utils.GetVersionFromTag(tags[0]["name"])
+
+    return CheckLastCommit(auth, user, repo)
+
