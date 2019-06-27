@@ -1,6 +1,7 @@
-import configparser
+#import configparser
 import requests
 import vgazer.version.utils as utils
+import vgazer.config.github_projects as githubProjects
 
 class GithubApiRateLimitExceeded(Exception):
     def __init__(self, message):
@@ -34,8 +35,9 @@ def CheckLastCommit(auth, user, repo):
     return "commit on " + date + " " + time
 
 def CheckGithub(auth, project):
-    config = configparser.ConfigParser()
-    config.read("github_projects.ini")
+    #config = configparser.ConfigParser()
+    #config.read("github_projects.ini")
+    config = githubProjects.config
 
     if project not in config:
         raise LostConfigEntry(
