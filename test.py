@@ -9,13 +9,13 @@ from vgazer.auth.base           import AuthBase
 from vgazer.auth.github         import AuthGithub
 
 def testGeneric(authBase, authGithub):
-    print("cJSON:", CheckGithub(authGithub, "cJSON"))
+    print("cjson:", CheckGithub(authGithub, "cjson"))
     print("duktape", CheckGithub(authGithub, "duktape"))
     print("harfbuzz:", CheckGithub(authGithub, "harfbuzz"))
     print("inih:", CheckGithub(authGithub, "inih"))
     print("lazy-winapi.c:", CheckGithub(authGithub, "lazy-winapi.c"))
     print("libintl-lite:", CheckGithub(authGithub, "libintl-lite"))
-    print("minIni:", CheckGithub(authGithub, "minIni"))
+    print("minini:", CheckGithub(authGithub, "minIni"))
     print("nuklear:", CheckGithub(authGithub, "nuklear"))
     ## Github mirror
     ## Official website broken: https://icculus.org/physfs/
@@ -39,6 +39,7 @@ def testGeneric(authBase, authGithub):
     print("libogg:", CheckXiph(AuthBase, "libogg"))
     print("libvorbis:", CheckXiph(AuthBase, "libvorbis"))
 
+    print("cmocka:", CheckCustom(AuthBase, "cmocka"))
     print("dr_wav:", CheckCustom(AuthBase, "dr_wav"))
     print("freetype:", CheckCustom(AuthBase, "freetype"))
     print("glib:", CheckCustom(AuthBase, "glib"))
@@ -49,6 +50,7 @@ def testGeneric(authBase, authGithub):
     print("libtiff:", CheckCustom(AuthBase, "libtiff"))
     print("libwebp:", CheckCustom(AuthBase, "libwebp"))
     print("lua:", CheckCustom(AuthBase, "lua"))
+    print("p7:", CheckCustom(AuthBase, "p7"))
     print("portaudio:", CheckCustom(AuthBase, "portaudio"))
     print("sdl2:", CheckCustom(AuthBase, "sdl2"))
     print("sdl2_image:", CheckCustom(AuthBase, "sdl2_image"))
@@ -61,6 +63,7 @@ def testGeneric(authBase, authGithub):
 
 def testDebian(authBase):
     print("cjson:", CheckDebian(authBase, "buster", "cjson"))
+    print("cmocka:", CheckDebian(authBase, "buster", "cmocka"))
     print("duktape:", CheckDebian(authBase, "buster", "duktape"))
     print("harfbuzz:", CheckDebian(authBase, "buster", "harfbuzz"))
     print("inih:", CheckDebian(authBase, "buster", "libinih"))
