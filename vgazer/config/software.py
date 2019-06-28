@@ -1,4 +1,4 @@
-config = {
+data = {
     "bzip2": {
         "type": "library",
         "platform": "specific",
@@ -204,6 +204,7 @@ config = {
     "minini": {
         "type": "library",
         "platform": "specific",
+        "projects": {
             "github": "minini",
             "debian": "libminini",
         },
@@ -233,6 +234,7 @@ config = {
     "physfs": {
         "type": "library",
         "platform": "specific",
+        "projects": {
             "github": "physfs",
             "debian": "libphysfs",
         },
@@ -267,7 +269,7 @@ config = {
             "sourceforge": "sdl2gfx",
             "debian": "libsdl2-gfx",
         },
-    }
+    },
     "sdl2_gpu": {
         "type": "library",
         "platform": "specific",
@@ -278,6 +280,7 @@ config = {
     "sdl2_image": {
         "type": "library",
         "platform": "specific",
+        "projects": {
             "custom": "sdl2_image",
             "debian": "libsdl2-image",
         },
@@ -304,6 +307,7 @@ config = {
         "projects": {
             "github": "squirrel",
             "debian": "squirrel3",
+        },
     },
     "std_rect_pack": {
         "type": "library",
@@ -343,3 +347,13 @@ config = {
         },
     },
 }
+
+class ConfigSoftware:
+    def __init__(self, customData = {}):
+        self.data = {**data, **customData}
+
+    def AddData(self, customData):
+        self.data = {**self.data, **customData}
+
+    def GetData(self):
+        return self.data
