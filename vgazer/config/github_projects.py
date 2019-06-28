@@ -1,4 +1,4 @@
-config = {
+data = {
     "cjson": {
         "user": "DaveGamble",
         "repo": "cJSON",
@@ -65,3 +65,13 @@ config = {
         "repo": "utf8",
     },
 }
+
+class ConfigGithubProjects:
+    def __init__(self, customData = {}):
+        self.data = {**data, **customData}
+
+    def AddData(self, customData):
+        self.data = {**self.data, **customData}
+
+    def GetData(self):
+        return self.data
