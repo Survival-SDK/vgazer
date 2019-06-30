@@ -32,3 +32,6 @@ Working with test example (Linux only):
         $ make test_runi
     Clean unused images:
         $ make test_clean
+
+Copying:
+    Source code of library released to public domain (CC0 license)
