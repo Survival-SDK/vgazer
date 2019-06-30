@@ -12,7 +12,8 @@ class LostConfigEntry(Exception):
 
 def ApiRateLimitExceeded(responseJson):
     if "message" in responseJson:
-        if (responseJson["documentation_url"] == "https://developer.github.com/v3/#rate-limiting"):
+        if (responseJson["documentation_url"]
+         == "https://developer.github.com/v3/#rate-limiting"):
             return True
     return False
 
@@ -22,7 +23,8 @@ def CheckLastCommit(auth, user, repo):
 
     if ApiRateLimitExceeded(commits):
         raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last commit info of resource: "
+         "Github API rate limit reached while searching last commit info of "
+         "resource: "
          + project
         )
 
@@ -33,17 +35,11 @@ def CheckLastCommit(auth, user, repo):
 
     return "commit on " + date + " " + time
 
-def CheckGithub(auth, config, project):
-    data = config.GetData()
+def CheckGithub(auth, project):
+    user = project["user"]
+    repo = project["repo"]
 
-    if project not in data:
-        raise LostConfigEntry(
-         "There is not entry in configfile for project: " + project)
-
-    user = data[project]["user"]
-    repo = data[project]["repo"]
-
-    if "ignore_releases" in data[project].keys():
+    if "ignore_releases" in project.keys():
         return CheckLastCommit(auth, user, repo)
 
     releases = auth.GetJson(
@@ -51,7 +47,8 @@ def CheckGithub(auth, config, project):
 
     if ApiRateLimitExceeded(releases):
         raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last version of resource: "
+         "Github API rate limit reached while searching last version of "
+         "resource: "
          + project
         )
 
@@ -63,7 +60,8 @@ def CheckGithub(auth, config, project):
 
     if ApiRateLimitExceeded(tags):
         raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last version of resource: "
+         "Github API rate limit reached while searching last version of "
+         "resource: "
          + project
         )
 

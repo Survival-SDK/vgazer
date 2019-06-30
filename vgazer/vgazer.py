@@ -1,6 +1,5 @@
 from vgazer.auth.base               import AuthBase
 from vgazer.auth.github             import AuthGithub
-from vgazer.config.github_projects  import ConfigGithubProjects
 from vgazer.config.software         import ConfigSoftware
 from vgazer.platform                import Platform
 from vgazer.version.custom          import CheckCustom
@@ -16,11 +15,9 @@ class UnknownSoftware(Exception):
 
 class Vgazer:
     def __init__(self, arch = None, os = None, osVersion = None,
-     compiler = None, customGithubProjectsData = {}, customSoftwareData = {}):
+     compiler = None, customSoftwareData = {}):
         self.authBase = AuthBase()
         self.authGithub = AuthGithub()
-        self.configGithubProjects = ConfigGithubProjects(
-         customGithubProjectsData)
         self.configSoftware = ConfigSoftware(customSoftwareData)
         self.hostPlatform = Platform()
         self.targetPlatform = Platform(arch, os, osVersion, compiler)
@@ -29,8 +26,7 @@ class Vgazer:
         softwareData = self.configSoftware.GetData()
         projects = softwareData[software]["projects"]
         if "github" in projects:
-            return CheckGithub(self.authGithub, self.configGithubProjects,
-             projects["github"])
+            return CheckGithub(self.authGithub, projects["github"])
         elif "sourceforge" in projects:
             return CheckSourceforge(self.authBase, projects["sourceforge"])
         elif "xiph" in projects:

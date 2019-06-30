@@ -11,7 +11,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "cjson",
+            "github": {
+                "user": "DaveGamble",
+                "repo": "cJSON"
+            },
             "debian": "cjson",
         },
     },
@@ -20,7 +23,7 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "cmocka",
-            "custom": "cmocka",
+            "debian": "cmocka",
         },
     },
     "dr_wav": {
@@ -34,7 +37,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "duktape",
+            "github": {
+                "user": "svaarala",
+                "repo": "duktape",
+            },
             "debian": "duktape",
         },
     },
@@ -74,7 +80,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "harfbuzz",
+            "github": {
+                "user": "harfbuzz",
+                "repo": "harfbuzz",
+            },
             "debian": "harfbuzz",
         },
     },
@@ -90,7 +99,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "inih",
+            "github": {
+                "user": "benhoyt",
+                "repo": "inih",
+            },
             "debian": "libinih",
         },
     },
@@ -106,7 +118,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "lazy-winapi.c",
+            "github": {
+                "user": "DoumanAsh",
+                "repo": "lazy-winapi.c",
+            },
         },
     },
     "libffi": {
@@ -136,7 +151,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "libintl-lite",
+            "github": {
+                "user": "j-jorge",
+                "repo": "libintl-lite",
+            },
         },
     },
     "liblzma": {
@@ -205,7 +223,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "minini",
+            "github": {
+                "user": "compuphase",
+                "repo": "minIni",
+            },
             "debian": "libminini",
         },
     },
@@ -221,7 +242,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "nuklear",
+            "github": {
+                "user": "vurtun",
+                "repo": "nuklear",
+            },
         },
     },
     "p7": {
@@ -235,7 +259,11 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "physfs",
+            "github": {
+                "user": "criptych",
+                "repo": "physfs",
+                "ignore_releases": True,
+            },
             "debian": "libphysfs",
         },
     },
@@ -251,7 +279,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "saneopt",
+            "github": {
+                "user": "mmalecki",
+                "repo": "saneopt",
+            },
         },
     },
     "sdl2": {
@@ -274,7 +305,11 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "sdl-gpu",
+            "github": {
+                "user": "grimfang4",
+                "repo": "sdl-gpu",
+                "ignore_releases": True,
+            },
         },
     },
     "sdl2_image": {
@@ -305,7 +340,10 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "squirrel",
+            "github": {
+                "user": "albertodemichelis",
+                "repo": "squirrel",
+            },
             "debian": "squirrel3",
         },
     },
@@ -328,14 +366,20 @@ data = {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "utf",
+            "github": {
+                "user": "andlabs",
+                "repo": "utf",
+            },
         },
     },
     "utf8": {
         "type": "library",
         "platform": "specific",
         "projects": {
-            "github": "utf8",
+            "github": {
+                "user": "haipome",
+                "repo": "utf8",
+            },
         },
     },
     "zlib": {
