@@ -1,7 +1,7 @@
-#Description
+# Description
 Python library for tracking versions of various software in network
 
-#Requirements
+# Requirements
 This software required for working vgazer:
 
 * python3
@@ -26,10 +26,10 @@ $ pip3 install bs4
 # apt-get install docker
 ```
 
-#Usage
+# Usage
 For use vgazer you need write simple script. Look usage example in file test.py
 
-#Working with test example (Linux only)
+# Working with test example (Linux only)
 Build docker image:
 ```
 $ make test_build
@@ -47,5 +47,5 @@ Clean unused images:
 $ make test_clean
 ```
 
-#Copying:
+# Copying:
 Source code of library released to public domain (CC0 license)
