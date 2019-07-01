@@ -10,7 +10,13 @@ def GetPackageVersion(packageInfo, debianRelease, package):
     for version in versions:
         suites = version["suites"]
         for suit in suites:
-            if (suit == debianRelease or suit == debianRelease + "-backports"):
+            if suit == debianRelease:
+                return version["version"]
+
+    for version in versions:
+        suites = version["suites"]
+        for suit in suites:
+            if suit == debianRelease + "-backports":
                 return version["version"]
 
     return None
