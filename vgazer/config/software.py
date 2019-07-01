@@ -1,7 +1,6 @@
 data = {
     "cjson": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "DaveGamble",
@@ -15,9 +14,20 @@ data = {
             },
         },
     },
+    "cmake": {
+        "platform": "host",
+        "projects": {
+            "custom": "cmake",
+            "debian": {
+                "generic": {
+                    "source": "cmake",
+                    "package": "cmake",
+                },
+            },
+        },
+    },
     "cmocka": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "cmocka",
             "debian": {
@@ -29,15 +39,13 @@ data = {
         },
     },
     "dr_wav": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "dr_wav",
         },
     },
     "duktape": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "svaarala",
@@ -52,8 +60,7 @@ data = {
         },
     },
     "freetype": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "freetype",
             "debian": {
@@ -65,8 +72,7 @@ data = {
         },
     },
     "giflib": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "sourceforge": "giflib",
             "debian": {
@@ -78,8 +84,7 @@ data = {
         },
     },
     "glew": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "sourceforge": "glew",
             "debian": {
@@ -91,8 +96,7 @@ data = {
         },
     },
     "glib": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "glib",
             "debian": {
@@ -104,8 +108,7 @@ data = {
         },
     },
     "harfbuzz": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "harfbuzz",
@@ -120,8 +123,7 @@ data = {
         },
     },
     "icu": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "icu",
             "debian": {
@@ -133,8 +135,7 @@ data = {
         },
     },
     "inih": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "benhoyt",
@@ -149,8 +150,7 @@ data = {
         },
     },
     "jpeg": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "jpeg",
             "debian": {
@@ -162,8 +162,7 @@ data = {
         },
     },
     "lazy-winapi.c": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "DoumanAsh",
@@ -172,8 +171,7 @@ data = {
         },
     },
     "libbzip2": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "sourceforge": "bzip2",
             "debian": {
@@ -185,8 +183,7 @@ data = {
         },
     },
     "libffi": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "libffi",
             "debian": {
@@ -198,8 +195,7 @@ data = {
         },
     },
     "libflac": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "xiph": "libflac",
             "debian": {
@@ -211,15 +207,13 @@ data = {
         },
     },
     "libiconv": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "libiconv",
         },
     },
     "libintl-lite": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "j-jorge",
@@ -228,8 +222,7 @@ data = {
         },
     },
     "liblzma": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "sourceforge": "lzmautils",
             "debian": {
@@ -241,8 +234,7 @@ data = {
         },
     },
     "libmodplug": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "sourceforge": "modplug-xmms",
             "debian": {
@@ -254,8 +246,7 @@ data = {
         },
     },
     "libogg": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "xiph": "libogg",
             "debian": {
@@ -267,8 +258,7 @@ data = {
         },
     },
     "libpng": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "sourceforge": "libpng",
             "debian": {
@@ -280,8 +270,7 @@ data = {
         },
     },
     "libtiff": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "libtiff",
             "debian": {
@@ -293,8 +282,7 @@ data = {
         },
     },
     "libvorbis": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
             "xiph": "libvorbis",
             "debian": {
                 "generic": {
@@ -304,8 +292,7 @@ data = {
             },
     },
     "libwebp": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "libwebp",
             "debian": {
@@ -317,8 +304,7 @@ data = {
         },
     },
     "lua": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "lua",
             "debian": {
@@ -330,8 +316,7 @@ data = {
         },
     },
     "minini": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "compuphase",
@@ -346,8 +331,7 @@ data = {
         },
     },
     "mpg123": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "sourceforge": "mpg123",
             "debian": {
@@ -359,8 +343,7 @@ data = {
         },
     },
     "nuklear": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "vurtun",
@@ -369,15 +352,13 @@ data = {
         },
     },
     "p7": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "p7",
         },
     },
     "physfs": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "criptych",
@@ -393,8 +374,7 @@ data = {
         },
     },
     "portaudio": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "portaudio",
             "debian": {
@@ -406,8 +386,7 @@ data = {
         },
     },
     "saneopt": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "mmalecki",
@@ -416,8 +395,7 @@ data = {
         },
     },
     "sdl2": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "sdl2",
             "debian":  {
@@ -429,8 +407,7 @@ data = {
         },
     },
     "sdl2_gfx": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "sourceforge": "sdl2gfx",
             "debian": {
@@ -442,8 +419,7 @@ data = {
         },
     },
     "sdl2_gpu": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "grimfang4",
@@ -453,8 +429,7 @@ data = {
         },
     },
     "sdl2_image": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "sdl2_image",
             "debian": {
@@ -466,8 +441,7 @@ data = {
         },
     },
     "sdl2_mixer": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "sdl2_mixer",
             "debian": {
@@ -479,8 +453,7 @@ data = {
         },
     },
     "sdl2_ttf": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "sdl2_ttf",
             "debian": {
@@ -492,8 +465,7 @@ data = {
         },
     },
     "squirrel": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "albertodemichelis",
@@ -508,8 +480,7 @@ data = {
         },
     },
     "std_rect_pack": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "stb_rect_pack",
             "debian": {
@@ -522,14 +493,13 @@ data = {
     },
     "tinyfiledialogs": {
         "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "tinyfiledialogs",
         },
     },
     "utf": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "andlabs",
@@ -538,8 +508,7 @@ data = {
         },
     },
     "utf8": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "github": {
                 "user": "haipome",
@@ -548,8 +517,7 @@ data = {
         },
     },
     "zlib": {
-        "type": "library",
-        "platform": "specific",
+        "platform": "target",
         "projects": {
             "custom": "zlib",
             "debian": {
