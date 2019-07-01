@@ -15,7 +15,12 @@ def GetPackageVersion(packageInfo, debianRelease, package):
 
     return None
 
-def CheckDebian(auth, debianRelease, source):
+def CheckDebian(auth, debianRelease, projects):
+    for key, data in projects.items():
+        if (key == debianRelease or key == "generic"):
+            source = data["source"]
+            break
+
     sourceInfo = auth.GetJson(
      "https://sources.debian.org/api/src/" + source + "/")
 

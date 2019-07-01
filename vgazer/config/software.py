@@ -1,12 +1,4 @@
 data = {
-    "bzip2": {
-        "type": "library",
-        "platform": "specific",
-        "projects": {
-            "sourceforge": "bzip2",
-            "debian": "bzip2",
-        },
-    },
     "cjson": {
         "type": "library",
         "platform": "specific",
@@ -15,7 +7,12 @@ data = {
                 "user": "DaveGamble",
                 "repo": "cJSON"
             },
-            "debian": "cjson",
+            "debian": {
+                "generic": {
+                    "source": "cjson",
+                    "package": "libcjson-dev",
+                },
+            },
         },
     },
     "cmocka": {
@@ -23,7 +20,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "cmocka",
-            "debian": "cmocka",
+            "debian": {
+                "generic": {
+                    "source": "cmocka",
+                    "package": "libcmocka-dev",
+                },
+            },
         },
     },
     "dr_wav": {
@@ -41,7 +43,12 @@ data = {
                 "user": "svaarala",
                 "repo": "duktape",
             },
-            "debian": "duktape",
+            "debian": {
+                "generic": {
+                    "source": "duktape",
+                    "package": "duktape-dev",
+                },
+            },
         },
     },
     "freetype": {
@@ -49,7 +56,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "freetype",
-            "debian": "freetype",
+            "debian": {
+                "generic": {
+                    "source": "freetype",
+                    "package": "libfreetype6-dev",
+                },
+            },
         },
     },
     "giflib": {
@@ -57,7 +69,12 @@ data = {
         "platform": "specific",
         "projects": {
             "sourceforge": "giflib",
-            "debian": "giflib",
+            "debian": {
+                "generic": {
+                    "source": "giflib",
+                    "package": "libgif-dev",
+                },
+            },
         },
     },
     "glew": {
@@ -65,7 +82,12 @@ data = {
         "platform": "specific",
         "projects": {
             "sourceforge": "glew",
-            "debian": "glew",
+            "debian": {
+                "generic": {
+                    "source": "glew",
+                    "package": "libglew-dev",
+                },
+            },
         },
     },
     "glib": {
@@ -73,7 +95,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "glib",
-            "debian": "glib2.0",
+            "debian": {
+                "generic": {
+                    "source": "glib2.0",
+                    "package": "libglib2.0-dev",
+                },
+            },
         },
     },
     "harfbuzz": {
@@ -84,7 +111,12 @@ data = {
                 "user": "harfbuzz",
                 "repo": "harfbuzz",
             },
-            "debian": "harfbuzz",
+            "debian": {
+                "generic": {
+                    "source": "harfbuzz",
+                    "package": "libharfbuzz-dev",
+                },
+            },
         },
     },
     "icu": {
@@ -92,7 +124,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "icu",
-            "debian": "icu",
+            "debian": {
+                "generic": {
+                    "source": "icu",
+                    "package": "libicu-dev",
+                },
+            },
         },
     },
     "inih": {
@@ -103,7 +140,12 @@ data = {
                 "user": "benhoyt",
                 "repo": "inih",
             },
-            "debian": "libinih",
+            "debian": {
+                "generic": {
+                    "source": "libinih",
+                    "package": "libinih-dev",
+                },
+            },
         },
     },
     "jpeg": {
@@ -111,7 +153,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "jpeg",
-            "debian": "libjpeg-turbo",
+            "debian": {
+                "generic": {
+                    "source": "libjpeg-turbo",
+                    "package": "libjpeg-dev",
+                },
+            },
         },
     },
     "lazy-winapi.c": {
@@ -124,12 +171,30 @@ data = {
             },
         },
     },
+    "libbzip2": {
+        "type": "library",
+        "platform": "specific",
+        "projects": {
+            "sourceforge": "bzip2",
+            "debian": {
+                "generic": {
+                    "source": "bzip2",
+                    "package": "libbz2-dev",
+                },
+            },
+        },
+    },
     "libffi": {
         "type": "library",
         "platform": "specific",
         "projects": {
             "custom": "libffi",
-            "debian": "libffi",
+            "debian": {
+                "generic": {
+                    "source": "libffi",
+                    "package": "libffi-dev",
+                },
+            },
         },
     },
     "libflac": {
@@ -137,7 +202,12 @@ data = {
         "platform": "specific",
         "projects": {
             "xiph": "libflac",
-            "debian": "flac",
+            "debian": {
+                "generic": {
+                    "source": "flac",
+                    "package": "libflac-dev",
+                },
+            },
         },
     },
     "libiconv": {
@@ -162,7 +232,12 @@ data = {
         "platform": "specific",
         "projects": {
             "sourceforge": "lzmautils",
-            "debian": "xz-utils",
+            "debian": {
+                "generic": {
+                    "source": "xz-utils",
+                    "package": "liblzma-dev",
+                },
+            },
         },
     },
     "libmodplug": {
@@ -170,7 +245,12 @@ data = {
         "platform": "specific",
         "projects": {
             "sourceforge": "modplug-xmms",
-            "debian": "libmodplug",
+            "debian": {
+                "generic": {
+                    "source": "libmodplug",
+                    "package": "libmodplug-dev",
+                },
+            },
         },
     },
     "libogg": {
@@ -178,7 +258,12 @@ data = {
         "platform": "specific",
         "projects": {
             "xiph": "libogg",
-            "debian": "libogg",
+            "debian": {
+                "generic": {
+                    "source": "libogg",
+                    "package": "libogg-dev",
+                },
+            },
         },
     },
     "libpng": {
@@ -186,7 +271,12 @@ data = {
         "platform": "specific",
         "projects": {
             "sourceforge": "libpng",
-            "debian": "libpng1.6",
+            "debian": {
+                "generic": {
+                    "source": "libpng1.6",
+                    "package": "libpng-dev",
+                },
+            },
         },
     },
     "libtiff": {
@@ -194,21 +284,36 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "libtiff",
-            "debian": "tiff",
+            "debian": {
+                "generic": {
+                    "source": "tiff",
+                    "package": "libtiff-dev",
+                },
+            },
         },
     },
     "libvorbis": {
         "type": "library",
         "platform": "specific",
             "xiph": "libvorbis",
-            "debian": "libvorbis",
+            "debian": {
+                "generic": {
+                    "source": "libvorbis",
+                    "package": "libvorbis-dev",
+                },
+            },
     },
     "libwebp": {
         "type": "library",
         "platform": "specific",
         "projects": {
             "custom": "libwebp",
-            "debian": "libwebp",
+            "debian": {
+                "generic": {
+                    "source": "libwebp",
+                    "package": "libwebp-dev",
+                },
+            },
         },
     },
     "lua": {
@@ -216,7 +321,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "lua",
-            "debian": "lua5.3",
+            "debian": {
+                "generic": {
+                    "source": "lua5.3",
+                    "package": "liblua5.3-dev",
+                },
+            },
         },
     },
     "minini": {
@@ -227,7 +337,12 @@ data = {
                 "user": "compuphase",
                 "repo": "minIni",
             },
-            "debian": "libminini",
+            "debian": {
+                "generic": {
+                    "source": "libminini",
+                    "package": "libminini-dev",
+                },
+            },
         },
     },
     "mpg123": {
@@ -235,7 +350,12 @@ data = {
         "platform": "specific",
         "projects": {
             "sourceforge": "mpg123",
-            "debian": "mpg123",
+            "debian": {
+                "generic": {
+                    "source": "libmpg123",
+                    "package": "libmpg123-dev",
+                },
+            },
         },
     },
     "nuklear": {
@@ -264,7 +384,12 @@ data = {
                 "repo": "physfs",
                 "ignore_releases": True,
             },
-            "debian": "libphysfs",
+            "debian": {
+                "generic": {
+                    "source": "libphysfs",
+                    "package": "libphysfs-dev",
+                },
+            },
         },
     },
     "portaudio": {
@@ -272,7 +397,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "portaudio",
-            "debian": "portaudio19",
+            "debian": {
+                "generic": {
+                    "source": "portaudio19",
+                    "package": "portaudio19-dev",
+                },
+            },
         },
     },
     "saneopt": {
@@ -290,7 +420,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "sdl2",
-            "debian": "libsdl2",
+            "debian":  {
+                "generic": {
+                    "source": "libsdl2",
+                    "package": "libsdl2-dev",
+                },
+            },
         },
     },
     "sdl2_gfx": {
@@ -298,7 +433,12 @@ data = {
         "platform": "specific",
         "projects": {
             "sourceforge": "sdl2gfx",
-            "debian": "libsdl2-gfx",
+            "debian": {
+                "generic": {
+                    "source": "libsdl2-gfx",
+                    "package": "libsdl2-gfx-dev",
+                },
+            },
         },
     },
     "sdl2_gpu": {
@@ -317,7 +457,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "sdl2_image",
-            "debian": "libsdl2-image",
+            "debian": {
+                "generic": {
+                    "source": "libsdl2-image",
+                    "package": "libsdl2-image-dev",
+                },
+            },
         },
     },
     "sdl2_mixer": {
@@ -325,7 +470,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "sdl2_mixer",
-            "debian": "libsdl2-mixer",
+            "debian": {
+                "generic": {
+                    "source": "libsdl2-mixer",
+                    "package": "libsdl2-mixer-dev",
+                },
+            },
         },
     },
     "sdl2_ttf": {
@@ -333,7 +483,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "sdl2_ttf",
-            "debian": "libsdl2-ttf",
+            "debian": {
+                "generic": {
+                    "source": "libsdl2-ttf",
+                    "package": "libsdl2-ttf-dev",
+                },
+            },
         },
     },
     "squirrel": {
@@ -344,7 +499,12 @@ data = {
                 "user": "albertodemichelis",
                 "repo": "squirrel",
             },
-            "debian": "squirrel3",
+            "debian": {
+                "generic": {
+                    "source": "squirrel3",
+                    "package": "libsquirrel-dev",
+                },
+            },
         },
     },
     "std_rect_pack": {
@@ -352,7 +512,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "stb_rect_pack",
-            "debian": "libstb",
+            "debian": {
+                "generic": {
+                    "source": "libstb",
+                    "package": "libstb-dev",
+                },
+            },
         },
     },
     "tinyfiledialogs": {
@@ -387,7 +552,12 @@ data = {
         "platform": "specific",
         "projects": {
             "custom": "zlib",
-            "debian": "zlib",
+            "debian": {
+                "generic": {
+                    "source": "zlib",
+                    "package": "zlib1g-dev",
+                },
+            },
         },
     },
 }
