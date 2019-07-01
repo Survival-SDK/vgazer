@@ -10,3 +10,6 @@ test_runi:
 
 test_clean:
 	docker image prune -f
+
+package:
+	python setup.py sdist
