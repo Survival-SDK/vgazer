@@ -7,7 +7,7 @@ This software required for working vgazer:
 * python3
 * pip3
 
-Also required these packages:
+Also required these python packages:
 
 * requests
 * bs4
@@ -19,11 +19,8 @@ Optional Requirements for running test example (Linux only):
 Installing requirements on Debian:
 
 ```
-# apt-get install python3
-# apt-get install python3-pip
-$ pip3 install requests
-$ pip3 install bs4
-# apt-get install docker
+# apt-get install python3 python3-pip docker
+$ pip3 install requests bs4
 ```
 
 # Usage
