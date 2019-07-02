@@ -12,4 +12,4 @@ RUN pip3 install requests
 RUN pip3 install bs4
 ADD . /vgazer
 WORKDIR /vgazer
-ENTRYPOINT ["./test.py"]
+ENTRYPOINT ["sudo", "-E", "sh", "-c", "./test.py"]
