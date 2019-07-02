@@ -83,6 +83,21 @@ data = {
             },
         },
     },
+    "git": {
+        "platform": "host",
+        "projects": {
+            "github": {
+                "user": "git",
+                "repo": "git",
+            },
+            "debian": {
+                "generic": {
+                    "source": "git",
+                    "package": "git",
+                },
+            },
+        },
+    },
     "glew": {
         "platform": "target",
         "projects": {
@@ -118,6 +133,17 @@ data = {
                 "generic": {
                     "source": "harfbuzz",
                     "package": "libharfbuzz-dev",
+                },
+            },
+        },
+    },
+    "i686-w64-mingw32-gcc": {
+        "platform": "host",
+        "projects": {
+            "debian": {
+                "generic": {
+                    "source": "gcc-mingw-w64",
+                    "package": "gcc-mingw-w64-i686",
                 },
             },
         },
@@ -513,6 +539,17 @@ data = {
             "github": {
                 "user": "haipome",
                 "repo": "utf8",
+            },
+        },
+    },
+    "x86_64-w64-mingw32-gcc": {
+        "platform": "host",
+        "projects": {
+            "debian": {
+                "generic": {
+                    "source": "gcc-mingw-w64",
+                    "package": "gcc-mingw-w64-x86-64",
+                },
             },
         },
     },
