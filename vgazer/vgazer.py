@@ -2,7 +2,7 @@ from vgazer.auth.base               import AuthBase
 from vgazer.auth.github             import AuthGithub
 from vgazer.config.software         import ConfigSoftware
 from vgazer.platform                import Platform
-from vgazer.version.custom          import CheckCustom
+from vgazer.version.custom          import VersionCustom
 from vgazer.version.github          import CheckGithub
 from vgazer.version.sourceforge     import CheckSourceforge
 from vgazer.version.xiph            import CheckXiph
@@ -21,6 +21,7 @@ class Vgazer:
         self.configSoftware = ConfigSoftware(customSoftwareData)
         self.hostPlatform = Platform()
         self.targetPlatform = Platform(arch, os, osVersion, compiler)
+        self.versionCustom = VersionCustom(self.authBase, customCheckers)
 
     def CheckVersionCrossplatform(self, software):
         softwareData = self.configSoftware.GetData()
@@ -32,7 +33,7 @@ class Vgazer:
         elif "xiph" in projects:
             return CheckXiph(self.authBase, projects["xiph"])
         elif "custom" in projects:
-            return CheckCustom(self.authBase, projects["custom"])
+            return self.versionCustom.Check(projects["custom"])
 
     def CheckVersionDebian(self, software, debianVersion):
         softwareData = self.configSoftware.GetData()
