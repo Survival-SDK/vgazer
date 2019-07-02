@@ -1,8 +1,5 @@
 import requests
-
-class DebianPackageUnavailable(Exception):
-    def __init__(self, message):
-        super().__init__(message)
+from vgazer.exceptions import DebianPackageUnavailable
 
 def GetPackageVersion(packageInfo, debianRelease, package):
     versions = packageInfo["versions"]

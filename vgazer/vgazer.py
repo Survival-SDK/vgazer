@@ -7,11 +7,10 @@ from vgazer.version.github          import CheckGithub
 from vgazer.version.sourceforge     import CheckSourceforge
 from vgazer.version.xiph            import CheckXiph
 from vgazer.version.debian          import CheckDebian
-from vgazer.version.debian          import DebianPackageUnavailable
-
-class UnknownSoftware(Exception):
-    def __init__(self, message):
-        super().__init__(message)
+from vgazer.version.debian          import InstallCustom
+from vgazer.install.debian      import InstallDebian
+from vgazer.exceptions          import DebianPackageUnavailable
+from vgazer.exceptions          import UnknownSoftware
 
 class Vgazer:
     def __init__(self, arch = None, os = None, osVersion = None,
