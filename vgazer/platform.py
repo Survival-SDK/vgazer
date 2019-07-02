@@ -93,5 +93,4 @@ class Platform:
 
     def PlatformsEqual(self, platform):
         return (self.arch == platform.arch and self.os == platform.os
-         and self.version == platform.version
-         and self.compiler == platform.compiler)
+         and self.version == platform.version)
