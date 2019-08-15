@@ -131,7 +131,7 @@ class Platform:
             return True
         if self.os == comparingOs:
             return True
-        if Platform.OsIsLinux(self.os) and Platform.OsIsLinux(comparingOs):
+        if Platform.OsIsLinux(self.os) and comparingOs == "linux":
             return True
         return False
 
