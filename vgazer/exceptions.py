@@ -14,6 +14,14 @@ class DebianReleaseDataNotFound(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+class DirNameEngaged(Exception):
+        def __init__(self, message):
+            super().__init__(message)
+
+class FilenameEngaged(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class GithubApiRateLimitExceeded(Exception):
     def __init__(self, message):
         super().__init__(message)

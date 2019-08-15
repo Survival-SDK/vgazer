@@ -1,14 +1,9 @@
 import os
 
+from vgazer.exceptions import DirNameEngaged
+from vgazer.exceptions import FilenameEngaged
+
 class StoreBase():
-    class DirNameEngaged(Exception):
-        def __init__(self, message):
-            super().__init__(message)
-
-    class FilenameEngaged(Exception):
-        def __init__(self, message):
-            super().__init__(message)
-
     def __init__(self, baseDirPath):
         self.baseDirPath = baseDirPath
 
