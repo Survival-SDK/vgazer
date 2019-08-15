@@ -9,6 +9,7 @@ from vgazer.version.xiph        import CheckXiph
 from vgazer.version.debian      import CheckDebian
 from vgazer.install.custom      import InstallCustom
 from vgazer.install.debian      import InstallDebian
+from vgazer.exceptions          import CompatibleProjectNotFound
 from vgazer.exceptions          import DebianPackageUnavailable
 from vgazer.exceptions          import UnknownSoftware
 
@@ -21,69 +22,101 @@ class Vgazer:
         self.configSoftware = ConfigSoftware(customSoftwareData)
         self.hostPlatform = Platform()
         self.targetPlatform = Platform(arch, os, osVersion, compiler)
+        self.platform = {}
+        self.platform["host"] = self.hostPlatform
+        self.platform["target"] = self.targetPlatform
         self.versionCustom = VersionCustom(self.authBase, customCheckers)
         self.installCustom = InstallCustom(customInstallers)
 
-    def CheckVersionCrossplatform(self, software):
-        softwareData = self.configSoftware.GetData()
-        projects = softwareData[software]["projects"]
-        if "github" in projects:
-            return CheckGithub(self.authGithub, projects["github"])
-        elif "sourceforge" in projects:
-            return CheckSourceforge(self.authBase, projects["sourceforge"])
-        elif "xiph" in projects:
-            return CheckXiph(self.authBase, projects["xiph"])
-        elif "custom" in projects:
-            return self.versionCustom.Check(projects["custom"])
-
-    def CheckVersionDebian(self, software, debianVersion):
-        softwareData = self.configSoftware.GetData()
-        projects = softwareData[software]["projects"]
-        if "debian" not in projects:
-            return self.CheckVersionCrossplatform(software)
-        try:
-            return CheckDebian(self.authBase, debianVersion, projects["debian"])
-        except DebianPackageUnavailable:
-            return self.CheckVersionCrossplatform(software)
+    def ChooseProject(self, projects, platform):
+        maxRatingProject = None
+        maxRating = Platform.COMP_INCOMPATIBLE
+        for project in projects:
+            projectRating = platform.GetCompatibilityRating(project["arch"],
+             project["os"], project["osVersion"], project["compiler"])
+            if projectRating > maxRating:
+                maxRating = projectRating
+                maxRatingProject = project
+        if maxRating >= Platform.COMP_COMPATIBLE:
+            return maxRatingProject
+        else:
+            return None
 
     def CheckVersion(self, software):
-        crossplatform = not self.targetPlatform.PlatformsEqual(
-         self.hostPlatform)
         softwareData = self.configSoftware.GetData()
         if software not in softwareData:
             raise UnknownSoftware("Unknown software: " + software)
 
-        if crossplatform:
-            return self.CheckVersionCrossplatform(software)
-        elif self.targetPlatform.GetOs() == "debian":
-            return self.CheckVersionDebian(software,
-             self.targetPlatform.GetOsVersion())
+        softwarePlatform = softwareData[software]["platform"]
+        softwareProjects = softwareData[software]["projects"]
+        project = self.ChooseProject(softwareProjects,
+         self.platform[softwarePlatform])
+        if project is None:
+            raise CompatibleProjectNotFound(
+             "Unable to find compatible project for sowtware: " + software)
 
-    def InstallCustom(self, software, verbose):
-        softwareData = self.configSoftware.GetData()
-        self.installCustom.Install(software, softwareData[software],
-         self.hostPlatform, self.targetPlatform, verbose)
+        checker = project["checker"]
+        if checker["type"] == "github":
+            if "ignoreReleases" in checker:
+                ignoreReleases = True
+            else:
+                ignoreReleases = False
+            return CheckGithub(self.authGithub, checker["user"],
+             checker["repo"], ignoreReleases)
+        elif checker["type"] == "sourceforge":
+            return CheckSourceforge(self.authBase, checker["project"])
+        elif checker["type"] == "xiph":
+            return CheckXiph(self.authBase, checker["project"])
+        elif checker["type"] == "debian":
+            return CheckDebian(self.authBase,
+             self.platform[softwarePlatform].GetOsVersion(), checker["source"])
+        elif checker["type"] == "custom":
+            return self.versionCustom.Check(checker["name"])
 
-    def InstallDebian(self, software, debianVersion, verbose):
-        softwareData = self.configSoftware.GetData()
-        projects = softwareData[software]["projects"]
-        if "debian" not in projects:
-            return self.InstallCustom(software, verbose)
-        try:
-            return InstallDebian(software, debianVersion, projects["debian"],
-             verbose)
-        except DebianPackageUnavailable:
-            return self.InstallCustom(software, verbose)
+    #def InstallCustom(self, software, verbose):
+        #softwareData = self.configSoftware.GetData()
+        #self.installCustom.Install(software, softwareData[software],
+         #self.hostPlatform, self.targetPlatform, verbose)
+
+    #def InstallDebian(self, software, debianVersion, verbose):
+        #softwareData = self.configSoftware.GetData()
+        #projects = softwareData[software]["projects"]
+        #if "debian" not in projects:
+            #return self.InstallCustom(software, verbose)
+        #try:
+            #return InstallDebian(software, debianVersion, projects["debian"],
+             #verbose)
+        #except DebianPackageUnavailable:
+            #return self.InstallCustom(software, verbose)
 
     def Install(self, software, verbose = False):
-        crossplatform = not self.targetPlatform.PlatformsEqual(
-         self.hostPlatform)
+        #crossplatform = not self.targetPlatform.PlatformsEqual(
+         #self.hostPlatform)
+        #softwareData = self.configSoftware.GetData()
+        #if software not in softwareData:
+            #raise UnknownSoftware("Unknown software: " + software)
+
+        #if crossplatform:
+            #return self.InstallCustom(software, verbose)
+        #elif self.targetPlatform.GetOs() == "debian":
+            #return self.InstallDebian(software,
+             #self.targetPlatform.GetOsVersion(), verbose)
+
         softwareData = self.configSoftware.GetData()
         if software not in softwareData:
             raise UnknownSoftware("Unknown software: " + software)
 
-        if crossplatform:
-            return self.InstallCustom(software, verbose)
-        elif self.targetPlatform.GetOs() == "debian":
-            return self.InstallDebian(software,
-             self.targetPlatform.GetOsVersion(), verbose)
+        softwarePlatform = softwareData[software]["platform"]
+        softwareProjects = softwareData[software]["projects"]
+        project = self.ChooseProject(softwareProjects,
+         self.platform[softwarePlatform])
+        if project is None:
+            raise CompatibleProjectNotFound(
+             "Unable to find compatible project for sowtware: " + software)
+
+        installer = project["installer"]
+        if installer["type"] == "debian":
+            return InstallDebian(software, installer["package"], verbose)
+        elif installer["type"] == "custom":
+            return self.installCustom.Install(software, installer["name"],
+             softwarePlatform, self.hostPlatform, self.targetPlatform, verbose)

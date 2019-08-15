@@ -1,14 +1,6 @@
-#import configparser
 import requests
 import vgazer.version.utils as utils
-
-class GithubApiRateLimitExceeded(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class LostConfigEntry(Exception):
-    def __init__(self, message):
-        super().__init__(message)
+from vgazer.exceptions import GithubApiRateLimitExceeded
 
 def ApiRateLimitExceeded(responseJson):
     if "message" in responseJson:
@@ -24,8 +16,7 @@ def CheckLastCommit(auth, user, repo):
     if ApiRateLimitExceeded(commits):
         raise GithubApiRateLimitExceeded(
          "Github API rate limit reached while searching last commit info of "
-         "resource: "
-         + project
+         "repo: " + user + "/" + repo
         )
 
     lastCommitDateTime = commits[0]["commit"]["author"]["date"]
@@ -35,11 +26,8 @@ def CheckLastCommit(auth, user, repo):
 
     return "commit on " + date + " " + time
 
-def CheckGithub(auth, project):
-    user = project["user"]
-    repo = project["repo"]
-
-    if "ignore_releases" in project.keys():
+def CheckGithub(auth, user, repo, ignoreReleases):
+    if ignoreReleases == True:
         return CheckLastCommit(auth, user, repo)
 
     releases = auth.GetJson(
@@ -48,8 +36,7 @@ def CheckGithub(auth, project):
     if ApiRateLimitExceeded(releases):
         raise GithubApiRateLimitExceeded(
          "Github API rate limit reached while searching last version of "
-         "resource: "
-         + project
+         "repo: " + user + "/" + repo
         )
 
     if len(releases) != 0:
@@ -61,8 +48,7 @@ def CheckGithub(auth, project):
     if ApiRateLimitExceeded(tags):
         raise GithubApiRateLimitExceeded(
          "Github API rate limit reached while searching last version of "
-         "resource: "
-         + project
+         "repo: " + user + "/" + repo
         )
 
     if len(tags) != 0:

@@ -1,8 +1,6 @@
 import importlib
 
-class MissingInstaller(Exception):
-    def __init__(self, message):
-        super().__init__(message)
+from vgazer.exceptions import MissingInstaller
 
 class InstallCustom:
     def __init__(self, customInstallers = {}):
@@ -11,16 +9,17 @@ class InstallCustom:
     def AddData(self, customInstallers):
         self.customInstallers = {**self.customInstallers, **customInstallers}
 
-    def Install(self, project, verbose):
+    def Install(self, software, installerName, platform, hostPlatformData,
+     targetPlatformData, verbose):
         try:
             installer = importlib.import_module(
-             'vgazer.install.custom_installer.' + project)
+             'vgazer.install.custom_installer.' + installerName)
         except ImportError:
             if len(self.customInstallers) == 0:
-                raise MissingChecker(
-                 "Missing custom installer for project: " + project)
+                raise MissingInstaller(
+                 "Missing custom installer for project: " + software)
             for customInstaller in self.customInstallers:
-                if customInstaller["project"] == project:
-                    istaller = customInstaller["checker"]
+                if customInstaller["name"] == installerName:
+                    istaller = customInstaller["installer"]
 
         return istaller.Install()

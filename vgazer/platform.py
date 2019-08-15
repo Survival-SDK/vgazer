@@ -1,17 +1,9 @@
 import os
 import platform
-
-class UnexpectedOsType(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class OsDataNotFound(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class DebianReleaseDataNotFound(Exception):
-    def __init__(self, message):
-        super().__init__(message)
+from vgazer.exceptions import DebianReleaseDataNotFound
+from vgazer.exceptions import MissingArgument
+from vgazer.exceptions import OsDataNotFound
+from vgazer.exceptions import UnexpectedOsType
 
 def GetHideDirectoryPrefix():
     if os.name == "posix":
@@ -32,6 +24,11 @@ def GetTempDirectoryPath():
         raise UnexpectedOsType("Unexpected OS type: " + os.name)
 
 class Platform:
+    # Platforms comparing ratings
+    COMP_INCOMPATIBLE   = -1000
+    COMP_COMPATIBLE     =  0
+    COMP_EQUAL          =  1
+
     @staticmethod
     def GetLinuxOs():
         osReleaseFile = open("/etc/os-release", "r")
@@ -57,8 +54,15 @@ class Platform:
         raise DebianReleaseDataNotFound(
          "Unable to find data of Debian version: " + os.name)
 
-    def __init__(self, arch = None, os = None, version = None, compiler = None):
-        if (arch is None or os is None or version is None or compiler is None):
+    @staticmethod
+    def OsIsLinux(os):
+        if os == "linux" or os == "debian":
+            return True
+        else:
+            return False
+
+    def __init__(self, arch = None, os = None, osVersion = None, compiler = None):
+        if (arch is None or os is None or osVersion is None or compiler is None):
             self.host = True
         else:
             self.host = False
@@ -69,14 +73,14 @@ class Platform:
             if osType == "Linux":
                 self.os = Platform.GetLinuxOs()
                 if self.os == "debian":
-                    self.version = Platform.GetDebianVersion()
+                    self.osVersion = Platform.GetDebianVersion()
             else:
                 raise UnexpectedOsType("Unexpected OS type: " + osType)
             self.compiler = "gcc"
         else:
             self.arch = arch
             self.os = os
-            self.version = version
+            self.osVersion = osVersion
             self.compiler = compiler
 
     def GetArch(self):
@@ -86,11 +90,195 @@ class Platform:
         return self.os
 
     def GetOsVersion(self):
-        return self.version
+        return self.osVersion
 
     def GetCompiler(self):
         return self.compiler
 
+    def ArchsCompatible(self, platform = None, arch = None):
+        if platform is None:
+            if arch is None:
+                raise MissingArgument("Missing value for argument 'arch'")
+            comparingArch = arch
+        else:
+            comparingArch = platform.arch
+        if self.arch == "any" or comparingArch == "any":
+            return True
+        if self.arch == comparingArch:
+            return True
+        return False
+
+    def ArchsEqual(self, platform = None, arch = None):
+        if platform is None:
+            if arch is None:
+                raise MissingArgument("Missing value for argument 'arch'")
+            comparingArch = arch
+        else:
+            comparingArch = platform.arch
+        if (self.arch == comparingArch and self.arch != "any" and
+         comparingArch != "any"):
+            return True
+        return False
+
+    def OsesCompatible(self, platform = None, os = None):
+        if platform is None:
+            if os is None:
+                raise MissingArgument("Missing value for argument 'os'")
+            comparingOs = os
+        else:
+            comparingOs = platform.os
+        if self.os == "any" or comparingOs == "any":
+            return True
+        if self.os == comparingOs:
+            return True
+        if Platform.OsIsLinux(self.os) and Platform.OsIsLinux(comparingOs):
+            return True
+        return False
+
+    def OsesEqual(self, platform = None, os = None):
+        if platform is None:
+            if os is None:
+                raise MissingArgument("Missing value for argument 'os'")
+            comparingOs = os
+        else:
+            comparingOs = platform.os
+        if self.os == comparingOs and self.os != "any" and comparingOs != "any":
+            return True
+        return False
+
+    def OsVersionsCompatible(self, platform = None, osVersion = None):
+        if platform is None:
+            if osVersion is None:
+                raise MissingArgument("Missing value for argument 'osVersion'")
+            comparingOsVersion = osVersion
+        else:
+            comparingOsVersion = platform.osVersion
+        if self.osVersion == "any" or comparingOsVersion == "any":
+            return True
+        if self.osVersion == comparingOsVersion:
+            return True
+        return False
+
+    def OsVersionsEqual(self, platform = None, osVersion = None):
+        if platform is None:
+            if osVersion is None:
+                raise MissingArgument("Missing value for argument 'osVersion'")
+            comparingOsVersion = osVersion
+        else:
+            comparingOsVersion = platform.osVersion
+        if (self.osVersion == comparingOsVersion and self.osVersion != "any" and
+         comparingOsVersion != "any"):
+            return True
+        return False
+
+    def CompilersCompatible(self, platform = None, compiler = None):
+        if platform is None:
+            if compiler is None:
+                raise MissingArgument("Missing value for argument 'compiler'")
+            comparingCompiler = compiler
+        else:
+            comparingCompiler = platform.compiler
+        if self.compiler == "any" or comparingCompiler == "any":
+            return True
+        if self.compiler == comparingCompiler:
+            return True
+        return False
+
+    def CompilersEqual(self, platform = None, compiler = None):
+        if platform is None:
+            if compiler is None:
+                raise MissingArgument("Missing value for argument 'compiler'")
+            comparingCompiler = compiler
+        else:
+            comparingCompiler = platform.compiler
+        if (self.compiler == comparingCompiler and self.compiler != "any" and
+         comparingCompiler != "any"):
+            return True
+        return False
+
+    def GetArchsCompareRating(self, platform = None, arch = None):
+        if platform is None:
+            if arch is None:
+                raise MissingArgument("Missing value for argument 'arch'")
+            comparingArch = arch
+        else:
+            comparingArch = platform.arch
+        if self.ArchsEqual(arch = comparingArch):
+            return Platform.COMP_EQUAL
+        elif self.ArchsCompatible(arch = comparingArch):
+            return Platform.COMP_COMPATIBLE
+        else:
+            return Platform.COMP_INCOMPATIBLE
+
+    def GetOsesCompareRating(self, platform = None, os = None):
+        if platform is None:
+            if os is None:
+                raise MissingArgument("Missing value for argument 'os'")
+            comparingOs = os
+        else:
+            comparingOs = platform.os
+        if self.OsesEqual(os = comparingOs):
+            return Platform.COMP_EQUAL
+        elif self.OsesCompatible(os = comparingOs):
+            return Platform.COMP_COMPATIBLE
+        else:
+            return Platform.COMP_INCOMPATIBLE
+
+    def GetOsVersionsCompareRating(self, platform = None, osVersion = None):
+        if platform is None:
+            if osVersion is None:
+                raise MissingArgument("Missing value for argument 'osVersion'")
+            comparingOsVersion = osVersion
+        else:
+            comparingOsVersion = platform.osVersion
+        if self.OsVersionsEqual(osVersion = comparingOsVersion):
+            return Platform.COMP_EQUAL
+        elif self.OsVersionsCompatible(osVersion = comparingOsVersion):
+            return Platform.COMP_COMPATIBLE
+        else:
+            return Platform.COMP_INCOMPATIBLE
+
+    def GetCompilersCompareRating(self, platform = None, compiler = None):
+        if platform is None:
+            if compiler is None:
+                raise MissingArgument("Missing value for argument 'compiler'")
+            comparingCompiler = compiler
+        else:
+            comparingCompiler = platform.compiler
+        if self.CompilersEqual(compiler = comparingCompiler):
+            return Platform.COMP_EQUAL
+        elif self.CompilersCompatible(compiler = comparingCompiler):
+            return Platform.COMP_COMPATIBLE
+        else:
+            return Platform.COMP_INCOMPATIBLE
+
     def PlatformsEqual(self, platform):
-        return (self.arch == platform.arch and self.os == platform.os
-         and self.version == platform.version)
+        return (self.ArchsEqual(platform) and self.OsesEqual(platform)
+         and self.OsVersionsEqual(platform) and self.CompilersEqual(platform))
+
+    def GetCompatibilityRating(self, archs, oses, osVersions, compilers):
+        archMaxRating = Platform.COMP_INCOMPATIBLE
+        osMaxRating = Platform.COMP_INCOMPATIBLE
+        osVersionMaxRating = Platform.COMP_INCOMPATIBLE
+        compilerMaxRating = Platform.COMP_INCOMPATIBLE
+        for comparingArch in archs:
+            archRating = self.GetArchsCompareRating(arch = comparingArch)
+            if archRating > archMaxRating:
+                archMaxRating = archRating
+        for comparingOs in oses:
+            osRating = self.GetOsesCompareRating(os = comparingOs)
+            if osRating > osMaxRating:
+                osMaxRating = osRating
+        for comparingOsVersion in osVersions:
+            osVersionRating = self.GetOsVersionsCompareRating(
+             osVersion = comparingOsVersion)
+            if osVersionRating > osVersionMaxRating:
+                osVersionMaxRating = osVersionRating
+        for comparingCompiler in compilers:
+            compilerRating = self.GetCompilersCompareRating(
+             compiler = comparingCompiler)
+            if compilerRating > compilerMaxRating:
+                compilerMaxRating = compilerRating
+
+        return (archMaxRating + osMaxRating * 2 + osVersionMaxRating * 4 +
+         compilerMaxRating * 8)

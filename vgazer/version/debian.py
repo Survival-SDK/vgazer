@@ -1,8 +1,8 @@
 import requests
 from vgazer.exceptions import DebianPackageUnavailable
 
-def GetPackageVersion(packageInfo, debianRelease, package):
-    versions = packageInfo["versions"]
+def GetPackageVersion(sourceInfo, debianRelease):
+    versions = sourceInfo["versions"]
 
     for version in versions:
         suites = version["suites"]
@@ -18,16 +18,16 @@ def GetPackageVersion(packageInfo, debianRelease, package):
 
     return None
 
-def CheckDebian(auth, debianRelease, projects):
-    for key, data in projects.items():
-        if (key == debianRelease or key == "generic"):
-            source = data["source"]
-            break
+def CheckDebian(auth, debianRelease, source):
+    #for key, data in projects.items():
+        #if (key == debianRelease or key == "generic"):
+            #source = data["source"]
+            #break
 
     sourceInfo = auth.GetJson(
      "https://sources.debian.org/api/src/" + source + "/")
 
-    version = GetPackageVersion(sourceInfo, debianRelease, source)
+    version = GetPackageVersion(sourceInfo, debianRelease)
 
     if version is None:
         raise DebianPackageUnavailable("There is not package " + source

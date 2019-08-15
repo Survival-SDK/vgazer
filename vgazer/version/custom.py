@@ -1,8 +1,5 @@
 import importlib
-
-class MissingChecker(Exception):
-    def __init__(self, message):
-        super().__init__(message)
+from vgazer.exceptions import MissingChecker
 
 class VersionCustom:
     def __init__(self, auth, customCheckers = {}):
@@ -12,16 +9,16 @@ class VersionCustom:
     def AddData(self, customCheckers):
         self.customCheckers = {**self.customCheckers, **customCheckers}
 
-    def Check(self, project):
+    def Check(self, checker):
         try:
             versionChecker = importlib.import_module(
-             'vgazer.version.custom_checker.' + project)
+             'vgazer.version.custom_checker.' + checker)
         except ImportError:
             if len(self.customCheckers) == 0:
                 raise MissingChecker(
-                 "Missing custom checker for project: " + project)
+                 "Missing custom checker : " + checker)
             for customChecker in self.customCheckers:
-                if customChecker["project"] == project:
+                if customChecker["name"] == checker:
                     versionChecker = customChecker["checker"]
 
         return versionChecker.Check(self.auth)

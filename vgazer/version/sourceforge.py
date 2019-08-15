@@ -1,9 +1,6 @@
 import requests
 import vgazer.version.utils as utils
-
-class LostReleaseArchive(Exception):
-    def __init__(self, message):
-        super().__init__(message)
+from vgazer.exceptions import SourceforgeReleaseArchiveLost
 
 def GetVersionNumbers(VersionAndExt, dotsCount):
     splitedVersionAndExt = VersionAndExt.split(".")
@@ -20,7 +17,7 @@ def CheckSourceforge(auth, project):
     filename = fullFilename.split("/")[-1]
     extension = filename.split(".")[-1]
     if extension == "txt":
-        raise LostReleaseArchive(
+        raise SourceforgeReleaseArchiveLost(
          "Release not contain archive for project: " + project)
 
     return utils.GetVersionFromFilename(filename)

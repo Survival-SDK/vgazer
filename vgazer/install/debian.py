@@ -1,19 +1,9 @@
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
+from vgazer.exceptions  import DebianPackageUnavailable
 from vgazer.exceptions  import InstallError
 
-def InstallDebian(software, debianRelease, projects, verbose):
-    package = None
-
-    for key, data in projects.items():
-        if (key == debianRelease or key == "generic"):
-            package = data["package"]
-            break
-
-    if package is None:
-        raise DebianPackageUnavailable("There is not package " + package
-         + " in " + debianRelease + " Debian release")
-
+def InstallDebian(software, package, verbose):
     try:
         RunCommand(["apt-get", "install", "-y", package], verbose)
     except CommandError:
