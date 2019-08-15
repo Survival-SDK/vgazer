@@ -1,19 +1,13 @@
 import requests
 import vgazer.version.utils as utils
+from vgazer.github_common import GithubCheckApiRateLimitExceeded
 from vgazer.exceptions import GithubApiRateLimitExceeded
-
-def ApiRateLimitExceeded(responseJson):
-    if "message" in responseJson:
-        if (responseJson["documentation_url"]
-         == "https://developer.github.com/v3/#rate-limiting"):
-            return True
-    return False
 
 def CheckLastCommit(auth, user, repo):
     commits = auth.GetJson(
      "https://api.github.com/repos/" + user + "/" + repo + "/commits")
 
-    if ApiRateLimitExceeded(commits):
+    if GithubCheckApiRateLimitExceeded(commits):
         raise GithubApiRateLimitExceeded(
          "Github API rate limit reached while searching last commit info of "
          "repo: " + user + "/" + repo
@@ -33,7 +27,7 @@ def CheckGithub(auth, user, repo, ignoreReleases):
     releases = auth.GetJson(
      "https://api.github.com/repos/" + user + "/" + repo + "/releases")
 
-    if ApiRateLimitExceeded(releases):
+    if GithubCheckApiRateLimitExceeded(releases):
         raise GithubApiRateLimitExceeded(
          "Github API rate limit reached while searching last version of "
          "repo: " + user + "/" + repo
@@ -45,7 +39,7 @@ def CheckGithub(auth, user, repo, ignoreReleases):
     tags = auth.GetJson(
      "https://api.github.com/repos/" + user + "/" + repo + "/tags")
 
-    if ApiRateLimitExceeded(tags):
+    if GithubCheckApiRateLimitExceeded(tags):
         raise GithubApiRateLimitExceeded(
          "Github API rate limit reached while searching last version of "
          "repo: " + user + "/" + repo
