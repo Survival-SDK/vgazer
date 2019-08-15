@@ -17,15 +17,16 @@ class Vgazer:
     def __init__(self, arch = None, os = None, osVersion = None,
      compiler = None, customCheckers = {}, customInstallers = {},
      customSoftwareData = {}):
-        self.authBase = AuthBase()
-        self.authGithub = AuthGithub()
+        self.auth = {
+            "base": AuthBase(),
+            "github": AuthGithub(),
+        }
         self.configSoftware = ConfigSoftware(customSoftwareData)
-        self.hostPlatform = Platform()
-        self.targetPlatform = Platform(arch, os, osVersion, compiler)
-        self.platform = {}
-        self.platform["host"] = self.hostPlatform
-        self.platform["target"] = self.targetPlatform
-        self.versionCustom = VersionCustom(self.authBase, customCheckers)
+        self.platform = {
+            "host":   Platform(),
+            "target": Platform(arch, os, osVersion, compiler),
+        }
+        self.versionCustom = VersionCustom(self.auth["base"], customCheckers)
         self.installCustom = InstallCustom(customInstallers)
 
     def ChooseProject(self, projects, platform):
@@ -61,47 +62,19 @@ class Vgazer:
                 ignoreReleases = True
             else:
                 ignoreReleases = False
-            return CheckGithub(self.authGithub, checker["user"],
+            return CheckGithub(self.auth["github"], checker["user"],
              checker["repo"], ignoreReleases)
         elif checker["type"] == "sourceforge":
-            return CheckSourceforge(self.authBase, checker["project"])
+            return CheckSourceforge(self.auth["base"], checker["project"])
         elif checker["type"] == "xiph":
-            return CheckXiph(self.authBase, checker["project"])
+            return CheckXiph(self.auth["base"], checker["project"])
         elif checker["type"] == "debian":
-            return CheckDebian(self.authBase,
+            return CheckDebian(self.auth["base"],
              self.platform[softwarePlatform].GetOsVersion(), checker["source"])
         elif checker["type"] == "custom":
             return self.versionCustom.Check(checker["name"])
 
-    #def InstallCustom(self, software, verbose):
-        #softwareData = self.configSoftware.GetData()
-        #self.installCustom.Install(software, softwareData[software],
-         #self.hostPlatform, self.targetPlatform, verbose)
-
-    #def InstallDebian(self, software, debianVersion, verbose):
-        #softwareData = self.configSoftware.GetData()
-        #projects = softwareData[software]["projects"]
-        #if "debian" not in projects:
-            #return self.InstallCustom(software, verbose)
-        #try:
-            #return InstallDebian(software, debianVersion, projects["debian"],
-             #verbose)
-        #except DebianPackageUnavailable:
-            #return self.InstallCustom(software, verbose)
-
     def Install(self, software, verbose = False):
-        #crossplatform = not self.targetPlatform.PlatformsEqual(
-         #self.hostPlatform)
-        #softwareData = self.configSoftware.GetData()
-        #if software not in softwareData:
-            #raise UnknownSoftware("Unknown software: " + software)
-
-        #if crossplatform:
-            #return self.InstallCustom(software, verbose)
-        #elif self.targetPlatform.GetOs() == "debian":
-            #return self.InstallDebian(software,
-             #self.targetPlatform.GetOsVersion(), verbose)
-
         softwareData = self.configSoftware.GetData()
         if software not in softwareData:
             raise UnknownSoftware("Unknown software: " + software)
@@ -119,4 +92,5 @@ class Vgazer:
             return InstallDebian(software, installer["package"], verbose)
         elif installer["type"] == "custom":
             return self.installCustom.Install(software, installer["name"],
-             softwarePlatform, self.hostPlatform, self.targetPlatform, verbose)
+             softwarePlatform, self.platform["host"], self.platform["target"],
+             verbose)
