@@ -1,5 +1,5 @@
 # Description
-Python library for tracking versions of various software in network
+Library for tracking and installing new versions of software
 
 # Requirements
 This software required for working vgazer:
@@ -25,6 +25,8 @@ $ pip3 install requests bs4
 
 # Usage
 For use vgazer you need write simple script. Look usage example in file test.py
+
+More usage coming soon
 
 # Working with test example (Linux only)
 Build docker image:
