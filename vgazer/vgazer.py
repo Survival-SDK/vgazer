@@ -91,6 +91,5 @@ class Vgazer:
         if installer["type"] == "debian":
             return InstallDebian(software, installer["package"], verbose)
         elif installer["type"] == "custom":
-            return self.installCustom.Install(software, installer["name"],
-             softwarePlatform, self.platform["host"], self.platform["target"],
-             verbose)
+            return self.installCustom.Install(self.auth, software,
+             installer["name"], softwarePlatform, self.platform, verbose)
