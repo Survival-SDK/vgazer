@@ -9,8 +9,8 @@ class InstallCustom:
     def AddData(self, customInstallers):
         self.customInstallers = {**self.customInstallers, **customInstallers}
 
-    def Install(self, software, installerName, platform, hostPlatformData,
-     targetPlatformData, verbose):
+    def Install(self, auth, software, installerName, platform, platformData,
+     verbose):
         try:
             installer = importlib.import_module(
              'vgazer.install.custom_installer.' + installerName)
@@ -20,6 +20,7 @@ class InstallCustom:
                  "Missing custom installer for project: " + software)
             for customInstaller in self.customInstallers:
                 if customInstaller["name"] == installerName:
-                    istaller = customInstaller["installer"]
+                    installer = customInstaller["installer"]
 
-        return istaller.Install()
+        return installer.Install(auth, software, platform, platformData,
+         verbose)
