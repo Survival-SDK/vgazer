@@ -4,6 +4,7 @@ from vgazer.exceptions import DebianReleaseDataNotFound
 from vgazer.exceptions import MissingArgument
 from vgazer.exceptions import OsDataNotFound
 from vgazer.exceptions import UnexpectedOsType
+from vgazer.exceptions import UnknownOs
 
 def GetHideDirectoryPrefix():
     if os.name == "posix":
@@ -61,6 +62,13 @@ class Platform:
         else:
             return False
 
+    @staticmethod
+    def GetGenericOs(os):
+        if os in ["linux", "debian"]:
+            return "linux"
+        else:
+            raise UnknownOs("Unknown OS: " + os)
+
     def __init__(self, arch = None, os = None, osVersion = None, compiler = None):
         if (arch is None or os is None or osVersion is None or compiler is None):
             self.host = True
@@ -79,8 +87,8 @@ class Platform:
             self.compiler = "gcc"
         else:
             self.arch = arch
-            self.os = os
-            self.osVersion = osVersion
+            self.os = Platform.GetGenericOs(os) #os
+            self.osVersion = "any" #osVersion
             self.compiler = compiler
 
     def GetArch(self):
