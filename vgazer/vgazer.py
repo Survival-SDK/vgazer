@@ -1,17 +1,19 @@
 from vgazer.auth.base           import AuthBase
 from vgazer.auth.github         import AuthGithub
 from vgazer.config.software     import ConfigSoftware
-from vgazer.platform            import Platform
-from vgazer.version.custom      import VersionCustom
-from vgazer.version.github      import CheckGithub
-from vgazer.version.sourceforge import CheckSourceforge
-from vgazer.version.xiph        import CheckXiph
-from vgazer.version.debian      import CheckDebian
-from vgazer.install.custom      import InstallCustom
-from vgazer.install.debian      import InstallDebian
 from vgazer.exceptions          import CompatibleProjectNotFound
 from vgazer.exceptions          import DebianPackageUnavailable
 from vgazer.exceptions          import UnknownSoftware
+from vgazer.install.custom      import InstallCustom
+from vgazer.install.debian      import InstallDebian
+from vgazer.install.pip         import InstallPip
+from vgazer.platform            import Platform
+from vgazer.version.custom      import VersionCustom
+from vgazer.version.debian      import CheckDebian
+from vgazer.version.github      import CheckGithub
+from vgazer.version.pypi        import CheckPypi
+from vgazer.version.sourceforge import CheckSourceforge
+from vgazer.version.xiph        import CheckXiph
 
 class Vgazer:
     def __init__(self, arch = None, os = None, osVersion = None,
@@ -68,6 +70,8 @@ class Vgazer:
             return CheckSourceforge(self.auth["base"], checker["project"])
         elif checker["type"] == "xiph":
             return CheckXiph(self.auth["base"], checker["project"])
+        elif checker["type"] == "pypi":
+            return CheckPypi(self.auth["base"], checker["package"])
         elif checker["type"] == "debian":
             return CheckDebian(self.auth["base"],
              self.platform[softwarePlatform].GetOsVersion(), checker["source"])
@@ -90,6 +94,8 @@ class Vgazer:
         installer = project["installer"]
         if installer["type"] == "debian":
             return InstallDebian(software, installer["package"], verbose)
+        elif installer["type"] == "pip":
+            return InstallPip(software, installer["package"], verbose)
         elif installer["type"] == "custom":
             return self.installCustom.Install(self.auth, software,
              installer["name"], softwarePlatform, self.platform, verbose)
