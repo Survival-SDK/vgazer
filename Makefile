@@ -1,5 +1,5 @@
 test_build:
-	docker build -f Dockerfile.test -t vgazer_test .
+	docker build -f dockerfiles/test_debian_stretch.dockerfile -t vgazer_test .
 
 test_run:
 	docker run -i -t -v ~/.vgazer/github:/home/test_user/.vgazer/github vgazer_test
