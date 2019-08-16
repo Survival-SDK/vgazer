@@ -5,6 +5,7 @@ from vgazer.exceptions import MissingArgument
 from vgazer.exceptions import OsDataNotFound
 from vgazer.exceptions import UnexpectedOsType
 from vgazer.exceptions import UnknownOs
+from vgazer.exceptions import UnknownPlatform
 
 def GetHideDirectoryPrefix():
     if os.name == "posix":
@@ -30,6 +31,20 @@ def GetInstallPrefix(platformData):
     else:
         return ("/usr/local/" + platformData["target"].GetArch() +
          "-" + platformData["target"].GetOs())
+
+def GetToolchainPrefix(targetPlatformData):
+    arch = targetPlatformData.GetArch()
+    os = targetPlatformData.GetOs()
+    if (arch == "x86_64" and os == "linux"):
+        return "x86_64-linux-gnu"
+    else:
+        raise UnknownPlatform("Unknown platform: arch -", arch, "OS -", os)
+
+def GetCc(targetPlatformData):
+    return GetToolchainPrefix(targetPlatformData) + "-gcc"
+
+def GetAr(targetPlatformData):
+    return GetToolchainPrefix(targetPlatformData) + "-ar"
 
 class Platform:
     # Platforms comparing ratings
