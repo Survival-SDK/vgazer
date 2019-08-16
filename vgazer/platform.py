@@ -24,6 +24,13 @@ def GetTempDirectoryPath():
     else:
         raise UnexpectedOsType("Unexpected OS type: " + os.name)
 
+def GetInstallPrefix(platformData):
+    if platformData["target"].PlatformsEqual(platformData["host"]):
+        return "/usr/local"
+    else:
+        return ("/usr/local/" + platformData["target"].GetArch() +
+         "-" + platformData["target"].GetOs())
+
 class Platform:
     # Platforms comparing ratings
     COMP_INCOMPATIBLE   = -1000
