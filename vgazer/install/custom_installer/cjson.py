@@ -7,23 +7,15 @@ from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
 from vgazer.github_common   import GithubCheckApiRateLimitExceeded
-from vgazer.platform        import GetTempDirectoryPath
+from vgazer.platform        import GetInstallPrefix
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, verbose):
-    if platformData["target"].PlatformsEqual(platformData["host"]):
-        installPrefix = "/usr/local"
-    else:
-        installPrefix = ("/usr/local/" + platformData["target"].GetArch() +
-         "-" + platformData["target"].GetOs())
+    installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()
-    storeTemp.ResolveDirectory()
-    if storeTemp.SubdirectoryExists(software):
-        storeTemp.RemoveSubdirectory(software)
-    storeTemp.ResolveSubdirectory(software)
-
+    storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
     releases = auth["github"].GetJson(
@@ -37,7 +29,6 @@ def Install(auth, software, platform, platformData, verbose):
 
     tarballUrl = releases[0]["tarball_url"]
     tarballShortFilename = tarballUrl.split("/")[-1]
-    #tarballFilename = os.path.join(tempPath, tarballShortFilename)
 
     try:
         with WorkingDir(tempPath):
