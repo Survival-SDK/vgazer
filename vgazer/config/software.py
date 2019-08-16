@@ -1063,6 +1063,26 @@ data = {
             },
         ],
     },
+    "pip2": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "python-pip",
+                    "package": "python-pip",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "python-pip",
+                },
+            },
+        ],
+    },
     "portaudio": {
         "platform": "target",
         "projects": [
@@ -1093,6 +1113,45 @@ data = {
                 "installer": {
                     "type": "debian",
                     "package": "portaudio19-dev",
+                },
+            },
+        ],
+    },
+    "python2": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "python2.7",
+                    "package": "python2.7",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "python2.7",
+                },
+            },
+        ],
+    },
+    "python2-pyyaml": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "pypi",
+                    "package": "PyYAML",
+                },
+                "installer": {
+                    "type": "pip",
+                    "package": "PyYAML",
                 },
             },
         ],
