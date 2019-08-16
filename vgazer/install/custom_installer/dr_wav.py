@@ -8,15 +8,10 @@ from vgazer.working_dir     import WorkingDir
 def Install(auth, software, platform, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
-    storeTemp = StoreTemp()
-    storeTemp.ResolveEmptySubdirectory(software)
-    tempPath = storeTemp.GetSubdirectoryPath(software)
-
     url = "https://raw.githubusercontent.com/mackron/dr_libs/master/dr_wav.h"
 
     try:
-        with WorkingDir(tempPath):
-            RunCommand(["wget", "-P", installPrefix + "/include", url], verbose)
+        RunCommand(["wget", "-P", installPrefix + "/include", url], verbose)
     except CommandError:
         print("Unable to install", software)
         raise InstallError(software + " not installed")
