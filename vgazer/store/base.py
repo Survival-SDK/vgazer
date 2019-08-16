@@ -1,4 +1,5 @@
 import os
+import shutil
 
 from vgazer.exceptions import DirNameEngaged
 from vgazer.exceptions import FilenameEngaged
@@ -9,6 +10,9 @@ class StoreBase():
 
     def GetDirectoryPath(self):
         return baseDirPath
+
+    def GetSubdirectoryPath(self, subdirName):
+        return os.path.join(self.baseDirPath, subdirName)
 
     def DirectoryExists(self):
         if os.path.exists(self.baseDirPath):
@@ -119,6 +123,10 @@ class StoreBase():
 
     def SubdirectoryWriteBinaryFile(self, subdirName, filename, data):
         return self.SubdirectoryWriteFile(subdirName, filename, data, "wb")
+
+    def RemoveSubdirectory(self, subdirName):
+        dirpath = os.path.join(self.baseDirPath, subdirName)
+        shutil.rmtree(dirpath)
 
     def DirectoryReadTextFile(self, filename):
         return self.SubdirectoryReadTextFile(".", filename)
