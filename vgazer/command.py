@@ -4,6 +4,7 @@ from vgazer.exceptions import CommandError
 def RunCommand(command, verbose):
     try:
         if verbose:
+            print(" ".join(command))
             subprocess.check_call(command)
         else:
             output = subprocess.check_output(command, stderr=subprocess.STDOUT)
