@@ -37,20 +37,20 @@ data = {
     "cmake": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "compiler": ["any"],
-                "checker": {
-                    "type": "custom",
-                    "name": "cmake",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "cmake",
-                },
-            },
+            #{
+                #"arch": ["any"],
+                #"os": ["any"],
+                #"osVersion": ["any"],
+                #"compiler": ["any"],
+                #"checker": {
+                    #"type": "custom",
+                    #"name": "cmake",
+                #},
+                #"installer": {
+                    #"type": "custom",
+                    #"name": "cmake",
+                #},
+            #},
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -227,21 +227,21 @@ data = {
     "git": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "compiler": ["any"],
-                "checker": {
-                    "type": "github",
-                    "user": "git",
-                    "repo": "git",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "git",
-                },
-            },
+            #{
+                #"arch": ["any"],
+                #"os": ["any"],
+                #"osVersion": ["any"],
+                #"compiler": ["any"],
+                #"checker": {
+                    #"type": "github",
+                    #"user": "git",
+                    #"repo": "git",
+                #},
+                #"installer": {
+                    #"type": "custom",
+                    #"name": "git",
+                #},
+            #},
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -1433,6 +1433,40 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "utf8",
+                },
+            },
+        ],
+    },
+    "wget": {
+        "platform": "host",
+        "projects": [
+            #{
+                #"arch": ["any"],
+                #"os": ["any"],
+                #"osVersion": ["any"],
+                #"compiler": ["any"],
+                #"checker": {
+                    #"type": "custom",
+                    #"name": "wget",
+                #},
+                #"installer": {
+                    #"type": "custom",
+                    #"name": "wget",
+                #},
+            #},
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["gcc"],
+                "checker": {
+                    "type": "debian",
+                    "source": "wget",
+                    "package": "wget",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "wget",
                 },
             },
         ],
