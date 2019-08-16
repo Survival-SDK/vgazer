@@ -66,30 +66,45 @@ class StoreBase():
             return False
 
     def ResolveSubdirectory(self, subdirName):
+        self.ResolveDirectory()
         try:
             if not self.SubdirectoryExists(subdirName):
                 subdirPath = os.path.join(self.baseDirPath, subdirName)
                 os.mkdir(subdirPath)
             return True
-        except self.DirNameEngaged:
+        except DirNameEngaged:
+            return False
+
+    def ResolveEmptySubdirectory(self, subdirName):
+        self.ResolveDirectory()
+        try:
+            if self.SubdirectoryExists(subdirName):
+                self.RemoveSubdirectory(subdirName)
+            subdirPath = os.path.join(self.baseDirPath, subdirName)
+            os.mkdir(subdirPath)
+            return True
+        except DirNameEngaged:
             return False
 
     def ResolveDirectoryFile(self, subdirName, filename):
+        self.ResolveDirectory()
         try:
             if not self.DirectoryFileExists(filename):
                 filePath = os.path.join(self.baseDirPath, filename)
                 open(filePath, "a").close()
             return True
-        except self.FileNameEngaged:
+        except FileNameEngaged:
             return False
 
     def ResolveSubdirectoryFile(self, subdirName, filename):
+        self.ResolveDirectory()
+        self.ResolveSubdirectory(subdirName)
         try:
             if not self.SubdirectoryFileExists(subdirName, filename):
                 subdirFilePath = os.path.join(self.baseDirPath, subdirName, filename)
                 open(subdirFilePath, "a").close()
             return True
-        except self.FileNameEngaged:
+        except FileNameEngaged:
             return False
 
     def SubdirectoryFileIsEmpty(self, subdirName, filename):
