@@ -29,7 +29,7 @@ def Install(auth, software, platform, platformData, verbose):
     if GithubCheckApiRateLimitExceeded(releases):
         raise GithubApiRateLimitExceeded(
          "Github API rate limit reached while searching last version of "
-         "repo: DaveGamble/cJSON"
+         "repo: svaarala/duktape"
         )
 
     tarballUrl = releases[0]["tarball_url"]
