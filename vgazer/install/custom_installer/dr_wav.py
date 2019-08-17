@@ -9,6 +9,8 @@ def Install(auth, software, platform, platformData, verbose):
     url = "https://raw.githubusercontent.com/mackron/dr_libs/master/dr_wav.h"
 
     try:
+        if not os.path.exists(installPrefix + "/include"):
+            RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
         RunCommand(["wget", "-P", installPrefix + "/include", url], verbose)
     except CommandError:
         print("Unable to install", software)
