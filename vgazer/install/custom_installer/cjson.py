@@ -40,7 +40,7 @@ def Install(auth, software, platform, platformData, verbose):
             output = GetCommandOutputUtf8(
              ["tar", "--list", "--file", tarballShortFilename]
             )
-        extractedDir = os.path.join(tempPath, output.splitlines()[0])
+        extractedDir = os.path.join(tempPath, output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(extractedDir, "build")
