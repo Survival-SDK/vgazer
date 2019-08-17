@@ -1476,7 +1476,7 @@ data = {
             },
         ],
     },
-    "std_rect_pack": {
+    "stb_rect_pack": {
         "platform": "target",
         "projects": [
             {
