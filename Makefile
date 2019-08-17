@@ -4,7 +4,6 @@ test_build:
 test_run:
 	docker run -i -t -v ~/.vgazer/github:/home/test_user/.vgazer/github vgazer_test
 
-# Not working if error occured while running entry point
 test_runi:
 	docker run --entrypoint /bin/bash -i -t -v ~/.vgazer/github:/home/test_user/.vgazer/github vgazer_test
 
