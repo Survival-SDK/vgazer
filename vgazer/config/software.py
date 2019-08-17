@@ -539,6 +539,26 @@ data = {
             },
         ],
     },
+    "libclipboard": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "github",
+                    "user": "jtanx",
+                    "repo": "libclipboard",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libclipboard",
+                },
+            },
+        ],
+    },
     "libffi": {
         "platform": "target",
         "projects": [
@@ -884,6 +904,40 @@ data = {
             },
         ],
     },
+    "libxcb": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "custom",
+                    "name": "libxcb",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libxcb",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["gcc"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libx11",
+                    "package": "libx11-xcb-dev",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "libx11-xcb-dev",
+                },
+            },
+        ],
+    },
     "lua": {
         "platform": "target",
         "projects": [
@@ -1079,6 +1133,26 @@ data = {
                 "installer": {
                     "type": "debian",
                     "package": "python-pip",
+                },
+            },
+        ],
+    },
+    "pkg-config": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkg-config",
+                    "package": "pkg-config",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "pkg-config",
                 },
             },
         ],
