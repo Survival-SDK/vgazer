@@ -904,40 +904,6 @@ data = {
             },
         ],
     },
-    "libxcb": {
-        "platform": "target",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "compiler": ["any"],
-                "checker": {
-                    "type": "custom",
-                    "name": "libxcb",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "libxcb",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "compiler": ["gcc"],
-                "checker": {
-                    "type": "debian",
-                    "source": "libx11",
-                    "package": "libx11-xcb-dev",
-                },
-                "installer": {
-                    "type": "debian",
-                    "package": "libx11-xcb-dev",
-                },
-            },
-        ],
-    },
     "lua": {
         "platform": "target",
         "projects": [
@@ -1620,6 +1586,40 @@ data = {
                 "installer": {
                     "type": "debian",
                     "package": "gcc-mingw-w64-x86-64",
+                },
+            },
+        ],
+    },
+    "xcb": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "custom",
+                    "name": "xcb",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xcb",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["gcc"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libx11",
+                    "package": "libx11-xcb-dev",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "libx11-xcb-dev",
                 },
             },
         ],
