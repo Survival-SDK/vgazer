@@ -519,7 +519,7 @@ data = {
                 },
                 "installer": {
                     "type": "custom",
-                    "project": "bzip2",
+                    "name": "bzip2",
                 },
             },
             {
