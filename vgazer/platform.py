@@ -25,26 +25,38 @@ def GetTempDirectoryPath():
     else:
         raise UnexpectedOsType("Unexpected OS type: " + os.name)
 
+def GetTriplet(targetPlatformData):
+    arch = targetPlatformData.GetArch()
+    os = targetPlatformData.GetOs()
+
+    triplet = arch
+
+    if os == "linux":
+        triplet += "-linux-gnu"
+    elif os == "windows":
+        triplet += "-w64-mingw32"
+
+    return triplet
+
 def GetInstallPrefix(platformData):
     if platformData["target"].PlatformsEqual(platformData["host"]):
         return "/usr/local"
     else:
-        return ("/usr/local/" + platformData["target"].GetArch() +
-         "-" + platformData["target"].GetOs())
+        return ("/usr/local/" + GetTriplet(platformData["target"]))
 
-def GetToolchainPrefix(targetPlatformData):
-    arch = targetPlatformData.GetArch()
-    os = targetPlatformData.GetOs()
-    if (arch == "x86_64" and os == "linux"):
-        return "x86_64-linux-gnu"
-    else:
-        raise UnknownPlatform("Unknown platform: arch -", arch, "OS -", os)
+#def GetToolchainPrefix(targetPlatformData):
+    #arch = targetPlatformData.GetArch()
+    #os = targetPlatformData.GetOs()
+    #if (arch == "x86_64" and os == "linux"):
+        #return "x86_64-linux-gnu"
+    #else:
+        #raise UnknownPlatform("Unknown platform: arch -", arch, "OS -", os)
 
 def GetCc(targetPlatformData):
-    return GetToolchainPrefix(targetPlatformData) + "-gcc"
+    return GetTriplet(targetPlatformData) + "-gcc"
 
 def GetAr(targetPlatformData):
-    return GetToolchainPrefix(targetPlatformData) + "-ar"
+    return GetTriplet(targetPlatformData) + "-ar"
 
 class Platform:
     # Platforms comparing ratings
