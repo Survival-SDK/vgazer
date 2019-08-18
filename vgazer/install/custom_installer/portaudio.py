@@ -45,7 +45,7 @@ def Install(auth, software, platform, platformData, verbose):
              verbose)
         extractedDir = os.path.join(tempPath, "portaudio")
         with WorkingDir(extractedDir):
-            RunCommand(["./configure"], verbose)
+            RunCommand(["./configure", "--prefix=" + installPrefix], verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
