@@ -44,14 +44,6 @@ def GetInstallPrefix(platformData):
     else:
         return ("/usr/local/" + GetTriplet(platformData["target"]))
 
-#def GetToolchainPrefix(targetPlatformData):
-    #arch = targetPlatformData.GetArch()
-    #os = targetPlatformData.GetOs()
-    #if (arch == "x86_64" and os == "linux"):
-        #return "x86_64-linux-gnu"
-    #else:
-        #raise UnknownPlatform("Unknown platform: arch -", arch, "OS -", os)
-
 def GetCc(targetPlatformData):
     return GetTriplet(targetPlatformData) + "-gcc"
 
