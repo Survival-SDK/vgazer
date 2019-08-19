@@ -7,6 +7,7 @@ from vgazer.exceptions          import UnknownSoftware
 from vgazer.install.custom      import InstallCustom
 from vgazer.install.debian      import InstallDebian
 from vgazer.install.pip         import InstallPip
+from vgazer.install.pip3        import InstallPip3
 from vgazer.platform            import Platform
 from vgazer.version.custom      import VersionCustom
 from vgazer.version.debian      import CheckDebian
@@ -96,6 +97,8 @@ class Vgazer:
             return InstallDebian(software, installer["package"], verbose)
         elif installer["type"] == "pip":
             return InstallPip(software, installer["package"], verbose)
+        elif installer["type"] == "pip3":
+            return InstallPip3(software, installer["package"], verbose)
         elif installer["type"] == "custom":
             return self.installCustom.Install(self.auth, software,
              installer["name"], softwarePlatform, self.platform, verbose)
