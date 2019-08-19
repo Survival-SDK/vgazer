@@ -46,6 +46,10 @@ class OsDataNotFound(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+class ProjectPubNotFound(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class SourceforgeReleaseArchiveLost(Exception):
     def __init__(self, message):
         super().__init__(message)
