@@ -1,4 +1,84 @@
 data = {
+    "autoconf": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "autoconf",
+                    "package": "autoconf",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "autoconf",
+                },
+            },
+        ],
+    },
+    "automake": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": " automake-1.15",
+                    "package": "automake",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "automake",
+                },
+            },
+        ],
+    },
+    "autopoint": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gettext",
+                    "package": "autopoint",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "autopoint",
+                },
+            },
+        ],
+    },
+    "bison": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "bison",
+                    "package": "bison",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "bison",
+                },
+            },
+        ],
+    },
     "cjson": {
         "platform": "target",
         "projects": [
@@ -37,20 +117,6 @@ data = {
     "cmake": {
         "platform": "host",
         "projects": [
-            #{
-                #"arch": ["any"],
-                #"os": ["any"],
-                #"osVersion": ["any"],
-                #"compiler": ["any"],
-                #"checker": {
-                    #"type": "custom",
-                    #"name": "cmake",
-                #},
-                #"installer": {
-                    #"type": "custom",
-                    #"name": "cmake",
-                #},
-            #},
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -190,6 +256,26 @@ data = {
             },
         ],
     },
+    "gettext": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gettext",
+                    "package": "gettext",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "gettext",
+                },
+            },
+        ],
+    },
     "giflib": {
         "platform": "target",
         "projects": [
@@ -227,21 +313,6 @@ data = {
     "git": {
         "platform": "host",
         "projects": [
-            #{
-                #"arch": ["any"],
-                #"os": ["any"],
-                #"osVersion": ["any"],
-                #"compiler": ["any"],
-                #"checker": {
-                    #"type": "github",
-                    #"user": "git",
-                    #"repo": "git",
-                #},
-                #"installer": {
-                    #"type": "custom",
-                    #"name": "git",
-                #},
-            #},
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -734,6 +805,41 @@ data = {
             },
         ],
     },
+    "libmount": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "github",
+                    "user": "karelzak",
+                    "repo": "util-linux",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libmount",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "util-linux",
+                    "package": "libmount-dev",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "libmount-dev",
+                },
+            },
+        ],
+    },
     "libogg": {
         "platform": "target",
         "projects": [
@@ -832,6 +938,26 @@ data = {
                 "installer": {
                     "type": "debian",
                     "package": "libtiff-dev",
+                },
+            },
+        ],
+    },
+    "libtool": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libtool",
+                    "package": "libtool",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "libtool",
                 },
             },
         ],
@@ -938,6 +1064,25 @@ data = {
             },
         ],
     },
+    "meson": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "pypi",
+                    "package": "meson",
+                },
+                "installer": {
+                    "type": "pip3",
+                    "package": "meson",
+                },
+            },
+        ],
+    },
     "minini": {
         "platform": "target",
         "projects": [
@@ -1004,6 +1149,26 @@ data = {
                 "installer": {
                     "type": "debian",
                     "package": "libmpg123-dev",
+                },
+            },
+        ],
+    },
+    "ninja": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "compiler": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "ninja-build",
+                    "package": "ninja-build",
+                },
+                "installer": {
+                    "type": "debian",
+                    "package": "ninja-build",
                 },
             },
         ],
@@ -1539,20 +1704,6 @@ data = {
     "wget": {
         "platform": "host",
         "projects": [
-            #{
-                #"arch": ["any"],
-                #"os": ["any"],
-                #"osVersion": ["any"],
-                #"compiler": ["any"],
-                #"checker": {
-                    #"type": "custom",
-                    #"name": "wget",
-                #},
-                #"installer": {
-                    #"type": "custom",
-                    #"name": "wget",
-                #},
-            #},
             {
                 "arch": ["any"],
                 "os": ["debian"],
