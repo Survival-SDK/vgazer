@@ -10,6 +10,5 @@ RUN sudo apt-get install -y python3
 RUN sudo apt-get install -y python3-pip
 RUN pip3 install requests
 RUN pip3 install bs4
-ADD . /vgazer
 WORKDIR /vgazer
 ENTRYPOINT ["sudo", "-E", "sh", "-c", "./test.py"]
