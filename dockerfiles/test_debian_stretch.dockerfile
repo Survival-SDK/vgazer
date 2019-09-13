@@ -8,7 +8,6 @@ RUN useradd -m test_user \
 USER test_user
 RUN sudo bash -c 'echo "deb http://ftp.de.debian.org/debian stretch main" >> /etc/apt/sources.list' \
     && sudo apt-get update
-#RUN sudo apt-get install -y apt-transport-https
 RUN sudo apt-get install -y python3
 RUN sudo apt-get install -y python3-pip
 RUN pip3 install requests
