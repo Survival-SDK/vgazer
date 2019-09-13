@@ -32,6 +32,15 @@ class Vgazer:
         self.versionCustom = VersionCustom(self.auth["base"], customCheckers)
         self.installCustom = InstallCustom(customInstallers)
 
+    def GetHostPlatform(self):
+        return self.platform["host"]
+
+    def GetTargetPlatform(self):
+        return self.platform["target"]
+
+    def GetSoftwareData(self):
+        return self.configSoftware
+
     def ChooseProject(self, projects, platform):
         maxRatingProject = None
         maxRating = Platform.COMP_INCOMPATIBLE
