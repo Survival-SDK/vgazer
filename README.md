@@ -12,7 +12,7 @@ Also required these python packages:
 * requests
 * bs4
 
-Optional Requirements for running test example (Linux only):
+Optional Requirements for running samples (Linux only):
 
 * docker
 
@@ -24,26 +24,34 @@ $ pip3 install requests bs4
 ```
 
 # Usage
-For use vgazer you need write simple script. Look usage example in file test.py
+For use vgazer you need write simple script. Look sample files in "samples" 
+directory
 
 More usage coming soon
 
-# Working with test example (Linux only)
+# Working with samples (Linux only)
 Build docker image:
 ```
-$ make test_build
+$ make image_build
 ```
 Run test image:
 ```
-$ make test_run
-```
-Run test image in interactive mode:
-```
-$ make test_runi
+$ make image_run
 ```
 Clean unused images:
 ```
 $ make test_clean
+```
+Run sample for checking versions of all software for x86_64-linux-gnu target.
+Versions of host software (compilers, git, cmake etc) may be different on 
+various machines. This sample runs not in docker.
+```
+$ make sample_lv_linux64
+```
+Run sample for installing cjson and all dependencies for x86_64-linux-gnu 
+target:
+```
+$ make sample_install_cjson_linux64
 ```
 
 # Copying:
