@@ -17,7 +17,7 @@ from samples.samples_common             import PrintPlatformData
 from samples.libraries_versions_common  import PrintLibrariesVersions
 
 def main():
-    gazer = Vgazer(arch="x86_64", os="linux", osVersion="any", compiler="gcc")
+    gazer = Vgazer(arch="x86_64", os="linux", osVersion="any", abi="gnu")
     PrintPlatformData(gazer)
     PrintLibrariesVersions(gazer)
 

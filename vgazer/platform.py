@@ -95,8 +95,8 @@ class Platform:
         else:
             raise UnknownOs("Unknown OS: " + os)
 
-    def __init__(self, arch = None, os = None, osVersion = None, compiler = None):
-        if (arch is None or os is None or osVersion is None or compiler is None):
+    def __init__(self, arch = None, os = None, osVersion = None, abi = None):
+        if (arch is None or os is None or osVersion is None or abi is None):
             self.host = True
         else:
             self.host = False
@@ -110,12 +110,12 @@ class Platform:
                     self.osVersion = Platform.GetDebianVersion()
             else:
                 raise UnexpectedOsType("Unexpected OS type: " + osType)
-            self.compiler = "gcc"
+            self.abi = "gnu"
         else:
             self.arch = arch
             self.os = Platform.GetGenericOs(os) #os
             self.osVersion = "any" #osVersion
-            self.compiler = compiler
+            self.abi = abi
 
     def GetArch(self):
         return self.arch
@@ -126,8 +126,8 @@ class Platform:
     def GetOsVersion(self):
         return self.osVersion
 
-    def GetCompiler(self):
-        return self.compiler
+    def GetAbi(self):
+        return self.abi
 
     def ArchsCompatible(self, platform = None, arch = None):
         if platform is None:
@@ -205,28 +205,28 @@ class Platform:
             return True
         return False
 
-    def CompilersCompatible(self, platform = None, compiler = None):
+    def AbisCompatible(self, platform = None, abi = None):
         if platform is None:
-            if compiler is None:
-                raise MissingArgument("Missing value for argument 'compiler'")
-            comparingCompiler = compiler
+            if abi is None:
+                raise MissingArgument("Missing value for argument 'abi'")
+            comparingAbi = abi
         else:
-            comparingCompiler = platform.compiler
-        if self.compiler == "any" or comparingCompiler == "any":
+            comparingAbi = platform.abi
+        if self.abi == "any" or comparingAbi == "any":
             return True
-        if self.compiler == comparingCompiler:
+        if self.abi == comparingAbi:
             return True
         return False
 
-    def CompilersEqual(self, platform = None, compiler = None):
+    def AbisEqual(self, platform = None, abi = None):
         if platform is None:
-            if compiler is None:
-                raise MissingArgument("Missing value for argument 'compiler'")
-            comparingCompiler = compiler
+            if abi is None:
+                raise MissingArgument("Missing value for argument 'abi'")
+            comparingAbi = abi
         else:
-            comparingCompiler = platform.compiler
-        if (self.compiler == comparingCompiler and self.compiler != "any" and
-         comparingCompiler != "any"):
+            comparingAbi = platform.abi
+        if (self.abi == comparingAbi and self.abi != "any" and
+         comparingAbi != "any"):
             return True
         return False
 
@@ -272,29 +272,29 @@ class Platform:
         else:
             return Platform.COMP_INCOMPATIBLE
 
-    def GetCompilersCompareRating(self, platform = None, compiler = None):
+    def GetAbisCompareRating(self, platform = None, abi = None):
         if platform is None:
-            if compiler is None:
-                raise MissingArgument("Missing value for argument 'compiler'")
-            comparingCompiler = compiler
+            if abi is None:
+                raise MissingArgument("Missing value for argument 'abi'")
+            comparingAbi = abi
         else:
-            comparingCompiler = platform.compiler
-        if self.CompilersEqual(compiler = comparingCompiler):
+            comparingAbi = platform.abi
+        if self.AbisEqual(abi = comparingAbi):
             return Platform.COMP_EQUAL
-        elif self.CompilersCompatible(compiler = comparingCompiler):
+        elif self.AbisCompatible(abi = comparingAbi):
             return Platform.COMP_COMPATIBLE
         else:
             return Platform.COMP_INCOMPATIBLE
 
     def PlatformsEqual(self, platform):
         return (self.ArchsEqual(platform) and self.OsesEqual(platform)
-         and self.OsVersionsEqual(platform) and self.CompilersEqual(platform))
+         and self.OsVersionsEqual(platform) and self.AbisEqual(platform))
 
-    def GetCompatibilityRating(self, archs, oses, osVersions, compilers):
+    def GetCompatibilityRating(self, archs, oses, osVersions, abis):
         archMaxRating = Platform.COMP_INCOMPATIBLE
         osMaxRating = Platform.COMP_INCOMPATIBLE
         osVersionMaxRating = Platform.COMP_INCOMPATIBLE
-        compilerMaxRating = Platform.COMP_INCOMPATIBLE
+        abiMaxRating = Platform.COMP_INCOMPATIBLE
         for comparingArch in archs:
             archRating = self.GetArchsCompareRating(arch = comparingArch)
             if archRating > archMaxRating:
@@ -308,11 +308,11 @@ class Platform:
              osVersion = comparingOsVersion)
             if osVersionRating > osVersionMaxRating:
                 osVersionMaxRating = osVersionRating
-        for comparingCompiler in compilers:
-            compilerRating = self.GetCompilersCompareRating(
-             compiler = comparingCompiler)
-            if compilerRating > compilerMaxRating:
-                compilerMaxRating = compilerRating
+        for comparingAbi in abis:
+            abiRating = self.GetAbisCompareRating(
+             abi = comparingAbi)
+            if abiRating > abiMaxRating:
+                abiMaxRating = abiRating
 
         return (archMaxRating + osMaxRating * 2 + osVersionMaxRating * 4 +
-         compilerMaxRating * 8)
+         abiMaxRating * 8)

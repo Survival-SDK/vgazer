@@ -18,7 +18,7 @@ from vgazer.version.xiph        import CheckXiph
 
 class Vgazer:
     def __init__(self, arch = None, os = None, osVersion = None,
-     compiler = None, customCheckers = {}, customInstallers = {},
+     abi = None, customCheckers = {}, customInstallers = {},
      customSoftwareData = {}):
         self.auth = {
             "base": AuthBase(),
@@ -27,7 +27,7 @@ class Vgazer:
         self.configSoftware = ConfigSoftware(customSoftwareData)
         self.platform = {
             "host":   Platform(),
-            "target": Platform(arch, os, osVersion, compiler),
+            "target": Platform(arch, os, osVersion, abi),
         }
         self.versionCustom = VersionCustom(self.auth["base"], customCheckers)
         self.installCustom = InstallCustom(customInstallers)
@@ -46,7 +46,7 @@ class Vgazer:
         maxRating = Platform.COMP_INCOMPATIBLE
         for project in projects:
             projectRating = platform.GetCompatibilityRating(project["arch"],
-             project["os"], project["osVersion"], project["compiler"])
+             project["os"], project["osVersion"], project["abi"])
             if projectRating > maxRating:
                 maxRating = projectRating
                 maxRatingProject = project

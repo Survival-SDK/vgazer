@@ -6,7 +6,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "autoconf",
@@ -26,7 +26,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": " automake-1.15",
@@ -46,7 +46,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "gettext",
@@ -66,7 +66,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "bison",
@@ -86,7 +86,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "DaveGamble",
@@ -101,7 +101,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["buster"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "cjson",
@@ -121,7 +121,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "cmake",
@@ -141,7 +141,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "cmocka",
@@ -155,7 +155,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "cmocka",
@@ -175,7 +175,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "dr_wav",
@@ -194,7 +194,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "svaarala",
@@ -209,7 +209,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "duktape",
@@ -229,7 +229,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "freetype",
@@ -243,7 +243,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "freetype",
@@ -263,7 +263,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "gettext",
@@ -283,7 +283,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "sourceforge",
                     "project": "giflib",
@@ -297,7 +297,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "giflib",
@@ -317,7 +317,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "git",
@@ -337,7 +337,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "sourceforge",
                     "project": "glew",
@@ -351,7 +351,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "glew",
@@ -371,7 +371,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "glib",
@@ -385,7 +385,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "glib2.0",
@@ -405,7 +405,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "harfbuzz",
@@ -420,7 +420,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "harfbuzz",
@@ -440,7 +440,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "gcc-mingw-w64",
@@ -460,7 +460,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "icu",
@@ -474,7 +474,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "icu",
@@ -494,7 +494,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "benhoyt",
@@ -509,7 +509,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libinih",
@@ -529,7 +529,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "jpeg",
@@ -543,7 +543,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libjpeg-turbo",
@@ -563,7 +563,7 @@ data = {
                 "arch": ["any"],
                 "os": ["windows"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "DoumanAsh",
@@ -583,7 +583,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "sourceforge",
                     "project": "bzip2",
@@ -597,7 +597,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "bzip2",
@@ -617,7 +617,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "jtanx",
@@ -637,7 +637,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "libffi",
@@ -651,7 +651,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libffi",
@@ -671,7 +671,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "xiph",
                     "project": "libflac",
@@ -685,7 +685,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "flac",
@@ -705,7 +705,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "libiconv",
@@ -724,7 +724,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "j-jorge",
@@ -744,7 +744,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "sourceforge",
                     "project": "lzmautils",
@@ -758,7 +758,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "xz-utils",
@@ -778,7 +778,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "sourceforge",
                     "project": "modplug-xmms",
@@ -792,7 +792,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libmodplug",
@@ -812,7 +812,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "karelzak",
@@ -827,7 +827,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "util-linux",
@@ -847,7 +847,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "xiph",
                     "project": "libogg",
@@ -861,7 +861,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libogg",
@@ -881,7 +881,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "sourceforge",
                     "project": "libpng",
@@ -895,7 +895,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libpng1.6",
@@ -915,7 +915,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "libtiff",
@@ -929,7 +929,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "tiff",
@@ -949,7 +949,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "libtool",
@@ -969,7 +969,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "xiph",
                     "project": "libvorbis",
@@ -983,7 +983,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libvorbis",
@@ -1003,7 +1003,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "libwebp",
@@ -1017,7 +1017,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libwebp",
@@ -1037,7 +1037,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "lua",
@@ -1051,7 +1051,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "lua5.3",
@@ -1071,7 +1071,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "pypi",
                     "package": "meson",
@@ -1090,7 +1090,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "compuphase",
@@ -1105,7 +1105,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libminini",
@@ -1126,7 +1126,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "sourceforge",
                     "project": "mpg123",
@@ -1140,7 +1140,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libmpg123",
@@ -1160,7 +1160,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "ninja-build",
@@ -1180,7 +1180,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "vurtun",
@@ -1200,7 +1200,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "p7",
@@ -1219,7 +1219,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "criptych",
@@ -1235,7 +1235,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libphysfs",
@@ -1255,7 +1255,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "python-pip",
@@ -1275,7 +1275,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "pkg-config",
@@ -1295,7 +1295,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "portaudio",
@@ -1309,7 +1309,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "portaudio19",
@@ -1329,7 +1329,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "python2.7",
@@ -1349,7 +1349,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "pypi",
                     "package": "PyYAML",
@@ -1368,7 +1368,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "mmalecki",
@@ -1388,7 +1388,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "sdl2",
@@ -1402,7 +1402,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2",
@@ -1422,7 +1422,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "sourceforge",
                     "project": "sdl2gfx",
@@ -1436,7 +1436,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-gfx",
@@ -1456,7 +1456,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "grimfang4",
@@ -1477,7 +1477,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "sdl2_image",
@@ -1491,7 +1491,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-image",
@@ -1511,7 +1511,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "sdl2_mixer",
@@ -1525,7 +1525,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-mixer",
@@ -1545,7 +1545,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "sdl2_ttf",
@@ -1559,7 +1559,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-ttf",
@@ -1579,7 +1579,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "albertodemichelis",
@@ -1594,7 +1594,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "squirrel3",
@@ -1614,7 +1614,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "stb_rect_pack",
@@ -1628,7 +1628,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "libstb",
@@ -1649,7 +1649,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "tinyfiledialogs",
@@ -1668,7 +1668,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "andlabs",
@@ -1688,7 +1688,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "github",
                     "user": "haipome",
@@ -1708,7 +1708,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "wget",
@@ -1728,7 +1728,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "gcc-mingw-w64",
@@ -1748,7 +1748,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "xcb",
@@ -1762,7 +1762,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libx11",
@@ -1782,7 +1782,7 @@ data = {
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
-                "compiler": ["any"],
+                "abi": ["any"],
                 "checker": {
                     "type": "custom",
                     "name": "zlib",
@@ -1796,7 +1796,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "compiler": ["gcc"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "zlib",
