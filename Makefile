@@ -11,4 +11,7 @@ test_clean:
 	docker image prune -f
 
 package:
-	python setup.py sdist
+	python3 setup.py sdist
+
+sample_lv_linux64:
+	./samples/libraries_versions_x86_64_linux_gnu.py

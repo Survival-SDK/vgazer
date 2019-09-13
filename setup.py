@@ -8,7 +8,7 @@ setup(
  author='Vasiliy Edomin',
  author_email='Vasiliy.Edomin@gmail.com',
  description='Tool for checking versions of various software',
- packages=find_packages(exclude=['tests']),
- long_description=open('README').read(),
+ packages=find_packages(exclude=["samples"]),
+ long_description=open('README.md').read(),
  zip_safe=False
 )
