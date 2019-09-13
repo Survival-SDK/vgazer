@@ -1006,7 +1006,7 @@ data = {
                 "compiler": ["any"],
                 "checker": {
                     "type": "custom",
-                    "name": "lebwebp",
+                    "name": "libwebp",
                 },
                 "installer": {
                     "type": "custom",
