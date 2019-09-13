@@ -2,7 +2,8 @@ image_build:
 	docker build -f dockerfiles/test_debian_stretch.dockerfile -t vgazer_test .
 
 image_launch:
-	docker run --entrypoint /bin/bash -i -t -v ~/.vgazer/github:/home/test_user/.vgazer/github vgazer_test
+	docker run --entrypoint /bin/bash -i -t \
+     -v ~/.vgazer/github:/home/test_user/.vgazer/github vgazer_test
 
 test_clean:
 	docker image prune -f
@@ -15,4 +16,5 @@ sample_lv_linux64:
 
 sample_install_cjson_linux64:
 	docker run -i -t -v ~/.vgazer/github:/home/test_user/.vgazer/github \
-     -v `pwd`:/vgazer --entrypoint sudo vgazer_test -E sh -c ./samples/install_cjson_x86_64_linux_gnu.py
+     -v `pwd`:/vgazer --entrypoint \
+     sudo vgazer_test -E sh -c ./samples/install_cjson_x86_64_linux_gnu.py
