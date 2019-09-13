@@ -1,7 +1,7 @@
-container_build:
+image_build:
 	docker build -f dockerfiles/test_debian_stretch.dockerfile -t vgazer_test .
 
-container_launch:
+image_launch:
 	docker run --entrypoint /bin/bash -i -t -v ~/.vgazer/github:/home/test_user/.vgazer/github vgazer_test
 
 test_clean:
