@@ -28,13 +28,16 @@ def GetTempDirectoryPath():
 def GetTriplet(targetPlatformData):
     arch = targetPlatformData.GetArch()
     os = targetPlatformData.GetOs()
+    abi = targetPlatformData.GetAbi()
 
     triplet = arch
 
     if os == "linux":
-        triplet += "-linux-gnu"
+        triplet += "-linux"
     elif os == "windows":
-        triplet += "-w64-mingw32"
+        triplet += "-w64"
+
+    triplet += "-" + abi
 
     return triplet
 
@@ -113,8 +116,8 @@ class Platform:
             self.abi = "gnu"
         else:
             self.arch = arch
-            self.os = Platform.GetGenericOs(os) #os
-            self.osVersion = "any" #osVersion
+            self.os = Platform.GetGenericOs(os)
+            self.osVersion = "any"
             self.abi = abi
 
     def GetArch(self):
