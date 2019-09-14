@@ -32,8 +32,8 @@ If you will skip this steps before using library you will be asked your
 authentification data on first run.
 
 I know it is uncertain security way but I can not find out better way for 
-interacting with Github API. You are welcome to offer better way for resolving 
-this problem.
+interacting with Github API. Feel free to offer better way for resolving this 
+problem.
 ### Step 1:
 Generate new access token.
 
