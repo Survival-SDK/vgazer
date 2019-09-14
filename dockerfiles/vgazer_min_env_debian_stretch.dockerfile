@@ -6,6 +6,7 @@ RUN useradd -m vgazer_user \
     && adduser vgazer_user sudo \
     && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER vgazer_user
+# Fail to install libssl1.0.2 needed by cmake without this step
 RUN sudo bash -c 'echo "deb http://ftp.de.debian.org/debian stretch main" >> /etc/apt/sources.list' \
     && sudo apt-get update
 RUN sudo apt-get install -y python3
