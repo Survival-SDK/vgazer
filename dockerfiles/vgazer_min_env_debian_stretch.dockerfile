@@ -1,11 +1,11 @@
 FROM debian:stretch as build
 MAINTAINER Vasiliy Edomin <Vasiliy.Edomin@gmail.com>
 RUN apt-get update && apt-get -y install sudo
-RUN useradd -m test_user \
-    && echo "test_user:test_user" | chpasswd \
-    && adduser test_user sudo \
+RUN useradd -m vgazer_user \
+    && echo "vgazer_user:vgazer_user" | chpasswd \
+    && adduser vgazer_user sudo \
     && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-USER test_user
+USER vgazer_user
 RUN sudo bash -c 'echo "deb http://ftp.de.debian.org/debian stretch main" >> /etc/apt/sources.list' \
     && sudo apt-get update
 RUN sudo apt-get install -y python3
