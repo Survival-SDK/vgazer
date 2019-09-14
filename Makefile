@@ -1,3 +1,6 @@
+first_run:
+	./first_run.py
+
 image_build:
 	docker build \
      -f dockerfiles/vgazer_min_env_debian_stretch.dockerfile.dockerfile \
