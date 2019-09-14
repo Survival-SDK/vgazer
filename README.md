@@ -36,11 +36,11 @@ $ make image_build
 ```
 Run test image:
 ```
-$ make image_run
+$ make image_launch
 ```
 Clean unused images:
 ```
-$ make test_clean
+$ make images_clean
 ```
 Run sample for checking versions of all software for x86_64-linux-gnu target.
 Versions of host software (compilers, git, cmake etc) may be different on 
