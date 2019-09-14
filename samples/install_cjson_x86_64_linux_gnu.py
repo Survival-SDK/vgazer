@@ -11,10 +11,11 @@ parentDir = os.path.dirname(currentDir)
 
 sys.path.insert(0, parentDir)
 
-from vgazer.vgazer                      import Vgazer
+from vgazer.vgazer import Vgazer
 
 def main():
     gazer = Vgazer(arch="x86_64", os="linux", osVersion="any", abi="gnu")
+    PrintPlatformData(gazer)
     gazer.Install("wget", verbose=True)
     gazer.Install("cmake", verbose=True)
     gazer.Install("cjson", verbose=True)
