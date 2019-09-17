@@ -11,7 +11,8 @@ parentDir = os.path.dirname(currentDir)
 
 sys.path.insert(0, parentDir)
 
-from vgazer.vgazer import Vgazer
+from vgazer.vgazer          import Vgazer
+from samples.samples_common import PrintPlatformData
 
 def main():
     gazer = Vgazer(arch="x86_64", os="linux", osVersion="any", abi="gnu")
