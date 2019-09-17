@@ -26,9 +26,6 @@ else
 	echo "Error: host system's arch is not x86_64"
 endif
 
-images_clean:
-	docker image prune -f
-
 package:
 	python3 setup.py sdist
 

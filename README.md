@@ -231,10 +231,5 @@ downloaded, built and installed manually.
 $ make sample_x86_64_debian_stretch_install_cjson_native
 ```
 
-### Clean unused images
-```
-$ make images_clean
-```
-
 # Copying:
 Source code of library released to public domain (CC0 license)
