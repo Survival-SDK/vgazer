@@ -1,2 +1,2 @@
 *.pyc
-*.geany
+/sample_targets.mk
