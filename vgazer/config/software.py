@@ -4,6 +4,20 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "autoconf",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "autoconf",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -24,12 +38,26 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "automake",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "automake",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
-                    "source": " automake-1.15",
+                    "source": "automake-1.15",
                     "package": "automake",
                 },
                 "installer": {
@@ -62,6 +90,20 @@ data = {
     "bison": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "bison",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "bison",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -100,7 +142,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster"],
+                "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
@@ -117,6 +159,20 @@ data = {
     "cmake": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "cmake",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "cmake",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -149,6 +205,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "cmocka",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "cmocka-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "cmocka-dev",
                 },
             },
             {
@@ -241,6 +311,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "freetype-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "freetype-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -259,6 +343,20 @@ data = {
     "gettext": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "gettext",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "gettext",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -295,6 +393,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "giflib-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "giflib-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -313,6 +425,20 @@ data = {
     "git": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "git",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "git",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -349,6 +475,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "glew-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "glew-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -379,6 +519,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "glib",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "glib-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "glib-dev",
                 },
             },
             {
@@ -418,6 +572,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "harfbuzz-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "harfbuzz-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -436,6 +604,20 @@ data = {
     "i686-w64-mingw32-gcc": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "mingw-w64-gcc",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "mingw-w64-gcc",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -468,6 +650,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "icu",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "icu-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "icu-dev",
                 },
             },
             {
@@ -508,7 +704,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
@@ -537,6 +733,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "jpeg",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "jpeg-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "jpeg-dev",
                 },
             },
             {
@@ -595,6 +805,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "bzip2-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "bzip2-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -649,6 +873,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "libffi-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "libffi-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -679,6 +917,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libflac",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "flac-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "flac-dev",
                 },
             },
             {
@@ -756,6 +1008,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "xz-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "xz-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -786,6 +1052,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libmodplug",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "libmodplug-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "libmodplug-dev",
                 },
             },
             {
@@ -825,6 +1105,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "util-linux-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "util-linux-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -855,6 +1149,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libogg",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "libogg-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "libogg-dev",
                 },
             },
             {
@@ -893,6 +1201,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "libpng-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "libpng-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -927,6 +1249,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "tiff-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "tiff-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -945,6 +1281,20 @@ data = {
     "libtool": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "libtool",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "libtool",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -977,6 +1327,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "project": "libvorbis",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "libvorbis-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "libvorbis-dev",
                 },
             },
             {
@@ -1015,6 +1379,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "libwebp-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "libwebp-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -1049,6 +1427,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "lua5.3-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "lua5.3-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -1067,6 +1459,20 @@ data = {
     "meson": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "meson",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "meson",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -1138,6 +1544,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "mpg123-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "mpg123-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -1156,6 +1576,20 @@ data = {
     "ninja": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "ninja",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "ninja",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -1233,6 +1667,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["edge"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "physfs-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "physfs-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -1253,6 +1701,20 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "py2-pip",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "py2-pip",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -1271,6 +1733,20 @@ data = {
     "pkg-config": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "pkgconf",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -1307,6 +1783,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "portaudio-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "portaudio-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -1325,6 +1815,20 @@ data = {
     "python2": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "python2",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "python2",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -1396,6 +1900,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "sdl2",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "sdl2-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "sdl2-dev",
                 },
             },
             {
@@ -1489,6 +2007,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "sdl2_image-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "sdl2_image-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -1523,6 +2055,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "sdl2_mixer-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "sdl2_mixer-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -1553,6 +2099,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "sdl2_ttf",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "sdl2_ttf-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "sdl2_ttf-dev",
                 },
             },
             {
@@ -1706,6 +2266,20 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "wget",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "wget",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -1724,6 +2298,20 @@ data = {
     "x86_64-w64-mingw32-gcc": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "mingw-w64-gcc",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "mingw-w64-gcc",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -1760,6 +2348,20 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "libxcb-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "libxcb-dev",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -1790,6 +2392,20 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "zlib",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "package": "zlib-dev",
+                },
+                "installer": {
+                    "type": "alpine",
+                    "package": "zlib-dev",
                 },
             },
             {
