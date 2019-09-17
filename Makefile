@@ -1,15 +1,30 @@
+ifeq ($(shell uname -m),x86_64)
+	ARCH=x86_64
+endif
+
+sample_targets:
+	./generate_sample_targets.py
+
 first_run:
 	./first_run.py
 
-image_build:
+image_x86_64_debian_stretch_build:
+ifeq ($(ARCH),x86_64)
 	docker build \
-     -f dockerfiles/vgazer_min_env_debian_stretch.dockerfile.dockerfile \
-     -t vgazer_min_env_debian_stretch .
+     -f dockerfiles/vgazer_min_env_x86_64_debian_stretch.dockerfile \
+     -t vgazer_min_env_x86_64_debian_stretch .
+else
+	echo "Error: host system's arch is not x86_64"
+endif
 
-image_launch:
-	docker run --entrypoint /bin/bash -i -t \
-     -v ~/.vgazer/github:/home/vgazer_user/.vgazer/github \
-     vgazer_min_env_debian_stretch
+image_x86_64_alpine_3.9_build:
+ifeq ($(ARCH),x86_64)
+	docker build \
+     -f dockerfiles/vgazer_min_env_x86_64_alpine_3.9.dockerfile \
+     -t vgazer_min_env_x86_64_alpine_3.9 .
+else
+	echo "Error: host system's arch is not x86_64"
+endif
 
 images_clean:
 	docker image prune -f
@@ -17,11 +32,4 @@ images_clean:
 package:
 	python3 setup.py sdist
 
-sample_lv_linux64:
-	./samples/libraries_versions_x86_64_linux_gnu.py
-
-sample_install_cjson_linux64:
-	docker run -i -t -v ~/.vgazer/github:/home/vgazer_user/.vgazer/github \
-     -v `pwd`:/vgazer --entrypoint \
-     sudo vgazer_min_env_debian_stretch -E sh \
-     -c ./samples/install_cjson_x86_64_linux_gnu.py
+-include ./sample_targets.mk

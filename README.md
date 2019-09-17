@@ -79,28 +79,161 @@ directory
 More usage coming soon
 
 # Working with samples (Linux only)
-Build docker image:
+### Generating make targets
+Before trying samples you need generate Makefile targets for launching samples.
+Generate make targets with one on this commands:
 ```
-$ make image_build
+$ make sample_targets
 ```
-Run test image:
 ```
-$ make image_launch
+$ ./generate_sample_targets.py
 ```
-Clean unused images:
+### Sample target's parameters
+Parameters of sample's targets passing to make command via name of target.
+
+Example of make target's command format:
+```
+$ make sample_<host_arch>_<host_os>_<host_version>_install_<software>_<target_arch>_<target_os>_<target_abi>
+```
+Example of make target's command:
+```
+$ make sample_x86_64_debian_stretch_install_x86_64_linux_gnu
+```
+####Description of parameters:
+**host_arch** - must be same as your PC architecture. Currently supported:
+
+* x86_64
+
+**host_os** and **host_version** - OS or Linux Distribution and version of OS or 
+Linux Distribution. This is not OS and OS's version of your PC. Typically it is 
+OS and OS's version of base Docker image. Currently supported:
+
+* alpine
+* * 3.9
+* debian
+* * stretch
+
+**target_arch** - architecture of device for crossplatform compiling libraries. 
+Currently supported:
+
+* x86_64
+
+**target_os** - generic name of target's OS. Currently supported:
+
+* linux
+
+**target_abi** - target's ABI. Currently supported:
+
+* gnu
+* musl
+
+**software** - tool or library. Currently supported:
+
+TODO complete list
+
+### Building Docker images
+Build docker image of environment with given architecture, OS and version of OS:
+```
+$ make image_<host_arch>_<host_os>_<host_version>_build
+```
+**Example**. Build docker image of environment with x86_64 architecture (your 
+PC's arch must be x86_64) and Debian Stretch as base image:
+```
+$ make image_x86_64_debian_stretch_build
+```
+
+### Run test image in interactive mode (bash or sh)
+```
+$ make image_<host_arch>_<host_os>_<host_version>_launch
+```
+**Example**. Launch docker image of environment with x86_64 architecture and 
+Debian Stretch as base image in interactive mode:
+```
+$ make image_x86_64_debian_stretch_launch
+```
+
+### Output host platform of image
+```
+$ make sample_<host_arch>_<host_os>_<host_version>_check_platform
+```
+**Example**. Output info about host platform in environment with x86_64 
+architecture and Debian Stretch as base image:
+```
+$ make sample_x86_64_debian_stretch_check_platform
+```
+
+### Output last versions of all software for target platform on given host
+Versions of host software (compilers, git, cmake etc) may be different on 
+various docker images.
+```
+$ make sample_<host_arch>_<host_os>_<host_version>_software_versions_<target_arch>_<target_os>_<target_abi>
+```
+**Example**. Output last versions of all tools for building libraries to 
+x86-linux-gnu target and last versions of all libraries that can be built for 
+x86-linux-gnu target in environment with x86_64 architecture and Debian Stretch 
+as base image:
+```
+$ make sample_x86_64_debian_stretch_software_versions_x86_64_linux_gnu
+```
+
+### Output last versions of all software for host platform
+For most software this is last versions of appropriate packages in repos of OS 
+distribution.
+```
+$ make sample_<host_arch>_<host_os>_<host_version>_software_versions_native
+```
+**Example**. Output last versions of all tools and all libraries that can be 
+installed with apt-get or built manually on host environment with x86_64 
+architecture and Debian Stretch as base image.
+```
+$ make sample_x86_64_debian_stretch_software_versions_native
+```
+
+### Install tool on host platform
+For most software this is last versions of appropriate packages in repos of OS 
+distribution.
+```
+$ make sample_<host_arch>_<host_os>_<host_version>_install_<software>
+```
+**Example**. Install CMake via apt-get on host environment with x86_64 
+architecture and Debian Stretch as base image.
+```
+$ make sample_x86_64_debian_stretch_install_cmake
+```
+
+### Install library for target platform on host platform
+```
+$ make sample_<host_arch>_<host_os>_<host_version>_install_<software>_<target_arch>_<target_os>_<target_abi>
+```
+**Example**. Install manually (download, build and copy to system path) cjson 
+library for x86-linux-gnu target on host environment with x86_64 architecture 
+and Debian Stretch as base image.
+```
+$ make sample_x86_64_debian_stretch_install_cjson_x86_64_linux_gnu
+```
+
+### Install library for host platform on host platform
+Install library from repos of OS's distribution if available. Else library will
+be downloaded, builded and installed to system paths.
+```
+$ make sample_<host_arch>_<host_os>_<host_version>_install_<software>_native
+```
+**Example 1**. Install zlib library via apt-get on host environment with x86_64 
+architecture and Debian Stretch as base image.
+```
+$ make sample_x86_64_debian_stretch_install_zlib_native
+```
+**Example 2**. Try to install cjson library via apt-get on host environment with 
+x86_64 architecture and Debian Stretch as base image. Repos of Debian Stretch do 
+not have libcjson-dev package. This is why in this case library will be 
+downloaded, built and installed manually.
+```
+$ make sample_x86_64_debian_stretch_install_cjson_native
+```
+
+### Clean unused images
 ```
 $ make images_clean
-```
-Run sample for checking versions of all software for x86_64-linux-gnu target.
-Versions of host software (compilers, git, cmake etc) may be different on 
-various machines. This sample runs not in docker.
-```
-$ make sample_lv_linux64
-```
-Run sample for installing cjson and all dependencies for x86_64-linux-gnu 
-target:
-```
-$ make sample_install_cjson_linux64
 ```
 
 # Copying:
