@@ -99,7 +99,7 @@ Example of make target's command:
 ```
 $ make sample_x86_64_debian_stretch_install_x86_64_linux_gnu
 ```
-####Description of parameters:
+#### Description of parameters:
 **host_arch** - must be same as your PC architecture. Currently supported:
 
 * x86_64
@@ -109,9 +109,9 @@ Linux Distribution. This is not OS and OS's version of your PC. Typically it is
 OS and OS's version of base Docker image. Currently supported:
 
 * alpine
-* * 3.9
+    * 3.9
 * debian
-* * stretch
+    * stretch
 
 **target_arch** - architecture of device for crossplatform compiling libraries. 
 Currently supported:
