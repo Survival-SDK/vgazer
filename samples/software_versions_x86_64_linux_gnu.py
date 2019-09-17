@@ -14,12 +14,12 @@ sys.path.insert(0, parentDir)
 from vgazer.vgazer                      import Vgazer
 
 from samples.samples_common             import PrintPlatformData
-from samples.libraries_versions_common  import PrintLibrariesVersions
+from samples.software_versions_common   import PrintSoftwareVersions
 
 def main():
     gazer = Vgazer(arch="x86_64", os="linux", osVersion="any", abi="gnu")
     PrintPlatformData(gazer)
-    PrintLibrariesVersions(gazer)
+    PrintSoftwareVersions(gazer)
 
 if __name__ == "__main__":
     main()
