@@ -85,20 +85,33 @@ class Platform:
          "Unable to find data of Debian version: " + os.name)
 
     @staticmethod
+    def GetAlpineVersion():
+        osReleaseFile = open("/etc/os-release", "r")
+        data = osReleaseFile.read()
+        osReleaseFile.close()
+        lines = data.splitlines()
+        for line in lines:
+            kv = line.split("=")
+            if kv[0] == "VERSION_ID":
+                return ".".join(kv[1].split(".")[0:2])
+        raise DebianReleaseDataNotFound(
+         "Unable to find data of Debian version: " + os.name)
+
+    @staticmethod
     def OsIsLinux(os):
-        if os == "linux" or os == "debian":
-            return True
-        else:
-            return False
+        return (os in ["linux", "alpine", "debian"])
 
     @staticmethod
     def GetGenericOs(os):
-        if os in ["linux", "debian"]:
+        if Platform.OsIsLinux(os):
             return "linux"
+        elif os == "any":
+            return "any"
         else:
             raise UnknownOs("Unknown OS: " + os)
 
-    def __init__(self, arch = None, os = None, osVersion = None, abi = None):
+    def __init__(self, arch = None, os = None, osVersion = None, abi = None,
+     suppressGenericFallback = False):
         if (arch is None or os is None or osVersion is None or abi is None):
             self.host = True
         else:
@@ -109,15 +122,23 @@ class Platform:
             osType = platform.system()
             if osType == "Linux":
                 self.os = Platform.GetLinuxOs()
+                if self.os == "alpine":
+                    self.osVersion = Platform.GetAlpineVersion()
+                    self.abi = "musl"
                 if self.os == "debian":
                     self.osVersion = Platform.GetDebianVersion()
+                    self.abi = "gnu"
             else:
                 raise UnexpectedOsType("Unexpected OS type: " + osType)
-            self.abi = "gnu"
-        else:
+        elif not suppressGenericFallback:
             self.arch = arch
             self.os = Platform.GetGenericOs(os)
             self.osVersion = "any"
+            self.abi = abi
+        else:
+            self.arch = arch
+            self.os = os
+            self.osVersion = osVersion
             self.abi = abi
 
     def GetArch(self):
