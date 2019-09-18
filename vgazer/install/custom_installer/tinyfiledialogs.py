@@ -1,13 +1,13 @@
 import os
 
-from vgazer.command         import RunCommand
-from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import InstallError
-from vgazer.platform        import GetAr
-from vgazer.platform        import GetCc
-from vgazer.platform        import GetInstallPrefix
-from vgazer.store.temp      import StoreTemp
-from vgazer.working_dir     import WorkingDir
+from vgazer.command     import RunCommand
+from vgazer.exceptions  import CommandError
+from vgazer.exceptions  import InstallError
+from vgazer.platform    import GetAr
+from vgazer.platform    import GetCc
+from vgazer.platform    import GetInstallPrefix
+from vgazer.store.temp  import StoreTemp
+from vgazer.working_dir import WorkingDir
 
 def Install(auth, software, platform, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
