@@ -11,12 +11,13 @@ parentDir = os.path.dirname(currentDir)
 
 sys.path.insert(0, parentDir)
 
-from vgazer.vgazer          import Vgazer
-from samples.samples_common import PrintHostPlatformData
+from vgazer.vgazer import Vgazer
 
 def main():
     gazer = Vgazer()
-    PrintHostPlatformData(gazer)
+    print("host:", gazer.GetHostPlatform().GetArch(),
+     gazer.GetHostPlatform().GetOs(), gazer.GetHostPlatform().GetOsVersion(),
+     gazer.GetHostPlatform().GetAbi())
 
 if __name__ == "__main__":
     main()

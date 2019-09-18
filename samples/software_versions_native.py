@@ -11,15 +11,25 @@ parentDir = os.path.dirname(currentDir)
 
 sys.path.insert(0, parentDir)
 
-from vgazer.vgazer                      import Vgazer
-
-from samples.samples_common             import PrintPlatformData
-from samples.software_versions_common   import PrintSoftwareVersions
+from vgazer.vgazer import Vgazer
 
 def main():
     gazer = Vgazer()
-    PrintPlatformData(gazer)
-    PrintSoftwareVersions(gazer)
+
+    print("host:", gazer.GetHostPlatform().GetArch(),
+     gazer.GetHostPlatform().GetOs(), gazer.GetHostPlatform().GetOsVersion(),
+     gazer.GetHostPlatform().GetAbi())
+    print("target:", gazer.GetTargetPlatform().GetArch(),
+     gazer.GetTargetPlatform().GetOs(),
+     gazer.GetTargetPlatform().GetOsVersion(),
+     gazer.GetTargetPlatform().GetAbi())
+
+    softwareData = gazer.GetSoftwareData().GetData().items()
+    for software, data in sorted(softwareData):
+        try:
+            print(software + ":", gazer.CheckVersion(software))
+        except CompatibleProjectNotFound:
+            print(software + ":", "N/A")
 
 if __name__ == "__main__":
     main()
