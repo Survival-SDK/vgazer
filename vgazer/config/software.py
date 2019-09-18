@@ -613,6 +613,26 @@ data = {
             },
         ],
     },
+    "i586-linux-musl-gcc": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "gcc",
+                },
+            },
+        ],
+    },
     "i686-linux-gnu-gcc": {
         "platform": "host",
         "projects": [
