@@ -11,7 +11,8 @@ parentDir = os.path.dirname(currentDir)
 
 sys.path.insert(0, parentDir)
 
-from vgazer.vgazer import Vgazer
+from vgazer.vgazer      import Vgazer
+from vgazer.exceptions  import CompatibleProjectNotFound
 
 def main():
     gazer = Vgazer(arch="x86_64", os="linux", osVersion="any", abi="musl")
