@@ -1472,6 +1472,20 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "pypi",
+                    "package": "meson",
+                },
+                "installer": {
+                    "type": "pip3",
+                    "package": "meson",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -1488,14 +1502,16 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                # glib requires minimal version of Meson 0.49.2. Debian Stretch
+                # repos have Meson with version smaller than 0.49.2
+                "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["any"],
                 "checker": {
-                    "type": "pypi",
-                    "package": "meson",
+                    "type": "debian",
+                    "source": "meson",
                 },
                 "installer": {
-                    "type": "pip3",
+                    "type": "apt",
                     "package": "meson",
                 },
             },
@@ -1881,11 +1897,11 @@ data = {
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
-                    "package": "py-yaml",
+                    "package": "py2-yaml",
                 },
                 "installer": {
                     "type": "apk",
-                    "package": "py-yaml",
+                    "package": "py2-yaml",
                 },
             },
         ],
