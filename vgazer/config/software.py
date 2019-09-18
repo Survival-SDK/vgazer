@@ -24,7 +24,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "autoconf",
-                    "package": "autoconf",
                 },
                 "installer": {
                     "type": "apt",
@@ -58,7 +57,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "automake-1.15",
-                    "package": "automake",
                 },
                 "installer": {
                     "type": "apt",
@@ -78,7 +76,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "gettext",
-                    "package": "autopoint",
                 },
                 "installer": {
                     "type": "apt",
@@ -112,7 +109,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "bison",
-                    "package": "bison",
                 },
                 "installer": {
                     "type": "apt",
@@ -147,7 +143,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "cjson",
-                    "package": "libcjson-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -181,7 +176,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "cmake",
-                    "package": "cmake",
                 },
                 "installer": {
                     "type": "apt",
@@ -229,7 +223,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "cmocka",
-                    "package": "libcmocka-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -283,7 +276,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "duktape",
-                    "package": "duktape-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -331,7 +323,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "freetype",
-                    "package": "libfreetype6-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -365,7 +356,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "gettext",
-                    "package": "gettext",
                 },
                 "installer": {
                     "type": "apt",
@@ -413,7 +403,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "giflib",
-                    "package": "libgif-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -447,7 +436,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "git",
-                    "package": "git",
                 },
                 "installer": {
                     "type": "apt",
@@ -495,7 +483,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "glew",
-                    "package": "libglew-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -543,7 +530,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "glib2.0",
-                    "package": "libglib2.0-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -592,7 +578,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "harfbuzz",
-                    "package": "libharfbuzz-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -626,7 +611,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "gcc-mingw-w64",
-                    "package": "gcc-mingw-w64-i686",
                 },
                 "installer": {
                     "type": "apt",
@@ -674,7 +658,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "icu",
-                    "package": "libicu-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -709,7 +692,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libinih",
-                    "package": "libinih-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -757,7 +739,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libjpeg-turbo",
-                    "package": "libjpeg-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -825,7 +806,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "bzip2",
-                    "package": "libbz2-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -893,7 +873,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libffi",
-                    "package": "libffi-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -941,7 +920,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "flac",
-                    "package": "libflac-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1028,7 +1006,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "xz-utils",
-                    "package": "liblzma-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1076,7 +1053,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libmodplug",
-                    "package": "libmodplug-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1125,7 +1101,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "util-linux",
-                    "package": "libmount-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1173,7 +1148,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libogg",
-                    "package": "libogg-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1221,7 +1195,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libpng1.6",
-                    "package": "libpng-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1269,7 +1242,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "tiff",
-                    "package": "libtiff-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1303,7 +1275,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libtool",
-                    "package": "libtool",
                 },
                 "installer": {
                     "type": "apt",
@@ -1351,7 +1322,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libvorbis",
-                    "package": "libvorbis-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1399,7 +1369,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libwebp",
-                    "package": "libwebp-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1447,7 +1416,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "lua5.3",
-                    "package": "liblua5.3-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1515,7 +1483,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libminini",
-                    "package": "libminini-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1564,7 +1531,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libmpg123",
-                    "package": "libmpg123-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1598,7 +1564,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "ninja-build",
-                    "package": "ninja-build",
                 },
                 "installer": {
                     "type": "apt",
@@ -1687,7 +1652,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libphysfs",
-                    "package": "libphysfs-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1721,7 +1685,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "python-pip",
-                    "package": "python-pip",
                 },
                 "installer": {
                     "type": "apt",
@@ -1755,7 +1718,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "pkg-config",
-                    "package": "pkg-config",
                 },
                 "installer": {
                     "type": "apt",
@@ -1803,7 +1765,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "portaudio19",
-                    "package": "portaudio19-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1837,7 +1798,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "python2.7",
-                    "package": "python2.7",
                 },
                 "installer": {
                     "type": "apt",
@@ -1924,7 +1884,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2",
-                    "package": "libsdl2-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -1958,7 +1917,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-gfx",
-                    "package": "libsdl2-gfx-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -2027,7 +1985,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-image",
-                    "package": "libsdl2-image-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -2075,7 +2032,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-mixer",
-                    "package": "libsdl2-mixer-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -2123,7 +2079,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-ttf",
-                    "package": "libsdl2-ttf-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -2158,7 +2113,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "squirrel3",
-                    "package": "libsquirrel-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -2192,7 +2146,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libstb",
-                    "package": "libstb-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -2286,7 +2239,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "wget",
-                    "package": "wget",
                 },
                 "installer": {
                     "type": "apt",
@@ -2320,7 +2272,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "gcc-mingw-w64",
-                    "package": "gcc-mingw-w64-x86-64",
                 },
                 "installer": {
                     "type": "apt",
@@ -2368,7 +2319,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "libx11",
-                    "package": "libx11-xcb-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -2416,7 +2366,6 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "zlib",
-                    "package": "zlib1g-dev",
                 },
                 "installer": {
                     "type": "apt",
