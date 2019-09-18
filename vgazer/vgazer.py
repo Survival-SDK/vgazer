@@ -68,7 +68,7 @@ class Vgazer:
          self.platform[softwarePlatform])
         if project is None:
             raise CompatibleProjectNotFound(
-             "Unable to find compatible project for sowtware: " + software)
+             "Unable to find compatible project for software: " + software)
 
         checker = project["checker"]
         if checker["type"] == "alpine":
