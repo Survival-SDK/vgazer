@@ -1467,6 +1467,40 @@ data = {
             },
         ],
     },
+    "make": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "make",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "make",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "make-dfsg",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "make",
+                },
+            },
+        ],
+    },
     "meson": {
         "platform": "host",
         "projects": [
