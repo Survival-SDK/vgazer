@@ -92,6 +92,7 @@ $ ./generate_sample_targets.py
 Parameters of sample's targets passing to make in key=value form.
 
 Description of parameters:
+
 **harch** - must be same as your PC architecture. Currently supported:
 
 * x86_64
@@ -123,7 +124,12 @@ Currently supported:
 cases when not used target platform parameters such as **tarch**, **tos** and 
 **tabi**
 
-**software** - tool or library. Currently supported:
+**tool** - tool for installing on host platform. Currently supported:
+
+TODO complete list
+
+**lib** - library for host or target platform that must be installed in system 
+paths on host platform. Currently supported:
 
 TODO complete list
 
