@@ -1,9 +1,8 @@
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
-from vgazer.exceptions  import DebianPackageUnavailable
 from vgazer.exceptions  import InstallError
 
-def InstallDebian(software, package, verbose):
+def InstallApt(software, package, verbose):
     try:
         RunCommand(["apt-get", "install", "-y", package], verbose)
     except CommandError:

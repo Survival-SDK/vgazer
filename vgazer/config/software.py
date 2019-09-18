@@ -12,7 +12,7 @@ data = {
                     "package": "autoconf",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "autoconf",
                 },
             },
@@ -27,7 +27,7 @@ data = {
                     "package": "autoconf",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "autoconf",
                 },
             },
@@ -46,7 +46,7 @@ data = {
                     "package": "automake",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "automake",
                 },
             },
@@ -61,7 +61,7 @@ data = {
                     "package": "automake",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "automake",
                 },
             },
@@ -81,7 +81,7 @@ data = {
                     "package": "autopoint",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "autopoint",
                 },
             },
@@ -100,7 +100,7 @@ data = {
                     "package": "bison",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "bison",
                 },
             },
@@ -115,7 +115,7 @@ data = {
                     "package": "bison",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "bison",
                 },
             },
@@ -150,7 +150,7 @@ data = {
                     "package": "libcjson-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libcjson-dev",
                 },
             },
@@ -169,7 +169,7 @@ data = {
                     "package": "cmake",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "cmake",
                 },
             },
@@ -184,7 +184,7 @@ data = {
                     "package": "cmake",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "cmake",
                 },
             },
@@ -217,7 +217,7 @@ data = {
                     "package": "cmocka-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "cmocka-dev",
                 },
             },
@@ -232,7 +232,7 @@ data = {
                     "package": "libcmocka-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libcmocka-dev",
                 },
             },
@@ -286,7 +286,7 @@ data = {
                     "package": "duktape-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "duktape-dev",
                 },
             },
@@ -319,7 +319,7 @@ data = {
                     "package": "freetype-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "freetype-dev",
                 },
             },
@@ -334,7 +334,7 @@ data = {
                     "package": "libfreetype6-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libfreetype6-dev",
                 },
             },
@@ -353,7 +353,7 @@ data = {
                     "package": "gettext",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "gettext",
                 },
             },
@@ -368,7 +368,7 @@ data = {
                     "package": "gettext",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "gettext",
                 },
             },
@@ -401,7 +401,7 @@ data = {
                     "package": "giflib-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "giflib-dev",
                 },
             },
@@ -416,7 +416,7 @@ data = {
                     "package": "libgif-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libgif-dev",
                 },
             },
@@ -435,7 +435,7 @@ data = {
                     "package": "git",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "git",
                 },
             },
@@ -450,7 +450,7 @@ data = {
                     "package": "git",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "git",
                 },
             },
@@ -483,7 +483,7 @@ data = {
                     "package": "glew-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "glew-dev",
                 },
             },
@@ -498,7 +498,7 @@ data = {
                     "package": "libglew-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libglew-dev",
                 },
             },
@@ -531,7 +531,7 @@ data = {
                     "package": "glib-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "glib-dev",
                 },
             },
@@ -546,7 +546,7 @@ data = {
                     "package": "libglib2.0-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libglib2.0-dev",
                 },
             },
@@ -580,7 +580,7 @@ data = {
                     "package": "harfbuzz-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "harfbuzz-dev",
                 },
             },
@@ -595,7 +595,7 @@ data = {
                     "package": "libharfbuzz-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libharfbuzz-dev",
                 },
             },
@@ -614,7 +614,7 @@ data = {
                     "package": "mingw-w64-gcc",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "mingw-w64-gcc",
                 },
             },
@@ -629,7 +629,7 @@ data = {
                     "package": "gcc-mingw-w64-i686",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "gcc-mingw-w64-i686",
                 },
             },
@@ -662,7 +662,7 @@ data = {
                     "package": "icu-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "icu-dev",
                 },
             },
@@ -677,7 +677,7 @@ data = {
                     "package": "libicu-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libicu-dev",
                 },
             },
@@ -712,7 +712,7 @@ data = {
                     "package": "libinih-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libinih-dev",
                 },
             },
@@ -745,7 +745,7 @@ data = {
                     "package": "jpeg-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "jpeg-dev",
                 },
             },
@@ -760,7 +760,7 @@ data = {
                     "package": "libjpeg-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libjpeg-dev",
                 },
             },
@@ -813,7 +813,7 @@ data = {
                     "package": "bzip2-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "bzip2-dev",
                 },
             },
@@ -828,7 +828,7 @@ data = {
                     "package": "libbz2-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libbz2-dev",
                 },
             },
@@ -881,7 +881,7 @@ data = {
                     "package": "libffi-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "libffi-dev",
                 },
             },
@@ -896,7 +896,7 @@ data = {
                     "package": "libffi-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libffi-dev",
                 },
             },
@@ -929,7 +929,7 @@ data = {
                     "package": "flac-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "flac-dev",
                 },
             },
@@ -944,7 +944,7 @@ data = {
                     "package": "libflac-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libflac-dev",
                 },
             },
@@ -1016,7 +1016,7 @@ data = {
                     "package": "xz-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "xz-dev",
                 },
             },
@@ -1031,7 +1031,7 @@ data = {
                     "package": "liblzma-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "liblzma-dev",
                 },
             },
@@ -1064,7 +1064,7 @@ data = {
                     "package": "libmodplug-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "libmodplug-dev",
                 },
             },
@@ -1079,7 +1079,7 @@ data = {
                     "package": "libmodplug-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libmodplug-dev",
                 },
             },
@@ -1113,7 +1113,7 @@ data = {
                     "package": "util-linux-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "util-linux-dev",
                 },
             },
@@ -1128,7 +1128,7 @@ data = {
                     "package": "libmount-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libmount-dev",
                 },
             },
@@ -1161,7 +1161,7 @@ data = {
                     "package": "libogg-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "libogg-dev",
                 },
             },
@@ -1176,7 +1176,7 @@ data = {
                     "package": "libogg-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libogg-dev",
                 },
             },
@@ -1209,7 +1209,7 @@ data = {
                     "package": "libpng-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "libpng-dev",
                 },
             },
@@ -1224,7 +1224,7 @@ data = {
                     "package": "libpng-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libpng-dev",
                 },
             },
@@ -1257,7 +1257,7 @@ data = {
                     "package": "tiff-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "tiff-dev",
                 },
             },
@@ -1272,7 +1272,7 @@ data = {
                     "package": "libtiff-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libtiff-dev",
                 },
             },
@@ -1291,7 +1291,7 @@ data = {
                     "package": "libtool",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "libtool",
                 },
             },
@@ -1306,7 +1306,7 @@ data = {
                     "package": "libtool",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libtool",
                 },
             },
@@ -1339,7 +1339,7 @@ data = {
                     "package": "libvorbis-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "libvorbis-dev",
                 },
             },
@@ -1354,7 +1354,7 @@ data = {
                     "package": "libvorbis-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libvorbis-dev",
                 },
             },
@@ -1387,7 +1387,7 @@ data = {
                     "package": "libwebp-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "libwebp-dev",
                 },
             },
@@ -1402,7 +1402,7 @@ data = {
                     "package": "libwebp-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libwebp-dev",
                 },
             },
@@ -1435,7 +1435,7 @@ data = {
                     "package": "lua5.3-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "lua5.3-dev",
                 },
             },
@@ -1450,7 +1450,7 @@ data = {
                     "package": "liblua5.3-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "liblua5.3-dev",
                 },
             },
@@ -1469,7 +1469,7 @@ data = {
                     "package": "meson",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "meson",
                 },
             },
@@ -1518,7 +1518,7 @@ data = {
                     "package": "libminini-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "source": "libminini",
                     "package": "libminini-dev",
                 },
@@ -1552,7 +1552,7 @@ data = {
                     "package": "mpg123-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "mpg123-dev",
                 },
             },
@@ -1567,7 +1567,7 @@ data = {
                     "package": "libmpg123-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libmpg123-dev",
                 },
             },
@@ -1586,7 +1586,7 @@ data = {
                     "package": "ninja",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "ninja",
                 },
             },
@@ -1601,7 +1601,7 @@ data = {
                     "package": "ninja-build",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "ninja-build",
                 },
             },
@@ -1675,7 +1675,7 @@ data = {
                     "package": "physfs-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "physfs-dev",
                 },
             },
@@ -1690,7 +1690,7 @@ data = {
                     "package": "libphysfs-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libphysfs-dev",
                 },
             },
@@ -1709,7 +1709,7 @@ data = {
                     "package": "py2-pip",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "py2-pip",
                 },
             },
@@ -1724,7 +1724,7 @@ data = {
                     "package": "python-pip",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "python-pip",
                 },
             },
@@ -1743,7 +1743,7 @@ data = {
                     "package": "pkgconf",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "pkgconf",
                 },
             },
@@ -1758,7 +1758,7 @@ data = {
                     "package": "pkg-config",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "pkg-config",
                 },
             },
@@ -1791,7 +1791,7 @@ data = {
                     "package": "portaudio-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "portaudio-dev",
                 },
             },
@@ -1806,7 +1806,7 @@ data = {
                     "package": "portaudio19-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "portaudio19-dev",
                 },
             },
@@ -1825,7 +1825,7 @@ data = {
                     "package": "python2",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "python2",
                 },
             },
@@ -1840,7 +1840,7 @@ data = {
                     "package": "python2.7",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "python2.7",
                 },
             },
@@ -1912,7 +1912,7 @@ data = {
                     "package": "sdl2-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "sdl2-dev",
                 },
             },
@@ -1927,7 +1927,7 @@ data = {
                     "package": "libsdl2-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libsdl2-dev",
                 },
             },
@@ -1961,7 +1961,7 @@ data = {
                     "package": "libsdl2-gfx-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libsdl2-gfx-dev",
                 },
             },
@@ -2015,7 +2015,7 @@ data = {
                     "package": "sdl2_image-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "sdl2_image-dev",
                 },
             },
@@ -2030,7 +2030,7 @@ data = {
                     "package": "libsdl2-image-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libsdl2-image-dev",
                 },
             },
@@ -2063,7 +2063,7 @@ data = {
                     "package": "sdl2_mixer-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "sdl2_mixer-dev",
                 },
             },
@@ -2078,7 +2078,7 @@ data = {
                     "package": "libsdl2-mixer-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libsdl2-mixer-dev",
                 },
             },
@@ -2111,7 +2111,7 @@ data = {
                     "package": "sdl2_ttf-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "sdl2_ttf-dev",
                 },
             },
@@ -2126,7 +2126,7 @@ data = {
                     "package": "libsdl2-ttf-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libsdl2-ttf-dev",
                 },
             },
@@ -2161,7 +2161,7 @@ data = {
                     "package": "libsquirrel-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libsquirrel-dev",
                 },
             },
@@ -2195,7 +2195,7 @@ data = {
                     "package": "libstb-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libstb-dev",
                 },
             },
@@ -2274,7 +2274,7 @@ data = {
                     "package": "wget",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "wget",
                 },
             },
@@ -2289,7 +2289,7 @@ data = {
                     "package": "wget",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "wget",
                 },
             },
@@ -2308,7 +2308,7 @@ data = {
                     "package": "mingw-w64-gcc",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "mingw-w64-gcc",
                 },
             },
@@ -2323,7 +2323,7 @@ data = {
                     "package": "gcc-mingw-w64-x86-64",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "gcc-mingw-w64-x86-64",
                 },
             },
@@ -2356,7 +2356,7 @@ data = {
                     "package": "libxcb-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "libxcb-dev",
                 },
             },
@@ -2371,7 +2371,7 @@ data = {
                     "package": "libx11-xcb-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "libx11-xcb-dev",
                 },
             },
@@ -2404,7 +2404,7 @@ data = {
                     "package": "zlib-dev",
                 },
                 "installer": {
-                    "type": "alpine",
+                    "type": "apk",
                     "package": "zlib-dev",
                 },
             },
@@ -2419,7 +2419,7 @@ data = {
                     "package": "zlib1g-dev",
                 },
                 "installer": {
-                    "type": "debian",
+                    "type": "apt",
                     "package": "zlib1g-dev",
                 },
             },

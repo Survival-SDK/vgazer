@@ -5,7 +5,8 @@ from vgazer.exceptions          import CompatibleProjectNotFound
 from vgazer.exceptions          import DebianPackageUnavailable
 from vgazer.exceptions          import UnknownSoftware
 from vgazer.install.custom      import InstallCustom
-from vgazer.install.debian      import InstallDebian
+from vgazer.install.apk         import InstallApk
+from vgazer.install.apt         import InstallApt
 from vgazer.install.pip         import InstallPip
 from vgazer.install.pip3        import InstallPip3
 from vgazer.platform            import Platform
@@ -102,8 +103,10 @@ class Vgazer:
              "Unable to find compatible project for sowtware: " + software)
 
         installer = project["installer"]
-        if installer["type"] == "debian":
-            return InstallDebian(software, installer["package"], verbose)
+        if installer["type"] == "apk":
+            return InstallApk(software, installer["package"], verbose)
+        if installer["type"] == "apt":
+            return InstallApt(software, installer["package"], verbose)
         elif installer["type"] == "pip":
             return InstallPip(software, installer["package"], verbose)
         elif installer["type"] == "pip3":
