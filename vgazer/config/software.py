@@ -9,6 +9,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "autoconf",
                 },
                 "installer": {
@@ -42,6 +43,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "automake",
                 },
                 "installer": {
@@ -70,6 +72,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "gettext",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "gettext",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -94,6 +111,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "bison",
                 },
                 "installer": {
@@ -161,6 +179,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "cmake",
                 },
                 "installer": {
@@ -208,6 +227,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "cmocka-dev",
                 },
                 "installer": {
@@ -308,6 +328,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "freetype-dev",
                 },
                 "installer": {
@@ -341,6 +362,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "gettext",
                 },
                 "installer": {
@@ -388,6 +410,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "giflib-dev",
                 },
                 "installer": {
@@ -421,6 +444,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "git",
                 },
                 "installer": {
@@ -468,6 +492,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "glew-dev",
                 },
                 "installer": {
@@ -515,6 +540,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "glib-dev",
                 },
                 "installer": {
@@ -563,6 +589,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "harfbuzz-dev",
                 },
                 "installer": {
@@ -592,10 +619,11 @@ data = {
             {
                 "arch": ["i686"],
                 "os": ["alpine"],
-                "osVersion": ["any"],
+                "osVersion": ["edge"],
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "testing",
                     "package": "mingw-w64-gcc",
                 },
                 "installer": {
@@ -643,6 +671,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "icu-dev",
                 },
                 "installer": {
@@ -724,6 +753,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "jpeg-dev",
                 },
                 "installer": {
@@ -791,6 +821,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "bzip2-dev",
                 },
                 "installer": {
@@ -858,6 +889,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "libffi-dev",
                 },
                 "installer": {
@@ -905,6 +937,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "flac-dev",
                 },
                 "installer": {
@@ -991,6 +1024,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "xz-dev",
                 },
                 "installer": {
@@ -1038,6 +1072,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "libmodplug-dev",
                 },
                 "installer": {
@@ -1086,6 +1121,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "util-linux-dev",
                 },
                 "installer": {
@@ -1133,6 +1169,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "libogg-dev",
                 },
                 "installer": {
@@ -1180,6 +1217,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "libpng-dev",
                 },
                 "installer": {
@@ -1227,6 +1265,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "tiff-dev",
                 },
                 "installer": {
@@ -1260,6 +1299,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "libtool",
                 },
                 "installer": {
@@ -1307,6 +1347,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "libvorbis-dev",
                 },
                 "installer": {
@@ -1354,6 +1395,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "libwebp-dev",
                 },
                 "installer": {
@@ -1401,6 +1443,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "lua5.3-dev",
                 },
                 "installer": {
@@ -1434,6 +1477,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "meson",
                 },
                 "installer": {
@@ -1486,7 +1530,6 @@ data = {
                 },
                 "installer": {
                     "type": "apt",
-                    "source": "libminini",
                     "package": "libminini-dev",
                 },
             },
@@ -1516,6 +1559,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "mpg123-dev",
                 },
                 "installer": {
@@ -1549,6 +1593,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "ninja",
                 },
                 "installer": {
@@ -1637,6 +1682,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "testing",
                     "package": "physfs-dev",
                 },
                 "installer": {
@@ -1670,6 +1716,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "py2-pip",
                 },
                 "installer": {
@@ -1703,6 +1750,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "pkgconf",
                 },
                 "installer": {
@@ -1750,6 +1798,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "portaudio-dev",
                 },
                 "installer": {
@@ -1783,6 +1832,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "python2",
                 },
                 "installer": {
@@ -1821,6 +1871,21 @@ data = {
                 "installer": {
                     "type": "pip",
                     "package": "PyYAML",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "py-yaml",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "py-yaml",
                 },
             },
         ],
@@ -1869,6 +1934,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "sdl2-dev",
                 },
                 "installer": {
@@ -1970,6 +2036,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "sdl2_image-dev",
                 },
                 "installer": {
@@ -2017,6 +2084,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "sdl2_mixer-dev",
                 },
                 "installer": {
@@ -2064,6 +2132,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "sdl2_ttf-dev",
                 },
                 "installer": {
@@ -2224,6 +2293,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "wget",
                 },
                 "installer": {
@@ -2253,10 +2323,11 @@ data = {
             {
                 "arch": ["x86_64"],
                 "os": ["alpine"],
-                "osVersion": ["any"],
+                "osVersion": ["edge"],
                 "abi": ["any"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "testing",
                     "package": "mingw-w64-gcc",
                 },
                 "installer": {
@@ -2304,6 +2375,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "libxcb-dev",
                 },
                 "installer": {
@@ -2351,6 +2423,7 @@ data = {
                 "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
+                    "repo": "main",
                     "package": "zlib-dev",
                 },
                 "installer": {
