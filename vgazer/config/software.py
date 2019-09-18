@@ -664,6 +664,20 @@ data = {
                     "package": "gcc",
                 },
             },
+            {
+                "arch": ["i686"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "musl",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "musl-tools",
+                },
+            },
         ],
     },
     "i686-w64-mingw32-gcc": {
@@ -2503,6 +2517,20 @@ data = {
                 "installer": {
                     "type": "apk",
                     "package": "gcc",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "musl",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "musl-tools",
                 },
             },
         ],
