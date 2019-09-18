@@ -1,4 +1,5 @@
 import os
+import os.path
 import platform
 from vgazer.exceptions import DebianReleaseDataNotFound
 from vgazer.exceptions import MissingArgument
@@ -32,7 +33,10 @@ def GetTriplet(targetPlatformData):
 
     triplet = arch
 
-    if os == "linux":
+    if os == "alpine":
+        triplet += "-alpine"
+
+    if Platform.OsIsLinux(os):
         triplet += "-linux"
     elif os == "windows":
         triplet += "-w64"
@@ -48,10 +52,36 @@ def GetInstallPrefix(platformData):
         return ("/usr/local/" + GetTriplet(platformData["target"]))
 
 def GetCc(targetPlatformData):
-    return GetTriplet(targetPlatformData) + "-gcc"
+    if (targetPlatformData.GetOs() == "debian"
+     and targetPlatformData.GetAbi() == "musl"):
+        return "musl-gcc"
+    cc = GetTriplet(targetPlatformData) + "-gcc"
+    if "i686" in cc:
+        if not os.path.isfile(os.path.join("/usr/bin", cc)):
+            cc.replace("i686", "i586")
+    if "i586" in cc:
+        if not os.path.isfile(os.path.join("/usr/bin", cc)):
+            cc.replace("i586", "i486")
+    if "i486" in cc:
+        if not os.path.isfile(os.path.join("/usr/bin", cc)):
+            cc.replace("i486", "i386")
+    return cc
 
 def GetAr(targetPlatformData):
-    return GetTriplet(targetPlatformData) + "-ar"
+    if (targetPlatformData.GetOs() == "debian"
+     and targetPlatformData.GetAbi() == "musl"):
+        return "ar"
+    ar = GetTriplet(targetPlatformData) + "-ar"
+    if "i686" in ar:
+        if not os.path.isfile(os.path.join("/usr/bin", ar)):
+            ar.replace("i686", "i586")
+    if "i586" in ar:
+        if not os.path.isfile(os.path.join("/usr/bin", ar)):
+            ar.replace("i586", "i486")
+    if "i486" in ar:
+        if not os.path.isfile(os.path.join("/usr/bin", ar)):
+            ar.replace("i486", "i386")
+    return ar
 
 class Platform:
     # Platforms comparing ratings
@@ -163,6 +193,16 @@ class Platform:
         if self.arch == "any" or comparingArch == "any":
             return True
         if self.arch == comparingArch:
+            return True
+        if (
+         (self.arch == "i686" and (comparingArch == "i586"
+          or comparingArch == "i486" or comparingArch == "i386")
+         )
+         or (self.arch == "i586" and (comparingArch == "i486"
+          or comparingArch == "i386")
+         )
+         or (self.arch == "i486" and comparingArch == "i386")
+        ):
             return True
         return False
 
