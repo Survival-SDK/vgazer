@@ -1686,6 +1686,40 @@ data = {
             },
         ],
     },
+    "musl": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "musl-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "musl-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "debian",
+                    "source": "musl",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "musl-dev",
+                },
+            },
+        ],
+    },
     "ninja": {
         "platform": "host",
         "projects": [
