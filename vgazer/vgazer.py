@@ -11,6 +11,7 @@ from vgazer.install.pip         import InstallPip
 from vgazer.install.pip3        import InstallPip3
 from vgazer.platform            import Platform
 from vgazer.version.custom      import VersionCustom
+from vgazer.version.alpine      import CheckAlpine
 from vgazer.version.debian      import CheckDebian
 from vgazer.version.github      import CheckGithub
 from vgazer.version.pypi        import CheckPypi
@@ -70,22 +71,27 @@ class Vgazer:
              "Unable to find compatible project for sowtware: " + software)
 
         checker = project["checker"]
-        if checker["type"] == "github":
+        if checker["type"] == "alpine":
+            return CheckAlpine(self.auth["base"],
+             self.platform[softwarePlatform].GetArch(),
+             self.platform[softwarePlatform].GetOsVersion(),
+             checker["repo"], checker["package"])
+        elif checker["type"] == "debian":
+            return CheckDebian(self.auth["base"],
+             self.platform[softwarePlatform].GetOsVersion(), checker["source"])
+        elif checker["type"] == "github":
             if "ignoreReleases" in checker:
                 ignoreReleases = True
             else:
                 ignoreReleases = False
             return CheckGithub(self.auth["github"], checker["user"],
              checker["repo"], ignoreReleases)
+        elif checker["type"] == "pypi":
+            return CheckPypi(self.auth["base"], checker["package"])
         elif checker["type"] == "sourceforge":
             return CheckSourceforge(self.auth["base"], checker["project"])
         elif checker["type"] == "xiph":
             return CheckXiph(self.auth["base"], checker["project"])
-        elif checker["type"] == "pypi":
-            return CheckPypi(self.auth["base"], checker["package"])
-        elif checker["type"] == "debian":
-            return CheckDebian(self.auth["base"],
-             self.platform[softwarePlatform].GetOsVersion(), checker["source"])
         elif checker["type"] == "custom":
             return self.versionCustom.Check(checker["name"])
 
