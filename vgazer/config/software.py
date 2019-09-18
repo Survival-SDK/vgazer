@@ -613,6 +613,59 @@ data = {
             },
         ],
     },
+    "i686-linux-gnu-gcc": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "gcc",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "gcc-i686-linux-gnu",
+                },
+            },
+        ],
+    },
+    "i686-linux-musl-gcc": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "gcc",
+                },
+            },
+        ],
+    },
     "i686-w64-mingw32-gcc": {
         "platform": "host",
         "projects": [
@@ -2363,6 +2416,59 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "wget",
+                },
+            },
+        ],
+    },
+    "x86_64-linux-gnu-gcc": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "gcc-x86-64-linux-gnu",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "gcc",
+                },
+            },
+        ],
+    },
+    "x86_64-linux-musl-gcc": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "gcc",
                 },
             },
         ],
