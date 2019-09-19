@@ -1172,6 +1172,50 @@ data = {
                     "name": "libiconv",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["3.10", "edge"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "community",
+                    "package": "gnu-libiconv-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "gnu-libiconv-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "musl-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "musl-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "glibc",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libc6-dev",
+                },
+            },
         ],
     },
     "libintl-lite": {
