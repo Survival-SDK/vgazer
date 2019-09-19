@@ -613,6 +613,26 @@ data = {
             },
         ],
     },
+    "i586-linux-musl-g++": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "g++",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "g++",
+                },
+            },
+        ],
+    },
     "i586-linux-musl-gcc": {
         "platform": "host",
         "projects": [
@@ -629,6 +649,39 @@ data = {
                 "installer": {
                     "type": "apk",
                     "package": "gcc",
+                },
+            },
+        ],
+    },
+    "i686-linux-gnu-g++": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "g++",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "g++-i686-linux-gnu",
                 },
             },
         ],
@@ -666,6 +719,26 @@ data = {
             },
         ],
     },
+    "i686-linux-musl-g++": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "g++",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "g++",
+                },
+            },
+        ],
+    },
     "i686-linux-musl-gcc": {
         "platform": "host",
         "projects": [
@@ -696,6 +769,40 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "musl-tools",
+                },
+            },
+        ],
+    },
+    "i686-w64-mingw32-g++": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["edge"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "testing",
+                    "package": "mingw-w64-gcc",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "mingw-w64-gcc",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "g++-mingw-w64",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "g++-mingw-w64-i686",
                 },
             },
         ],
@@ -2488,6 +2595,39 @@ data = {
             },
         ],
     },
+    "x86_64-linux-gnu-g++": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "g++-x86-64-linux-gnu",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "g++",
+                },
+            },
+        ],
+    },
     "x86_64-linux-gnu-gcc": {
         "platform": "host",
         "projects": [
@@ -2517,6 +2657,26 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "gcc",
+                },
+            },
+        ],
+    },
+    "x86_64-linux-musl-g++": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "g++",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "g++",
                 },
             },
         ],
@@ -2551,6 +2711,40 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "musl-tools",
+                },
+            },
+        ],
+    },
+    "x86_64-w64-mingw32-g++": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["alpine"],
+                "osVersion": ["edge"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "testing",
+                    "package": "mingw-w64-gcc",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "mingw-w64-gcc",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "g++-mingw-w64",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "g++-mingw-w64-x86-64",
                 },
             },
         ],
