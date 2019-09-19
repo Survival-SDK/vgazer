@@ -29,7 +29,6 @@ def main():
          verbose=True)
         gazer.Install(gazer.GetHostPlatform().GetArch() + "-linux-musl-g++",
          verbose=True)
-        gazer.Install("musl", verbose=True)
         gazer.Install("make", verbose=True)
     if gazer.GetHostPlatform().GetOs() == "debian":
         gazer.Install("wget", verbose=True)
