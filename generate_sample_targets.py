@@ -65,8 +65,8 @@ def GenerateImageLaunchTarget(hostPlatform):
 def GenerateCheckPlatformTarget(hostPlatform):
     return "sample_{0}_{1}_{2}_check_platform:\n\tdocker run -i -t \\\n\
      -v ~/.vgazer/github:/home/vgazer_user/.vgazer/github \\\n\
-     -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} -E sh \\\n\
-     -c ./samples/check_platform.py\n\n".format(hostPlatform.GetArch(),
+     -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n\
+     -E sh -c ./samples/check_platform.py\n\n".format(hostPlatform.GetArch(),
      hostPlatform.GetOs(), hostPlatform.GetOsVersion())
 
 def GenerateSoftwareVersionsTarget(hostPlatform, targetPlatform):
@@ -77,9 +77,10 @@ def GenerateSoftwareVersionsTarget(hostPlatform, targetPlatform):
          targetPlatform.GetOs(), targetPlatform.GetAbi())
     return "sample_{0}_{1}_{2}_software_versions_{3}:\n\tdocker run -i -t \\\n\
      -v ~/.vgazer/github:/home/vgazer_user/.vgazer/github \\\n\
-     -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} -E sh \\\n\
-     -c ./samples/software_versions_{3}.py\n\n".format(hostPlatform.GetArch(),
-     hostPlatform.GetOs(), hostPlatform.GetOsVersion(), targetPlatformString)
+     -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n\
+     -E sh -c ./samples/software_versions_{3}.py\n\n".format(
+     hostPlatform.GetArch(), hostPlatform.GetOs(), hostPlatform.GetOsVersion(),
+     targetPlatformString)
 
 def GenerateInstallTarget(installEntry):
     software = installEntry[0]
@@ -94,8 +95,8 @@ def GenerateInstallTarget(installEntry):
          targetPlatform.GetOs(), targetPlatform.GetAbi(), software)
     return "sample_{0}_{1}_{2}_install_{3}:\n\tdocker run -i -t \\\n\
      -v ~/.vgazer/github:/home/vgazer_user/.vgazer/github \\\n\
-     -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} -E sh \\\n\
-     -c ./samples/install_{3}.py\n\n".format(hostPlatform.GetArch(),
+     -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n\
+     -E sh -c ./samples/install_{3}.py\n\n".format(hostPlatform.GetArch(),
      hostPlatform.GetOs(), hostPlatform.GetOsVersion(), targetInstallString)
 
 def GenerateSampleTargets(gazer, hostPlatformsList, targetPlatformsList,
