@@ -29,9 +29,7 @@ def Install(auth, software, platform, platformData, verbose):
             RunCommand(
              [cc, "-O2", "-Wall", "-fPIC", "-c", "minIni.c", "-o", "minIni.o"],
              verbose)
-            RunCommand(
-             [ar, "rcs", "libminini.a", "minIni.o"],
-             verbose)
+            RunCommand([ar, "rcs", "libminini.a", "minIni.o"], verbose)
             if not os.path.exists(installPrefix + "/include"):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
             if not os.path.exists(installPrefix + "/lib"):
@@ -39,11 +37,9 @@ def Install(auth, software, platform, platformData, verbose):
             RunCommand(["mkdir", "-p", installPrefix + "/include/minINI"],
              verbose)
             RunCommand(
-             ["sh", "-c",
-              "cp ./*.h " + installPrefix + "/include/minINI"],
+             ["sh", "-c", "cp ./*.h " + installPrefix + "/include/minINI"],
              verbose)
-            RunCommand(["cp", "./libminini.a", installPrefix + "/lib"],
-             verbose)
+            RunCommand(["cp", "./libminini.a", installPrefix + "/lib"], verbose)
     except CommandError:
         print("Unable to install", software)
         raise InstallError(software + " not installed")
