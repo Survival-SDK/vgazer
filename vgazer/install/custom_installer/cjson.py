@@ -3,18 +3,19 @@ import requests
 
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
+from vgazer.env_vars        import SetEnvVar
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
 from vgazer.github_common   import GithubCheckApiRateLimitExceeded
-from vgazer.platform        import GetAbsolutePathCc
+from vgazer.platform        import GetCc
 from vgazer.platform        import GetInstallPrefix
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
-    absCc = GetAbsolutePathCc(platformData["target"])
+    cc = GetCc(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -47,8 +48,9 @@ def Install(auth, software, platform, platformData, verbose):
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(extractedDir, "build")
         with WorkingDir(buildDir):
+            SetEnvVar("CC", cc)
             RunCommand(
-             ["cmake", "CC=" + absCc, "..", '-DCMAKE_C_FLAGS="-fPIC"',
+             ["cmake", "..", '-DCMAKE_C_FLAGS="-fPIC"',
               "-DENABLE_CJSON_TEST=Off", "-DBUILD_SHARED_LIBS=Off",
               "-DCMAKE_INSTALL_PREFIX=" + installPrefix],
              verbose)
