@@ -47,7 +47,10 @@ def Install(auth, software, platform, platformData, verbose):
         extractedDir = os.path.join(tempPath, output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
-             [cc, "-c", "ini.c", "-o", "ini.o", "-O2", "-Wall", "-fPIC"],
+             [cc, "-c", "ini.c", "-o", "ini.o", "-O2", "-Wall", "-fPIC",
+              "-DINI_STOP_ON_FIRST_ERROR=1", "-DINI_HANDLER_LINENO=1",
+              "-DINI_CALL_HANDLER_ON_NEW_SECTION=1", "-DINI_USE_STACK=0",
+              "-DINI_ALLOW_REALLOC=1"],
              verbose)
             RunCommand([cc, "-shared", "-s", "-o", "libinih.so", "ini.o"],
              verbose)
