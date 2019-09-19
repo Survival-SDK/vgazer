@@ -1686,6 +1686,74 @@ data = {
             },
         ],
     },
+    "linux-headers-i686": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "linux-headers",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "linux-headers",
+                },
+            },
+            {
+                "arch": ["i686"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "linux-latest",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "linux-headers-686",
+                },
+            },
+        ],
+    },
+    "linux-headers-x86_64": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "linux-headers",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "linux-headers",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "linux-latest",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "linux-headers-amd64",
+                },
+            },
+        ],
+    },
     "lua": {
         "platform": "target",
         "projects": [
