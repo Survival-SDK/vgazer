@@ -24,9 +24,9 @@ def main():
      gazer.GetTargetPlatform().GetOsVersion(),
      gazer.GetTargetPlatform().GetAbi())
 
-    hostArch = gazer.GetTargetPlatform().GetArch()
-    hostOs = gazer.GetTargetPlatform().GetOs()
-    hostOsVersion = gazer.GetTargetPlatform().GetOsVersion()
+    hostArch = gazer.GetHostPlatform().GetArch()
+    hostOs = gazer.GetHostPlatform().GetOs()
+    hostOsVersion = gazer.GetHostPlatform().GetOsVersion()
 
     if not (
      (hostOs == "debian") and (hostOsVersion in ["buster", "bullseye", "sid"])
