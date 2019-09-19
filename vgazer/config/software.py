@@ -1218,12 +1218,12 @@ data = {
             },
         ],
     },
-    "libintl-lite": {
+    "libintl": {
         "platform": "target",
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["windows"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "checker": {
@@ -1234,6 +1234,35 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libintl-lite",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "gettext-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "gettext-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "glibc",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libc6-dev",
                 },
             },
         ],
