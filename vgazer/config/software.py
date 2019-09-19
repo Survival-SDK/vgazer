@@ -2084,14 +2084,22 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "checker": {
-                    "type": "github",
-                    "user": "criptych",
-                    "repo": "physfs",
-                    "ignoreReleases": True,
+                    "type": "custom",
+                    "name": "physfs",
+                    "fallback": {
+                        "type": "github",
+                        "user": "criptych",
+                        "repo": "physfs",
+                        "ignoreReleases": True,
+                    },
                 },
                 "installer": {
                     "type": "custom",
                     "name": "physfs",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "physfs-github",
+                    }
                 },
             },
             {
