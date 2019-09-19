@@ -2594,6 +2594,40 @@ data = {
             },
         ],
     },
+    "unzip": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "unzip",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "unzip",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "unzip",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "unzip",
+                },
+            },
+        ],
+    },
     "utf": {
         "platform": "target",
         "projects": [
@@ -2656,7 +2690,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "abi": ["gnu"],
+                "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "wget",
