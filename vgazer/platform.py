@@ -65,23 +65,37 @@ def GetCc(targetPlatformData):
     if "i486" in cc:
         if not os.path.isfile(os.path.join("/usr/bin", cc)):
             cc.replace("i486", "i386")
-    return cc
+    if os.path.isfile(os.path.join("/usr/bin", cc)):
+        return cc
+    else:
+        return "gcc"
+
+def GetAbsolutePathCc(targetPlatformData):
+    return os.path.join("/usr/bin", GetCc(targetPlatformData))
 
 def GetAr(targetPlatformData):
     if (targetPlatformData.GetOs() == "debian"
      and targetPlatformData.GetAbi() == "musl"):
         return "ar"
-    ar = GetTriplet(targetPlatformData) + "-ar"
-    if "i686" in ar:
-        if not os.path.isfile(os.path.join("/usr/bin", ar)):
-            ar.replace("i686", "i586")
-    if "i586" in ar:
-        if not os.path.isfile(os.path.join("/usr/bin", ar)):
-            ar.replace("i586", "i486")
-    if "i486" in ar:
-        if not os.path.isfile(os.path.join("/usr/bin", ar)):
-            ar.replace("i486", "i386")
-    return ar
+    triplet = GetTriplet(targetPlatformData)
+    if "i686" in triplet:
+        if not (os.path.isfile(os.path.join("/usr/bin", triplet + "-ar"))
+         and os.path.isfile(os.path.join("/usr/bin", triplet + "-gcc-ar"))):
+            triplet.replace("i686", "i586")
+    if "i586" in triplet:
+        if not (os.path.isfile(os.path.join("/usr/bin", triplet + "-ar"))
+         and os.path.isfile(os.path.join("/usr/bin", triplet + "-gcc-ar"))):
+            triplet.replace("i586", "i486")
+    if "i486" in triplet:
+        if not (os.path.isfile(os.path.join("/usr/bin", triplet + "-ar"))
+         and os.path.isfile(os.path.join("/usr/bin", triplet + "-gcc-ar"))):
+            triplet.replace("i486", "i386")
+    if os.path.isfile(os.path.join("/usr/bin", triplet + "-ar")):
+        return triplet + "-ar"
+    elif os.path.isfile(os.path.join("/usr/bin", triplet + "-gcc-ar")):
+        return triplet + "-gcc-ar"
+    else:
+        return "ar"
 
 class Platform:
     # Platforms comparing ratings
