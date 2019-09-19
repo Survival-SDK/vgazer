@@ -76,14 +76,14 @@ def Install(auth, software, platform, platformData, verbose):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
             if not os.path.exists(installPrefix + "/lib"):
                 RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
-            RunCommand(["bash", "-c",
+            RunCommand(["sh", "-c",
              "cp ./build/*.h " + installPrefix + "/include"],
              verbose)
             RunCommand(
              ["cp", "./extras/module-node/duk_module_node.h",
               installPrefix + "/include"],
              verbose)
-            RunCommand(["bash", "-c",
+            RunCommand(["sh", "-c",
              "cp ./build/*.a " + installPrefix + "/lib"],
              verbose)
             RunCommand(["cp", "./build/libduktape.so", installPrefix + "/lib"],

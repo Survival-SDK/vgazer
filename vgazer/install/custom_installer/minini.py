@@ -39,7 +39,7 @@ def Install(auth, software, platform, platformData, verbose):
             RunCommand(["mkdir", "-p", installPrefix + "/include/minINI"],
              verbose)
             RunCommand(
-             ["bash", "-c",
+             ["sh", "-c",
               "cp ./*.h " + installPrefix + "/include/minINI"],
              verbose)
             RunCommand(["cp", "./libminini.a", installPrefix + "/lib"],
