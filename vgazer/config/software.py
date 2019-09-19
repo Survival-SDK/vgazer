@@ -1839,7 +1839,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
