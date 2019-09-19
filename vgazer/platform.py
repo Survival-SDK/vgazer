@@ -70,8 +70,8 @@ def GetCc(targetPlatformData):
     else:
         return "gcc"
 
-def GetAbsolutePathCc(targetPlatformData):
-    return os.path.join("/usr/bin", GetCc(targetPlatformData))
+def GetCxx(targetPlatformData):
+    return GetCc(targetPlatformData).replace("gcc", "g++")
 
 def GetAr(targetPlatformData):
     if (targetPlatformData.GetOs() == "debian"
