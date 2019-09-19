@@ -51,6 +51,14 @@ def GetInstallPrefix(platformData):
     else:
         return ("/usr/local/" + GetTriplet(platformData["target"]))
 
+def GetSoPrefix(platformData):
+    if Platform.OsIsLinux(platformData["target"].GetOs()):
+        return GetInstallPrefix(platformData) + "/lib"
+    elif platformData["target"].GetOs() == "windows":
+        return GetInstallPrefix(platformData) + "/bin"
+    else:
+        raise UnknownOs("Unknown OS: " + targetPlatformData.GetOs())
+
 def GetCc(targetPlatformData):
     if (targetPlatformData.GetOs() == "debian"
      and targetPlatformData.GetAbi() == "musl"):
@@ -96,6 +104,14 @@ def GetAr(targetPlatformData):
         return triplet + "-gcc-ar"
     else:
         return "ar"
+
+def GetSoFilename(targetPlatformData, name):
+    if Platform.OsIsLinux(targetPlatformData.GetOs()):
+        return "lib" + name + ".so"
+    elif targetPlatformData.GetOs() == "windows":
+        return name + ".dll"
+    else:
+        raise UnknownOs("Unknown OS: " + targetPlatformData.GetOs())
 
 class Platform:
     # Platforms comparing ratings
