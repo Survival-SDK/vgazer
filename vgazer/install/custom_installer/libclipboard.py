@@ -3,18 +3,21 @@ import requests
 
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
+from vgazer.env_vars        import SetEnvVar
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
 from vgazer.github_common   import GithubCheckApiRateLimitExceeded
-from vgazer.platform        import GetAbsolutePathCc
+from vgazer.platform        import GetCc
+from vgazer.platform        import GetCxx
 from vgazer.platform        import GetInstallPrefix
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
-    absCc = GetAbsolutePathCc(platformData["target"])
+    cc = GetCc(platformData["target"])
+    cxx = GetCxx(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -52,8 +55,10 @@ def Install(auth, software, platform, platformData, verbose):
               "s#    include/libclipboard-config.h#    ${CMAKE_BINARY_DIR}/include/libclipboard-config.h#g",
               "../CMakeLists.txt"],
              verbose)
+            SetEnvVar("CC", cc)
+            SetEnvVar("CXX", cxx)
             RunCommand(
-             ["cmake", "..", "CC=" + absCc,
+             ["cmake", "..",
               "-DCMAKE_C_FLAGS=-std=c99 -Wall -pedantic -g -I./include -I../include -D_POSIX_C_SOURCE=199309L",
               "-DCMAKE_INSTALL_PREFIX=" + installPrefix],
              verbose)
