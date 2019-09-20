@@ -3,7 +3,9 @@ from vgazer.auth.github         import AuthGithub
 from vgazer.config.software     import ConfigSoftware
 from vgazer.exceptions          import CompatibleProjectNotFound
 from vgazer.exceptions          import DebianPackageUnavailable
+from vgazer.exceptions          import InstallError
 from vgazer.exceptions          import UnknownSoftware
+from vgazer.exceptions          import VersionCheckError
 from vgazer.install.custom      import InstallCustom
 from vgazer.install.apk         import InstallApk
 from vgazer.install.apt         import InstallApt
@@ -57,6 +59,40 @@ class Vgazer:
         else:
             return None
 
+    def UseChecker(self, software, checker):
+        softwareData = self.configSoftware.GetData()
+        softwarePlatform = softwareData[software]["platform"]
+
+        try:
+            if checker["type"] == "alpine":
+                return CheckAlpine(self.auth["base"],
+                 self.platform[softwarePlatform].GetArch(),
+                 self.platform[softwarePlatform].GetOsVersion(),
+                 checker["repo"], checker["package"])
+            elif checker["type"] == "debian":
+                return CheckDebian(self.auth["base"],
+                 self.platform[softwarePlatform].GetOsVersion(), checker["source"])
+            elif checker["type"] == "github":
+                if "ignoreReleases" in checker:
+                    ignoreReleases = True
+                else:
+                    ignoreReleases = False
+                return CheckGithub(self.auth["github"], checker["user"],
+                 checker["repo"], ignoreReleases)
+            elif checker["type"] == "pypi":
+                return CheckPypi(self.auth["base"], checker["package"])
+            elif checker["type"] == "sourceforge":
+                return CheckSourceforge(self.auth["base"], checker["project"])
+            elif checker["type"] == "xiph":
+                return CheckXiph(self.auth["base"], checker["project"])
+            elif checker["type"] == "custom":
+                return self.versionCustom.Check(checker["name"])
+        except VersionCheckError as versionCheckError:
+            if "fallback" in checker:
+                return self.UseChecker(software, checker["fallback"])
+            else:
+                raise versionCheckError
+
     def CheckVersion(self, software):
         softwareData = self.configSoftware.GetData()
         if software not in softwareData:
@@ -71,31 +107,36 @@ class Vgazer:
              "Unable to find compatible project for software: " + software)
 
         checker = project["checker"]
-        if checker["type"] == "alpine":
-            return CheckAlpine(self.auth["base"],
-             self.platform[softwarePlatform].GetArch(),
-             self.platform[softwarePlatform].GetOsVersion(),
-             checker["repo"], checker["package"])
-        elif checker["type"] == "debian":
-            return CheckDebian(self.auth["base"],
-             self.platform[softwarePlatform].GetOsVersion(), checker["source"])
-        elif checker["type"] == "github":
-            if "ignoreReleases" in checker:
-                ignoreReleases = True
-            else:
-                ignoreReleases = False
-            return CheckGithub(self.auth["github"], checker["user"],
-             checker["repo"], ignoreReleases)
-        elif checker["type"] == "pypi":
-            return CheckPypi(self.auth["base"], checker["package"])
-        elif checker["type"] == "sourceforge":
-            return CheckSourceforge(self.auth["base"], checker["project"])
-        elif checker["type"] == "xiph":
-            return CheckXiph(self.auth["base"], checker["project"])
-        elif checker["type"] == "custom":
-            return self.versionCustom.Check(checker["name"])
 
-    def Install(self, software, verbose = False):
+        return self.UseChecker(software, checker)
+
+    def UseInstaller(self, software, installer, verbose,
+     fallbackPreinstallList):
+        softwareData = self.configSoftware.GetData()
+        softwarePlatform = softwareData[software]["platform"]
+
+        try:
+            if installer["type"] == "apk":
+                return InstallApk(software, installer["package"], verbose)
+            if installer["type"] == "apt":
+                return InstallApt(software, installer["package"], verbose)
+            elif installer["type"] == "pip":
+                return InstallPip(software, installer["package"], verbose)
+            elif installer["type"] == "pip3":
+                return InstallPip3(software, installer["package"], verbose)
+            elif installer["type"] == "custom":
+                return self.installCustom.Install(self.auth, software,
+                 installer["name"], softwarePlatform, self.platform, verbose)
+        except InstallError as installError:
+            if "fallback" in installer:
+                if fallbackPreinstallList is not None:
+                    self.InstallList(fallbackPreinstallList, verbose)
+                return self.UseInstaller(software, installer["fallback"],
+                 verbose, None)
+            else:
+                raise installError
+
+    def Install(self, software, verbose = False, fallbackPreinstallList = None):
         softwareData = self.configSoftware.GetData()
         if software not in softwareData:
             raise UnknownSoftware("Unknown software: " + software)
@@ -109,14 +150,10 @@ class Vgazer:
              "Unable to find compatible project for sowtware: " + software)
 
         installer = project["installer"]
-        if installer["type"] == "apk":
-            return InstallApk(software, installer["package"], verbose)
-        if installer["type"] == "apt":
-            return InstallApt(software, installer["package"], verbose)
-        elif installer["type"] == "pip":
-            return InstallPip(software, installer["package"], verbose)
-        elif installer["type"] == "pip3":
-            return InstallPip3(software, installer["package"], verbose)
-        elif installer["type"] == "custom":
-            return self.installCustom.Install(self.auth, software,
-             installer["name"], softwarePlatform, self.platform, verbose)
+
+        return self.UseInstaller(software, installer, verbose,
+         fallbackPreinstallList)
+
+    def InstallList(self, softwareList, verbose = False):
+        for software in softwareList:
+            self.Install(software, verbose, None)

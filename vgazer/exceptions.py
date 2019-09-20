@@ -73,3 +73,7 @@ class UnknownPlatform(Exception):
 class UnknownSoftware(Exception):
     def __init__(self, message):
         super().__init__(message)
+
+class VersionCheckError(Exception):
+    def __init__(self, message):
+        super().__init__(message)
