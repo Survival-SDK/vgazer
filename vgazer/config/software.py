@@ -304,6 +304,40 @@ data = {
             },
         ],
     },
+    "file": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "file",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "file",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "file",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "file",
+                },
+            },
+        ],
+    },
     "freetype": {
         "platform": "target",
         "projects": [
