@@ -5,7 +5,6 @@ from vgazer.command     import GetCommandOutputUtf8
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
-from vgazer.exceptions  import TarballLost
 from vgazer.platform    import GetInstallPrefix
 from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
@@ -36,11 +35,21 @@ def Install(auth, software, platform, platformData, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(["mv", "./configure.in", "./configure.ac"], verbose)
-            majorVersion = GetCommandOutputUtf8(["sed", "-n", "14p", "./configure.ac"]).split("=")[1].rstrip()
-            minorVersion = GetCommandOutputUtf8(["sed", "-n", "15p", "./configure.ac"]).split("=")[1].rstrip()
-            microVersion = GetCommandOutputUtf8(["sed", "-n", "16p", "./configure.ac"]).split("=")[1].rstrip()
-            interfaceAge = GetCommandOutputUtf8(["sed", "-n", "17p", "./configure.ac"]).split("=")[1].rstrip()
-            binaryAge = GetCommandOutputUtf8(["sed", "-n", "18p", "./configure.ac"]).split("=")[1].rstrip()
+            majorVersion = GetCommandOutputUtf8(
+             ["sed", "-n", "14p", "./configure.ac"]
+            ).split("=")[1].rstrip()
+            minorVersion = GetCommandOutputUtf8(
+             ["sed", "-n", "15p", "./configure.ac"]
+            ).split("=")[1].rstrip()
+            microVersion = GetCommandOutputUtf8(
+             ["sed", "-n", "16p", "./configure.ac"]
+            ).split("=")[1].rstrip()
+            interfaceAge = GetCommandOutputUtf8(
+             ["sed", "-n", "17p", "./configure.ac"]
+            ).split("=")[1].rstrip()
+            binaryAge = GetCommandOutputUtf8(
+             ["sed", "-n", "18p", "./configure.ac"]
+            ).split("=")[1].rstrip()
             version = majorVersion + "." + minorVersion + "." + microVersion
             ltRelease = majorVersion + "." + minorVersion
             ltCurrent = str(int(microVersion) - int(interfaceAge))
