@@ -54,11 +54,25 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "automake-1.15",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "automake",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "automake-1.16",
                 },
                 "installer": {
                     "type": "apt",
@@ -70,6 +84,20 @@ data = {
     "automake1.11": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "custom",
+                    "name": "automake1_11",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "automake1_11",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -2124,6 +2152,40 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "p7",
+                },
+            },
+        ],
+    },
+    "perl": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "perl",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "perl",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "perl",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "perl",
                 },
             },
         ],
