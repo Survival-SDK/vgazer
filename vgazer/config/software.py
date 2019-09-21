@@ -67,6 +67,25 @@ data = {
             },
         ],
     },
+    "automake1.11": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "automake1.11",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "automake1.11",
+                },
+            },
+        ],
+    },
     "autopoint": {
         "platform": "host",
         "projects": [
