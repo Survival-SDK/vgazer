@@ -11,6 +11,7 @@ from vgazer.install.apk         import InstallApk
 from vgazer.install.apt         import InstallApt
 from vgazer.install.pip         import InstallPip
 from vgazer.install.pip3        import InstallPip3
+from vgazer.install.stb         import InstallStb
 from vgazer.platform            import Platform
 from vgazer.version.custom      import VersionCustom
 from vgazer.version.alpine      import CheckAlpine
@@ -18,6 +19,7 @@ from vgazer.version.debian      import CheckDebian
 from vgazer.version.github      import CheckGithub
 from vgazer.version.pypi        import CheckPypi
 from vgazer.version.sourceforge import CheckSourceforge
+from vgazer.version.stb         import CheckStb
 from vgazer.version.xiph        import CheckXiph
 
 class Vgazer:
@@ -83,6 +85,8 @@ class Vgazer:
                 return CheckPypi(self.auth["base"], checker["package"])
             elif checker["type"] == "sourceforge":
                 return CheckSourceforge(self.auth["base"], checker["project"])
+            elif checker["type"] == "stb":
+                return CheckStb(self.auth["base"], checker["library"])
             elif checker["type"] == "xiph":
                 return CheckXiph(self.auth["base"], checker["project"])
             elif checker["type"] == "custom":
@@ -124,6 +128,8 @@ class Vgazer:
                 return InstallPip(software, installer["package"], verbose)
             elif installer["type"] == "pip3":
                 return InstallPip3(software, installer["package"], verbose)
+            elif installer["type"] == "stb":
+                return InstallStb(installer["library"], self.platform, verbose)
             elif installer["type"] == "custom":
                 return self.installCustom.Install(self.auth, software,
                  installer["name"], softwarePlatform, self.platform, verbose)

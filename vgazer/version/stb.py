@@ -1,7 +1,7 @@
 import requests
-import vgazer.version.utils as utils
+from bs4 import BeautifulSoup
 
-def Check(auth):
+def CheckStb(auth, library):
     response = requests.get(
      "https://raw.githubusercontent.com/nothings/stb/master/README.md"
     )
@@ -9,5 +9,5 @@ def Check(auth):
 
     lines = readme.splitlines()
     for line in lines:
-        if line.startswith("**[stb_rect_pack.h](stb_rect_pack.h)**"):
+        if line.startswith("**[" + library + ".h](" + library + ".h)**"):
             return line.split("|")[1].split(" ")[1]

@@ -2732,6 +2732,72 @@ data = {
             },
         ],
     },
+    "stb_image": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "stb",
+                    "library": "stb_image",
+                },
+                "installer": {
+                    "type": "stb",
+                    "library": "stb_image",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libstb",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libstb-dev",
+                },
+            },
+        ],
+    },
+    "stb_image_write": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "stb",
+                    "library": "stb_image_write",
+                },
+                "installer": {
+                    "type": "stb",
+                    "library": "stb_image_write",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libstb",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libstb-dev",
+                },
+            },
+        ],
+    },
     "stb_rect_pack": {
         "platform": "target",
         "projects": [
@@ -2741,12 +2807,12 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "checker": {
-                    "type": "custom",
-                    "name": "stb_rect_pack",
+                    "type": "stb",
+                    "library": "stb_rect_pack",
                 },
                 "installer": {
-                    "type": "custom",
-                    "name": "stb_rect_pack",
+                    "type": "stb",
+                    "library": "stb_rect_pack",
                 },
             },
             {
