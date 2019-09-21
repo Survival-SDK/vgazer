@@ -26,7 +26,6 @@ def main():
 
     if gazer.GetHostPlatform().GetOs() == "alpine":
         gazer.Install("make", verbose=True)
-        gazer.Install("perl", verbose=True)
         gazer.Install("autoconf", verbose=True)
 
     gazer.Install("automake1.11", verbose=True)
