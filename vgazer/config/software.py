@@ -2752,7 +2752,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
