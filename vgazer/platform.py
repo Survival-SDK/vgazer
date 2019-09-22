@@ -1,12 +1,22 @@
 import os
 import os.path
 import platform
-from vgazer.exceptions import DebianReleaseDataNotFound
-from vgazer.exceptions import MissingArgument
-from vgazer.exceptions import OsDataNotFound
-from vgazer.exceptions import UnexpectedOsType
-from vgazer.exceptions import UnknownOs
-from vgazer.exceptions import UnknownPlatform
+from vgazer.command     import GetCommandOutputUtf8
+from vgazer.exceptions  import DebianReleaseDataNotFound
+from vgazer.exceptions  import DirectoryUnavailable
+from vgazer.exceptions  import MissingArgument
+from vgazer.exceptions  import OsDataNotFound
+from vgazer.exceptions  import UnexpectedOsType
+from vgazer.exceptions  import UnknownOs
+from vgazer.exceptions  import UnknownPlatform
+
+def GetFilesystemType(path):
+    output = GetCommandOutputUtf8(["df", "-T", path])
+    lines = output.splitlines()
+    if len(lines) == 1:
+        raise UnexpectedOsType('Directory "' + path + '" unavailable')
+
+    return lines[1].split()[1]
 
 def GetHideDirectoryPrefix():
     if os.name == "posix":
