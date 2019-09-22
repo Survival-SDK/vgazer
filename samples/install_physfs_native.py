@@ -29,7 +29,6 @@ def main():
     hostOsVersion = gazer.GetHostPlatform().GetOsVersion()
 
     if hostOs == "alpine" and hostOsVersion != "edge":
-        gazer.Install(hostArch + "-linux-musl-gcc", verbose=True)
         gazer.Install(hostArch + "-linux-musl-g++", verbose=True)
         gazer.Install("make", verbose=True)
         gazer.Install("cmake", verbose=True)

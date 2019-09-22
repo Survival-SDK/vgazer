@@ -25,8 +25,6 @@ def main():
      gazer.GetTargetPlatform().GetAbi())
 
     if gazer.GetHostPlatform().GetOs() == "alpine":
-        gazer.Install(gazer.GetHostPlatform().GetArch() + "-linux-musl-gcc",
-         verbose=True)
         gazer.Install(gazer.GetHostPlatform().GetArch() + "-linux-musl-g++",
          verbose=True)
         gazer.Install("make", verbose=True)
