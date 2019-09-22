@@ -1,0 +1,73 @@
+import os
+import requests
+
+from vgazer.command         import GetCommandOutputUtf8
+from vgazer.command         import RunCommand
+from vgazer.exceptions      import CommandError
+from vgazer.exceptions      import GithubApiRateLimitExceeded
+from vgazer.github_common   import GithubCheckApiRateLimitExceeded
+from vgazer.platform        import GetFilesystemType
+from vgazer.store.temp      import StoreTemp
+from vgazer.working_dir     import WorkingDir
+
+def InstallMuslCrossMake(auth, software, languages, triplet, platformData, verbose):
+    storeTemp = StoreTemp()
+    storeTemp.ResolveEmptySubdirectory(software)
+    tempPath = storeTemp.GetSubdirectoryPath(software)
+
+    if (GetFilesystemType(tempPath) == "overlay"
+     and platformData["target"].GetOs() == "debian"):
+        useBsdTar = True
+    else:
+        useBsdTar = False
+
+    tags = auth.GetJson(
+     "https://api.github.com/repos/richfelker/musl-cross-make/tags")
+
+    if GithubCheckApiRateLimitExceeded(tags):
+        raise GithubApiRateLimitExceeded(
+         "Github API rate limit reached while searching tarball url in repo: "
+         "richfelker/musl-cross-make"
+        )
+
+    tarballUrl = tags[0]["tarball_url"]
+    tarballShortFilename = "musl-cross-make.tar.gz"
+
+    try:
+        with WorkingDir(tempPath):
+            RunCommand(
+             ["wget", "-P", "./", "-O", tarballShortFilename, tarballUrl],
+            verbose)
+            RunCommand(
+             ["tar", "--verbose", "--extract", "--gzip", "--file",
+              tarballShortFilename],
+             verbose)
+            output = GetCommandOutputUtf8(
+             ["tar", "--list", "--file", tarballShortFilename]
+            )
+        extractedDir = os.path.join(tempPath,
+         output.splitlines()[0].split("/")[0])
+        with WorkingDir(extractedDir):
+            RunCommand(
+             ["sh", "-c", "echo 'TARGET = " + triplet + "' > config.mak"],
+             verbose)
+            RunCommand(["sh", "-c", "echo 'OUTPUT = /usr/local' >> config.mak"],
+             verbose)
+            RunCommand(
+             ["sh", "-c", "echo 'COMMON_CONFIG += CFLAGS=\"-g0 -Os\" CXXFLAGS=\"-g0 -Os\" LDFLAGS=\"-s\"' >> config.mak"],
+             verbose)
+            RunCommand(
+             ["sh", "-c", "echo 'GCC_CONFIG += --enable-languages=" + languages + "' >> config.mak"],
+             verbose)
+            if useBsdTar:
+                RunCommand(
+                 ["sed",  "-i", "-e", "s/\(tar z\|tar j\|tar J\)/bsdtar /g",
+                  "./Makefile"],
+                 verbose)
+            RunCommand(["make"], verbose)
+            RunCommand(["make", "install"], verbose)
+    except CommandError:
+        print("Unable to install", software)
+        raise InstallError(software + " not installed")
+
+    print(software, "installed")

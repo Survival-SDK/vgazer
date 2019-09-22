@@ -1,26 +1,28 @@
-from vgazer.auth.base           import AuthBase
-from vgazer.auth.github         import AuthGithub
-from vgazer.config.software     import ConfigSoftware
-from vgazer.exceptions          import CompatibleProjectNotFound
-from vgazer.exceptions          import DebianPackageUnavailable
-from vgazer.exceptions          import InstallError
-from vgazer.exceptions          import UnknownSoftware
-from vgazer.exceptions          import VersionCheckError
-from vgazer.install.custom      import InstallCustom
-from vgazer.install.apk         import InstallApk
-from vgazer.install.apt         import InstallApt
-from vgazer.install.pip         import InstallPip
-from vgazer.install.pip3        import InstallPip3
-from vgazer.install.stb         import InstallStb
-from vgazer.platform            import Platform
-from vgazer.version.custom      import VersionCustom
-from vgazer.version.alpine      import CheckAlpine
-from vgazer.version.debian      import CheckDebian
-from vgazer.version.github      import CheckGithub
-from vgazer.version.pypi        import CheckPypi
-from vgazer.version.sourceforge import CheckSourceforge
-from vgazer.version.stb         import CheckStb
-from vgazer.version.xiph        import CheckXiph
+from vgazer.auth.base               import AuthBase
+from vgazer.auth.github             import AuthGithub
+from vgazer.config.software         import ConfigSoftware
+from vgazer.exceptions              import CompatibleProjectNotFound
+from vgazer.exceptions              import DebianPackageUnavailable
+from vgazer.exceptions              import InstallError
+from vgazer.exceptions              import UnknownSoftware
+from vgazer.exceptions              import VersionCheckError
+from vgazer.install.custom          import InstallCustom
+from vgazer.install.apk             import InstallApk
+from vgazer.install.apt             import InstallApt
+from vgazer.install.musl_cross_make import InstallMuslCrossMake
+from vgazer.install.pip             import InstallPip
+from vgazer.install.pip3            import InstallPip3
+from vgazer.install.stb             import InstallStb
+from vgazer.platform                import Platform
+from vgazer.version.custom          import VersionCustom
+from vgazer.version.alpine          import CheckAlpine
+from vgazer.version.debian          import CheckDebian
+from vgazer.version.github          import CheckGithub
+from vgazer.version.musl_cross_make import CheckMuslCrossMake
+from vgazer.version.pypi            import CheckPypi
+from vgazer.version.sourceforge     import CheckSourceforge
+from vgazer.version.stb             import CheckStb
+from vgazer.version.xiph            import CheckXiph
 
 class Vgazer:
     def __init__(self, arch = None, os = None, osVersion = None,
@@ -81,6 +83,8 @@ class Vgazer:
                     ignoreReleases = False
                 return CheckGithub(self.auth["github"], checker["user"],
                  checker["repo"], ignoreReleases)
+            elif checker["type"] == "musl-cross-make":
+                return CheckMuslCrossMake(self.auth["github"])
             elif checker["type"] == "pypi":
                 return CheckPypi(self.auth["base"], checker["package"])
             elif checker["type"] == "sourceforge":
@@ -124,6 +128,10 @@ class Vgazer:
                 return InstallApk(software, installer["package"], verbose)
             if installer["type"] == "apt":
                 return InstallApt(software, installer["package"], verbose)
+            elif installer["type"] == "musl-cross-make":
+                return InstallMuslCrossMake(self.auth["github"], software,
+                 installer["languages"], installer["triplet"], self.platform,
+                 verbose)
             elif installer["type"] == "pip":
                 return InstallPip(software, installer["package"], verbose)
             elif installer["type"] == "pip3":
