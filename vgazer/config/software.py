@@ -182,6 +182,40 @@ data = {
             },
         ],
     },
+    "bsdtar": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libarchive-tools",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libarchive-tools",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libarchive",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "bsdtar",
+                },
+            },
+        ],
+    },
     "cjson": {
         "platform": "target",
         "projects": [
