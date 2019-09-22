@@ -11,7 +11,9 @@ parentDir = os.path.dirname(currentDir)
 
 sys.path.insert(0, parentDir)
 
-from vgazer.vgazer import Vgazer
+from vgazer.vgazer      import Vgazer
+from vgazer.platform    import GetFilesystemType
+from vgazer.platform    import GetTempDirectoryPath
 
 def main():
     gazer = Vgazer()
@@ -23,6 +25,19 @@ def main():
      gazer.GetTargetPlatform().GetOs(),
      gazer.GetTargetPlatform().GetOsVersion(),
      gazer.GetTargetPlatform().GetAbi())
+
+    hostArch = gazer.GetHostPlatform().GetArch()
+    hostOs = gazer.GetHostPlatform().GetOs()
+    hostOsVersion = gazer.GetHostPlatform().GetOsVersion()
+
+    if not (hostArch == "x86_64" and hostOs == "alpine"):
+        if hostOs == "alpine":
+            gazer.Install(hostArch + "-linux-musl-g++", verbose=True)
+            gazer.Install("make", verbose=True)
+        if hostOs == "debian":
+            gazer.Install("wget", verbose=True)
+            if GetFilesystemType(GetTempDirectoryPath()) == "overlay":
+                gazer.Install("bsdtar", verbose=True)
 
     gazer.Install("x86_64-linux-musl-gcc", verbose=True)
 
