@@ -69,7 +69,7 @@ ifneq ($(and $(arch),$(os),$(ver),$(tool)),)
 sample_tool: sample_$(arch)_$(os)_$(ver)_install_$(tool)
 else
 sample_tool:
-	@echo 'Error: variables "arch", "os", "ver" and "lib" must be defined'
+	@echo 'Error: variables "arch", "os", "ver" and "tool" must be defined'
 endif
 
 package:
