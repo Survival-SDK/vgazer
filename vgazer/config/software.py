@@ -732,6 +732,20 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "musl-cross-make",
+                },
+                "installer": {
+                    "type": "musl-cross-make",
+                    "languages": "c++",
+                    "triplet": "i586-linux-musl",
+                },
+            },
+            {
                 "arch": ["i686"],
                 "os": ["alpine"],
                 "osVersion": ["any"],
@@ -751,6 +765,20 @@ data = {
     "i586-linux-musl-gcc": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "musl-cross-make",
+                },
+                "installer": {
+                    "type": "musl-cross-make",
+                    "languages": "c",
+                    "triplet": "i586-linux-musl",
+                },
+            },
             {
                 "arch": ["i686"],
                 "os": ["alpine"],
@@ -838,18 +866,17 @@ data = {
         "platform": "host",
         "projects": [
             {
-                "arch": ["i686"],
-                "os": ["alpine"],
+                "arch": ["any"],
+                "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "g++",
+                    "type": "musl-cross-make",
                 },
                 "installer": {
-                    "type": "apk",
-                    "package": "g++",
+                    "type": "musl-cross-make",
+                    "languages": "c++",
+                    "triplet": "i686-linux-musl",
                 },
             },
         ],
@@ -858,32 +885,17 @@ data = {
         "platform": "host",
         "projects": [
             {
-                "arch": ["i686"],
-                "os": ["alpine"],
+                "arch": ["any"],
+                "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "gcc",
+                    "type": "musl-cross-make",
                 },
                 "installer": {
-                    "type": "apk",
-                    "package": "gcc",
-                },
-            },
-            {
-                "arch": ["i686"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "debian",
-                    "source": "musl",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "musl-tools",
+                    "type": "musl-cross-make",
+                    "languages": "c",
+                    "triplet": "i686-linux-musl",
                 },
             },
         ],
@@ -913,7 +925,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
-                    "source": "g++-mingw-w64",
+                    "source": "gcc-mingw-w64",
                 },
                 "installer": {
                     "type": "apt",
@@ -3063,6 +3075,20 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "musl-cross-make",
+                },
+                "installer": {
+                    "type": "musl-cross-make",
+                    "languages": "c++",
+                    "triplet": "x86_64-linux-musl",
+                },
+            },
+            {
                 "arch": ["x86_64"],
                 "os": ["alpine"],
                 "osVersion": ["any"],
@@ -3083,6 +3109,20 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "musl-cross-make",
+                },
+                "installer": {
+                    "type": "musl-cross-make",
+                    "languages": "c",
+                    "triplet": "x86_64-linux-musl",
+                },
+            },
+            {
                 "arch": ["x86_64"],
                 "os": ["alpine"],
                 "osVersion": ["any"],
@@ -3095,20 +3135,6 @@ data = {
                 "installer": {
                     "type": "apk",
                     "package": "gcc",
-                },
-            },
-            {
-                "arch": ["x86_64"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "debian",
-                    "source": "musl",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "musl-tools",
                 },
             },
         ],
@@ -3138,7 +3164,7 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
-                    "source": "g++-mingw-w64",
+                    "source": "gcc-mingw-w64",
                 },
                 "installer": {
                     "type": "apt",
