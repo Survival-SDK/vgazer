@@ -10,13 +10,14 @@ from vgazer.platform        import GetFilesystemType
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
-def InstallMuslCrossMake(auth, software, languages, triplet, platformData, verbose):
+def InstallMuslCrossMake(auth, software, languages, triplet, platformData,
+ verbose):
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
     if (GetFilesystemType(tempPath) == "overlay"
-     and platformData["target"].GetOs() == "debian"):
+     and platformData["host"].GetOs() == "debian"):
         useBsdTar = True
     else:
         useBsdTar = False
@@ -53,11 +54,27 @@ def InstallMuslCrossMake(auth, software, languages, triplet, platformData, verbo
              verbose)
             RunCommand(["sh", "-c", "echo 'OUTPUT = /usr/local' >> config.mak"],
              verbose)
+            #RunCommand(["sh", "-c", "echo 'LINUX_VER =' >> config.mak"],
+             #verbose)
             RunCommand(
-             ["sh", "-c", "echo 'COMMON_CONFIG += CFLAGS=\"-g0 -Os\" CXXFLAGS=\"-g0 -Os\" LDFLAGS=\"-s\"' >> config.mak"],
+             [
+              "sh",
+              "-c",
+              "echo 'COMMON_CONFIG += CFLAGS=\"-g0 -Os\" "
+               "CXXFLAGS=\"-g0 -Os\" LDFLAGS=\"-s\"' >> config.mak"
+             ],
              verbose)
             RunCommand(
-             ["sh", "-c", "echo 'GCC_CONFIG += --enable-languages=" + languages + "' >> config.mak"],
+             [
+              "sh",
+              "-c",
+              "echo 'GCC_CONFIG += --enable-languages=" + languages
+               + "' >> config.mak"
+             ],
+             verbose)
+            RunCommand(
+             ["sh", "-c",
+              "echo 'GCC_CONFIG += --disable-multilib' >> config.mak"],
              verbose)
             if useBsdTar:
                 RunCommand(
