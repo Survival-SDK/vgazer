@@ -1,6 +1,7 @@
 class CommandError(Exception):
-    def __init__(self, message):
+    def __init__(self, message, errorcode):
         super().__init__(message)
+        self.errorcode = errorcode
 
 class CompatibleProjectNotFound(Exception):
     def __init__(self, message):
@@ -46,6 +47,10 @@ class MissingInstaller(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+class NoSuitableMirrors(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class OsDataNotFound(Exception):
     def __init__(self, message):
         super().__init__(message)
@@ -74,7 +79,15 @@ class UnknownPlatform(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+class UnknownProtocol(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class UnknownSoftware(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+class UnknownTargetArch(Exception):
     def __init__(self, message):
         super().__init__(message)
 
