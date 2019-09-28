@@ -148,6 +148,40 @@ data = {
             },
         ],
     },
+    "bash": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "bash",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "bash",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "bash",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "bash",
+                },
+            },
+        ],
+    },
     "bison": {
         "platform": "host",
         "projects": [
@@ -467,6 +501,40 @@ data = {
             },
         ],
     },
+    "gawk": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "gawk",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "gawk",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gawk",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "gawk",
+                },
+            },
+        ],
+    },
     "gettext": {
         "platform": "host",
         "projects": [
@@ -679,6 +747,40 @@ data = {
             },
         ],
     },
+    "gpg": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "gnupg",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "gnupg",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gnupg2",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "gnupg",
+                },
+            },
+        ],
+    },
     "harfbuzz": {
         "platform": "target",
         "projects": [
@@ -800,6 +902,20 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "gcc-src",
+                },
+                "installer": {
+                    "type": "gcc-src",
+                    "languages": "c,c++",
+                    "triplet": "i686-linux-gnu",
+                },
+            },
+            {
                 "arch": ["i686"],
                 "os": ["debian"],
                 "osVersion": ["any"],
@@ -832,6 +948,20 @@ data = {
     "i686-linux-gnu-gcc": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "gcc-src",
+                },
+                "installer": {
+                    "type": "gcc-src",
+                    "languages": "c,c++",
+                    "triplet": "i686-linux-gnu",
+                },
+            },
             {
                 "arch": ["i686"],
                 "os": ["debian"],
@@ -1963,6 +2093,40 @@ data = {
             },
         ],
     },
+    "makeinfo": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "texinfo",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "texinfo",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "texinfo",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "texinfo",
+                },
+            },
+        ],
+    },
     "meson": {
         "platform": "host",
         "projects": [
@@ -2474,6 +2638,40 @@ data = {
                 "installer": {
                     "type": "apk",
                     "package": "py2-yaml",
+                },
+            },
+        ],
+    },
+    "rsync": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "rsync",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "rsync",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "rsync",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "rsync",
                 },
             },
         ],
@@ -3009,6 +3207,20 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "gcc-src",
+                },
+                "installer": {
+                    "type": "gcc-src",
+                    "languages": "c++",
+                    "triplet": "x86_64-linux-gnu",
+                },
+            },
+            {
                 "arch": ["i686"],
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
@@ -3041,6 +3253,20 @@ data = {
     "x86_64-linux-gnu-gcc": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "gcc-src",
+                },
+                "installer": {
+                    "type": "gcc-src",
+                    "languages": "c",
+                    "triplet": "x86_64-linux-gnu",
+                },
+            },
             {
                 "arch": ["i686"],
                 "os": ["debian"],
