@@ -24,6 +24,29 @@ def main():
      gazer.GetTargetPlatform().GetOsVersion(),
      gazer.GetTargetPlatform().GetAbi())
 
+    hostArch = gazer.GetHostPlatform().GetArch()
+    hostOs = gazer.GetHostPlatform().GetOs()
+    hostOsVersion = gazer.GetHostPlatform().GetOsVersion()
+
+    if not (
+     (hostArch == "i686" and hostOs == "debian")
+     or (hostOs == "debian"
+      and hostOsVersion in ["buster", "bullseye", "sid"])
+    ):
+        if hostOs == "alpine":
+            gazer.Install(hostArch + "-linux-musl-g++", verbose=True)
+            gazer.Install("bash", verbose=True)
+            gazer.Install("gpg", verbose=True)
+            gazer.Install("make", verbose=True)
+        if hostOs == "debian":
+            gazer.Install("wget", verbose=True)
+            if GetFilesystemType(GetTempDirectoryPath()) == "overlay":
+                gazer.Install("bsdtar", verbose=True)
+        gazer.Install("bison", verbose=True)
+        gazer.Install("gawk", verbose=True)
+        gazer.Install("makeinfo", verbose=True)
+        gazer.Install("rsync", verbose=True)
+
     gazer.Install("i686-linux-gnu-g++", verbose=True)
 
 if __name__ == "__main__":

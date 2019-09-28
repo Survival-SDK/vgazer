@@ -11,7 +11,9 @@ parentDir = os.path.dirname(currentDir)
 
 sys.path.insert(0, parentDir)
 
-from vgazer.vgazer import Vgazer
+from vgazer.vgazer      import Vgazer
+from vgazer.platform    import GetFilesystemType
+from vgazer.platform    import GetTempDirectoryPath
 
 def main():
     gazer = Vgazer()
@@ -23,6 +25,29 @@ def main():
      gazer.GetTargetPlatform().GetOs(),
      gazer.GetTargetPlatform().GetOsVersion(),
      gazer.GetTargetPlatform().GetAbi())
+
+    hostArch = gazer.GetHostPlatform().GetArch()
+    hostOs = gazer.GetHostPlatform().GetOs()
+    hostOsVersion = gazer.GetHostPlatform().GetOsVersion()
+
+    if not (
+     (hostArch == "i686" and hostOs == "debian")
+     or (hostOs == "debian"
+      and hostOsVersion in ["buster", "bullseye", "sid"])
+    ):
+        if hostOs == "alpine":
+            gazer.Install(hostArch + "-linux-musl-g++", verbose=True)
+            gazer.Install("bash", verbose=True)
+            gazer.Install("gpg", verbose=True)
+            gazer.Install("make", verbose=True)
+        if hostOs == "debian":
+            gazer.Install("wget", verbose=True)
+            if GetFilesystemType(GetTempDirectoryPath()) == "overlay":
+                gazer.Install("bsdtar", verbose=True)
+        gazer.Install("bison", verbose=True)
+        gazer.Install("gawk", verbose=True)
+        gazer.Install("makeinfo", verbose=True)
+        gazer.Install("rsync", verbose=True)
 
     gazer.Install("i686-linux-gnu-gcc", verbose=True)
 
