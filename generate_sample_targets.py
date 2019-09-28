@@ -11,10 +11,14 @@ def CreateHostPlatformsList(gazer):
          osVersion = "3.9", abi = "musl", suppressGenericFallback = True),
         Platform(arch = gazer.GetHostPlatform().GetArch(), os = "debian",
          osVersion = "stretch", abi = "gnu", suppressGenericFallback = True),
+        Platform(arch = gazer.GetHostPlatform().GetArch(), os = "debian",
+         osVersion = "buster", abi = "gnu", suppressGenericFallback = True),
     ]
 
 def CreateTargetPlatformsList(gazer):
     return [
+        Platform(arch = "i686", os = "linux", osVersion = "any", abi = "gnu"),
+        Platform(arch = "i686", os = "linux", osVersion = "any", abi = "musl"),
         Platform(arch = "x86_64", os = "linux", osVersion = "any", abi = "gnu"),
         Platform(arch = "x86_64", os = "linux", osVersion = "any",
          abi = "musl"),
