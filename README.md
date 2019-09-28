@@ -101,10 +101,11 @@ Description of parameters:
 Distribution. This is not OS and OS's version of your PC. Typically it is OS and 
 OS's version of base Docker image. Currently supported:
 
-* alpine
-    * 3.9
+* ~~alpine~~ (broken)
+    * ~~3.9~~ (broken)
 * debian
-    * stretch
+    * ~~stretch~~ (broken)
+    * buster
 
 **tarch** - architecture of device for crossplatform compiling libraries. 
 Currently supported:
@@ -118,7 +119,7 @@ Currently supported:
 **tabi** - target's ABI. Currently supported:
 
 * gnu
-* musl
+* musl (not heavily tested)
 
 **arch**, **os** and **ver** - same as **harch**, **hos** and **hver** in that
 cases when not used target platform parameters such as **tarch**, **tos** and 
