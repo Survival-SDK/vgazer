@@ -1,6 +1,7 @@
 class CommandError(Exception):
-    def __init__(self, message, errorcode):
+    def __init__(self, message, command, errorcode):
         super().__init__(message)
+        self.command = command
         self.errorcode = errorcode
 
 class CompatibleProjectNotFound(Exception):
