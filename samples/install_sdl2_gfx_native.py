@@ -28,10 +28,7 @@ def main():
         gazer.Install(gazer.GetHostPlatform().GetArch() + "-linux-musl-gcc",
          verbose=True)
         gazer.Install("make", verbose=True)
-        gazer.Install("autoconf", verbose=True)
-        gazer.Install("automake", verbose=True)
         gazer.Install("libtool", verbose=True)
-        gazer.Install("file", verbose=True)
         gazer.Install("musl", verbose=True)
         gazer.Install("sdl2", verbose=True)
     gazer.Install("sdl2_gfx", verbose=True)
