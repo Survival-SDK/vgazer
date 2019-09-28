@@ -239,5 +239,13 @@ downloaded, built and installed manually.
 $ make sample_library lib=cjson arch=x86_64 os=debian ver=stretch
 ```
 
+### Bugs
+Building gcc compilers with glibc as standard library currently broken. 
+Temporary solution - using compilers from your distriburion repo. Not working 
+on Debian Stretch because repos of Debian Stretch does not contain all needed 
+crosstoolchain packages. Debian users need use Debian Buster or above. Also 
+currently not possible to install gcc compilers with glibc on Alpine Linux with 
+help of vgazer.
+
 # Copying:
 Source code of library released to public domain (CC0 license)
