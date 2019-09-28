@@ -9,14 +9,17 @@ from vgazer.exceptions              import VersionCheckError
 from vgazer.install.custom          import InstallCustom
 from vgazer.install.apk             import InstallApk
 from vgazer.install.apt             import InstallApt
+from vgazer.install.gcc_src         import InstallGccSrc
 from vgazer.install.musl_cross_make import InstallMuslCrossMake
 from vgazer.install.pip             import InstallPip
 from vgazer.install.pip3            import InstallPip3
 from vgazer.install.stb             import InstallStb
+from vgazer.mirrors.gnu             import MirrorsGnu
 from vgazer.platform                import Platform
 from vgazer.version.custom          import VersionCustom
 from vgazer.version.alpine          import CheckAlpine
 from vgazer.version.debian          import CheckDebian
+from vgazer.version.gcc_src         import CheckGccSrc
 from vgazer.version.github          import CheckGithub
 from vgazer.version.musl_cross_make import CheckMuslCrossMake
 from vgazer.version.pypi            import CheckPypi
@@ -27,17 +30,21 @@ from vgazer.version.xiph            import CheckXiph
 class Vgazer:
     def __init__(self, arch = None, os = None, osVersion = None,
      abi = None, customCheckers = {}, customInstallers = {},
-     customSoftwareData = {}):
-        self.auth = {
-            "base": AuthBase(),
-            "github": AuthGithub(),
-        }
+     customSoftwareData = {}, supportOnly = False):
+        if not supportOnly:
+            self.auth = {
+                "base": AuthBase(),
+                "github": AuthGithub(),
+            }
+            self.versionCustom = VersionCustom(self.auth["base"], customCheckers)
+            self.mirrors = {
+                "gnu": MirrorsGnu()
+            }
         self.configSoftware = ConfigSoftware(customSoftwareData)
         self.platform = {
             "host":   Platform(),
             "target": Platform(arch, os, osVersion, abi),
         }
-        self.versionCustom = VersionCustom(self.auth["base"], customCheckers)
         self.installCustom = InstallCustom(customInstallers)
 
     def GetHostPlatform(self):
@@ -76,13 +83,11 @@ class Vgazer:
             elif checker["type"] == "debian":
                 return CheckDebian(self.auth["base"],
                  self.platform[softwarePlatform].GetOsVersion(), checker["source"])
+            elif checker["type"] == "gcc-src":
+                return CheckGccSrc(self.auth["base"])
             elif checker["type"] == "github":
-                if "ignoreReleases" in checker:
-                    ignoreReleases = True
-                else:
-                    ignoreReleases = False
                 return CheckGithub(self.auth["github"], checker["user"],
-                 checker["repo"], ignoreReleases)
+                 checker["repo"], "ignoreReleases" in checker)
             elif checker["type"] == "musl-cross-make":
                 return CheckMuslCrossMake(self.auth["github"])
             elif checker["type"] == "pypi":
@@ -126,8 +131,12 @@ class Vgazer:
         try:
             if installer["type"] == "apk":
                 return InstallApk(software, installer["package"], verbose)
-            if installer["type"] == "apt":
+            elif installer["type"] == "apt":
                 return InstallApt(software, installer["package"], verbose)
+            elif installer["type"] == "gcc-src":
+                return InstallGccSrc(self.auth["base"], software,
+                 installer["languages"], installer["triplet"], self.platform,
+                 self.mirrors["gnu"], verbose)
             elif installer["type"] == "musl-cross-make":
                 return InstallMuslCrossMake(self.auth["github"], software,
                  installer["languages"], installer["triplet"], self.platform,
