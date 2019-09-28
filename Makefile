@@ -17,6 +17,15 @@ else
 	echo "Error: host system's arch is not x86_64"
 endif
 
+image_x86_64_debian_buster_build:
+ifeq ($(ARCH),x86_64)
+	docker build \
+     -f dockerfiles/vgazer_min_env_x86_64_debian_buster.dockerfile \
+     -t vgazer_min_env_x86_64_debian_buster .
+else
+	echo "Error: host system's arch is not x86_64"
+endif
+
 image_x86_64_alpine_3.9_build:
 ifeq ($(ARCH),x86_64)
 	docker build \
