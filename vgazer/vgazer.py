@@ -150,8 +150,6 @@ class Vgazer:
                 InstallMuslCrossMake(self.auth["github"], software,
                  installer["languages"], installer["triplet"], self.platform,
                  verbose)
-            #elif installer["type"] == "not_needed":
-                #print(software + " is preinstalled in system")
             elif installer["type"] == "pip":
                 InstallPip(software, installer["package"], verbose)
             elif installer["type"] == "pip3":
