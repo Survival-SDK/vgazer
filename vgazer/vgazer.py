@@ -37,16 +37,18 @@ class Vgazer:
                 "base": AuthBase(),
                 "github": AuthGithub(),
             }
-            self.versionCustom = VersionCustom(self.auth["base"], customCheckers)
+            self.versionCustom = VersionCustom(self.auth["base"],
+             customCheckers)
             self.mirrors = {
                 "gnu": MirrorsGnu()
             }
+            self.installCustom = InstallCustom(customInstallers)
+            self.installedSoftware = []
         self.configSoftware = ConfigSoftware(customSoftwareData)
         self.platform = {
             "host":   Platform(),
             "target": Platform(arch, os, osVersion, abi),
         }
-        self.installCustom = InstallCustom(customInstallers)
 
     def GetHostPlatform(self):
         return self.platform["host"]
@@ -129,39 +131,42 @@ class Vgazer:
         softwareData = self.configSoftware.GetData()
         softwarePlatform = softwareData[software]["platform"]
 
+        if software in self.installedSoftware:
+            return
+
         try:
             if installer["type"] == "apk":
-                return InstallApk(software, installer["package"], verbose)
+                InstallApk(software, installer["package"], verbose)
             elif installer["type"] == "apt":
-                return InstallApt(software, installer["package"], verbose)
+                InstallApt(software, installer["package"], verbose)
             elif installer["type"] == "custom":
-                return self.installCustom.Install(self.auth, software,
+                self.installCustom.Install(self.auth, software,
                  installer["name"], softwarePlatform, self.platform, verbose)
             elif installer["type"] == "gcc-src":
-                return InstallGccSrc(self.auth["base"], software,
+                InstallGccSrc(self.auth["base"], software,
                  installer["languages"], installer["triplet"], self.platform,
                  self.mirrors["gnu"], verbose)
             elif installer["type"] == "musl-cross-make":
-                return InstallMuslCrossMake(self.auth["github"], software,
+                InstallMuslCrossMake(self.auth["github"], software,
                  installer["languages"], installer["triplet"], self.platform,
                  verbose)
-            elif installer["type"] == "not_needed":
-                print(software + " is preinstalled in system")
-                return
+            #elif installer["type"] == "not_needed":
+                #print(software + " is preinstalled in system")
             elif installer["type"] == "pip":
-                return InstallPip(software, installer["package"], verbose)
+                InstallPip(software, installer["package"], verbose)
             elif installer["type"] == "pip3":
-                return InstallPip3(software, installer["package"], verbose)
+                InstallPip3(software, installer["package"], verbose)
             elif installer["type"] == "stb":
-                return InstallStb(installer["library"], self.platform, verbose)
+                InstallStb(installer["library"], self.platform, verbose)
         except InstallError as installError:
             if "fallback" in installer:
                 if fallbackPreinstallList is not None:
                     self.InstallList(fallbackPreinstallList, verbose)
-                return self.UseInstaller(software, installer["fallback"],
-                 verbose, None)
+                self.UseInstaller(software, installer["fallback"], verbose,
+                 None)
             else:
                 raise installError
+        self.installedSoftware.append(software)
 
     def Install(self, software, verbose = False, fallbackPreinstallList = None):
         softwareData = self.configSoftware.GetData()
@@ -198,7 +203,7 @@ class Vgazer:
 
         installer = project["installer"]
 
-        return self.UseInstaller(software, installer, verbose, fallback_prereqs)
+        self.UseInstaller(software, installer, verbose, fallback_prereqs)
 
     def InstallList(self, softwareList, verbose = False):
         for software in softwareList:
