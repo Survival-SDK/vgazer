@@ -89,6 +89,10 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "autoconf",
+                    "make",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "automake1_11",
@@ -176,8 +180,7 @@ data = {
                     "source": "bash",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "bash",
+                    "type": "not_needed",
                 },
             },
         ],
@@ -258,6 +261,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "cmake",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "DaveGamble",
@@ -374,6 +383,9 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "dr_wav",
@@ -393,6 +405,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "python2",
+                    "python2-pyyaml",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "svaarala",
@@ -447,8 +465,7 @@ data = {
                     "source": "file",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "file",
+                    "type": "not_needed",
                 },
             },
         ],
@@ -531,6 +548,39 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "gawk",
+                },
+            },
+        ],
+    },
+    "g++": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "g++",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "g++",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -775,8 +825,7 @@ data = {
                     "source": "gnupg2",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "gnupg",
+                    "type": "not_needed",
                 },
             },
         ],
@@ -838,13 +887,14 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "i586-linux-musl-gcc",
+                ],
                 "checker": {
                     "type": "musl-cross-make",
                 },
                 "installer": {
-                    "type": "musl-cross-make",
-                    "languages": "c++",
-                    "triplet": "i586-linux-musl",
+                    "type": "dummy",
                 },
             },
             {
@@ -872,12 +922,18 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "bsdtar",
+                    "g++",
+                    "make",
+                ],
                 "checker": {
                     "type": "musl-cross-make",
                 },
                 "installer": {
                     "type": "musl-cross-make",
-                    "languages": "c",
+                    "languages": "c,c++",
                     "triplet": "i586-linux-musl",
                 },
             },
@@ -906,13 +962,14 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "i686-linux-gnu-gcc",
+                ],
                 "checker": {
                     "type": "gcc-src",
                 },
                 "installer": {
-                    "type": "gcc-src",
-                    "languages": "c,c++",
-                    "triplet": "i686-linux-gnu",
+                    "type": "dummy",
                 },
             },
             {
@@ -925,8 +982,7 @@ data = {
                     "source": "gcc-defaults",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "g++",
+                    "type": "not_needed",
                 },
             },
             {
@@ -953,6 +1009,18 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "bash",
+                    "bison",
+                    "bsdtar",
+                    "g++",
+                    "gawk",
+                    "gpg",
+                    "make",
+                    "makeinfo",
+                    "rsync",
+                    "wget",
+                ],
                 "checker": {
                     "type": "gcc-src",
                 },
@@ -972,8 +1040,7 @@ data = {
                     "source": "gcc-defaults",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "gcc",
+                    "type": "not_needed",
                 },
             },
             {
@@ -1000,13 +1067,14 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "i686-linux-musl-gcc"
+                ],
                 "checker": {
                     "type": "musl-cross-make",
                 },
                 "installer": {
-                    "type": "musl-cross-make",
-                    "languages": "c++",
-                    "triplet": "i686-linux-musl",
+                    "type": "dummy",
                 },
             },
         ],
@@ -1019,12 +1087,18 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "bsdtar",
+                    "g++",
+                    "make",
+                ],
                 "checker": {
                     "type": "musl-cross-make",
                 },
                 "installer": {
                     "type": "musl-cross-make",
-                    "languages": "c",
+                    "languages": "c,c++",
                     "triplet": "i686-linux-musl",
                 },
             },
@@ -1154,6 +1228,10 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "benhoyt",
@@ -1304,6 +1382,14 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-g++",
+                    "make",
+                    "pkg-config",
+                    "cmake",
+                    "xcb",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "jtanx",
@@ -1469,8 +1555,7 @@ data = {
                     "source": "glibc",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "libc6-dev",
+                    "type": "not_needed",
                 },
             },
         ],
@@ -1971,8 +2056,7 @@ data = {
                     "source": "linux-latest",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "linux-headers-686",
+                    "type": "not_needed",
                 },
             },
         ],
@@ -2005,8 +2089,7 @@ data = {
                     "source": "linux-latest",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "linux-headers-amd64",
+                    "type": "not_needed",
                 },
             },
         ],
@@ -2087,8 +2170,7 @@ data = {
                     "source": "make-dfsg",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "make",
+                    "type": "not_needed",
                 },
             },
         ],
@@ -2185,6 +2267,10 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "git",
+                    "{triplet}-gcc"
+                ],
                 "checker": {
                     "type": "github",
                     "user": "compuphase",
@@ -2335,6 +2421,9 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "vurtun",
@@ -2355,6 +2444,13 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "unzip",
+                    "{triplet}-g++",
+                    "make",
+                    "linux-headers-{arch}",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "p7",
@@ -2408,6 +2504,16 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "make",
+                    "cmake",
+                ],
+                "fallback_prereqs": [
+                    "git",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "physfs",
@@ -2616,6 +2722,9 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "pip2",
+                ],
                 "checker": {
                     "type": "pypi",
                     "package": "PyYAML",
@@ -2684,6 +2793,11 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "git",
+                    "{triplet}-gcc",
+                    "make",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "mmalecki",
@@ -2752,6 +2866,13 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "libtool",
+                    "make",
+                    "sdl2",
+                ],
                 "checker": {
                     "type": "sourceforge",
                     "project": "sdl2gfx",
@@ -2785,6 +2906,16 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "git",
+                    "{triplet}-g++",
+                    "make",
+                    "cmake",
+                    "sdl2",
+                    "glew",
+                    "stb_image",
+                    "stb_image_write",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "grimfang4",
@@ -2950,6 +3081,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-g++",
+                    "make",
+                    "cmake",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "albertodemichelis",
@@ -2984,6 +3121,9 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                ],
                 "checker": {
                     "type": "stb",
                     "library": "stb_image",
@@ -3017,6 +3157,9 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                ],
                 "checker": {
                     "type": "stb",
                     "library": "stb_image_write",
@@ -3050,6 +3193,9 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                ],
                 "checker": {
                     "type": "stb",
                     "library": "stb_rect_pack",
@@ -3084,6 +3230,10 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "tinyfiledialogs",
@@ -3137,6 +3287,10 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "git",
+                    "{triplet}-gcc",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "andlabs",
@@ -3157,6 +3311,10 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "git",
+                    "{triplet}-gcc",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "haipome",
@@ -3183,8 +3341,7 @@ data = {
                     "package": "wget",
                 },
                 "installer": {
-                    "type": "apk",
-                    "package": "wget",
+                    "type": "not_needed",
                 },
             },
             {
@@ -3211,13 +3368,14 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "x86_64-linux-gnu-gcc",
+                ],
                 "checker": {
                     "type": "gcc-src",
                 },
                 "installer": {
-                    "type": "gcc-src",
-                    "languages": "c++",
-                    "triplet": "x86_64-linux-gnu",
+                    "type": "dummy",
                 },
             },
             {
@@ -3244,8 +3402,7 @@ data = {
                     "source": "gcc-defaults",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "g++",
+                    "type": "not_needed",
                 },
             },
         ],
@@ -3258,6 +3415,18 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "bash",
+                    "bison",
+                    "bsdtar",
+                    "g++",
+                    "gawk",
+                    "gpg",
+                    "make",
+                    "makeinfo",
+                    "rsync",
+                    "wget",
+                ],
                 "checker": {
                     "type": "gcc-src",
                 },
@@ -3291,8 +3460,7 @@ data = {
                     "source": "gcc-defaults",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "gcc",
+                    "type": "not_needed",
                 },
             },
         ],
@@ -3305,13 +3473,14 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "x86_64-linux-musl-gcc",
+                ],
                 "checker": {
                     "type": "musl-cross-make",
                 },
                 "installer": {
-                    "type": "musl-cross-make",
-                    "languages": "c++",
-                    "triplet": "x86_64-linux-musl",
+                    "type": "dummy",
                 },
             },
             {
@@ -3339,12 +3508,18 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "bsdtar",
+                    "g++",
+                    "make",
+                ],
                 "checker": {
                     "type": "musl-cross-make",
                 },
                 "installer": {
                     "type": "musl-cross-make",
-                    "languages": "c",
+                    "languages": "c,c++",
                     "triplet": "x86_64-linux-musl",
                 },
             },
@@ -3353,6 +3528,9 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "musl",
+                ],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
