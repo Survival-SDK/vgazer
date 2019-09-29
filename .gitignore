@@ -1,2 +1,4 @@
 *.pyc
 /sample_targets.mk
+samples/install_*
+samples/software_versions_*
