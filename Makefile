@@ -2,8 +2,10 @@ ifeq ($(shell uname -m),x86_64)
 	ARCH=x86_64
 endif
 
-sample_targets:
-	./generate_sample_targets.py
+.PHONY: .FORCE
+
+samples: .FORCE
+	./generate_samples.py
 
 first_run:
 	./first_run.py
@@ -59,7 +61,7 @@ endif
 ifneq ($(and $(harch),$(hos),$(hver),$(tarch),$(tos),$(tabi)),)
 sample_versions: sample_$(harch)_$(hos)_$(hver)_software_versions_$(tarch)_$(tos)_$(tabi)
 else ifneq ($(and $(arch),$(os),$(ver)),)
-sample_versions: sample_$(arch)_$(os)_$(ver)_software_versions_native
+sample_versions: sample_$(arch)_$(os)_$(ver)_software_versions_host
 else
 sample_versions:
 	@echo 'Error: variables "arch", "os" and "ver" must be defined'
@@ -68,7 +70,7 @@ endif
 ifneq ($(and $(harch),$(hos),$(hver),$(lib),$(tarch),$(tos),$(tabi)),)
 sample_library: sample_$(harch)_$(hos)_$(hver)_install_$(lib)_$(tarch)_$(tos)_$(tabi)
 else ifneq ($(and $(arch),$(os),$(ver),$(lib)),)
-sample_library: sample_$(arch)_$(os)_$(ver)_install_$(lib)_native
+sample_library: sample_$(arch)_$(os)_$(ver)_install_$(lib)_host
 else
 sample_library:
 	@echo 'Error: variables "arch", "os", "ver" and "lib" must be defined'

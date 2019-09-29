@@ -75,7 +75,7 @@ def GenerateCheckPlatformTarget(hostPlatform):
 
 def GenerateSoftwareVersionsTarget(hostPlatform, targetPlatform):
     if targetPlatform.PlatformsEqual(hostPlatform):
-        targetPlatformString = "native"
+        targetPlatformString = "host"
     else:
         targetPlatformString = "{0}_{1}_{2}".format(targetPlatform.GetArch(),
          targetPlatform.GetOs(), targetPlatform.GetAbi())
@@ -86,12 +86,65 @@ def GenerateSoftwareVersionsTarget(hostPlatform, targetPlatform):
      hostPlatform.GetArch(), hostPlatform.GetOs(), hostPlatform.GetOsVersion(),
      targetPlatformString)
 
+def CreateSoftwareVersionsSample(targetPlatform):
+    if targetPlatform is None:
+        filename = "samples/software_versions_host.py"
+        vgazerArgs = ""
+    else:
+        filename = "samples/software_versions_{0}_{1}_{2}.py".format(
+         targetPlatform.GetArch(), targetPlatform.GetOs(),
+         targetPlatform.GetAbi())
+        vgazerArgs = 'arch="{0}", os="{1}", osVersion="any", abi="{2}"'.format(
+         targetPlatform.GetArch(), targetPlatform.GetOs(),
+         targetPlatform.GetAbi())
+
+    with open(filename, "w") as sampleFile:
+        sampleFile.write(
+         "#!/usr/bin/env python3\n"
+         "\n"
+         "import os\n"
+         "import sys\n"
+         "import inspect\n"
+         "\n"
+         "currentFrame = inspect.currentframe()\n"
+         "currentFile = os.path.abspath(inspect.getfile(currentFrame))\n"
+         "currentDir = os.path.dirname(currentFile)\n"
+         "parentDir = os.path.dirname(currentDir)\n"
+         "\n"
+         "sys.path.insert(0, parentDir)\n"
+         "\n"
+         "from vgazer.vgazer      import Vgazer\n"
+         "from vgazer.exceptions  import CompatibleProjectNotFound\n"
+         "\n"
+         "def main():\n"
+         "    gazer = Vgazer({0})\n"
+         "\n"
+         "    print('host:', gazer.GetHostPlatform().GetArch(),\n"
+         "     gazer.GetHostPlatform().GetOs(),\n"
+         "     gazer.GetHostPlatform().GetOsVersion(),\n"
+         "     gazer.GetHostPlatform().GetAbi())\n"
+         "    print('target:', gazer.GetTargetPlatform().GetArch(),\n"
+         "     gazer.GetTargetPlatform().GetOs(),\n"
+         "     gazer.GetTargetPlatform().GetOsVersion(),\n"
+         "     gazer.GetTargetPlatform().GetAbi())\n"
+         "\n"
+         "    softwareData = gazer.GetSoftwareData().GetData().items()\n"
+         "    for software, data in sorted(softwareData):\n"
+         "        try:\n"
+         "            print(software + ':', gazer.CheckVersion(software))\n"
+         "        except CompatibleProjectNotFound:\n"
+         "            print(software + ':', 'N/A')\n"
+         "\n"
+         "if __name__ == '__main__':\n"
+         "    main()".format(vgazerArgs)
+        )
+
 def GenerateInstallTarget(installEntry):
     software = installEntry[0]
     hostPlatform = installEntry[1]
     targetPlatform = installEntry[2]
     if targetPlatform.PlatformsEqual(hostPlatform):
-        targetInstallString = software + "_native"
+        targetInstallString = software + "_host"
     elif targetPlatform == anyPlatform:
         targetInstallString = software
     else:
@@ -102,6 +155,59 @@ def GenerateInstallTarget(installEntry):
      -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n\
      -E sh -c ./samples/install_{3}.py\n\n".format(hostPlatform.GetArch(),
      hostPlatform.GetOs(), hostPlatform.GetOsVersion(), targetInstallString)
+
+def CreateInstallSample(installEntry):
+    software = installEntry[0]
+    hostPlatform = installEntry[1]
+    targetPlatform = installEntry[2]
+    if targetPlatform.PlatformsEqual(hostPlatform):
+        filename = "samples/install_" + software + "_host.py"
+        vgazerArgs = ""
+    elif targetPlatform == anyPlatform:
+        filename = "samples/install_" + software + ".py"
+        vgazerArgs = ""
+    else:
+        filename = "samples/install_{3}_{0}_{1}_{2}.py".format(
+         targetPlatform.GetArch(), targetPlatform.GetOs(),
+         targetPlatform.GetAbi(), software)
+        vgazerArgs = 'arch="{0}", os="{1}", osVersion="any", abi="{2}"'.format(
+         targetPlatform.GetArch(), targetPlatform.GetOs(),
+         targetPlatform.GetAbi())
+
+    with open(filename, "w") as sampleFile:
+        sampleFile.write(
+         "#!/usr/bin/env python3\n"
+         "\n"
+         "import os\n"
+         "import sys\n"
+         "import inspect\n"
+         "\n"
+         "currentFrame = inspect.currentframe()\n"
+         "currentFile = os.path.abspath(inspect.getfile(currentFrame))\n"
+         "currentDir = os.path.dirname(currentFile)\n"
+         "parentDir = os.path.dirname(currentDir)\n"
+         "\n"
+         "sys.path.insert(0, parentDir)\n"
+         "\n"
+         "from vgazer.vgazer import Vgazer\n"
+         "\n"
+         "def main():\n"
+         "    gazer = Vgazer({0})\n"
+         "\n"
+         "    print('host:', gazer.GetHostPlatform().GetArch(),\n"
+         "     gazer.GetHostPlatform().GetOs(),\n"
+         "     gazer.GetHostPlatform().GetOsVersion(),\n"
+         "     gazer.GetHostPlatform().GetAbi())\n"
+         "    print('target:', gazer.GetTargetPlatform().GetArch(),\n"
+         "     gazer.GetTargetPlatform().GetOs(),\n"
+         "     gazer.GetTargetPlatform().GetOsVersion(),\n"
+         "     gazer.GetTargetPlatform().GetAbi())\n"
+         "\n"
+         "    gazer.Install('{1}', verbose=True)\n"
+         "\n"
+         "if __name__ == '__main__':\n"
+         "    main()".format(vgazerArgs, software)
+        )
 
 def GenerateSampleTargets(gazer, hostPlatformsList, targetPlatformsList,
  installList):
@@ -119,9 +225,13 @@ def GenerateSampleTargets(gazer, hostPlatformsList, targetPlatformsList,
             softwareVersionsTarget = GenerateSoftwareVersionsTarget(
              hostPlatform, targetPlatform)
             sampleTargetsFile.write(softwareVersionsTarget)
+        for targetPlatform in targetPlatformsList:
+            CreateSoftwareVersionsSample(targetPlatform)
+        CreateSoftwareVersionsSample(None)
         for installEntry in installList:
             installTarget = GenerateInstallTarget(installEntry)
             sampleTargetsFile.write(installTarget)
+            CreateInstallSample(installEntry)
 
 def main():
     gazer = Vgazer(supportOnly = True)
