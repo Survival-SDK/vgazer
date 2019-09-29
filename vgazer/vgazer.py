@@ -15,6 +15,7 @@ from vgazer.install.pip             import InstallPip
 from vgazer.install.pip3            import InstallPip3
 from vgazer.install.stb             import InstallStb
 from vgazer.mirrors.gnu             import MirrorsGnu
+from vgazer.platform                import GetGenericTriplet
 from vgazer.platform                import Platform
 from vgazer.version.custom          import VersionCustom
 from vgazer.version.alpine          import CheckAlpine
@@ -133,6 +134,9 @@ class Vgazer:
                 return InstallApk(software, installer["package"], verbose)
             elif installer["type"] == "apt":
                 return InstallApt(software, installer["package"], verbose)
+            elif installer["type"] == "custom":
+                return self.installCustom.Install(self.auth, software,
+                 installer["name"], softwarePlatform, self.platform, verbose)
             elif installer["type"] == "gcc-src":
                 return InstallGccSrc(self.auth["base"], software,
                  installer["languages"], installer["triplet"], self.platform,
@@ -141,15 +145,15 @@ class Vgazer:
                 return InstallMuslCrossMake(self.auth["github"], software,
                  installer["languages"], installer["triplet"], self.platform,
                  verbose)
+            elif installer["type"] == "not_needed":
+                print(software + " is preinstalled in system")
+                return
             elif installer["type"] == "pip":
                 return InstallPip(software, installer["package"], verbose)
             elif installer["type"] == "pip3":
                 return InstallPip3(software, installer["package"], verbose)
             elif installer["type"] == "stb":
                 return InstallStb(installer["library"], self.platform, verbose)
-            elif installer["type"] == "custom":
-                return self.installCustom.Install(self.auth, software,
-                 installer["name"], softwarePlatform, self.platform, verbose)
         except InstallError as installError:
             if "fallback" in installer:
                 if fallbackPreinstallList is not None:
@@ -172,10 +176,29 @@ class Vgazer:
             raise CompatibleProjectNotFound(
              "Unable to find compatible project for sowtware: " + software)
 
+        if "prereqs" in project:
+            prereqs = project["prereqs"]
+        else:
+            prereqs = []
+
+        if "fallback_prereqs" in project:
+            fallback_prereqs = project["fallback_prereqs"]
+        else:
+            fallback_prereqs = []
+
+        for prereq in prereqs:
+            prereq = prereq.format(
+             triplet=GetGenericTriplet(self.platform["target"]),
+             arch=self.platform["target"].GetArch())
+            self.Install(prereq, verbose, None)
+        for fallback_prereq in fallback_prereqs:
+            prereq = fallback_prereq.format(
+             triplet=GetGenericTriplet(self.platform["target"]),
+             arch=self.platform["target"].GetArch())
+
         installer = project["installer"]
 
-        return self.UseInstaller(software, installer, verbose,
-         fallbackPreinstallList)
+        return self.UseInstaller(software, installer, verbose, fallback_prereqs)
 
     def InstallList(self, softwareList, verbose = False):
         for software in softwareList:
