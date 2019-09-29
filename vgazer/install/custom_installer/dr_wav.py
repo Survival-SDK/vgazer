@@ -15,7 +15,7 @@ def Install(auth, software, platform, platformData, verbose):
             RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
         RunCommand(["wget", "-P", installPrefix + "/include", url], verbose)
     except CommandError:
-        print("Unable to install", software)
+        print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
 
-    print(software, "installed")
+    print("VGAZER:", software, "installed")

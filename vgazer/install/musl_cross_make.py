@@ -84,7 +84,7 @@ def InstallMuslCrossMake(auth, software, languages, triplet, platformData,
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
-        print("Unable to install", software)
+        print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
 
-    print(software, "installed")
+    print("VGAZER:", software, "installed")

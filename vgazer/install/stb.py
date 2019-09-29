@@ -15,7 +15,7 @@ def InstallStb(library, platformData, verbose):
             RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
         RunCommand(["wget", "-P", installPrefix + "/include", url], verbose)
     except CommandError:
-        print("Unable to install", library)
+        print("VGAZER: Unable to install", library)
         raise InstallError(library + " not installed")
 
-    print(library, "installed")
+    print("VGAZER:", library, "installed")

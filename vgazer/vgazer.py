@@ -158,6 +158,7 @@ class Vgazer:
                 InstallStb(installer["library"], self.platform, verbose)
         except InstallError as installError:
             if "fallback" in installer:
+                print("VGAZER: Trying fallback installation steps")
                 if fallbackPreinstallList is not None:
                     self.InstallList(fallbackPreinstallList, verbose)
                 self.UseInstaller(software, installer["fallback"], verbose,

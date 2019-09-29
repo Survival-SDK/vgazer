@@ -5,12 +5,17 @@ from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.exceptions  import TarballLost
+from vgazer.platform    import GetAr
+from vgazer.platform    import GetCc
 from vgazer.platform    import GetInstallPrefix
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
 def Install(auth, software, platform, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
+
+    cc = GetCc(platformData["target"])
+    ar = GetAr(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -32,10 +37,10 @@ def Install(auth, software, platform, platformData, verbose):
              verbose)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
-            RunCommand(["make"], verbose)
+            RunCommand(["make", "CC=" + cc, "AR=" + ar], verbose)
             RunCommand(["make", "install", "PREFIX=" + installPrefix], verbose)
     except CommandError:
-        print("Unable to install", software)
+        print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
 
-    print(software, "installed")
+    print("VGAZER:", software, "installed")

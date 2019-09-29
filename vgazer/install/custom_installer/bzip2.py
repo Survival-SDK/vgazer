@@ -35,7 +35,7 @@ def Install(auth, software, platform, platformData, verbose):
             RunCommand(["make", "-f", "Makefile-libbz2_so"], verbose)
             RunCommand(["cp", "./libbz2.so.1.0.6", installPrefix + "/lib"], verbose)
     except CommandError:
-        print("Unable to install", software)
+        print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
 
-    print(software, "installed")
+    print("VGAZER:", software, "installed")
