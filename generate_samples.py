@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+import os
+import stat
+
 from vgazer.vgazer      import Vgazer
 from vgazer.platform    import Platform
 
@@ -82,7 +85,7 @@ def GenerateSoftwareVersionsTarget(hostPlatform, targetPlatform):
     return "sample_{0}_{1}_{2}_software_versions_{3}:\n\tdocker run -i -t \\\n\
      -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n\
      -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n\
-     -E sh -c ./samples/software_versions_{3}.py\n\n".format(
+     -E sh -c ./samples/software_versions_{3}.py | tee versions.log\n\n".format(
      hostPlatform.GetArch(), hostPlatform.GetOs(), hostPlatform.GetOsVersion(),
      targetPlatformString)
 
@@ -138,6 +141,7 @@ def CreateSoftwareVersionsSample(targetPlatform):
          "if __name__ == '__main__':\n"
          "    main()".format(vgazerArgs)
         )
+    os.chmod(filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IXOTH)
 
 def GenerateInstallTarget(installEntry):
     software = installEntry[0]
@@ -153,8 +157,9 @@ def GenerateInstallTarget(installEntry):
     return "sample_{0}_{1}_{2}_install_{3}:\n\tdocker run -i -t \\\n\
      -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n\
      -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n\
-     -E sh -c ./samples/install_{3}.py\n\n".format(hostPlatform.GetArch(),
-     hostPlatform.GetOs(), hostPlatform.GetOsVersion(), targetInstallString)
+     -E sh -c ./samples/install_{3}.py | tee install.log\n\n".format(
+     hostPlatform.GetArch(), hostPlatform.GetOs(), hostPlatform.GetOsVersion(),
+     targetInstallString)
 
 def CreateInstallSample(installEntry):
     software = installEntry[0]
@@ -208,6 +213,7 @@ def CreateInstallSample(installEntry):
          "if __name__ == '__main__':\n"
          "    main()".format(vgazerArgs, software)
         )
+    os.chmod(filename, stat.S_IRUSR | stat.S_IWUSR | stat.S_IXOTH)
 
 def GenerateSampleTargets(gazer, hostPlatformsList, targetPlatformsList,
  installList):
