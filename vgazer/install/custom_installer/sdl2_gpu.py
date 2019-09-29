@@ -59,10 +59,12 @@ def Install(auth, software, platform, platformData, verbose):
               "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
               "-DSDL_gpu_BUILD_DEMOS=OFF", "-DSDL_gpu_USE_SYSTEM_GLEW=ON",
               "-DSTBI_INCLUDE_DIR=" + installPrefix + "/include",
-              "-DSTBI_LIBRARY=" + buildDir + "/../src/externals/stb_image/libstbi.a",
+              "-DSTBI_LIBRARY=" + buildDir
+               + "/../src/externals/stb_image/libstbi.a",
               "-DSTBI_FOUND=TRUE"
               "-DSTBI_WRITE_INCLUDE_DIR=" + installPrefix + "/include",
-              "-DSTBI_WRITE_LIBRARY=" + buildDir + "/../src/externals/stb_image_write/libstbi_write.a",
+              "-DSTBI_WRITE_LIBRARY=" + buildDir
+               + "/../src/externals/stb_image_write/libstbi_write.a",
               "-DSTBI_WRITE_FOUND=TRUE"
              ],
             verbose)
