@@ -55,6 +55,22 @@ def GetTriplet(targetPlatformData):
 
     return triplet
 
+def GetGenericTriplet(targetPlatformData):
+    arch = targetPlatformData.GetArch()
+    os = targetPlatformData.GetOs()
+    abi = targetPlatformData.GetAbi()
+
+    triplet = arch
+
+    if Platform.OsIsLinux(os):
+        triplet += "-linux"
+    elif os == "windows":
+        triplet += "-w64"
+
+    triplet += "-" + abi
+
+    return triplet
+
 def GetInstallPrefix(platformData):
     if platformData["target"].PlatformsEqual(platformData["host"]):
         return "/usr/local"
