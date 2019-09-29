@@ -48,10 +48,10 @@ def Install(auth, software, platform, platformData, verbose):
             RunCommand(["unzip", arhiveShortFilename], verbose)
         sourcesDir = os.path.join(buildDir, "Sources")
         with WorkingDir(sourcesDir):
-            RunCommand(["sed", "-i", "s/g++/$(CXX)/g", "./makefile"], verbose)
-            RunCommand(["sed", "-i", "s/\\tar/\\t$(AR)/g", "./makefile"],
+            RunCommand(
+             ["sed", "-i", "-e", "s/g++/$(CXX)/g", "-e", "s/\\tar/\\t$(AR)/g",
+              "-e", "s/libP7.so/" + soFilename + "/g", "./makefile"],
              verbose)
-            RunCommand(["sed", "-i", "s/libP7.so/" + soFilename + "/g", "./makefile"], verbose)
             SetEnvVar("CXX", cxx)
             SetEnvVar("AR", ar)
             RunCommand(["mkdir", "-p", "./../Binaries"], verbose)
