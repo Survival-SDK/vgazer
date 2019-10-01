@@ -74,12 +74,8 @@ def Install(auth, software, platform, platformData, verbose):
         with WorkingDir(extractedDir):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix,
-              "--x-includes=" + installPrefix + "/include",
-              "--x-libraries=" + installPrefix + "/lib",
-              "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig"],
+              "--prefix=" + installPrefix],
              verbose)
-            RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
