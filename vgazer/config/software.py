@@ -335,6 +335,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "cmake",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "cmocka",
@@ -627,6 +633,11 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
                 "checker": {
                     "type": "sourceforge",
                     "project": "giflib",
@@ -709,6 +720,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "xlib",
+                ],
                 "checker": {
                     "type": "sourceforge",
                     "project": "glew",
@@ -1258,6 +1275,73 @@ data = {
             },
         ],
     },
+    "inputproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "inputproto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "inputproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["stretch"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-input",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-input-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-input-dev",
+                },
+            },
+        ],
+    },
     "jpeg": {
         "platform": "target",
         "projects": [
@@ -1302,6 +1386,59 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libjpeg-dev",
+                },
+            },
+        ],
+    },
+    "kbproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "kbproto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "kbproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-kb",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-kb-dev",
                 },
             },
         ],
@@ -2680,6 +2817,59 @@ data = {
             },
         ],
     },
+    "pthread-stubs": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "pthread-stubs",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "pthread-stubs",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libpthread-stubs",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libpthread-stubs",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "pthread-stubs",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libpthread-stubs0-dev",
+                },
+            },
+        ],
+    },
     "python2": {
         "platform": "host",
         "projects": [
@@ -3611,6 +3801,61 @@ data = {
             },
         ],
     },
+    "xau": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "pkg-config",
+                    "xproto"
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "xau",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xau",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libxau-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libxau-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libxau",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libxau-dev",
+                },
+            },
+        ],
+    },
     "xcb": {
         "platform": "target",
         "projects": [
@@ -3619,6 +3864,15 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "pkg-config",
+                    "xcb-proto",
+                    "pthread-stubs",
+                    "xau",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "xcb",
@@ -3655,6 +3909,277 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libx11-xcb-dev",
+                },
+            },
+        ],
+    },
+    "xcb-proto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "xcb-proto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xcb-proto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xcb-proto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xcb-proto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xcb-proto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "xcb-proto",
+                },
+            },
+        ],
+    },
+    "xextproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "xextproto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xextproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-xext",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-xext-dev",
+                },
+            },
+        ],
+    },
+    "xlib": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "pkg-config",
+                    "xproto",
+                    "xextproto",
+                    "xtrans",
+                    "xcb",
+                    "kbproto",
+                    "inputproto",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "xlib",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xlib",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libx11-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libx11-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libx11",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libx11-dev",
+                },
+            },
+        ],
+    },
+    "xproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "xproto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dev",
+                },
+            },
+        ],
+    },
+    "xtrans": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "xtrans",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xtrans",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xtrans",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xtrans",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xtrans",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "xtrans-dev",
                 },
             },
         ],
