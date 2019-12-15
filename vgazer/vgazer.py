@@ -1,6 +1,6 @@
 from vgazer.auth.base               import AuthBase
 from vgazer.auth.github             import AuthGithub
-from vgazer.config.software         import ConfigSoftware
+from vgazer.software                import SoftwareData
 from vgazer.exceptions              import CompatibleProjectNotFound
 from vgazer.exceptions              import DebianPackageUnavailable
 from vgazer.exceptions              import InstallError
@@ -13,6 +13,7 @@ from vgazer.install.gcc_src         import InstallGccSrc
 from vgazer.install.musl_cross_make import InstallMuslCrossMake
 from vgazer.install.pip             import InstallPip
 from vgazer.install.pip3            import InstallPip3
+from vgazer.install.pkg_config      import InstallPkgConfig
 from vgazer.install.stb             import InstallStb
 from vgazer.mirrors.gnu             import MirrorsGnu
 from vgazer.platform                import GetGenericTriplet
@@ -22,6 +23,7 @@ from vgazer.version.alpine          import CheckAlpine
 from vgazer.version.debian          import CheckDebian
 from vgazer.version.gcc_src         import CheckGccSrc
 from vgazer.version.github          import CheckGithub
+from vgazer.version.gitlab          import CheckGitlab
 from vgazer.version.musl_cross_make import CheckMuslCrossMake
 from vgazer.version.pypi            import CheckPypi
 from vgazer.version.sourceforge     import CheckSourceforge
@@ -44,11 +46,12 @@ class Vgazer:
             }
             self.installCustom = InstallCustom(customInstallers)
             self.installedSoftware = []
-        self.configSoftware = ConfigSoftware(customSoftwareData)
+        self.softwareData = SoftwareData(customSoftwareData)
         self.platform = {
             "host":   Platform(),
             "target": Platform(arch, os, osVersion, abi),
         }
+
 
     def GetHostPlatform(self):
         return self.platform["host"]
@@ -57,7 +60,7 @@ class Vgazer:
         return self.platform["target"]
 
     def GetSoftwareData(self):
-        return self.configSoftware
+        return self.softwareData
 
     def ChooseProject(self, projects, platform):
         maxRatingProject = None
@@ -74,7 +77,7 @@ class Vgazer:
             return None
 
     def UseChecker(self, software, checker):
-        softwareData = self.configSoftware.GetData()
+        softwareData = self.softwareData.GetData()
         softwarePlatform = softwareData[software]["platform"]
 
         try:
@@ -89,8 +92,15 @@ class Vgazer:
             elif checker["type"] == "gcc-src":
                 return CheckGccSrc(self.auth["base"])
             elif checker["type"] == "github":
+                if "ignoredTags" in checker:
+                    ignoredTags = checker["ignoredTags"]
+                else:
+                    ignoredTags = []
                 return CheckGithub(self.auth["github"], checker["user"],
-                 checker["repo"], "ignoreReleases" in checker)
+                 checker["repo"], "ignoreReleases" in checker, ignoredTags)
+            elif checker["type"] == "gitlab":
+                return CheckGitlab(self.auth["base"], checker["host"],
+                 checker["id"])
             elif checker["type"] == "musl-cross-make":
                 return CheckMuslCrossMake(self.auth["github"])
             elif checker["type"] == "pypi":
@@ -110,7 +120,7 @@ class Vgazer:
                 raise versionCheckError
 
     def CheckVersion(self, software):
-        softwareData = self.configSoftware.GetData()
+        softwareData = self.softwareData.GetData()
         if software not in softwareData:
             raise UnknownSoftware("Unknown software: " + software)
 
@@ -128,7 +138,7 @@ class Vgazer:
 
     def UseInstaller(self, software, installer, verbose,
      fallbackPreinstallList):
-        softwareData = self.configSoftware.GetData()
+        softwareData = self.softwareData.GetData()
         softwarePlatform = softwareData[software]["platform"]
 
         if software in self.installedSoftware:
@@ -154,6 +164,9 @@ class Vgazer:
                 InstallPip(software, installer["package"], verbose)
             elif installer["type"] == "pip3":
                 InstallPip3(software, installer["package"], verbose)
+            elif installer["type"] == "pkg-config":
+                InstallPkgConfig(software, installer["triplet"], self.platform,
+                 verbose)
             elif installer["type"] == "stb":
                 InstallStb(installer["library"], self.platform, verbose)
         except InstallError as installError:
@@ -168,7 +181,7 @@ class Vgazer:
         self.installedSoftware.append(software)
 
     def Install(self, software, verbose = False, fallbackPreinstallList = None):
-        softwareData = self.configSoftware.GetData()
+        softwareData = self.softwareData.GetData()
         if software not in softwareData:
             raise UnknownSoftware("Unknown software: " + software)
 
@@ -190,6 +203,11 @@ class Vgazer:
         else:
             fallback_prereqs = []
 
+        if "postreqs" in project:
+            postreqs = project["postreqs"]
+        else:
+            postreqs = []
+
         for prereq in prereqs:
             prereq = prereq.format(
              triplet=GetGenericTriplet(self.platform["target"]),
@@ -203,6 +221,19 @@ class Vgazer:
         installer = project["installer"]
 
         self.UseInstaller(software, installer, verbose, fallback_prereqs)
+
+        # Resolving circullar dependencies
+        # for example:
+        # Mesa requires libva, libva requires Mesa.
+        # Firstly install libva without mesa support as prereq of Mesa,
+        # then install Mesa, then reinstall libva with Mesa support
+        # Another example - Freetype-Harfbuzz-Freetype
+        if len(postreqs) != 0:
+            for postreq in postreqs:
+                postreq = postreq.format(
+                 triplet=GetGenericTriplet(self.platform["target"]),
+                 arch=self.platform["target"].GetArch())
+                self.Install(postreq, verbose, None)
 
     def InstallList(self, softwareList, verbose = False):
         for software in softwareList:
