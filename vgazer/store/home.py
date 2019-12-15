@@ -4,9 +4,9 @@ from vgazer.platform import GetHideDirectoryPrefix
 from vgazer.store.base import StoreBase
 
 class StoreHome(StoreBase):
-    def __init__(self):
+    def __init__(self, subdirectory=None):
         homeDirPath = GetHomeDirectoryPath();
-        hideDirPrefix = GetHideDirectoryPrefix();
-        super().__init__(os.path.join(homeDirPath,
-         hideDirPrefix + "vgazer"))
+        if subdirectory == None:
+            subdirectory = GetHideDirectoryPrefix() + "vgazer";
+        super().__init__(os.path.join(homeDirPath, subdirectory))
 
