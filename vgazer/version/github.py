@@ -20,7 +20,7 @@ def CheckLastCommit(auth, user, repo):
 
     return "commit on " + date + " " + time
 
-def CheckGithub(auth, user, repo, ignoreReleases):
+def CheckGithub(auth, user, repo, ignoreReleases, ignoredTags):
     if ignoreReleases == True:
         return CheckLastCommit(auth, user, repo)
 
@@ -45,8 +45,15 @@ def CheckGithub(auth, user, repo, ignoreReleases):
          "repo: " + user + "/" + repo
         )
 
+    tagNum = 0
+    for tag in tags:
+        if tag["name"] in ignoredTags:
+            tagNum = tagNum + 1
+        else:
+            break
+
     if len(tags) != 0:
-        return utils.GetVersionFromTag(tags[0]["name"])
+        return utils.GetVersionFromTag(tags[tagNum]["name"])
 
     return CheckLastCommit(auth, user, repo)
 
