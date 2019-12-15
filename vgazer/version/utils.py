@@ -1,5 +1,7 @@
 def GetVersionFromTag(tag):
-    if tag[0] == "v":
+    if "-" in tag:
+        return tag.split("-")[-1]
+    elif tag[0] == "v":
         return tag.split("v")[1]
     return tag
 
