@@ -86,9 +86,9 @@ def GetSoPrefix(platformData):
         raise UnknownOs("Unknown OS: " + targetPlatformData.GetOs())
 
 def GetCc(targetPlatformData):
-    if (targetPlatformData.GetOs() == "debian"
-     and targetPlatformData.GetAbi() == "musl"):
-        return "musl-gcc"
+    #if (targetPlatformData.GetOs() == "debian"
+     #and targetPlatformData.GetAbi() == "musl"):
+        #return "musl-gcc"
     cc = GetTriplet(targetPlatformData) + "-gcc"
     if "i686" in cc:
         if not os.path.isfile(os.path.join("/usr/bin", cc)):
@@ -130,6 +130,44 @@ def GetAr(targetPlatformData):
         return triplet + "-gcc-ar"
     else:
         return "ar"
+
+def GetPkgConfig(targetPlatformData):
+    triplet = GetTriplet(targetPlatformData)
+    if "i686" in triplet:
+        if not os.path.isfile(
+         os.path.join("/usr/bin", triplet + "-pkg-config")
+        ):
+            triplet.replace("i686", "i586")
+    if "i586" in triplet:
+        if not os.path.isfile(
+         os.path.join("/usr/bin", triplet + "-pkg-config")
+        ):
+            triplet.replace("i586", "i486")
+    if "i486" in triplet:
+        if not os.path.isfile(
+         os.path.join("/usr/bin", triplet + "-pkg-config")
+        ):
+            triplet.replace("i486", "i386")
+    if os.path.isfile(os.path.join("/usr/bin", triplet + "-pkg-config")):
+        return triplet + "-pkg-config"
+    else:
+        return "pkg-config"
+
+def GetStrip(targetPlatformData):
+    triplet = GetTriplet(targetPlatformData)
+    if "i686" in triplet:
+        if not os.path.isfile(os.path.join("/usr/bin", triplet + "-strip")):
+            triplet.replace("i686", "i586")
+    if "i586" in triplet:
+        if not os.path.isfile(os.path.join("/usr/bin", triplet + "-strip")):
+            triplet.replace("i586", "i486")
+    if "i486" in triplet:
+        if not os.path.isfile(os.path.join("/usr/bin", triplet + "-strip")):
+            triplet.replace("i486", "i386")
+    if os.path.isfile(os.path.join("/usr/bin", triplet + "-strip")):
+        return triplet + "-strip"
+    else:
+        return "strip"
 
 def GetSoFilename(targetPlatformData, name):
     if Platform.OsIsLinux(targetPlatformData.GetOs()):
