@@ -2,4 +2,4 @@
 /sample_targets.mk
 samples/install_*
 samples/software_versions_*
-install.log
+*.log
