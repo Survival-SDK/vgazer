@@ -9,7 +9,7 @@ class WorkingDir:
 
     def __enter__(self):
         self.savedPath = os.getcwd()
-        print("Entering to directory:", self.newPath)
+        print("VGAZER: Entering to directory:", self.newPath)
         os.chdir(self.newPath)
 
     def __exit__(self, etype, value, traceback):
