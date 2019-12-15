@@ -14,6 +14,12 @@ class StoreBase():
     def GetSubdirectoryPath(self, subdirName):
         return os.path.join(self.baseDirPath, subdirName)
 
+    def GetDirectoryFilePath(self, filename):
+        return os.path.join(self.baseDirPath, filename)
+
+    def GetSubdirectoryFilePath(self, subdirName, filename):
+        return os.path.join(self.baseDirPath, subdirName, filename)
+
     def DirectoryExists(self):
         if os.path.exists(self.baseDirPath):
             if os.path.isdir(self.baseDirPath):
@@ -60,7 +66,7 @@ class StoreBase():
     def ResolveDirectory(self):
         try:
             if not self.DirectoryExists():
-                os.mkdir(self.baseDirPath)
+                os.makedirs(self.baseDirPath)
             return True
         except self.DirNameEngaged:
             return False
@@ -70,7 +76,7 @@ class StoreBase():
         try:
             if not self.SubdirectoryExists(subdirName):
                 subdirPath = os.path.join(self.baseDirPath, subdirName)
-                os.mkdir(subdirPath)
+                os.makedirs(subdirPath)
             return True
         except DirNameEngaged:
             return False
@@ -81,7 +87,7 @@ class StoreBase():
             if self.SubdirectoryExists(subdirName):
                 self.RemoveSubdirectory(subdirName)
             subdirPath = os.path.join(self.baseDirPath, subdirName)
-            os.mkdir(subdirPath)
+            os.makedirs(subdirPath)
             return True
         except DirNameEngaged:
             return False
