@@ -63,10 +63,10 @@ def Install(auth, software, platform, platformData, verbose):
               tarballShortFilename],
              verbose
             )
+        AppendEnvVarItem("PKG_CONFIG_PATH", installPrefix + "/lib/pkgconfig",
+         ":")
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
-            AppendEnvVarItem("PKG_CONFIG_PATH",
-             installPrefix + "/lib/pkgconfig", ":")
             RunCommand(
              ["meson", "_build", "-Dprefix=" + installPrefix,
               "-Dbuildtype=release", "-Ddefault_library=shared",
