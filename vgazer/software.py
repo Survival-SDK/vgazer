@@ -476,6 +476,93 @@ data = {
             },
         ],
     },
+    "fixesproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "fixesproto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "fixesproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-fixes",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-fixes-dev",
+                },
+            },
+        ],
+    },
+    "flex": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "flex",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "flex",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "flex",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "flex",
+                },
+            },
+        ],
+    },
     "freetype": {
         "platform": "target",
         "projects": [
@@ -717,7 +804,7 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "prereqs": [
@@ -725,6 +812,8 @@ data = {
                     "{triplet}-gcc",
                     "make",
                     "xlib",
+                    "opengl",
+                    #"libva",
                 ],
                 "checker": {
                     "type": "sourceforge",
@@ -1076,6 +1165,60 @@ data = {
             },
         ],
     },
+    "i686-linux-gnu-pkg-config": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "i686-linux-gnu",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "i686-linux-gnu",
+                },
+            },
+            {
+                "arch": ["i686"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "pkg-config",
+                },
+            },
+        ],
+    },
     "i686-linux-musl-g++": {
         "platform": "host",
         "projects": [
@@ -1116,6 +1259,61 @@ data = {
                 "installer": {
                     "type": "musl-cross-make",
                     "languages": "c,c++",
+                    "triplet": "i686-linux-musl",
+                },
+            },
+        ],
+    },
+    "i686-linux-musl-pkg-config": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "i686-linux-musl",
+                },
+            },
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "pkgconf",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "pkg-config",
                     "triplet": "i686-linux-musl",
                 },
             },
@@ -1523,7 +1721,7 @@ data = {
                     "wget",
                     "{triplet}-g++",
                     "make",
-                    "pkg-config",
+                    "{triplet}-pkg-config",
                     "cmake",
                     "xcb",
                 ],
@@ -1535,6 +1733,62 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libclipboard",
+                },
+            },
+        ],
+    },
+    "libdrm": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "meson",
+                    "xlib",
+                    "libpciaccess",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "libdrm",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libdrm",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libdrm-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libdrm-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libdrm",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libdrm-dev",
                 },
             },
         ],
@@ -1939,6 +2193,64 @@ data = {
             },
         ],
     },
+    "libpciaccess": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "autoconf",
+                    "libtool",
+                    "{triplet}-pkg-config",
+                    "{triplet}-gcc",
+                    "make",
+                    "xorg-macros",
+                ],
+                "checker": {
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "743",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libpciaccess",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libpciaccess-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libpciaccess-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libpciaccess",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libpciaccess-dev",
+                },
+            },
+        ],
+    },
     "libpng": {
         "platform": "target",
         "projects": [
@@ -2069,6 +2381,67 @@ data = {
             },
         ],
     },
+    "libva": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "autoconf",
+                    "libtool",
+                    "make",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "xlib",
+                    "libxext",
+                    "libxfixes",
+                    "libdrm",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "intel",
+                    "repo": "libva",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libva",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libva-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libva-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libva",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libva-dev",
+                },
+            },
+        ],
+    },
     "libvorbis": {
         "platform": "target",
         "projects": [
@@ -2161,6 +2534,144 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libwebp-dev",
+                },
+            },
+        ],
+    },
+    "libxext": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "autoconf",
+                    "libtool",
+                    "make",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "xorg-macros",
+                    "xlib",
+                    "xproto",
+                    "xextproto",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "freedesktop",
+                    "repo": "libXext",
+                    "ignoredTags": [
+                        "xo-6_7_0",
+                        "xf86-012804-2330",
+                        "xf86-4_4_99_1",
+                        "xf86-4_4_0",
+                        "xf86-4_3_99_903",
+                        "xf86-4_3_99_903_special",
+                        "xf86-4_3_99_902",
+                        "xf86-4_3_99_901",
+                        "xf86-4_3_99_16",
+                        "xf86-4_3_0_1",
+                        "sco_port_update-base",
+                        "rel-0-6-1",
+                        "lg3d-rel-0-7-0",
+                    ],
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libxext",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libxext-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libxext-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libxext",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libxext-dev",
+                },
+            },
+        ],
+    },
+    "libxfixes": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "autoconf",
+                    "libtool",
+                    "{triplet}-pkg-config",
+                    "{triplet}-gcc",
+                    "make",
+                    "xorg-macros",
+                    "xlib",
+                    "xproto",
+                    "fixesproto",
+                    "xextproto",
+                ],
+                "checker": {
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "715",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libxfixes",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libxfixes-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libxfixes-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": " libxfixes",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": " libxfixes-dev",
                 },
             },
         ],
@@ -2573,6 +3084,69 @@ data = {
             },
         ],
     },
+    "opengl": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["linux"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "meson",
+                    "python3-mako",
+                    "flex",
+                    "bison",
+                    "zlib",
+                    "libdrm",
+                    "libva",
+                ],
+                "postreqs": [
+                    "libva",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "mesa",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "mesa",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "mesa-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "mesa-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "mesa",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libgl1-mesa-dev",
+                },
+            },
+        ],
+    },
     "p7": {
         "platform": "target",
         "projects": [
@@ -2937,6 +3511,54 @@ data = {
                 "installer": {
                     "type": "apk",
                     "package": "py2-yaml",
+                },
+            },
+        ],
+    },
+    "python3-mako": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "pypi",
+                    "package": "Mako",
+                },
+                "installer": {
+                    "type": "pip3",
+                    "package": "Mako",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "py3-mako",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "py3-mako",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "mako",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "python3-mako",
                 },
             },
         ],
@@ -3655,6 +4277,60 @@ data = {
             },
         ],
     },
+    "x86_64-linux-gnu-pkg-config": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "x86_64-linux-gnu",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "x86_64-linux-gnu",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "pkg-config",
+                },
+            },
+        ],
+    },
     "x86_64-linux-musl-g++": {
         "platform": "host",
         "projects": [
@@ -3729,6 +4405,61 @@ data = {
                 "installer": {
                     "type": "apk",
                     "package": "gcc",
+                },
+            },
+        ],
+    },
+    "x86_64-linux-musl-pkg-config": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "x86_64-linux-musl",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "pkgconf",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "x86_64-linux-musl",
                 },
             },
         ],
@@ -3813,7 +4544,7 @@ data = {
                     "wget",
                     "{triplet}-gcc",
                     "make",
-                    "pkg-config",
+                    "{triplet}-pkg-config",
                     "xproto"
                 ],
                 "checker": {
@@ -3868,7 +4599,7 @@ data = {
                     "wget",
                     "{triplet}-gcc",
                     "make",
-                    "pkg-config",
+                    "{triplet}-pkg-config",
                     "xcb-proto",
                     "pthread-stubs",
                     "xau",
@@ -4030,7 +4761,7 @@ data = {
                     "wget",
                     "{triplet}-gcc",
                     "make",
-                    "pkg-config",
+                    "{triplet}-pkg-config",
                     "xproto",
                     "xextproto",
                     "xtrans",
@@ -4074,6 +4805,60 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libx11-dev",
+                },
+            },
+        ],
+    },
+    "xorg-macros": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "autoconf",
+                    "make",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "freedesktop",
+                    "repo": "xorg-macros",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xorg-macros",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "util-macros",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "util-macros",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xutils-dev",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "xutils-dev",
                 },
             },
         ],
@@ -4234,7 +5019,7 @@ data = {
     },
 }
 
-class ConfigSoftware:
+class SoftwareData:
     def __init__(self, customData = {}):
         self.data = {**data, **customData}
 
