@@ -2917,6 +2917,40 @@ data = {
             },
         ],
     },
+    "llvm8": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["v3.10", "edge"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "llvm8",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "llvm8",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "llvm-toolchain-8",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "llvm-8",
+                },
+            },
+        ],
+    },
     "lua": {
         "platform": "target",
         "projects": [
@@ -3279,7 +3313,7 @@ data = {
                     "libdrm",
                     "libva",
                     "libvdpau",
-                    "llvm",
+                    "llvm8",
                     "wayland-protocols",
                 ],
                 "postreqs": [
