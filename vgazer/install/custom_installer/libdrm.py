@@ -88,7 +88,8 @@ def Install(auth, software, platform, platformData, verbose):
              verbose)
             RunCommand(["ninja"], verbose)
             RunCommand(["ninja", "install"], verbose)
-            # Meson sucks. I am angry
+            # Meson does not install ".pc" files to properly dirs and it can not
+            # be fixed
             RunCommand(["mkdir", "-p", installPrefix + "/lib/pkgconfig"],
              verbose)
             RunCommand(
