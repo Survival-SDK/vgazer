@@ -148,7 +148,8 @@ class Vgazer:
             if installer["type"] == "apk":
                 InstallApk(software, installer["package"], verbose)
             elif installer["type"] == "apt":
-                InstallApt(software, installer["package"], verbose)
+                InstallApt(software, installer["package"],
+                 self.platform["host"], verbose)
             elif installer["type"] == "custom":
                 self.installCustom.Install(self.auth, software,
                  installer["name"], softwarePlatform, self.platform, verbose)
