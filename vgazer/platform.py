@@ -169,6 +169,17 @@ def GetStrip(targetPlatformData):
     else:
         return "strip"
 
+def GetLlvmConfig(targetPlatformData):
+    if os.path.isfile("/usr/bin/llvm-config"):
+        return "/usr/bin/llvm-config"
+
+    for llvmVersion in range(100)[::-1]:
+        llvmFilename = "/usr/bin/llvm-config-" + str(llvmVersion)
+        if os.path.isfile(llvmFilename):
+            return llvmFilename
+
+    return "llvm-config"
+
 def GetSoFilename(targetPlatformData, name):
     if Platform.OsIsLinux(targetPlatformData.GetOs()):
         return "lib" + name + ".so"
