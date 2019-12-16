@@ -403,6 +403,59 @@ data = {
             },
         ],
     },
+    "dri2proto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "dri2proto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "dri2proto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-dri2",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dri2-dev",
+                },
+            },
+        ],
+    },
     "duktape": {
         "platform": "target",
         "projects": [
@@ -2442,6 +2495,64 @@ data = {
             },
         ],
     },
+    "libvdpau": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-pkg-config",
+                    "{triplet}-gcc",
+                    "meson",
+                    "dri2proto",
+                    "libxext",
+                    "xlib",
+                ],
+                "checker": {
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "887",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libvdpau",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libvdpau-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libvdpau-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": " libvdpau",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": " libvdpau-dev",
+                },
+            },
+        ],
+    },
     "libvorbis": {
         "platform": "target",
         "projects": [
@@ -2738,6 +2849,70 @@ data = {
                 },
                 "installer": {
                     "type": "not_needed",
+                },
+            },
+        ],
+    },
+    "llvm": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["v3.9"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "llvm5",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "llvm5",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["v3.10"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "llvm8",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "llvm8",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["edge"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "llvm9",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "llvm9",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "llvm-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "llvm",
                 },
             },
         ],
@@ -3103,6 +3278,9 @@ data = {
                     "zlib",
                     "libdrm",
                     "libva",
+                    "libvdpau",
+                    "llvm",
+                    "wayland-protocols",
                 ],
                 "postreqs": [
                     "libva",
@@ -4139,6 +4317,96 @@ data = {
             },
         ],
     },
+    "wayland-protocols": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-pkg-config",
+                    "autoconf",
+                    "make",
+                    "wayland-scanner",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "wayland-project",
+                    "repo": "wayland-protocols",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "wayland-protocols",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "wayland-protocols",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "wayland-protocols",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "wayland-protocols",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "wayland-protocols",
+                },
+            },
+        ],
+    },
+    "wayland-scanner": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "wayland-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "wayland-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "wayland",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libwayland-bin",
+                },
+            },
+        ],
+    },
     "wget": {
         "platform": "host",
         "projects": [
@@ -4153,7 +4421,8 @@ data = {
                     "package": "wget",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "pkg-config",
+                    "triplet": "x86_64-linux-gnu",
                 },
             },
             {
