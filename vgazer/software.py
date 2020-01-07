@@ -1846,6 +1846,61 @@ data = {
             },
         ],
     },
+    "libelf": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "zlib",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "elfutils",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libelf",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "elfutils-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "elfutils-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "elfutils",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libelf-dev",
+                },
+            },
+        ],
+    },
     "libffi": {
         "platform": "target",
         "projects": [
@@ -1854,6 +1909,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "make",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "libffi",
@@ -2058,9 +2119,34 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "sourceforge",
+                    "project": "lzmautils",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "liblzma",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["windows"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "libintl",
+                ],
                 "checker": {
                     "type": "sourceforge",
                     "project": "lzmautils",
@@ -2787,6 +2873,61 @@ data = {
             },
         ],
     },
+    "libxml2": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "zlib",
+                    "liblzma",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "libxml2",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libxml2",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libxml2",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libxml2",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libxml2",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libxml2-dev",
+                },
+            },
+        ],
+    },
     "linux-headers-i686": {
         "platform": "target",
         "projects": [
@@ -2995,6 +3136,40 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "liblua5.3-dev",
+                },
+            },
+        ],
+    },
+    "m4": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "m4",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "m4",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "m4",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "m4",
                 },
             },
         ],
@@ -3315,6 +3490,7 @@ data = {
                     "libvdpau",
                     "llvm8",
                     "wayland-protocols",
+                    "libelf",
                 ],
                 "postreqs": [
                     "libva",
@@ -4351,6 +4527,63 @@ data = {
             },
         ],
     },
+    "wayland-egl-backend": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "libffi",
+                    "libxml2",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "wayland",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "wayland",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "wayland-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "wayland-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "wayland",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libwayland-egl-backend-dev",
+                },
+            },
+        ],
+    },
     "wayland-protocols": {
         "platform": "target",
         "projects": [
@@ -4436,7 +4669,7 @@ data = {
                 },
                 "installer": {
                     "type": "apt",
-                    "package": "libwayland-bin",
+                    "package": ["libwayland-bin", "libwayland-dev"],
                 },
             },
         ],
@@ -5280,6 +5513,11 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "zlib",
