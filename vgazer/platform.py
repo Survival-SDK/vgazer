@@ -86,9 +86,6 @@ def GetSoPrefix(platformData):
         raise UnknownOs("Unknown OS: " + targetPlatformData.GetOs())
 
 def GetCc(targetPlatformData):
-    #if (targetPlatformData.GetOs() == "debian"
-     #and targetPlatformData.GetAbi() == "musl"):
-        #return "musl-gcc"
     cc = GetTriplet(targetPlatformData) + "-gcc"
     if "i686" in cc:
         if not os.path.isfile(os.path.join("/usr/bin", cc)):
