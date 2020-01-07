@@ -2,7 +2,8 @@ from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 
-def InstallAptFromBackport(software, package, hostPlatform, verbose):
+def InstallAptFromBackport(software, package, hostPlatform,
+ showInstalledMessage, verbose):
     try:
         RunCommand(
          ["apt-get", "-t", hostPlatform.GetOsVersion() + "-backports",
@@ -12,9 +13,10 @@ def InstallAptFromBackport(software, package, hostPlatform, verbose):
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
 
-    print("VGAZER:", software, "installed")
+    if showInstalledMessage:
+        print("VGAZER:", software, "installed")
 
-def InstallApt(software, package, hostPlatform, verbose):
+def InstallApt(software, package, hostPlatform, showInstalledMessage, verbose):
     try:
         RunCommand(["apt-get", "install", "-y", package], verbose)
     except CommandError as e:
@@ -24,4 +26,5 @@ def InstallApt(software, package, hostPlatform, verbose):
             print("VGAZER: Unable to install", software)
             raise InstallError(software + " not installed")
 
-    print("VGAZER:", software, "installed")
+    if showInstalledMessage:
+        print("VGAZER:", software, "installed")
