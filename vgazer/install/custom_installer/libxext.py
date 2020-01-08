@@ -7,11 +7,13 @@ from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
 from vgazer.github_common   import GithubCheckApiRateLimitExceeded
 from vgazer.platform        import GetInstallPrefix
+from vgazer.platform        import GetTriplet
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
+    targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -64,7 +66,8 @@ def Install(auth, software, platform, platformData, verbose):
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./autogen.sh", "--prefix=" + installPrefix,
+             ["./autogen.sh", "--host=" + targetTriplet,
+              "--prefix=" + installPrefix,
               "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig"],
              verbose)
             RunCommand(["make"], verbose)
