@@ -381,6 +381,59 @@ data = {
             },
         ],
     },
+    "damageproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "damageproto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "damageproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-damage",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-damage-dev",
+                },
+            },
+        ],
+    },
     "dr_wav": {
         "platform": "target",
         "projects": [
@@ -866,7 +919,6 @@ data = {
                     "make",
                     "xlib",
                     "opengl",
-                    #"libva",
                 ],
                 "checker": {
                     "type": "sourceforge",
@@ -952,6 +1004,93 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libglib2.0-dev",
+                },
+            },
+        ],
+    },
+    "glproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "autoconf",
+                    "make",
+                    "xorg-macros",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "freedesktop",
+                    "repo": "glproto",
+                    "ignoredTags": [
+                        "xo-6_7_0",
+                        "xf86-012804-2330",
+                        "xf86-4_4_99_1",
+                        "xf86-4_4_0",
+                        "xf86-4_3_99_903",
+                        "xf86-4_3_99_903_special",
+                        "xf86-4_3_99_902",
+                        "xf86-4_3_99_901",
+                        "xf86-4_3_99_16",
+                        "xf86-4_3_0_1",
+                        "sco_port_update-base",
+                        "rel-0-6-1",
+                        "lg3d-rel-0-7-0",
+                        "lg3d-rel-0-6-2",
+                        "lg3d-base",
+                    ],
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "glproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["stretch"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-gl",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-gl-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-gl-dev",
                 },
             },
         ],
@@ -3491,6 +3630,10 @@ data = {
                     "llvm8",
                     "wayland-protocols",
                     "libelf",
+                    "wayland-egl-backend",
+                    "xdamage",
+                    "xshmfence",
+                    "glproto",
                 ],
                 "postreqs": [
                     "libva",
@@ -5232,6 +5375,66 @@ data = {
             },
         ],
     },
+    "xdamage": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "xorg-macros",
+                    "damageproto",
+                    "libxfixes",
+                    "fixesproto",
+                    "xextproto",
+                    "xlib",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "xdamage",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xdamage",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libxdamage-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libxdamage-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libxdamage",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libxdamage-dev",
+                },
+            },
+        ],
+    },
     "xextproto": {
         "platform": "target",
         "projects": [
@@ -5448,6 +5651,62 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-dev",
+                },
+            },
+        ],
+    },
+    "xshmfence": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "xorg-macros",
+                    "xproto",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "xshmfence",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xshmfence",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libxshmfence-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libxshmfence-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libxshmfence",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libxshmfence-dev",
                 },
             },
         ],
