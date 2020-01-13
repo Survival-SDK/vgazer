@@ -239,6 +239,7 @@ class Vgazer:
                 postreq = postreq.format(
                  triplet=GetGenericTriplet(self.platform["target"]),
                  arch=self.platform["target"].GetArch())
+                self.installedSoftware.remove(postreq)
                 self.Install(postreq, verbose, None)
 
     def InstallList(self, softwareList, verbose = False):
