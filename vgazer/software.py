@@ -2496,6 +2496,10 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libpciaccess",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "libpciaccess-github",
+                    }
                 },
             },
             {
@@ -2573,6 +2577,50 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libpng-dev",
+                },
+            },
+        ],
+    },
+    "libsensors": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "{triplet}-gcc",
+                    "flex",
+                    "bison",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "lm-sensors",
+                    "repo": "lm-sensors",
+                    "ignoredTags": [
+                        "i2c-2-8-km2",
+                    ],
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libsensors",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "lm-sensors",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libsensors4-dev",
                 },
             },
         ],
@@ -3063,6 +3111,133 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libxml2-dev",
+                },
+            },
+        ],
+    },
+    "libxrandr": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "autoconf",
+                    "libtool",
+                    "{triplet}-pkg-config",
+                    "{triplet}-gcc",
+                    "make",
+                    "xorg-macros",
+                    "xlib",
+                    "randrproto",
+                    "libxext",
+                    "xextproto",
+                    "xrender",
+                    "renderproto",
+                ],
+                "checker": {
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "728",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libxrandr",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libxrandr-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libxrandr-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libxrandr",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libxrandr-dev",
+                },
+            },
+        ],
+    },
+    "libxxf86vm": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "autoconf",
+                    "libtool",
+                    "{triplet}-pkg-config",
+                    "{triplet}-gcc",
+                    "make",
+                    "xorg-macros",
+                    "xproto",
+                    "xlib",
+                    "xextproto",
+                    "libxext",
+                    "xf86vidmodeproto",
+                ],
+                "checker": {
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "738",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libxxf86vm",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libxxf86vm-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libxxf86vm-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libxxf86vm",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libxxf86vm-dev",
                 },
             },
         ],
@@ -3623,17 +3798,21 @@ data = {
                     "python3-mako",
                     "flex",
                     "bison",
+                    "llvm8",
+                    "gettext",
                     "zlib",
                     "libdrm",
                     "libva",
                     "libvdpau",
-                    "llvm8",
                     "wayland-protocols",
                     "libelf",
                     "wayland-egl-backend",
                     "xdamage",
                     "xshmfence",
                     "glproto",
+                    "libxxf86vm",
+                    "libxrandr",
+                    "libsensors",
                 ],
                 "postreqs": [
                     "libva",
@@ -4090,6 +4269,140 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "python3-mako",
+                },
+            },
+        ],
+    },
+    "randrproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "randrproto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "randrproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["stretch"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-randr",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-randr-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-randr-dev",
+                },
+            },
+        ],
+    },
+    "renderproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "renderproto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "renderproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["stretch"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-render",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-render-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-render-dev",
                 },
             },
         ],
@@ -5488,6 +5801,73 @@ data = {
             },
         ],
     },
+    "xf86vidmodeproto": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "xf86vidmodeproto",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xf86vidmodeproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "xorgproto",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "xorgproto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["stretch"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-xf86vidmode",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-xf86vidmode-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-xf86vidmode-dev",
+                },
+            },
+        ],
+    },
     "xlib": {
         "platform": "target",
         "projects": [
@@ -5651,6 +6031,80 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-dev",
+                },
+            },
+        ],
+    },
+    "xrender": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "autoconf",
+                    "libtool",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "xorg-macros",
+                    "xlib",
+                    "renderproto",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "freedesktop",
+                    "repo": "xorg-libXrender",
+                    "ignoredTags": [
+                        "xo-6_7_0",
+                        "xf86-012804-2330",
+                        "xf86-4_4_99_1",
+                        "xf86-4_4_0",
+                        "xf86-4_3_99_903",
+                        "xf86-4_3_99_903_special",
+                        "xf86-4_3_99_902",
+                        "xf86-4_3_99_901",
+                        "xf86-4_3_99_16",
+                        "xf86-4_3_0_1",
+                        "sco_port_update-base",
+                        "rel-0-6-1",
+                    ],
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xrender",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "libxrender-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "libxrender-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libxrender",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libxrender-dev",
                 },
             },
         ],
