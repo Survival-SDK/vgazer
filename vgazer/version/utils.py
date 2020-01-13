@@ -1,6 +1,13 @@
+import re
+
 def GetVersionFromTag(tag):
     if "-" in tag:
-        return tag.split("-")[-1]
+        # if tag is something like "V3-6-0"
+        if (tag.lower()[0] == "v"
+         and re.search('[a-zA-Z]', tag.lower().split("v")[1]) is None):
+            return tag.lower().split("v")[1].replace("-", ".")
+        else:
+            return tag.split("-")[-1]
     elif tag[0] == "v":
         return tag.split("v")[1]
     return tag
