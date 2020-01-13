@@ -7,6 +7,7 @@ from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.exceptions  import TarballLost
 from vgazer.platform    import GetInstallPrefix
+from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
@@ -22,6 +23,7 @@ def GetTarballUrl():
 
 def Install(auth, software, platform, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
+    targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -40,7 +42,8 @@ def Install(auth, software, platform, platformData, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./configure", "--prefix=" + installPrefix,
+             ["./configure", "--host=" + targetTriplet,
+              "--prefix=" + installPrefix,
               "CPPFLAGS=-I" + installPrefix + "/include",
               "LDFLAGS=-L" + installPrefix + "/lib"],
              verbose)
