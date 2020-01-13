@@ -50,28 +50,15 @@ def Install(auth, software, platform, platformData, verbose):
         with WorkingDir(buildDir):
             RunCommand(
              ["meson", "--prefix=" + installPrefix,
-              "--cross-file",
-              configMeson.GetCrossFileName(), "-Ddocumentation=false"],
+              "--libdir=" + installPrefix + "/lib",
+              "--cross-file", configMeson.GetCrossFileName(),
+              "-Ddocumentation=false"],
              verbose)
             RunCommand(
              ["ln", "-s", installPrefix + "/include/X11", "../include/X11"],
              verbose)
             RunCommand(["ninja"], verbose)
             RunCommand(["ninja", "install"], verbose)
-            # Meson does not install ".pc" files to properly dirs and it can not
-            # be fixed
-            RunCommand(["mkdir", "-p", installPrefix + "/lib/pkgconfig"],
-             verbose)
-            RunCommand(
-             [
-              "sh",
-              "-c",
-              "mv " + installPrefix + "/lib/"
-               + GetTriplet(platformData["target"]) + "/pkgconfig/* "
-               + installPrefix + "/lib/pkgconfig"
-             ],
-             verbose
-            )
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
