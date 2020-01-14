@@ -25,7 +25,7 @@ def GetArchiveUrl(auth):
         if link["title"] == "P7 library":
             return "http://baical.net" + link["href"]
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     soPrefix = GetSoPrefix(platformData)
     ar = GetAr(platformData["target"])

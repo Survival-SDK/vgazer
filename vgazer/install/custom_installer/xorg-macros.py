@@ -10,7 +10,7 @@ from vgazer.github_common   import GithubCheckApiRateLimitExceeded
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)

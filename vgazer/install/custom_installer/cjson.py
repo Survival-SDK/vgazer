@@ -13,7 +13,7 @@ from vgazer.platform        import GetInstallPrefix
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     cc = GetCc(platformData["target"])
 

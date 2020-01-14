@@ -21,7 +21,7 @@ def GetTarballUrl(auth):
 
     return "https://icculus.org/physfs/downloads/" + parsedHtml.find_all("a")[0]["href"]
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     cc = GetCc(platformData["target"])
     cxx = GetCxx(platformData["target"])

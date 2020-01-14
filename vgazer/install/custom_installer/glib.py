@@ -42,7 +42,7 @@ def GetTarballUrl():
 
     raise TarballLost("Unable to find tarball of glib's last version")
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()

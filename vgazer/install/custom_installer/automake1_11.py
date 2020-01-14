@@ -37,7 +37,7 @@ def GetTarballUrl():
     else:
         raise TarballLost("Tarball url not found")
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     hostTriplet = GetTriplet(platformData["host"])
 
     storeTemp = StoreTemp()

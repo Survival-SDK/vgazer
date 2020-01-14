@@ -26,7 +26,7 @@ def GetTarballUrl():
     raise TarballLost(
      "Unable to find tarball with last stable release of portaudio")
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()

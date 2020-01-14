@@ -35,7 +35,7 @@ def GetMinorVersionLink():
                 lastVersionLinkText = link["href"]
     return "https://cmocka.org/files/" + lastVersionLinkText
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     cc = GetCc(platformData["target"])
 

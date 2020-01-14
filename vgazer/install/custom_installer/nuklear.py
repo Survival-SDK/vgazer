@@ -5,7 +5,7 @@ from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.platform    import GetInstallPrefix
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
     url = "https://raw.githubusercontent.com/vurtun/nuklear/master/nuklear.h"

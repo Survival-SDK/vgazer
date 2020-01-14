@@ -21,7 +21,7 @@ def GetTarballUrl():
         if link["href"].endswith("tar.gz"):
             return link["href"]
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])
 

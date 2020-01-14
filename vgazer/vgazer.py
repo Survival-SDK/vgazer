@@ -160,7 +160,8 @@ class Vgazer:
                      self.platform["host"], True, verbose)
             elif installer["type"] == "custom":
                 self.installCustom.Install(self.auth, software,
-                 installer["name"], softwarePlatform, self.platform, verbose)
+                 installer["name"], softwarePlatform, self.platform,
+                 self.mirrors, verbose)
             elif installer["type"] == "gcc-src":
                 InstallGccSrc(self.auth["base"], software,
                  installer["languages"], installer["triplet"], self.platform,

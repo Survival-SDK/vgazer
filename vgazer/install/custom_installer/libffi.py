@@ -17,7 +17,7 @@ def GetTarballUrl():
 
     return parsedHtml.a["href"]
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()

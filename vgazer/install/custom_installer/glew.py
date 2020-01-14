@@ -11,7 +11,7 @@ from vgazer.platform    import GetInstallPrefix
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
     cc = GetCc(platformData["target"])
@@ -38,23 +38,23 @@ def Install(auth, software, platform, platformData, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-4])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["make", "glew.lib", "CC=" + cc, "AR=" + ar,
-              "CFLAGS.EXTRA=-I" + installPrefix + "/include",
+             ["make", "glew.lib", "CC=" + cc, "LD=" + cc, "AR=" + ar,
+              "CFLAGS.EXTRA=-I" + installPrefix + "/include -fPIC",
               "LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],
              verbose)
-            RunCommand(
-             ["make", "glew.lib.mx", "CC=" + cc, "AR=" + ar,
-              "CFLAGS.EXTRA=-I" + installPrefix + "/include",
-              "LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],
-             verbose)
+            #RunCommand(
+             #["make", "glew.lib.mx", "CC=" + cc, "LD=" + cc, "AR=" + ar,
+              #"CFLAGS.EXTRA=-I" + installPrefix + "/include -fPIC",
+              #"LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],
+             #verbose)
             RunCommand(
              ["make", "install", "GLEW_PREFIX=" + installPrefix,
               "GLEW_DEST=" + installPrefix],
              verbose)
-            RunCommand(
-             ["make", "install.mx", "GLEW_PREFIX=" + installPrefix,
-              "GLEW_DEST=" + installPrefix],
-             verbose)
+            #RunCommand(
+             #["make", "install.mx", "GLEW_PREFIX=" + installPrefix,
+              #"GLEW_DEST=" + installPrefix],
+             #verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")

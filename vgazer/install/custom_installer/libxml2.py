@@ -20,7 +20,7 @@ def GetTarballUrl():
 
     return "ftp://xmlsoft.org/libxml2/libxml2-" + version + ".tar.gz"
 
-def Install(auth, software, platform, platformData, verbose):
+def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])
 
