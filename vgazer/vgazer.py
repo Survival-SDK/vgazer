@@ -16,6 +16,7 @@ from vgazer.install.pip3            import InstallPip3
 from vgazer.install.pkg_config      import InstallPkgConfig
 from vgazer.install.stb             import InstallStb
 from vgazer.mirrors.gnu             import MirrorsGnu
+from vgazer.mirrors.sourceforge     import MirrorsSourceforge
 from vgazer.platform                import GetGenericTriplet
 from vgazer.platform                import Platform
 from vgazer.version.custom          import VersionCustom
@@ -42,7 +43,8 @@ class Vgazer:
             self.versionCustom = VersionCustom(self.auth["base"],
              customCheckers)
             self.mirrors = {
-                "gnu": MirrorsGnu()
+                "gnu": MirrorsGnu(),
+                "sourceforge": MirrorsSourceforge()
             }
             self.installCustom = InstallCustom(customInstallers)
             self.installedSoftware = []
@@ -88,7 +90,8 @@ class Vgazer:
                  checker["repo"], checker["package"])
             elif checker["type"] == "debian":
                 return CheckDebian(self.auth["base"],
-                 self.platform[softwarePlatform].GetOsVersion(), checker["source"])
+                 self.platform[softwarePlatform].GetOsVersion(),
+                 checker["source"])
             elif checker["type"] == "gcc-src":
                 return CheckGccSrc(self.auth["base"])
             elif checker["type"] == "github":
