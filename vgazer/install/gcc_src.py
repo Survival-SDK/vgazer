@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
-from vgazer.exceptions  import NoSuitableMirrors
+#from vgazer.exceptions  import NoSuitableMirrors
 from vgazer.exceptions  import UnknownTargetArch
 from vgazer.platform    import GetFilesystemType
 from vgazer.store.temp  import StoreTemp
@@ -349,38 +349,38 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
     gnuWgetMirrorsManager = mirrorsGnu.CreateMirrorsManager(
      ["https", "http", "ftp"])
 
-    try:
-        binutilsTarballSuburl = GetLastBinutilsSuburl(auth,
-         gnuWebMirrorsManager)
-        binutilsTarballShortFilename = binutilsTarballSuburl.split("/")[-1]
-        binutilsExtractedDir = binutilsTarballShortFilename[0:-7]
-        gccTarballSuburl = GetLastGccSuburl(auth, gnuWebMirrorsManager)
-        gccTarballShortFilename = gccTarballSuburl.split("/")[-1]
-        gccExtractedDir = gccTarballShortFilename[0:-7]
-        kernelTarballUrl = GetLastKernelUrl(auth)
-        kernelTarballShortFilename = kernelTarballUrl.split("/")[-1]
-        kernelExtractedDir = kernelTarballShortFilename[0:-7]
-        glibcTarballSuburl = GetLastGlibcSuburl(auth, gnuWebMirrorsManager)
-        glibcTarballShortFilename = glibcTarballSuburl.split("/")[-1]
-        glibcExtractedDir = glibcTarballShortFilename[0:-7]
-        mpfrTarballSuburl = GetLastMpfrSuburl(auth, gnuWebMirrorsManager)
-        mpfrTarballShortFilename = mpfrTarballSuburl.split("/")[-1]
-        mpfrExtractedDir = mpfrTarballShortFilename[0:-7]
-        gmpTarballSuburl = GetLastGmpSuburl(auth, gnuWebMirrorsManager)
-        gmpTarballShortFilename = gmpTarballSuburl.split("/")[-1]
-        gmpExtractedDir = gmpTarballShortFilename[0:-8]
-        mpcTarballSuburl = GetLastMpcSuburl(auth, gnuWebMirrorsManager)
-        mpcTarballShortFilename = mpcTarballSuburl.split("/")[-1]
-        mpcExtractedDir = mpcTarballShortFilename[0:-7]
-        islTarballUrl = GetLastIslUrl(auth)
-        islTarballShortFilename = islTarballUrl.split("/")[-1]
-        islExtractedDir = islTarballShortFilename[0:-8]
-        cloogTarballUrl = GetLastCloogUrl(auth)
-        cloogTarballShortFilename = cloogTarballUrl.split("/")[-1]
-        cloogExtractedDir = cloogTarballShortFilename[0:-7]
-    except NoSuitableMirrors:
-        print("Unable to install", software)
-        raise InstallError(software + " not installed")
+    #try:
+    binutilsTarballSuburl = GetLastBinutilsSuburl(auth,
+     gnuWebMirrorsManager)
+    binutilsTarballShortFilename = binutilsTarballSuburl.split("/")[-1]
+    binutilsExtractedDir = binutilsTarballShortFilename[0:-7]
+    gccTarballSuburl = GetLastGccSuburl(auth, gnuWebMirrorsManager)
+    gccTarballShortFilename = gccTarballSuburl.split("/")[-1]
+    gccExtractedDir = gccTarballShortFilename[0:-7]
+    kernelTarballUrl = GetLastKernelUrl(auth)
+    kernelTarballShortFilename = kernelTarballUrl.split("/")[-1]
+    kernelExtractedDir = kernelTarballShortFilename[0:-7]
+    glibcTarballSuburl = GetLastGlibcSuburl(auth, gnuWebMirrorsManager)
+    glibcTarballShortFilename = glibcTarballSuburl.split("/")[-1]
+    glibcExtractedDir = glibcTarballShortFilename[0:-7]
+    mpfrTarballSuburl = GetLastMpfrSuburl(auth, gnuWebMirrorsManager)
+    mpfrTarballShortFilename = mpfrTarballSuburl.split("/")[-1]
+    mpfrExtractedDir = mpfrTarballShortFilename[0:-7]
+    gmpTarballSuburl = GetLastGmpSuburl(auth, gnuWebMirrorsManager)
+    gmpTarballShortFilename = gmpTarballSuburl.split("/")[-1]
+    gmpExtractedDir = gmpTarballShortFilename[0:-8]
+    mpcTarballSuburl = GetLastMpcSuburl(auth, gnuWebMirrorsManager)
+    mpcTarballShortFilename = mpcTarballSuburl.split("/")[-1]
+    mpcExtractedDir = mpcTarballShortFilename[0:-7]
+    islTarballUrl = GetLastIslUrl(auth)
+    islTarballShortFilename = islTarballUrl.split("/")[-1]
+    islExtractedDir = islTarballShortFilename[0:-8]
+    cloogTarballUrl = GetLastCloogUrl(auth)
+    cloogTarballShortFilename = cloogTarballUrl.split("/")[-1]
+    cloogExtractedDir = cloogTarballShortFilename[0:-7]
+    #except NoSuitableMirrors:
+        #print("Unable to install", software)
+        #raise InstallError(software + " not installed")
 
     try:
         with WorkingDir(tempPath):
