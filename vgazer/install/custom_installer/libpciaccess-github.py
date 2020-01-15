@@ -19,10 +19,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    releases = auth["github"].GetJson(
+    tags = auth["github"].GetJson(
      "https://api.github.com/repos/freedesktop/xorg-libpciaccess/tags")
 
-    if GithubCheckApiRateLimitExceeded(releases):
+    if GithubCheckApiRateLimitExceeded(tags):
         raise GithubApiRateLimitExceeded(
          "Github API rate limit reached while searching last version of "
          "repo: freedesktop/xorg-libpciaccess"
@@ -41,7 +41,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     tarballShortFilename = tarballUrl.split("/")[-1]
 
     try:
-        RunCommand(["wget", "-P", "./", tarballUrl], verbose)
+        with WorkingDir(tempPath):
+            RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
              ["tar", "--verbose", "--extract", "--gzip", "--file",
               tarballShortFilename],
@@ -49,8 +50,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             output = GetCommandOutputUtf8(
              ["tar", "--list", "--file", tarballShortFilename]
             )
-        extractedDir = os.path.join(tempPath,
-         output.splitlines()[0].split("/")[0])
+            extractedDir = os.path.join(tempPath,
+             output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
              ["./autogen.sh", "--host=" + targetTriplet,
