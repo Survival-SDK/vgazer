@@ -76,11 +76,13 @@ def GetMirrorsList(noFallback = False):
          "http://download.savannah.gnu.org/mirmon/allgnu/")
     except requests.exceptions.ConnectionError:
         if noFallback:
-            print("Unable to retrieve mirrors list")
+            print("VGAZER: Unable to retrieve mirrors list")
             return None
         else:
             print(
-             "Unable to retrieve mirrors list. Using fallback mirrors list")
+             "VGAZER: Unable to retrieve mirrors list. Using fallback mirrors "
+             "list"
+            )
             return fallbackMirrorsList
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
@@ -99,8 +101,8 @@ def GetMirrorsList(noFallback = False):
         elif protocol == "rsync":
             mirrorUrl = "rsync://" + cells[0].text.split("\xa0\xa0")[0]
         else:
-            raise UnknownProtocol("Found mirror's url with unknown protocol: "
-             + protocol)
+            raise UnknownProtocol(
+             "VGAZER: Found mirror's url with unknown protocol: " + protocol)
         mirrorsList[protocol].append(mirrorUrl)
 
     return mirrorsList

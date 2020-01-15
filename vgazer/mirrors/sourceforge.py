@@ -57,7 +57,7 @@ fallbackMirrorsList = {
 }
 
 def GetMirrorsList(noFallback = False):
-    print("Retrieving mirrors list for downloads.sourceforge.net...")
+    print("VGAZER: Retrieving mirrors list for downloads.sourceforge.net...")
 
     mirrorsList = {
         "http": [
@@ -76,11 +76,13 @@ def GetMirrorsList(noFallback = False):
          "https://sourceforge.net/p/forge/documentation/Mirrors/")
     except requests.exceptions.ConnectionError:
         if noFallback:
-            print("Unable to retrieve mirrors list")
+            print("VGAZER: Unable to retrieve mirrors list")
             return None
         else:
             print(
-             "Unable to retrieve mirrors list. Using fallback mirrors list")
+             "VGAZER: Unable to retrieve mirrors list. Using fallback mirrors "
+             "list"
+            )
             return fallbackMirrorsList
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
