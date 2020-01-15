@@ -1,15 +1,15 @@
 import os
 import requests
 
-from vgazer.command     import RunCommand
-from vgazer.exceptions  import CommandError
-from vgazer.exceptions  import InstallError
-from vgazer.exceptions  import TarballLost
-from vgazer.platform    import GetAr
-from vgazer.platform    import GetCc
-from vgazer.platform    import GetInstallPrefix
-from vgazer.store.temp  import StoreTemp
-from vgazer.working_dir import WorkingDir
+from vgazer.command         import RunCommand
+from vgazer.exceptions      import CommandError
+from vgazer.exceptions      import InstallError
+from vgazer.install.utils   import SourceforgeDownloadTarballWhileErrorcodeFour
+from vgazer.platform        import GetAr
+from vgazer.platform        import GetCc
+from vgazer.platform        import GetInstallPrefix
+from vgazer.store.temp      import StoreTemp
+from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -21,16 +21,18 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tarballUrl = requests.get(
+    sourceforgeMirrorsManager = mirrors["sourceforge"].CreateMirrorsManager(
+     ["https", "http"])
+
+    filename = requests.get(
      "https://sourceforge.net/projects/glew/best_release.json"
-    ).json()["release"]["url"]
-    tarballShortFilename = tarballUrl.split("/")[-2]
+    ).json()["release"]["filename"]
+    tarballShortFilename = filename.split("/")[-1]
 
     try:
         with WorkingDir(tempPath):
-            RunCommand(
-             ["wget", "-P", "./", "-O", tarballShortFilename, tarballUrl],
-             verbose)
+            SourceforgeDownloadTarballWhileErrorcodeFour(
+             sourceforgeMirrorsManager, "glew", filename, verbose)
             RunCommand(
              ["tar", "--verbose", "--extract", "--gzip", "--file",
               tarballShortFilename],
@@ -42,19 +44,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "CFLAGS.EXTRA=-I" + installPrefix + "/include -fPIC",
               "LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],
              verbose)
-            #RunCommand(
-             #["make", "glew.lib.mx", "CC=" + cc, "LD=" + cc, "AR=" + ar,
-              #"CFLAGS.EXTRA=-I" + installPrefix + "/include -fPIC",
-              #"LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],
-             #verbose)
             RunCommand(
              ["make", "install", "GLEW_PREFIX=" + installPrefix,
               "GLEW_DEST=" + installPrefix],
              verbose)
-            #RunCommand(
-             #["make", "install.mx", "GLEW_PREFIX=" + installPrefix,
-              #"GLEW_DEST=" + installPrefix],
-             #verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")

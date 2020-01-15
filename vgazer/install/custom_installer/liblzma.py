@@ -4,7 +4,6 @@ import requests
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
-from vgazer.exceptions  import SourceforgeReleaseArchiveLost
 from vgazer.platform    import GetInstallPrefix
 from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
@@ -18,16 +17,18 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tarballUrl = requests.get(
+    sourceforgeMirrorsManager = mirrors["sourceforge"].CreateMirrorsManager(
+     ["https", "http"])
+
+    filename = requests.get(
      "https://sourceforge.net/projects/lzmautils/best_release.json"
-    ).json()["release"]["url"]
-    tarballShortFilename = tarballUrl.split("/")[-2]
+    ).json()["release"]["filename"]
+    tarballShortFilename = filename.split("/")[-1]
 
     try:
         with WorkingDir(tempPath):
-            RunCommand(
-             ["wget", "-P", "./", "-O", tarballShortFilename, tarballUrl],
-             verbose)
+            SourceforgeDownloadTarballWhileErrorcodeFour(
+             sourceforgeMirrorsManager, "lzmautils", filename, verbose)
             RunCommand(
              ["tar", "--verbose", "--extract", "--gzip", "--file",
               tarballShortFilename],
