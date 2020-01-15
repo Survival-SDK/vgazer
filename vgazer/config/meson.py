@@ -6,13 +6,13 @@ from vgazer.platform    import GetLlvmConfig
 from vgazer.platform    import GetPkgConfig
 from vgazer.platform    import GetStrip
 from vgazer.platform    import Platform
-from vgazer.store.home  import StoreHome
+from vgazer.store.temp  import StoreTemp
 
 class ConfigMeson():
     def __init__(self, platformData):
-        self.storeHome = StoreHome(".local/share/meson/cross")
-        self.crossFileName = self.storeHome.GetDirectoryFilePath("cross-file")
-        self.storeHome.ResolveDirectory()
+        self.storeTemp = StoreTemp(".vgazer/meson")
+        self.crossFileName = self.storeTemp.GetDirectoryFilePath("cross-file")
+        self.storeTemp.ResolveDirectory()
         self.platformData = platformData
 
     def GetCrossFileName(self):
@@ -40,7 +40,7 @@ class ConfigMeson():
               + self.platformData["target"].GetArch()
             )
 
-        self.storeHome.DirectoryWriteTextFile("cross-file",
+        self.storeTemp.DirectoryWriteTextFile("cross-file",
          "[binaries]\n"
          "c = '{cc}'\n"
          "cpp = '{cxx}'\n"
