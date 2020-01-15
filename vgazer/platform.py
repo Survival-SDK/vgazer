@@ -237,6 +237,8 @@ class Platform:
     def GetGenericOs(os):
         if Platform.OsIsLinux(os):
             return "linux"
+        elif os == "windows":
+            return "windows"
         elif os == "any":
             return "any"
         else:
