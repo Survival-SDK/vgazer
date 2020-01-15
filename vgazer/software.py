@@ -2499,7 +2499,7 @@ data = {
                     "fallback": {
                         "type": "custom",
                         "name": "libpciaccess-github",
-                    }
+                    },
                 },
             },
             {
