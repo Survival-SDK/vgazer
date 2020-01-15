@@ -3,7 +3,7 @@ import requests
 
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
-from vgazer.env_vars        import SetEnvVar
+from vgazer.config.cmake    import ConfigCmake
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
@@ -14,6 +14,9 @@ from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
+    configCmake = ConfigCmake(platformData)
+    configCmake.GenerateCrossFile()
+
     installPrefix = GetInstallPrefix(platformData)
     cc = GetCc(platformData["target"])
 
@@ -48,10 +51,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(extractedDir, "build")
         with WorkingDir(buildDir):
-            SetEnvVar("CC", cc)
             RunCommand(
-             ["cmake", "..", '-DCMAKE_C_FLAGS="-fPIC"',
-              "-DENABLE_CJSON_TEST=Off", "-DBUILD_SHARED_LIBS=Off",
+             ["cmake", "..",
+              "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
+              '-DCMAKE_C_FLAGS="-fPIC"', "-DENABLE_CJSON_TEST=Off",
+              "-DBUILD_SHARED_LIBS=Off",
               "-DCMAKE_INSTALL_PREFIX=" + installPrefix],
              verbose)
             RunCommand(["make"], verbose)
