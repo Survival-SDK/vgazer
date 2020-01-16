@@ -3,7 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 
 from vgazer.command     import RunCommand
-from vgazer.env_vars    import AppendEnvVarItem
+from vgazer.config.meson    import ConfigMeson
+from vgazer.env_vars    import SetEnvVar
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.exceptions  import ProjectPubNotFound
@@ -43,6 +44,9 @@ def GetTarballUrl():
     raise TarballLost("Unable to find tarball of glib's last version")
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
+    configMeson = ConfigMeson(platformData)
+    configMeson.GenerateCrossFile()
+
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()
@@ -63,17 +67,17 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               tarballShortFilename],
              verbose
             )
-        AppendEnvVarItem("PKG_CONFIG_PATH", installPrefix + "/lib/pkgconfig",
-         ":")
+        SetEnvVar("PKG_CONFIG_PATH", installPrefix + "/lib/pkgconfig")
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
              ["meson", "_build", "-Dprefix=" + installPrefix,
-              "-Dbuildtype=release", "-Ddefault_library=shared",
-              "-Doptimization=2", "-Dstrip=true", "-Dforce_posix_threads=true",
-              "-Dinternal_pcre=true", "-Dgtk_doc=false", "-Dman=false",
-              "-Db_coverage=false", "-Dlibmount=false",
-             ],
+              "--libdir=" + installPrefix + "/lib", "--cross-file",
+              configMeson.GetCrossFileName(), "-Dbuildtype=release",
+              "-Ddefault_library=shared", "-Doptimization=2", "-Dstrip=true",
+              "-Dforce_posix_threads=true", "-Dinternal_pcre=false",
+              "-Dgtk_doc=false", "-Dman=false", "-Db_coverage=false",
+              "-Dlibmount=true", "-Dxattr=true"],
              verbose)
             RunCommand(["ninja", "-C", "_build"], verbose)
             RunCommand(["ninja", "-C", "_build", "install"], verbose)
