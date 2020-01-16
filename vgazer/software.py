@@ -968,6 +968,17 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "{triplet}-pkg-config",
+                    "meson",
+                    "libpcre",
+                    "libffi",
+                    "zlib",
+                    "libmount",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "glib",
@@ -2382,10 +2393,21 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "autopoint",
+                    "autoconf",
+                    "bison",
+                    "libtool",
+                    "automake",
+                    "gettext",
+                ],
                 "checker": {
-                    "type": "github",
-                    "user": "karelzak",
-                    "repo": "util-linux",
+                    "type": "custom",
+                    "name": "util-linux",
                 },
                 "installer": {
                     "type": "custom",
@@ -2529,6 +2551,114 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libpciaccess-dev",
+                },
+            },
+        ],
+    },
+    "libpcre": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "libpcre",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libpcre",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pcre-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "pcre-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "pcre3",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libpcre3-dev",
+                },
+            },
+        ],
+    },
+    "libpcre2": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "unzip",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "sourceforge",
+                    "project": "pcre",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libpcre2",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pcre2-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "pcre2-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "pcre2",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libpcre2-dev",
                 },
             },
         ],
