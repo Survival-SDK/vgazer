@@ -1,33 +1,60 @@
 import os
 import requests
+from bs4 import BeautifulSoup
 
-from vgazer.command         import GetCommandOutputUtf8
+#from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
 from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
-from vgazer.github_common   import GithubCheckApiRateLimitExceeded
 from vgazer.platform        import GetInstallPrefix
+from vgazer.platform        import GetTriplet
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
+def GetPubSubdir():
+    response = requests.get(
+     "https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/")
+    html = response.content.decode("utf-8")
+    parsedHtml = BeautifulSoup(html, "html.parser")
+
+    links = parsedHtml.find_all("a")
+
+    return ("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/"
+     + links[-1]["href"] + "/")
+
+def GetTarballUrl():
+    pubSubdir = GetPubSubdir()
+
+    response = requests.get(pubSubdir)
+    html = response.content.decode("utf-8")
+    parsedHtml = BeautifulSoup(html, "html.parser")
+
+    links = parsedHtml.find_all("a")
+
+    maxVersionRc = -1
+    for link in links:
+        if ("util-linux-" in link.text and ".tar.gz" in link.text):
+            if len(link.text.split("-")) == 3:
+                return pubSubdir + link["href"]
+
+            versionRc = int(
+             link.text.split("-")[3].split(".")[0].split("rc")[1])
+
+            if versionRc > maxVersionRc:
+                maxVersionRc = versionRc
+                maxVersionUrl = pubSubdir + link["href"]
+
+    return maxVersionUrl
+
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
+    targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tags = auth["github"].GetJson(
-     "https://api.github.com/repos/karelzak/util-linux/tags")
-
-    if GithubCheckApiRateLimitExceeded(tags):
-        raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last version of "
-         "repo: karelzak/util-linux"
-        )
-
-    tarballUrl = tags[0]["tarball_url"]
+    tarballUrl = GetTarballUrl()
     tarballShortFilename = tarballUrl.split("/")[-1]
 
     try:
@@ -37,14 +64,16 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["tar", "--verbose", "--extract", "--gzip", "--file",
               tarballShortFilename],
              verbose)
-            output = GetCommandOutputUtf8(
-             ["tar", "--list", "--file", tarballShortFilename]
-            )
-        extractedDir = os.path.join(tempPath, output.splitlines()[0].split("/")[0])
+            #output = GetCommandOutputUtf8(
+             #["tar", "--list", "--file", tarballShortFilename]
+            #)
+        extractedDir = os.path.join(tempPath,
+         tarballShortFilename.split(".tar.gz")[0])
         with WorkingDir(extractedDir):
             RunCommand(["./autogen.sh"], verbose)
             RunCommand(
-             ["./configure", "--prefix=" + installPrefix, "--disable-static",
+             ["./configure", "--prefix=" + installPrefix,
+              "--host=" + targetTriplet, "--disable-static",
               "--disable-all-programs", "--enable-libblkid", "--enable-libmount"
              ],
              verbose)
