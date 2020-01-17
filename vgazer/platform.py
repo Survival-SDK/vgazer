@@ -8,7 +8,7 @@ from vgazer.exceptions  import MissingArgument
 from vgazer.exceptions  import OsDataNotFound
 from vgazer.exceptions  import UnexpectedOsType
 from vgazer.exceptions  import UnknownOs
-from vgazer.exceptions  import UnknownPlatform
+from vgazer.exceptions  import UnknownTargetArch
 
 def GetFilesystemType(path):
     output = GetCommandOutputUtf8(["df", "-T", path])
@@ -35,6 +35,17 @@ def GetTempDirectoryPath():
         return "/tmp"
     else:
         raise UnexpectedOsType("Unexpected OS type: " + os.name)
+
+def GetBitness(targetPlatformData):
+    arch = targetPlatformData.GetArch()
+
+    if arch in ["i386", "i486", "i586", "i686"]:
+        return 32
+    elif arch == "x86_64":
+        return 64
+    else:
+        raise UnknownTargetArch(
+         "Unknown target architecture: " + arch)
 
 def GetTriplet(targetPlatformData):
     arch = targetPlatformData.GetArch()
@@ -105,9 +116,6 @@ def GetCxx(targetPlatformData):
     return GetCc(targetPlatformData).replace("gcc", "g++")
 
 def GetAr(targetPlatformData):
-    if (targetPlatformData.GetOs() == "debian"
-     and targetPlatformData.GetAbi() == "musl"):
-        return "ar"
     triplet = GetTriplet(targetPlatformData)
     if "i686" in triplet:
         if not (os.path.isfile(os.path.join("/usr/bin", triplet + "-ar"))
@@ -127,6 +135,28 @@ def GetAr(targetPlatformData):
         return triplet + "-gcc-ar"
     else:
         return "ar"
+
+def GetRanlib(targetPlatformData):
+    triplet = GetTriplet(targetPlatformData)
+    if "i686" in triplet:
+        if not os.path.isfile(
+         os.path.join("/usr/bin", triplet + "-ranlib")
+        ):
+            triplet.replace("i686", "i586")
+    if "i586" in triplet:
+        if not os.path.isfile(
+         os.path.join("/usr/bin", triplet + "-ranlib")
+        ):
+            triplet.replace("i586", "i486")
+    if "i486" in triplet:
+        if not os.path.isfile(
+         os.path.join("/usr/bin", triplet + "-ranlib")
+        ):
+            triplet.replace("i486", "i386")
+    if os.path.isfile(os.path.join("/usr/bin", triplet + "-ranlib")):
+        return triplet + "-ranlib"
+    else:
+        return "ranlib"
 
 def GetPkgConfig(targetPlatformData):
     triplet = GetTriplet(targetPlatformData)
