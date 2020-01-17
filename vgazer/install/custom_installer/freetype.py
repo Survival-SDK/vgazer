@@ -6,11 +6,13 @@ from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.exceptions  import TarballLost
 from vgazer.platform    import GetInstallPrefix
+from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
+    targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -23,15 +25,22 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     try:
         with WorkingDir(tempPath):
-            RunCommand(["wget", "-P", "./", "-O", tarballShortFilename, tarballUrl], verbose)
+            RunCommand(
+             ["wget", "-P", "./", "-O", tarballShortFilename, tarballUrl],
+             verbose)
             RunCommand(
              ["tar", "--verbose", "--extract", "--gzip", "--file",
               tarballShortFilename],
              verbose)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
+            #RunCommand(["make distclean"], verbose)
             RunCommand(
-             ["./configure", "--prefix=" + installPrefix,
+             ["./configure", "--host=" + targetTriplet,
+              "--prefix=" + installPrefix,
+              "--with-zlib=yes", "--with-bzip2=yes", "--with-png=yes",
+              "--with-harfbuzz=auto", "--with-old-mac-fonts",
+              "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig",
               "BZIP2_CFLAGS=-I" + installPrefix + "/include",
               "BZIP2_LIBS=-L" + installPrefix + "/lib -lbz2"],
              verbose)
