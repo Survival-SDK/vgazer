@@ -43,6 +43,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix,
+              "--enable-hardware-optimizations=yes",
               "CPPFLAGS=-I" + installPrefix + "/include",
               "LDFLAGS=-L" + installPrefix + "/lib"],
              verbose)
