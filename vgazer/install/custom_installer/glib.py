@@ -2,16 +2,16 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-from vgazer.command     import RunCommand
+from vgazer.command         import RunCommand
 from vgazer.config.meson    import ConfigMeson
-from vgazer.env_vars    import SetEnvVar
-from vgazer.exceptions  import CommandError
-from vgazer.exceptions  import InstallError
-from vgazer.exceptions  import ProjectPubNotFound
-from vgazer.exceptions  import TarballLost
-from vgazer.platform    import GetInstallPrefix
-from vgazer.store.temp  import StoreTemp
-from vgazer.working_dir import WorkingDir
+from vgazer.env_vars        import SetEnvVar
+from vgazer.exceptions      import CommandError
+from vgazer.exceptions      import InstallError
+from vgazer.exceptions      import ProjectPubNotFound
+from vgazer.exceptions      import TarballLost
+from vgazer.platform        import GetInstallPrefix
+from vgazer.store.temp      import StoreTemp
+from vgazer.working_dir     import WorkingDir
 
 def GetVersionPubUrl():
     response = requests.get("https://developer.gnome.org/glib/")
