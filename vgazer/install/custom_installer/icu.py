@@ -7,12 +7,20 @@ from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
 from vgazer.github_common   import GithubCheckApiRateLimitExceeded
+from vgazer.platform        import GetBitness
+from vgazer.platform        import GetCc
+from vgazer.platform        import GetCxx
 from vgazer.platform        import GetInstallPrefix
+from vgazer.platform        import GetTriplet
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
+    targetBitness = GetBitness(platformData["target"])
     installPrefix = GetInstallPrefix(platformData)
+    targetTriplet = GetTriplet(platformData["target"])
+    cc = GetCc(platformData["target"])
+    cxx = GetCxx(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -44,10 +52,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir + "/icu4c/source"):
             RunCommand(
-             ["./configure", "--prefix=" + installPrefix, "--enable-static=yes",
+             ["./runConfigureICU", "Linux/gcc", "--host=" + targetTriplet,
+              "--prefix=" + installPrefix, "--enable-static=yes",
               "--enable-extras=no", "--enable-icuio=no", "--enable-layoutex=no",
               "--enable-tools", "--enable-tests=no", "--enable-samples=no",
-              "--with-library-bits=64"],
+              "--with-library-bits=" + str(targetBitness), "CC=" + cc,
+              "CXX=" + cxx],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
