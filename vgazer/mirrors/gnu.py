@@ -54,7 +54,7 @@ fallbackMirrorsList = {
 }
 
 def GetMirrorsList(noFallback = False):
-    print("Retrieving mirrors list for ftp.gnu.org...")
+    print("VGAZER: Retrieving mirrors list for ftp.gnu.org...")
 
     mirrorsList = {
         "http": [
