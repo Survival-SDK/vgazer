@@ -677,6 +677,18 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "zlib",
+                    "libbzip2",
+                    "libpng",
+                ],
+                #"postreqs": [
+                    #"harfbuzz",
+                #],
                 "checker": {
                     "type": "custom",
                     "name": "freetype",
@@ -1139,6 +1151,63 @@ data = {
             },
         ],
     },
+    "graphite2": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "make",
+                    "cmake",
+
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "silnrsi",
+                    "repo": "graphite",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "graphite2",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "graphite2-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "graphite2-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "graphite2",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libgraphite2-dev",
+                },
+            },
+        ],
+    },
     "harfbuzz": {
         "platform": "target",
         "projects": [
@@ -1147,6 +1216,20 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "cmake",
+                    "freetype",
+                    "graphite2",
+                    "glib",
+                    "icu",
+
+                ],
+                "postreqs": [
+                    "freetype",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "harfbuzz",
@@ -1598,6 +1681,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "make",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "icu",
@@ -1872,6 +1961,11 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
                 "checker": {
                     "type": "sourceforge",
                     "project": "bzip2",
@@ -2671,6 +2765,13 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "zlib",
+                ],
                 "checker": {
                     "type": "sourceforge",
                     "project": "libpng",
