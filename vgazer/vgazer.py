@@ -191,6 +191,9 @@ class Vgazer:
         self.installedSoftware.append(software)
 
     def Install(self, software, verbose = False, fallbackPreinstallList = None):
+        if software in self.installedSoftware:
+            return
+
         softwareData = self.softwareData.GetData()
         if software not in softwareData:
             raise UnknownSoftware("Unknown software: " + software)
@@ -218,15 +221,23 @@ class Vgazer:
         else:
             postreqs = []
 
+        if "postreqsOnce" in project:
+            postreqsOnce = project["postreqsOnce"]
+        else:
+            postreqsOnce = []
+
         for prereq in prereqs:
             prereq = prereq.format(
              triplet=GetGenericTriplet(self.platform["target"]),
              arch=self.platform["target"].GetArch())
-            self.Install(prereq, verbose, None)
+            if prereq not in self.installedSoftware:
+                self.Install(prereq, verbose, None)
         for fallback_prereq in fallback_prereqs:
             prereq = fallback_prereq.format(
              triplet=GetGenericTriplet(self.platform["target"]),
              arch=self.platform["target"].GetArch())
+            if prereq not in self.installedSoftware:
+                self.Install(prereq, verbose, None)
 
         installer = project["installer"]
 
@@ -245,6 +256,12 @@ class Vgazer:
                  arch=self.platform["target"].GetArch())
                 self.installedSoftware.remove(postreq)
                 self.Install(postreq, verbose, None)
+        if len(postreqsOnce) != 0:
+            for postreqOnce in postreqsOnce:
+                postreqOnce = postreqOnce.format(
+                 triplet=GetGenericTriplet(self.platform["target"]),
+                 arch=self.platform["target"].GetArch())
+                self.Install(postreqOnce, verbose, None)
 
     def InstallList(self, softwareList, verbose = False):
         for software in softwareList:
