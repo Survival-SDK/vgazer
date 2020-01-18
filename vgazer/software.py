@@ -686,9 +686,9 @@ data = {
                     "libbzip2",
                     "libpng",
                 ],
-                #"postreqs": [
-                    #"harfbuzz",
-                #],
+                "postreqsOnce": [
+                    "harfbuzz",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "freetype",
@@ -1219,6 +1219,8 @@ data = {
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "{triplet}-pkg-config",
                     "make",
                     "cmake",
                     "freetype",
@@ -2957,6 +2959,9 @@ data = {
                     "libxext",
                     "libxfixes",
                     "libdrm",
+                ],
+                "postreqsOnce": [
+                    "opengl",
                 ],
                 "checker": {
                     "type": "github",
