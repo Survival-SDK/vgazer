@@ -1,4 +1,5 @@
 import os
+import os.path
 import requests
 
 from vgazer.command     import RunCommand
@@ -23,6 +24,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     ).json()["release"]["url"]
     tarballShortFilename = tarballUrl.split("/")[-2]
 
+    if os.path.exists(installPrefix + "/lib/libharfbuzz.a"):
+        withHarfbuzz = "yes"
+    else:
+        withHarfbuzz = "no"
+
     try:
         with WorkingDir(tempPath):
             RunCommand(
@@ -39,10 +45,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix,
               "--with-zlib=yes", "--with-bzip2=yes", "--with-png=yes",
-              "--with-harfbuzz=auto", "--with-old-mac-fonts",
+              "--with-harfbuzz=" + withHarfbuzz, "--with-old-mac-fonts",
               "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig",
               "BZIP2_CFLAGS=-I" + installPrefix + "/include",
-              "BZIP2_LIBS=-L" + installPrefix + "/lib -lbz2"],
+              "BZIP2_LIBS=-L" + installPrefix + "/lib -lbz2",
+              "HARFBUZZ_CFLAGS=-I" + installPrefix + "/include/harfbuzz",
+              "HARFBUZZ_LIBS=-L" + installPrefix + "/lib -lharfbuzz"],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
