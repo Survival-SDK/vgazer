@@ -2,7 +2,6 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-#from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import InstallError
@@ -64,9 +63,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["tar", "--verbose", "--extract", "--gzip", "--file",
               tarballShortFilename],
              verbose)
-            #output = GetCommandOutputUtf8(
-             #["tar", "--list", "--file", tarballShortFilename]
-            #)
         extractedDir = os.path.join(tempPath,
          tarballShortFilename.split(".tar.gz")[0])
         with WorkingDir(extractedDir):
