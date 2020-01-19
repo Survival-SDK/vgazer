@@ -31,6 +31,7 @@ class ConfigCmake():
          "set(CMAKE_C_COMPILER {cc})\n"
          "set(CMAKE_CXX_COMPILER {cxx})\n"
          "set(CMAKE_FIND_ROOT_PATH {prefix})\n"
+         "SET(ENV{{PKG_CONFIG_LIBDIR}} ${{CMAKE_FIND_ROOT_PATH}}/lib/pkgconfig/)\n"
          "SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)\n"
          "SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)\n"
          "SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)".format(
