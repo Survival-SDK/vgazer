@@ -990,6 +990,7 @@ data = {
                     "libffi",
                     "zlib",
                     "libmount",
+                    "libelf",
                 ],
                 "checker": {
                     "type": "custom",
@@ -1842,6 +1843,11 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "jpeg",
@@ -2205,10 +2211,39 @@ data = {
         "platform": "target",
         "projects": [
             {
-                "arch": ["any"],
+                "arch": ["i686"],
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "nasm",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "libogg",
+                ],
+                "checker": {
+                    "type": "xiph",
+                    "project": "libflac",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libflac",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "libogg",
+                ],
                 "checker": {
                     "type": "xiph",
                     "project": "libflac",
@@ -2441,6 +2476,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "make",
+                ],
                 "checker": {
                     "type": "sourceforge",
                     "project": "modplug-xmms",
@@ -2549,6 +2590,11 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
                 "checker": {
                     "type": "xiph",
                     "project": "libogg",
@@ -3957,6 +4003,40 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "musl-dev",
+                },
+            },
+        ],
+    },
+    "nasm": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "nasm",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "nasm",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "nasm",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "nasm",
                 },
             },
         ],
