@@ -2912,6 +2912,16 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "{triplet}-gcc",
+                    "zlib",
+                    "jpeg",
+                    "liblzma",
+                    "libzstd",
+                    "libwebp",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "libtiff",
@@ -3116,13 +3126,20 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-pkg-config",
+                    "{triplet}-gcc",
+                    "make",
+                    "libogg",
+                ],
                 "checker": {
                     "type": "xiph",
                     "project": "libvorbis",
                 },
                 "installer": {
                     "type": "custom",
-                    "project": "libvorbis",
+                    "name": "libvorbis",
                 },
             },
             {
@@ -3164,6 +3181,11 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "libwebp",
@@ -3524,6 +3546,61 @@ data = {
             },
         ],
     },
+    "libzstd": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "cmake",
+                    "{triplet}-gcc",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "facebook",
+                    "repo": "zstd",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libzstd",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "zstd-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "zstd-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libzstd",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libzstd-dev",
+                },
+            },
+        ],
+    },
     "linux-headers-i686": {
         "platform": "target",
         "projects": [
@@ -3696,6 +3773,11 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "{triplet}-gcc",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "lua",
@@ -3897,7 +3979,7 @@ data = {
                 "abi": ["any"],
                 "prereqs": [
                     "git",
-                    "{triplet}-gcc"
+                    "{triplet}-gcc",
                 ],
                 "checker": {
                     "type": "github",
@@ -3933,6 +4015,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                ],
                 "checker": {
                     "type": "sourceforge",
                     "project": "mpg123",
