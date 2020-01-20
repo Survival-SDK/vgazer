@@ -125,8 +125,6 @@ def GetLastKernelUrlInSubdir(auth, majorVersion):
     if versionInfo["maxVersionMajor"] == -1:
         return None
 
-    #versionStr = GetVersionStr(versionInfo)
-
     return VersionDirUrl + versionInfo["maxVersionFilename"]
 
 def GetLastKernelUrl(auth):
@@ -171,8 +169,6 @@ def GetLastGlibcSuburl(auth, mirrorsManager, firstTry = True):
             version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
             UpdateVersionInfo(versionInfo, version, link.text)
 
-    #versionStr = GetVersionStr(versionInfo)
-
     return "glibc/" + versionInfo["maxVersionFilename"]
 
 def GetLastMpfrSuburl(auth, mirrorsManager, firstTry = True):
@@ -194,8 +190,6 @@ def GetLastMpfrSuburl(auth, mirrorsManager, firstTry = True):
          and ".sig" not in link.text):
             version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
             UpdateVersionInfo(versionInfo, version, link.text)
-
-    #versionStr = GetVersionStr(versionInfo)
 
     return "mpfr/" + versionInfo["maxVersionFilename"]
 
@@ -219,8 +213,6 @@ def GetLastGmpSuburl(auth, mirrorsManager, firstTry = True):
             version = link.text.split("-")[1].split(".tar.bz2")[0].split(".")
             UpdateVersionInfo(versionInfo, version, link.text)
 
-    #versionStr = GetVersionStr(versionInfo)
-
     return "gmp/" + versionInfo["maxVersionFilename"]
 
 def GetLastMpcSuburl(auth, mirrorsManager, firstTry = True):
@@ -243,8 +235,6 @@ def GetLastMpcSuburl(auth, mirrorsManager, firstTry = True):
             version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
             UpdateVersionInfo(versionInfo, version, link.text)
 
-    #versionStr = GetVersionStr(versionInfo)
-
     return "mpc/" + versionInfo["maxVersionFilename"]
 
 def GetLastIslUrl(auth):
@@ -260,8 +250,6 @@ def GetLastIslUrl(auth):
         if ("isl" in link.text and ".tar.bz2" in link.text):
             version = link.text.split("-")[1].split(".tar.bz2")[0].split(".")
             UpdateVersionInfo(versionInfo, version, link.text)
-
-    #versionStr = GetVersionStr(versionInfo)
 
     return ("https://gcc.gnu.org/pub/gcc/infrastructure/"
      + versionInfo["maxVersionFilename"])
@@ -280,8 +268,6 @@ def GetLastCloogUrl(auth):
          and "parma" not in link.text and "ppl" not in link.text):
             version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
             UpdateVersionInfo(versionInfo, version, link.text)
-
-    #versionStr = GetVersionStr(versionInfo)
 
     return ("https://gcc.gnu.org/pub/gcc/infrastructure/"
      + versionInfo["maxVersionFilename"])
