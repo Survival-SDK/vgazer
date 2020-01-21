@@ -79,8 +79,6 @@ def GetLastBinutilsSuburl(auth, mirrorsManager, firstTry = True):
             version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
             UpdateVersionInfo(versionInfo, version, link.text)
 
-    #versionStr = GetVersionStr(versionInfo)
-
     return "binutils/" + versionInfo["maxVersionFilename"]
 
 def GetLastGccSuburl(auth, mirrorsManager, firstTry = True):
@@ -106,46 +104,46 @@ def GetLastGccSuburl(auth, mirrorsManager, firstTry = True):
     return ("gcc/" + versionInfo["maxVersionFilename"]
      + versionInfo["maxVersionFilename"][:-1] + ".tar.gz")
 
-def GetLastKernelUrlInSubdir(auth, majorVersion):
-    VersionDirUrl = ("https://mirrors.edge.kernel.org/pub/linux/kernel/v"
-     + str(majorVersion) + ".x/")
+#def GetLastKernelUrlInSubdir(auth, majorVersion):
+    #VersionDirUrl = ("https://mirrors.edge.kernel.org/pub/linux/kernel/v"
+     #+ str(majorVersion) + ".x/")
 
-    response = requests.get(VersionDirUrl)
-    html = response.content.decode("utf-8")
-    parsedHtml = BeautifulSoup(html, "html.parser")
+    #response = requests.get(VersionDirUrl)
+    #html = response.content.decode("utf-8")
+    #parsedHtml = BeautifulSoup(html, "html.parser")
 
-    links = parsedHtml.find_all("a")
+    #links = parsedHtml.find_all("a")
 
-    versionInfo = InitVersionInfo()
-    for link in links:
-        if ("linux" in link.text and ".tar.gz" in link.text):
-            version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
-            UpdateVersionInfo(versionInfo, version, link.text)
+    #versionInfo = InitVersionInfo()
+    #for link in links:
+        #if ("linux" in link.text and ".tar.gz" in link.text):
+            #version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
+            #UpdateVersionInfo(versionInfo, version, link.text)
 
-    if versionInfo["maxVersionMajor"] == -1:
-        return None
+    #if versionInfo["maxVersionMajor"] == -1:
+        #return None
 
-    return VersionDirUrl + versionInfo["maxVersionFilename"]
+    #return VersionDirUrl + versionInfo["maxVersionFilename"]
 
-def GetLastKernelUrl(auth):
-    response = requests.get("https://www.kernel.org/pub/linux/kernel/")
-    html = response.content.decode("utf-8")
-    parsedHtml = BeautifulSoup(html, "html.parser")
+#def GetLastKernelUrl(auth):
+    #response = requests.get("https://www.kernel.org/pub/linux/kernel/")
+    #html = response.content.decode("utf-8")
+    #parsedHtml = BeautifulSoup(html, "html.parser")
 
-    links = parsedHtml.find_all("a")
+    #links = parsedHtml.find_all("a")
 
-    maxVersion = -1
-    for link in links:
-        if "v" in link.text and "." in link.text:
-            version = int(link.text[1:-1].split(".")[0])
-            if version > maxVersion:
-                maxVersion = version
+    #maxVersion = -1
+    #for link in links:
+        #if "v" in link.text and "." in link.text:
+            #version = int(link.text[1:-1].split(".")[0])
+            #if version > maxVersion:
+                #maxVersion = version
 
-    url = GetLastKernelUrlInSubdir(auth, maxVersion)
-    if url is None:
-        return GetLastKernelUrlInSubdir(auth, maxVersion - 1)
-    else:
-        return url
+    #url = GetLastKernelUrlInSubdir(auth, maxVersion)
+    #if url is None:
+        #return GetLastKernelUrlInSubdir(auth, maxVersion - 1)
+    #else:
+        #return url
 
 def GetLastGlibcSuburl(auth, mirrorsManager, firstTry = True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
@@ -343,9 +341,9 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
     gccTarballSuburl = GetLastGccSuburl(auth, gnuWebMirrorsManager)
     gccTarballShortFilename = gccTarballSuburl.split("/")[-1]
     gccExtractedDir = gccTarballShortFilename[0:-7]
-    kernelTarballUrl = GetLastKernelUrl(auth)
-    kernelTarballShortFilename = kernelTarballUrl.split("/")[-1]
-    kernelExtractedDir = kernelTarballShortFilename[0:-7]
+    #kernelTarballUrl = GetLastKernelUrl(auth)
+    #kernelTarballShortFilename = kernelTarballUrl.split("/")[-1]
+    #kernelExtractedDir = kernelTarballShortFilename[0:-7]
     glibcTarballSuburl = GetLastGlibcSuburl(auth, gnuWebMirrorsManager)
     glibcTarballShortFilename = glibcTarballSuburl.split("/")[-1]
     glibcExtractedDir = glibcTarballShortFilename[0:-7]
@@ -375,7 +373,7 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
              binutilsTarballSuburl, binutilsTarballShortFilename, verbose)
             RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, gccTarballSuburl,
              gccTarballShortFilename, verbose)
-            RunCommand(["wget", "-P", "./", kernelTarballUrl], verbose)
+            #RunCommand(["wget", "-P", "./", kernelTarballUrl], verbose)
             RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, glibcTarballSuburl,
              glibcTarballShortFilename, verbose)
             RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, mpfrTarballSuburl,
@@ -441,12 +439,12 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
              verbose)
             RunCommand(["make", "-j" + str(os.cpu_count())], verbose)
             RunCommand(["make", "install"], verbose)
-        linuxHeadersDir = os.path.join(tempPath, kernelExtractedDir)
-        with WorkingDir(linuxHeadersDir):
-            RunCommand(
-             ["make", "ARCH=" + kernelArch,
-              "INSTALL_HDR_PATH=/usr/local/" + triplet, "headers_install"],
-             verbose)
+        #linuxHeadersDir = os.path.join(tempPath, kernelExtractedDir)
+        #with WorkingDir(linuxHeadersDir):
+            #RunCommand(
+             #["make", "ARCH=" + kernelArch,
+              #"INSTALL_HDR_PATH=/usr/local/" + triplet, "headers_install"],
+             #verbose)
         with WorkingDir(tempPath):
             RunCommand(["mkdir", "build-gcc"], verbose)
         buildGccDir = os.path.join(tempPath, "build-gcc")
