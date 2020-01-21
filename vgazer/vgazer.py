@@ -10,6 +10,7 @@ from vgazer.install.custom          import InstallCustom
 from vgazer.install.apk             import InstallApk
 from vgazer.install.apt             import InstallApt
 from vgazer.install.gcc_src         import InstallGccSrc
+from vgazer.install.linux_headers   import InstallLinuxHeaders
 from vgazer.install.musl_cross_make import InstallMuslCrossMake
 from vgazer.install.pip             import InstallPip
 from vgazer.install.pip3            import InstallPip3
@@ -25,6 +26,7 @@ from vgazer.version.debian          import CheckDebian
 from vgazer.version.gcc_src         import CheckGccSrc
 from vgazer.version.github          import CheckGithub
 from vgazer.version.gitlab          import CheckGitlab
+from vgazer.version.linux_headers   import CheckLinuxHeaders
 from vgazer.version.musl_cross_make import CheckMuslCrossMake
 from vgazer.version.pypi            import CheckPypi
 from vgazer.version.sourceforge     import CheckSourceforge
@@ -104,6 +106,8 @@ class Vgazer:
             elif checker["type"] == "gitlab":
                 return CheckGitlab(self.auth["base"], checker["host"],
                  checker["id"])
+            elif checker["type"] == "linux-headers":
+                return CheckLinuxHeaders(self.auth["base"])
             elif checker["type"] == "musl-cross-make":
                 return CheckMuslCrossMake(self.auth["github"])
             elif checker["type"] == "pypi":
@@ -166,6 +170,8 @@ class Vgazer:
                 InstallGccSrc(self.auth["base"], software,
                  installer["languages"], installer["triplet"], self.platform,
                  self.mirrors["gnu"], verbose)
+            elif installer["type"] == "linux-headers":
+                InstallLinuxHeaders(self.auth["base"], self.platform, verbose)
             elif installer["type"] == "musl-cross-make":
                 InstallMuslCrossMake(self.auth["github"], software,
                  installer["languages"], installer["triplet"], self.platform,
@@ -181,7 +187,10 @@ class Vgazer:
                 InstallStb(installer["library"], self.platform, verbose)
         except InstallError as installError:
             if "fallback" in installer:
-                print("VGAZER: Trying fallback installation steps")
+                print(
+                 "VGAZER: Something goes wrong. Starting fallback installation "
+                 "steps"
+                )
                 if fallbackPreinstallList is not None:
                     self.InstallList(fallbackPreinstallList, verbose)
                 self.UseInstaller(software, installer["fallback"], verbose,
@@ -232,12 +241,12 @@ class Vgazer:
              arch=self.platform["target"].GetArch())
             if prereq not in self.installedSoftware:
                 self.Install(prereq, verbose, None)
-        for fallback_prereq in fallback_prereqs:
-            prereq = fallback_prereq.format(
-             triplet=GetGenericTriplet(self.platform["target"]),
-             arch=self.platform["target"].GetArch())
-            if prereq not in self.installedSoftware:
-                self.Install(prereq, verbose, None)
+        #for fallback_prereq in fallback_prereqs:
+            #prereq = fallback_prereq.format(
+             #triplet=GetGenericTriplet(self.platform["target"]),
+             #arch=self.platform["target"].GetArch())
+            #if prereq not in self.installedSoftware:
+                #self.Install(prereq, verbose, None)
 
         installer = project["installer"]
 
