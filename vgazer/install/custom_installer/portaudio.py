@@ -7,6 +7,7 @@ from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.exceptions  import TarballLost
 from vgazer.platform    import GetInstallPrefix
+from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
@@ -28,6 +29,7 @@ def GetTarballUrl():
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
+    targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -45,7 +47,17 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         extractedDir = os.path.join(tempPath, "portaudio")
         with WorkingDir(extractedDir):
-            RunCommand(["./configure", "--prefix=" + installPrefix], verbose)
+            RunCommand(
+             ["./configure", "--host=" + targetTriplet,
+              "--prefix=" + installPrefix, "--with-alsa=yes", "--with-oss=yes",
+              "LDFLAGS=-L" + installPrefix + "/lib", "LIBS=-lasound",
+              "CPPFLAGS=-I" + installPrefix + "/include"],
+             verbose)
+            RunCommand(
+             ["sed", "-i", "-e",
+              "s#CFLAGS = #CFLAGS = -I" + installPrefix + "/include #g",
+              "./Makefile"],
+             verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:

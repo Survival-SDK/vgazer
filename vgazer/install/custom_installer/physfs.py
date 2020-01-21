@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
+from vgazer.config.cmake    import ConfigCmake
 from vgazer.env_vars        import SetEnvVar
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import InstallError
@@ -19,12 +20,13 @@ def GetTarballUrl(auth):
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
-    return "https://icculus.org/physfs/downloads/" + parsedHtml.find_all("a")[0]["href"]
+    return ("https://icculus.org/physfs/downloads/"
+     + parsedHtml.find_all("a")[0]["href"])
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
+    configCmake = ConfigCmake(platformData)
+    configCmake.GenerateCrossFile()
     installPrefix = GetInstallPrefix(platformData)
-    cc = GetCc(platformData["target"])
-    cxx = GetCxx(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -52,11 +54,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(extractedDir, "build")
         with WorkingDir(buildDir):
-            SetEnvVar("CC", cc)
-            SetEnvVar("CXX", cxx)
             RunCommand(
-             ["cmake", "..", "PHYSFS_BUILD_TEST=FALSE",
-              "-DCMAKE_INSTALL_PREFIX=" + installPrefix],
+             ["cmake", "..",
+              "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
+              "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
+              "-DPHYSFS_BUILD_TEST=FALSE"],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)

@@ -1,7 +1,6 @@
 import os
 
 from vgazer.command     import RunCommand
-from vgazer.env_vars    import SetEnvVar
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.platform    import GetAr
@@ -26,9 +25,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             verbose)
         clonedDir = os.path.join(tempPath, "saneopt")
         with WorkingDir(clonedDir):
-            SetEnvVar("CC", cc)
-            SetEnvVar("AR", ar)
-            RunCommand(["make"], verbose)
+            RunCommand(["make", "CC=" + cc, "AR=" + ar], verbose)
             if not os.path.exists(installPrefix + "/include"):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
             if not os.path.exists(installPrefix + "/lib"):

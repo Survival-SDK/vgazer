@@ -3,7 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 
 from vgazer.command     import RunCommand
-from vgazer.env_vars    import SetEnvVar
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.platform    import GetAr
@@ -52,12 +51,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["sed", "-i", "-e", "s/g++/$(CXX)/g", "-e", "s/\\tar/\\t$(AR)/g",
               "-e", "s/libP7.so/" + soFilename + "/g", "./makefile"],
              verbose)
-            SetEnvVar("CXX", cxx)
-            SetEnvVar("AR", ar)
             RunCommand(["mkdir", "-p", "./../Binaries"], verbose)
             RunCommand(["mkdir", "-p", "./../Binaries/Temp"], verbose)
-            RunCommand(["make", "./../Binaries/" + soFilename], verbose)
-            RunCommand(["make", "./../Binaries/libP7.a"], verbose)
+            RunCommand(
+             ["make", "./../Binaries/" + soFilename, "CXX=" + cxx, "AR=" + ar],
+             verbose)
         with WorkingDir(buildDir):
             if not os.path.exists(installPrefix + "/include"):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
