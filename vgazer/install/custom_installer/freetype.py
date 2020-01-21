@@ -5,7 +5,6 @@ import requests
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
-from vgazer.exceptions  import TarballLost
 from vgazer.platform    import GetInstallPrefix
 from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
@@ -40,7 +39,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
-            #RunCommand(["make distclean"], verbose)
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix,
