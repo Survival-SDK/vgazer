@@ -1,4 +1,57 @@
 data = {
+    "alsa-lib": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "alsa-lib",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "alsa-lib",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "alsa-lib-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "alsa-lib-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "alsa-lib",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libasound2-dev",
+                },
+            },
+        ],
+    },
     "autoconf": {
         "platform": "host",
         "projects": [
@@ -1413,8 +1466,9 @@ data = {
                     "gpg",
                     "make",
                     "makeinfo",
-                    "rsync",
+                    #"rsync",
                     "wget",
+                    "linux-headers-i686",
                 ],
                 "checker": {
                     "type": "gcc-src",
@@ -3606,6 +3660,24 @@ data = {
         "projects": [
             {
                 "arch": ["i686"],
+                "os": ["linux"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "bsdtar",
+                    "rsync",
+                ],
+                "checker": {
+                    "type": "linux-headers",
+                },
+                "installer": {
+                    "type": "linux-headers",
+                },
+            },
+            {
+                "arch": ["i686"],
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -3637,6 +3709,24 @@ data = {
     "linux-headers-x86_64": {
         "platform": "target",
         "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["linux"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "bsdtar",
+                    "rsync",
+                ],
+                "checker": {
+                    "type": "linux-headers",
+                },
+                "installer": {
+                    "type": "linux-headers",
+                },
+            },
             {
                 "arch": ["x86_64"],
                 "os": ["alpine"],
@@ -4343,10 +4433,8 @@ data = {
                     "type": "custom",
                     "name": "physfs",
                     "fallback": {
-                        "type": "github",
-                        "user": "criptych",
-                        "repo": "physfs",
-                        "ignoreReleases": True,
+                        "type": "custom",
+                        "name": "physfs-github",
                     },
                 },
                 "installer": {
@@ -4465,6 +4553,12 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "alsa-lib",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "portaudio",
@@ -4878,6 +4972,16 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "alsa-lib",
+                    "xlib",
+                    "opengl",
+                    "tslib",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "sdl2",
@@ -5632,8 +5736,9 @@ data = {
                     "gpg",
                     "make",
                     "makeinfo",
-                    "rsync",
+                    #"rsync",
                     "wget",
+                    "linux-headers-x86_64",
                 ],
                 "checker": {
                     "type": "gcc-src",
