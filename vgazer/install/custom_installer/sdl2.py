@@ -55,7 +55,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "--prefix=" + installPrefix,
               "--disable-alsatest", "--enable-jack=no", "--enable-esd=no",
               "--enable-pulseaudio=no", "--enable-arts=no", "--enable-nas=no",
-              "--enable-libsamplerate=no", "--enable-sdl2-config=no"],
+              "--enable-libsamplerate=no", "--enable-sdl2-config=no",
+              "CPPFLAGS=-I" + installPrefix + "/include",
+              "LDFLAGS=-L" + installPrefix + "/lib"],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
