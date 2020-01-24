@@ -392,10 +392,10 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
              ["tar", "--verbose", "--extract", "--file",
               gccTarballShortFilename],
              verbose)
-            RunCommand(
-             [kernelTar, "--verbose", "--extract", "--file",
-              kernelTarballShortFilename],
-             verbose)
+            #RunCommand(
+             #[kernelTar, "--verbose", "--extract", "--file",
+              #kernelTarballShortFilename],
+             #verbose)
             RunCommand(
              ["tar", "--verbose", "--extract", "--file",
               glibcTarballShortFilename],
