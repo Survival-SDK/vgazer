@@ -4975,7 +4975,7 @@ data = {
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
-                    "{triplet}-pkg-config",
+                    #"{triplet}-pkg-config",
                     "make",
                     "alsa-lib",
                     "xlib",
@@ -5405,6 +5405,62 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "tinyfiledialogs",
+                },
+            },
+        ],
+    },
+    "tslib": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "cmake",
+
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "libts",
+                    "repo": "tslib",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "tslib",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "tslib-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "tslib-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "sid"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "tslib",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libts-dev",
                 },
             },
         ],
