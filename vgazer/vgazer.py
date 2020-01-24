@@ -18,6 +18,7 @@ from vgazer.install.pkg_config      import InstallPkgConfig
 from vgazer.install.stb             import InstallStb
 from vgazer.mirrors.gnu             import MirrorsGnu
 from vgazer.mirrors.sourceforge     import MirrorsSourceforge
+from vgazer.mirrors.xorg            import MirrorsXorg
 from vgazer.platform                import GetGenericTriplet
 from vgazer.platform                import Platform
 from vgazer.version.custom          import VersionCustom
@@ -46,7 +47,8 @@ class Vgazer:
              customCheckers)
             self.mirrors = {
                 "gnu": MirrorsGnu(),
-                "sourceforge": MirrorsSourceforge()
+                "sourceforge": MirrorsSourceforge(),
+                "xorg": MirrorsXorg(),
             }
             self.installCustom = InstallCustom(customInstallers)
             self.installedSoftware = []
