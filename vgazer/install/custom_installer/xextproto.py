@@ -10,8 +10,19 @@ from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
-def GetTarballUrl():
-    response = requests.get("https://www.x.org/releases/individual/proto/")
+def GetMirrorUrlFunc(mirrorsManager, firstTry):
+    if firstTry:
+        return mirrorsManager.GetMirrorUrl
+    else:
+        return mirrorsManager.GetNewMirrorUrl
+
+def GetTarballUrl(mirrorsManager, firstTry = True):
+    getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
+
+    try:
+        response = requests.get(getMirrorUrl() + "/individual/proto/")
+    except requests.exceptions.ConnectionError:
+        return GetTarballUrl(auth, mirrorsManager, firstTry = False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -41,28 +52,28 @@ def GetTarballUrl():
                 maxVersionMinor = versionMinor
                 maxVersionPatch = versionPatch
                 maxVersionSubpatch = versionSubpatch
-                url = ("https://www.x.org/releases/individual/proto/"
+                url = (getMirrorUrl() + "/individual/proto/"
                  + link["href"])
             elif (versionMajor == maxVersionMajor
              and versionMinor > maxVersionMinor):
                 maxVersionMinor = versionMinor
                 maxVersionPatch = versionPatch
                 maxVersionSubpatch = versionSubpatch
-                url = ("https://www.x.org/releases/individual/proto/"
+                url = (getMirrorUrl() + "/individual/proto/"
                  + link["href"])
             elif (versionMajor == maxVersionMajor
              and versionMinor == maxVersionMinor
              and versionPatch > maxVersionPatch):
                 maxVersionPatch = versionPatch
                 maxVersionSubpatch = versionSubpatch
-                url = ("https://www.x.org/releases/individual/proto/"
+                url = (getMirrorUrl() + "/individual/proto/"
                  + link["href"])
             elif (versionMajor == maxVersionMajor
              and versionMinor == maxVersionMinor
              and versionPatch == maxVersionPatch
              and versionSubpatch > maxVersionSubpatch):
                 maxVersionSubpatch = versionSubpatch
-                url = ("https://www.x.org/releases/individual/proto/"
+                url = (getMirrorUrl() + "/individual/proto/"
                  + link["href"])
 
     return url
@@ -75,7 +86,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tarballUrl = GetTarballUrl()
+    xorgMirrorsManager = mirrors["xorg"].CreateMirrorsManager(
+     ["https", "http"])
+
+    tarballUrl = GetTarballUrl(xorgMirrorsManager)
     tarballShortFilename = tarballUrl.split("/")[-1]
 
     try:
