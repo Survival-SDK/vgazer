@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import vgazer.version.utils as utils
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get("https://www.libsdl.org/projects/SDL_ttf/")
     html = response.content
     parsedHtml = BeautifulSoup(html, "html.parser")

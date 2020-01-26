@@ -25,7 +25,7 @@ def GetMinorVersionLink(auth):
                 lastVersionLinkText = link["href"]
     return "https://cmocka.org/files/" + lastVersionLinkText
 
-def Check(auth):
+def Check(auth, mirrors):
     minorVersionLink = GetMinorVersionLink(auth)
 
     response = requests.get(minorVersionLink)

@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import vgazer.version.utils as utils
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get("https://developers.google.com/speed/webp/download")
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")

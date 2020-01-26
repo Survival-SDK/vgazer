@@ -1,7 +1,7 @@
 import requests
 import vgazer.version.utils as utils
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get(
      "https://raw.githubusercontent.com/mackron/dr_libs/master/dr_wav.h"
     )

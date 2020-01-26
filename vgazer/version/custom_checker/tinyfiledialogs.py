@@ -1,6 +1,6 @@
 import requests
 
-def Check(auth):
+def Check(auth, mirrors):
     description = requests.get(
      "https://sourceforge.net/rest/p/tinyfiledialogs"
     ).json()["short_description"]

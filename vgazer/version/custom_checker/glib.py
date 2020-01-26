@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get("https://developer.gnome.org/glib/")
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")

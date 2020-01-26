@@ -12,7 +12,7 @@ def GetPubSubdir():
     return ("https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/"
      + links[-1]["href"] + "/")
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get(GetPubSubdir())
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")

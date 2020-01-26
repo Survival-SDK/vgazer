@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get("http://www.lua.org/")
     html = response.content
     parsedHtml = BeautifulSoup(html, "html.parser")

@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get("https://ftp.pcre.org/pub/pcre/")
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")

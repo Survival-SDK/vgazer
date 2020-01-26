@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get("http://www.portaudio.com/download.html")
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")

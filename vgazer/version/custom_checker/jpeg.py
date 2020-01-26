@@ -1,6 +1,6 @@
 import requests
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get("http://www.ijg.org/")
     html = response.content.decode("utf-8")
     lines = html.splitlines()

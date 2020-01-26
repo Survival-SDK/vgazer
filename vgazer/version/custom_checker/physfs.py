@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 from vgazer.exceptions import VersionCheckError
 
-def Check(auth):
+def Check(auth, mirrors):
     try:
         response = requests.get(
          "https://icculus.org/physfs/downloads/LATEST_VERSION.html")

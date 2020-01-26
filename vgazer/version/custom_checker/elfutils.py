@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def Check(auth):
+def Check(auth, mirrors):
     response = requests.get("https://sourceware.org/elfutils/ftp/")
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")

@@ -121,7 +121,7 @@ class Vgazer:
             elif checker["type"] == "xiph":
                 return CheckXiph(self.auth["base"], checker["project"])
             elif checker["type"] == "custom":
-                return self.versionCustom.Check(checker["name"])
+                return self.versionCustom.Check(checker["name"], self.mirrors)
         except VersionCheckError as versionCheckError:
             if "fallback" in checker:
                 return self.UseChecker(software, checker["fallback"])
