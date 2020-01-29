@@ -25,8 +25,8 @@ $ pip3 install requests bs4
 
 # Store your github data on PC
 Library gets some data about repositories from Github via Rest API. For this 
-reason it important to store your authentification data on your PC. Library will 
-use your authentification data for interacting with Github. 
+reason it important to store your authentification data on your PC. Library 
+will use your authentification data for interacting with Github. 
 
 If you will skip this steps before using library you will be asked your 
 authentification data on first run.
@@ -98,8 +98,8 @@ Description of parameters:
 * x86_64
 
 **hos** and **hver** - OS or Linux Distribution and version of OS or Linux 
-Distribution. This is not OS and OS's version of your PC. Typically it is OS and 
-OS's version of base Docker image. Currently supported:
+Distribution. This is not OS and OS's version of your PC. Typically it is OS 
+and OS's version of base Docker image. Currently supported:
 
 * alpine
     * 3.9
@@ -136,7 +136,8 @@ paths on host platform. Currently supported:
 TODO complete list
 
 ### Building Docker images
-Build docker image of environment with given architecture, OS and version of OS:
+Build docker image of environment with given architecture, OS and version of 
+OS:
 ```
 $ make image_build arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
@@ -211,7 +212,8 @@ $ make sample_tool tool=cmake arch=x86_64 os=debian ver=stretch
 ### Install library for target platform on host platform
 ```
 $ make sample_library lib=<library> harch=<host_arch> hos=<host_os> \
-    hver=<host_os_version> tarch=<target_arch> tos=<target_os> tabi=<target_abi>
+    hver=<host_os_version> tarch=<target_arch> tos=<target_os> \
+    tabi=<target_abi>
 ```
 **Example**. Install manually (download, build and copy to system path) cjson 
 library for x86-linux-gnu target on host environment with x86_64 architecture 
@@ -233,13 +235,35 @@ architecture and Debian Stretch as base image.
 ```
 $ make sample_library lib=zlib arch=x86_64 os=debian ver=stretch
 ```
-**Example 2**. Try to install cjson library via apt-get on host environment with 
-x86_64 architecture and Debian Stretch as base image. Repos of Debian Stretch do 
-not have libcjson-dev package. This is why in this case library will be 
-downloaded, built and installed manually.
+**Example 2**. Try to install cjson library via apt-get on host environment 
+with x86_64 architecture and Debian Stretch as base image. Repos of Debian 
+Stretch do not have libcjson-dev package. This is why in this case library will 
+be downloaded, built and installed manually.
 ```
 $ make sample_library lib=cjson arch=x86_64 os=debian ver=stretch
 ```
+
+# For developers:
+### Additional requirements
+Project use pylama for check code errors and some style errors. On Debian you 
+can install it with command:
+```
+# apt-get install pylama
+```
+You can also use pip but I did try install it with pip and pylama did not 
+available in bash out of the box.
+
+### Check code
+You can check code with command:
+```
+$ make lint
+```
+Currently project ignores these errors and warnings:
+
+* [**E128**](https://www.flake8rules.com/rules/E128.html)
+* [**E272**](https://www.flake8rules.com/rules/E272.html)
+* [**E302**](https://www.flake8rules.com/rules/E302.html)
+* [**E305**](https://www.flake8rules.com/rules/E305.html)
 
 # Copying:
 Source code of library released to public domain (CC0 license)
