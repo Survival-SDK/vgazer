@@ -4,7 +4,7 @@ endif
 
 .PHONY: .FORCE
 
-samples: .FORCE
+samples:
 	./generate_samples.py
 
 first_run:
@@ -82,6 +82,10 @@ else
 sample_tool:
 	@echo 'Error: variables "arch", "os", "ver" and "tool" must be defined'
 endif
+
+lint:
+	-pylama -i E128,E272,E302,E305 ./vgazer ./first_run.py ./generate_samples.py \
+     ./setup.py | tee pylama.log
 
 package:
 	python3 setup.py sdist
