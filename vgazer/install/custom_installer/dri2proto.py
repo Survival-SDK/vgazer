@@ -16,13 +16,13 @@ def GetMirrorUrlFunc(mirrorsManager, firstTry):
     else:
         return mirrorsManager.GetNewMirrorUrl
 
-def GetTarballUrl(mirrorsManager, firstTry = True):
+def GetTarballUrl(mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
 
     try:
         response = requests.get(getMirrorUrl() + "/individual/proto/")
     except requests.exceptions.ConnectionError:
-        return GetTarballUrl(auth, mirrorsManager, firstTry = False)
+        return GetTarballUrl(mirrorsManager, firstTry=False)
 
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")

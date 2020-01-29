@@ -8,7 +8,6 @@ from vgazer.env_vars        import SetEnvVar
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import InstallError
 from vgazer.platform        import GetInstallPrefix
-from vgazer.platform        import GetTriplet
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
@@ -59,7 +58,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     configMeson.GenerateCrossFile()
 
     installPrefix = GetInstallPrefix(platformData)
-    targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)

@@ -14,7 +14,10 @@ def CheckMuslCrossMake(auth):
 
     lastVersionCommitSha = tags[0]["commit"]["sha"]
 
-    lastVersionCommitMakefileUrl = "https://raw.githubusercontent.com/richfelker/musl-cross-make/" + lastVersionCommitSha + "/Makefile"
+    lastVersionCommitMakefileUrl = (
+     "https://raw.githubusercontent.com/richfelker/musl-cross-make/"
+     + lastVersionCommitSha + "/Makefile"
+    )
 
     response = requests.get(lastVersionCommitMakefileUrl)
     html = response.content.decode("utf-8")

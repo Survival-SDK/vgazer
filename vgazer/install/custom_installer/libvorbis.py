@@ -25,6 +25,9 @@ def GetTarballUrl():
             return ("http://downloads.xiph.org/releases/vorbis/libvorbis-"
              + cells[1].text + ".tar.gz")
 
+    raise TarballLost(
+     "Unable to find tarball with last stable release of libvorbis")
+
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])

@@ -68,9 +68,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             RunCommand(["./autogen.sh"], verbose)
             RunCommand(
-             ["./configure", "--prefix=" + installPrefix,
+             [
+              "./configure", "--prefix=" + installPrefix,
               "--host=" + targetTriplet, "--disable-static",
-              "--disable-all-programs", "--enable-libblkid", "--enable-libmount"
+              "--disable-all-programs", "--enable-libblkid",
+              "--enable-libmount"
              ],
              verbose)
             RunCommand(["make"], verbose)

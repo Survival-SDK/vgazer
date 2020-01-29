@@ -31,7 +31,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand([ar, "rcs", "libminini.a", "minIni.o"], verbose)
             if not os.path.exists(installPrefix + "/include"):
-                RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
+                RunCommand(["mkdir", "-p", installPrefix + "/include"],
+                 verbose)
             if not os.path.exists(installPrefix + "/lib"):
                 RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
             RunCommand(["mkdir", "-p", installPrefix + "/include/minINI"],
@@ -39,7 +40,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(
              ["sh", "-c", "cp ./*.h " + installPrefix + "/include/minINI"],
              verbose)
-            RunCommand(["cp", "./libminini.a", installPrefix + "/lib"], verbose)
+            RunCommand(["cp", "./libminini.a", installPrefix + "/lib"],
+             verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")

@@ -5,8 +5,6 @@ from bs4 import BeautifulSoup
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
-#from vgazer.exceptions  import NoSuitableMirrors
-from vgazer.exceptions  import UnknownTargetArch
 from vgazer.platform    import GetFilesystemType
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
@@ -103,47 +101,6 @@ def GetLastGccSuburl(auth, mirrorsManager, firstTry = True):
 
     return ("gcc/" + versionInfo["maxVersionFilename"]
      + versionInfo["maxVersionFilename"][:-1] + ".tar.gz")
-
-#def GetLastKernelUrlInSubdir(auth, majorVersion):
-    #VersionDirUrl = ("https://mirrors.edge.kernel.org/pub/linux/kernel/v"
-     #+ str(majorVersion) + ".x/")
-
-    #response = requests.get(VersionDirUrl)
-    #html = response.content.decode("utf-8")
-    #parsedHtml = BeautifulSoup(html, "html.parser")
-
-    #links = parsedHtml.find_all("a")
-
-    #versionInfo = InitVersionInfo()
-    #for link in links:
-        #if ("linux" in link.text and ".tar.gz" in link.text):
-            #version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
-            #UpdateVersionInfo(versionInfo, version, link.text)
-
-    #if versionInfo["maxVersionMajor"] == -1:
-        #return None
-
-    #return VersionDirUrl + versionInfo["maxVersionFilename"]
-
-#def GetLastKernelUrl(auth):
-    #response = requests.get("https://www.kernel.org/pub/linux/kernel/")
-    #html = response.content.decode("utf-8")
-    #parsedHtml = BeautifulSoup(html, "html.parser")
-
-    #links = parsedHtml.find_all("a")
-
-    #maxVersion = -1
-    #for link in links:
-        #if "v" in link.text and "." in link.text:
-            #version = int(link.text[1:-1].split(".")[0])
-            #if version > maxVersion:
-                #maxVersion = version
-
-    #url = GetLastKernelUrlInSubdir(auth, maxVersion)
-    #if url is None:
-        #return GetLastKernelUrlInSubdir(auth, maxVersion - 1)
-    #else:
-        #return url
 
 def GetLastGlibcSuburl(auth, mirrorsManager, firstTry = True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
@@ -300,7 +257,7 @@ def RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, suburl, shortFilename,
             RunCommand(
              ["gpg", "--verify", "--keyring", "./gnu-keyring.gpg",
               shortFilename + ".sig"],
-             verbose = True)
+             verbose=True)
         except CommandError as e:
             if (e.command[0] == "wget" and e.errorcode == 4
              or e.command[0] == "gpg" and e.errorcode == 1):
@@ -312,13 +269,6 @@ def RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, suburl, shortFilename,
 
 def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
  verbose):
-    compilerTargetArch = triplet.split("-")[0]
-    if compilerTargetArch in ["i386", "i486", "i586", "i686", "x86_64"]:
-        kernelArch = "x86"
-    else:
-        raise UnknownTargetArch("Unknown compiler's target arch:",
-         compilerTargetArch)
-
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
@@ -333,7 +283,6 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
     gnuWgetMirrorsManager = mirrorsGnu.CreateMirrorsManager(
      ["https", "http", "ftp"])
 
-    #try:
     binutilsTarballSuburl = GetLastBinutilsSuburl(auth,
      gnuWebMirrorsManager)
     binutilsTarballShortFilename = binutilsTarballSuburl.split("/")[-1]
@@ -341,9 +290,6 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
     gccTarballSuburl = GetLastGccSuburl(auth, gnuWebMirrorsManager)
     gccTarballShortFilename = gccTarballSuburl.split("/")[-1]
     gccExtractedDir = gccTarballShortFilename[0:-7]
-    #kernelTarballUrl = GetLastKernelUrl(auth)
-    #kernelTarballShortFilename = kernelTarballUrl.split("/")[-1]
-    #kernelExtractedDir = kernelTarballShortFilename[0:-7]
     glibcTarballSuburl = GetLastGlibcSuburl(auth, gnuWebMirrorsManager)
     glibcTarballShortFilename = glibcTarballSuburl.split("/")[-1]
     glibcExtractedDir = glibcTarballShortFilename[0:-7]
@@ -362,9 +308,6 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
     cloogTarballUrl = GetLastCloogUrl(auth)
     cloogTarballShortFilename = cloogTarballUrl.split("/")[-1]
     cloogExtractedDir = cloogTarballShortFilename[0:-7]
-    #except NoSuitableMirrors:
-        #print("Unable to install", software)
-        #raise InstallError(software + " not installed")
 
     try:
         with WorkingDir(tempPath):
@@ -373,7 +316,6 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
              binutilsTarballSuburl, binutilsTarballShortFilename, verbose)
             RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, gccTarballSuburl,
              gccTarballShortFilename, verbose)
-            #RunCommand(["wget", "-P", "./", kernelTarballUrl], verbose)
             RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, glibcTarballSuburl,
              glibcTarballShortFilename, verbose)
             RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, mpfrTarballSuburl,
@@ -392,10 +334,6 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
              ["tar", "--verbose", "--extract", "--file",
               gccTarballShortFilename],
              verbose)
-            #RunCommand(
-             #[kernelTar, "--verbose", "--extract", "--file",
-              #kernelTarballShortFilename],
-             #verbose)
             RunCommand(
              ["tar", "--verbose", "--extract", "--file",
               glibcTarballShortFilename],
@@ -439,12 +377,6 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
              verbose)
             RunCommand(["make", "-j" + str(os.cpu_count())], verbose)
             RunCommand(["make", "install"], verbose)
-        #linuxHeadersDir = os.path.join(tempPath, kernelExtractedDir)
-        #with WorkingDir(linuxHeadersDir):
-            #RunCommand(
-             #["make", "ARCH=" + kernelArch,
-              #"INSTALL_HDR_PATH=/usr/local/" + triplet, "headers_install"],
-             #verbose)
         with WorkingDir(tempPath):
             RunCommand(["mkdir", "build-gcc"], verbose)
         buildGccDir = os.path.join(tempPath, "build-gcc")

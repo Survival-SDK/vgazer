@@ -1,4 +1,3 @@
-import requests
 from vgazer.exceptions import DebianPackageUnavailable
 
 def GetPackageVersion(sourceInfo, debianRelease):
@@ -19,11 +18,6 @@ def GetPackageVersion(sourceInfo, debianRelease):
     return None
 
 def CheckDebian(auth, debianRelease, source):
-    #for key, data in projects.items():
-        #if (key == debianRelease or key == "generic"):
-            #source = data["source"]
-            #break
-
     sourceInfo = auth.GetJson(
      "https://sources.debian.org/api/src/" + source + "/")
 

@@ -8,13 +8,11 @@ from vgazer.exceptions      import InstallError
 from vgazer.github_common   import GithubCheckApiRateLimitExceeded
 from vgazer.platform        import GetCc
 from vgazer.platform        import GetInstallPrefix
-from vgazer.platform        import GetTriplet
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
-    targetTriplet = GetTriplet(platformData["target"])
     cc = GetCc(platformData["target"])
 
     storeTemp = StoreTemp()

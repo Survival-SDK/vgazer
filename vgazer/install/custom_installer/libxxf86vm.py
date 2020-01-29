@@ -1,5 +1,4 @@
 import os
-import requests
 
 from vgazer.command     import GetCommandOutputUtf8
 from vgazer.command     import RunCommand

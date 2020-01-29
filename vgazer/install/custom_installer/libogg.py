@@ -25,6 +25,8 @@ def GetTarballUrl():
             return ("http://downloads.xiph.org/releases/ogg/libogg-"
              + cells[1].text + ".tar.gz")
 
+    raise TarballLost("Unable to find tarball of libogg's last version")
+
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])

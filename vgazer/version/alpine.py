@@ -13,7 +13,7 @@ def CheckAlpine(auth, arch, alpineRelease, repo, package):
 
     trs = parsedHtml.find_all("tr")
     for tr in trs:
-        ths = tr.findChildren("th" , recursive=False)
+        ths = tr.findChildren("th", recursive=False)
         if ths[0].text == "Version":
-            tds = tr.findChildren("td" , recursive=False)
+            tds = tr.findChildren("td", recursive=False)
             return tds[0].text.strip()

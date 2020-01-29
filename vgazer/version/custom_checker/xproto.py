@@ -12,7 +12,7 @@ def Check(auth, mirrors):
     maxVersionMinor = -1
     maxVersionPatch = -1
     for link in links:
-        if ("xproto-" in link.text and not "dmxproto-" in link.text
+        if ("xproto-" in link.text and "dmxproto-" not in link.text
          and ".tar.gz" in link.text and ".sig" not in link.text):
             version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
             versionMajor = int(version[0])

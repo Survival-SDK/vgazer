@@ -19,16 +19,20 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    sourceUrl = "https://sourceforge.net/projects/tinyfiledialogs/files/tinyfiledialogs.c/download"
-    headerUrl = "https://sourceforge.net/projects/tinyfiledialogs/files/tinyfiledialogs.h/download"
+    sourceUrl = "https://sourceforge.net/projects/tinyfiledialogs/files/"
+     "tinyfiledialogs.c/download"
+    headerUrl = "https://sourceforge.net/projects/tinyfiledialogs/files/"
+     "tinyfiledialogs.h/download"
 
     try:
         with WorkingDir(tempPath):
             RunCommand(
-             ["wget", "-P", "./", "-O", "tinyfiledialogs.c", sourceUrl], verbose
+             ["wget", "-P", "./", "-O", "tinyfiledialogs.c", sourceUrl],
+             verbose
             )
             RunCommand(
-             ["wget", "-P", "./", "-O", "tinyfiledialogs.h", headerUrl], verbose
+             ["wget", "-P", "./", "-O", "tinyfiledialogs.h", headerUrl],
+             verbose
             )
             RunCommand(
              [cc, "-c", "tinyfiledialogs.c", "-o", "tinyfiledialogs.o", "-O2",
@@ -42,13 +46,15 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              [ar, "rcs", "libtinyfiledialogs.a", "tinyfiledialogs.o"],
              verbose)
             if not os.path.exists(installPrefix + "/include"):
-                RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
+                RunCommand(["mkdir", "-p", installPrefix + "/include"],
+                 verbose)
             if not os.path.exists(installPrefix + "/lib"):
                 RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
             RunCommand(
              ["cp", "./tinyfiledialogs.h", installPrefix + "/include"],
              verbose)
-            RunCommand(["cp", "./libtinyfiledialogs.a", installPrefix + "/lib"],
+            RunCommand(
+             ["cp", "./libtinyfiledialogs.a", installPrefix + "/lib"],
              verbose)
             RunCommand(
              ["cp", "./libtinyfiledialogs.so", installPrefix + "/lib"],

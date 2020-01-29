@@ -1,5 +1,4 @@
 import os
-import requests
 
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
@@ -8,7 +7,6 @@ from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
 from vgazer.github_common   import GithubCheckApiRateLimitExceeded
-from vgazer.platform        import GetCc
 from vgazer.platform        import GetInstallPrefix
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
@@ -18,7 +16,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     configCmake.GenerateCrossFile()
 
     installPrefix = GetInstallPrefix(platformData)
-    cc = GetCc(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)

@@ -58,7 +58,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         with WorkingDir(buildDir):
             if not os.path.exists(installPrefix + "/include"):
-                RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
+                RunCommand(["mkdir", "-p", installPrefix + "/include"],
+                 verbose)
             if not os.path.exists(installPrefix + "/lib"):
                 RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
             if not os.path.exists(soPrefix):

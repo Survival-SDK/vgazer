@@ -1,5 +1,4 @@
 from vgazer.auth.base import AuthBase
-from vgazer.store.home import StoreHome
 
 class AuthGithub(AuthBase):
     @staticmethod
@@ -7,8 +6,10 @@ class AuthGithub(AuthBase):
         if not storeHome.ResolveSubdirectory("github"):
             return False
 
-        filesResolved = (storeHome.ResolveSubdirectoryFile("github", "username")
-         and storeHome.ResolveSubdirectoryFile("github", "token"))
+        filesResolved = (
+         storeHome.ResolveSubdirectoryFile("github", "username")
+         and storeHome.ResolveSubdirectoryFile("github", "token")
+        )
 
         if not filesResolved:
             return False
@@ -29,13 +30,3 @@ class AuthGithub(AuthBase):
         token = AuthBase.GetAuthData(self.storeHome, "github", "token",
          "github access token")
         self.session.auth = (username, token)
-
-        #print(username)
-        #print(token)
-
-        #import json
-
-        #rate_limit_url = "https://api.github.com/rate_limit?q=github+api"
-        #rate_limit = json.loads(self.session.get(rate_limit_url).text)
-
-        #print(rate_limit)

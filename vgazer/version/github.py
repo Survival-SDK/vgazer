@@ -1,4 +1,3 @@
-import requests
 import vgazer.version.utils as utils
 from vgazer.github_common import GithubCheckApiRateLimitExceeded
 from vgazer.exceptions import GithubApiRateLimitExceeded
@@ -21,7 +20,7 @@ def CheckLastCommit(auth, user, repo):
     return "commit on " + date + " " + time
 
 def CheckGithub(auth, user, repo, ignoreReleases, ignoredTags):
-    if ignoreReleases == True:
+    if ignoreReleases:
         return CheckLastCommit(auth, user, repo)
 
     releases = auth.GetJson(
@@ -56,4 +55,3 @@ def CheckGithub(auth, user, repo, ignoreReleases, ignoredTags):
         return utils.GetVersionFromTag(tags[tagNum]["name"])
 
     return CheckLastCommit(auth, user, repo)
-

@@ -48,7 +48,6 @@ class ConfigMeson():
          "strip = '{strip}'\n"
          "pkgconfig = '{pkgConfig}'\n"
          "llvm-config = '{llvmConfig}'\n"
-         #"exe_wrapper = 'wine'\n"
          "\n"
          "[host_machine]\n"
          "system = '{genericOs}'\n"

@@ -25,7 +25,8 @@ def Check(auth, mirrors):
                     versionPatch = int(link.text.split("-")[2])
                 versionRc = int(link.text.split("rc")[1][0])
             else:
-                version = link.text.split("-")[1].split(".tar.xz")[0].split(".")
+                version = link.text.split("-")[1].split(".tar.xz")[0].split(
+                 ".")
                 versionMajor = int(version[0])
                 versionMinor = int(version[1])
                 versionPatch = int(version[2])

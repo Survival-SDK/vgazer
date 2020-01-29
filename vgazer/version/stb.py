@@ -1,5 +1,4 @@
 import requests
-from bs4 import BeautifulSoup
 
 def CheckStb(auth, library):
     response = requests.get(

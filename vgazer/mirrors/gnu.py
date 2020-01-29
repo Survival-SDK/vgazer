@@ -53,7 +53,7 @@ fallbackMirrorsList = {
     ],
 }
 
-def GetMirrorsList(noFallback = False):
+def GetMirrorsList(noFallback=False):
     print("VGAZER: Retrieving mirrors list for ftp.gnu.org...")
 
     mirrorsList = {

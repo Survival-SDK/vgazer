@@ -21,7 +21,6 @@ def GetTarballUrl():
     maxVersionMajor = -1
     maxVersionMinor = -1
     maxVersionPatch = -1
-    maxVersionRc = -1
     for link in links:
         if ("glu-" in link.text and ".tar.gz" in link.text
          and ".sig" not in link.text):
@@ -34,17 +33,20 @@ def GetTarballUrl():
                 maxVersionMajor = versionMajor
                 maxVersionMinor = versionMinor
                 maxVersionPatch = versionPatch
-                url = "https://mesa.freedesktop.org/archive/glu/" + link["href"]
+                url = "https://mesa.freedesktop.org/archive/glu/{href}".format(
+                 href=link["href"])
             elif (versionMajor == maxVersionMajor
              and versionMinor > maxVersionMinor):
                 maxVersionMinor = versionMinor
                 maxVersionPatch = versionPatch
-                url = "https://mesa.freedesktop.org/archive/glu/" + link["href"]
+                url = "https://mesa.freedesktop.org/archive/glu/{href}".format(
+                 href=link["href"])
             elif (versionMajor == maxVersionMajor
              and versionMinor == maxVersionMinor
              and versionPatch > maxVersionPatch):
                 maxVersionPatch = versionPatch
-                url = "https://mesa.freedesktop.org/archive/glu/" + link["href"]
+                url = "https://mesa.freedesktop.org/archive/glu/{href}".format(
+                 href=link["href"])
 
     if url is not None:
         return url

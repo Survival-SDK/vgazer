@@ -1,5 +1,3 @@
-import os
-
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError

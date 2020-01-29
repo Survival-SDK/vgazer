@@ -1,5 +1,4 @@
 import os
-import requests
 
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
@@ -52,10 +51,9 @@ def InstallMuslCrossMake(auth, software, languages, triplet, platformData,
             RunCommand(
              ["sh", "-c", "echo 'TARGET = " + triplet + "' > config.mak"],
              verbose)
-            RunCommand(["sh", "-c", "echo 'OUTPUT = /usr/local' >> config.mak"],
+            RunCommand(
+             ["sh", "-c", "echo 'OUTPUT = /usr/local' >> config.mak"],
              verbose)
-            #RunCommand(["sh", "-c", "echo 'LINUX_VER =' >> config.mak"],
-             #verbose)
             RunCommand(
              [
               "sh",

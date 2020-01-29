@@ -42,7 +42,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(
              ["git", "clone", "https://github.com/grimfang4/sdl-gpu.git",
               "sdl2-gpu"],
-            verbose)
+             verbose)
         clonedDir = os.path.join(tempPath, "sdl2-gpu")
         with WorkingDir(clonedDir):
             RunCommand(["mkdir", "build"], verbose)
@@ -62,9 +62,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand(
              [cc, "-c", "../src/externals/stb_image_write/stb_image_write.c",
-              "-o", "../src/externals/stb_image_write/stb_image_write.o", "-O2",
-              "-Wall", "-mmmx", "-msse", "-msse2", "-mfpmath=sse", "-fPIC",
-              "-I" + installPrefix + "/include"],
+              "-o", "../src/externals/stb_image_write/stb_image_write.o",
+              "-O2", "-Wall", "-mmmx", "-msse", "-msse2", "-mfpmath=sse",
+              "-fPIC", "-I" + installPrefix + "/include"],
              verbose)
             RunCommand(
              [ar, "rcs", "../src/externals/stb_image_write/libstbi_write.a",
@@ -74,8 +74,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["cmake", "..", "-G", "Unix Makefiles",
               "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
               "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
-              "-DSDL_gpu_BUILD_DEMOS=OFF", #"-DSDL_gpu_DISABLE_GLES=OFF",
-              "-DSDL_gpu_USE_SYSTEM_GLEW=ON",
+              "-DSDL_gpu_BUILD_DEMOS=OFF", "-DSDL_gpu_USE_SYSTEM_GLEW=ON",
               "-DSTBI_INCLUDE_DIR=" + installPrefix + "/include",
               "-DSTBI_LIBRARY=" + buildDir
                + "/../src/externals/stb_image/libstbi.a",

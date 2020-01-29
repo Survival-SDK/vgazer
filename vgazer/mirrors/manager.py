@@ -17,12 +17,14 @@ class MirrorsManager():
         return self.mirrorsList[self.currentProtocol][self.currentMirrorIndex]
 
     def ChangeMirror(self):
-        if self.currentMirrorIndex < len(self.mirrorsList[self.currentProtocol]):
+        if self.currentMirrorIndex < len(
+         self.mirrorsList[self.currentProtocol]):
             self.currentMirrorIndex += 1
         else:
             protocolIndex = self.permittedProtocols.index[self.currentProtocol]
             if protocolIndex < len(self.PermittedProtocols):
-                self.currentProtocol = self.PermittedProtocols[protocolIndex + 1]
+                self.currentProtocol = self.PermittedProtocols[
+                 protocolIndex + 1]
                 self.currentMirrorIndex = 0
             else:
                 raise NoSuitableMirrors(

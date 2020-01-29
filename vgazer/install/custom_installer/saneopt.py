@@ -22,16 +22,18 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(tempPath):
             RunCommand(
              ["git", "clone", "https://github.com/mmalecki/saneopt.git"],
-            verbose)
+             verbose)
         clonedDir = os.path.join(tempPath, "saneopt")
         with WorkingDir(clonedDir):
             RunCommand(["make", "CC=" + cc, "AR=" + ar], verbose)
             if not os.path.exists(installPrefix + "/include"):
-                RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
+                RunCommand(["mkdir", "-p", installPrefix + "/include"],
+                 verbose)
             if not os.path.exists(installPrefix + "/lib"):
                 RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
             RunCommand(
-             ["cp", "./include/saneopt.h", installPrefix + "/include"], verbose)
+             ["cp", "./include/saneopt.h", installPrefix + "/include"],
+             verbose)
             RunCommand(["cp", "./libsaneopt.a", installPrefix + "/lib"],
              verbose)
     except CommandError:

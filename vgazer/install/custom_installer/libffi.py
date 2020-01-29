@@ -16,7 +16,10 @@ def GetTarballUrl():
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
-    return parsedHtml.a["href"]
+    if parsedHtml.a["href"] is not None:
+        return parsedHtml.a["href"]
+
+    raise TarballLost("Unable to find tarball of libffi's last version")
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)

@@ -10,4 +10,3 @@ def Check(auth, mirrors):
     for font in fonts:
         if font["size"] == "+2":
             return font.text.split(" ")[2]
-

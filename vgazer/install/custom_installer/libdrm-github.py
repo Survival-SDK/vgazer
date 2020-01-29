@@ -9,12 +9,11 @@ from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import InstallError
 from vgazer.exceptions      import TarballLost
 from vgazer.platform        import GetInstallPrefix
-from vgazer.platform        import GetTriplet
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
-# Unable to get last versions via github API, because github API don't give info
-# about all tags but info about small amount of prehistoric tags instead.
+# Unable to get last versions via github API, because github API don't give
+# info about all tags but info about small amount of prehistoric tags instead.
 def GetTarballUrl():
     response = requests.get("https://github.com/freedesktop/mesa-drm/releases")
     html = response.content.decode("utf-8")
@@ -22,9 +21,6 @@ def GetTarballUrl():
 
     links = parsedHtml.find_all("a")
 
-    maxVersionMajor = -1
-    maxVersionMinor = -1
-    maxVersionPatch = -1
     for link in links:
         if ("/freedesktop/mesa-drm/archive/libdrm-" in link["href"]
          and ".tar.gz" in link["href"]):
@@ -37,7 +33,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     configMeson.GenerateCrossFile()
 
     installPrefix = GetInstallPrefix(platformData)
-    targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)

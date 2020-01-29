@@ -1,5 +1,4 @@
 import os
-import requests
 
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
@@ -54,8 +53,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(
              ["./runConfigureICU", "Linux/gcc", "--host=" + targetTriplet,
               "--prefix=" + installPrefix, "--enable-static=yes",
-              "--enable-extras=no", "--enable-icuio=no", "--enable-layoutex=no",
-              "--enable-tools", "--enable-tests=no", "--enable-samples=no",
+              "--enable-extras=no", "--enable-icuio=no",
+              "--enable-layoutex=no", "--enable-tools", "--enable-tests=no",
+              "--enable-samples=no",
               "--with-library-bits=" + str(targetBitness), "CC=" + cc,
               "CXX=" + cxx],
              verbose)

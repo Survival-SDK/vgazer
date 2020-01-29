@@ -73,7 +73,10 @@ def GetTarballUrl(mirrorsManager, firstTry = True):
                 maxVersionSubpatch = versionSubpatch
                 url = (getMirrorUrl() + "/individual/proto/" + link["href"])
 
-    return url
+    if url is not None:
+        return url
+
+    raise TarballLost("Unable to find tarball of inputproto's last version")
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)

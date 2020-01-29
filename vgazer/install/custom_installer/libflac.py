@@ -25,6 +25,9 @@ def GetTarballUrl():
             return ("http://downloads.xiph.org/releases/flac/flac-"
              + cells[1].text + ".tar.xz")
 
+    raise TarballLost(
+     "Unable to find tarball with last stable release of libFLAC")
+
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])

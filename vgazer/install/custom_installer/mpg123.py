@@ -50,8 +50,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix,
               "--enable-nagging=no", "--enable-ipv6=yes",
-              "--enable-network=yes", "--with-cpu=" + cpu, "--with-audio=dummy",
-              "--with-default-audio=dummy"],
+              "--enable-network=yes", "--with-cpu=" + cpu,
+              "--with-audio=dummy", "--with-default-audio=dummy"],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)

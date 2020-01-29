@@ -22,7 +22,7 @@ def GetTarballUrl(mirrorsManager, firstTry = True):
     try:
         response = requests.get(getMirrorUrl() + "/individual/proto/")
     except requests.exceptions.ConnectionError:
-        return GetTarballUrl(auth, mirrorsManager, firstTry = False)
+        return GetTarballUrl(mirrorsManager, firstTry = False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -31,7 +31,6 @@ def GetTarballUrl(mirrorsManager, firstTry = True):
     maxVersionMajor = -1
     maxVersionMinor = -1
     maxVersionPatch = -1
-    maxVersionSubpatch = -1
     for link in links:
         if ("renderproto-" in link.text and ".tar.gz" in link.text):
             version = link.text.split("-")[1].split(".tar.gz")[0].split(".")

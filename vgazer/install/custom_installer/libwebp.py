@@ -12,7 +12,8 @@ from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
 def GetTarballUrl():
-    response = requests.get("https://developers.google.com/speed/webp/download")
+    response = requests.get(
+     "https://developers.google.com/speed/webp/download")
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -23,6 +24,8 @@ def GetTarballUrl():
          and href.find("linux") == -1 and href.find("mac") == -1
          and href.find("ios") == -1 and href.find("index") == -1):
             return "https:" + link["href"]
+
+    raise TarballLost("Unable to find tarball url for libwebp")
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)

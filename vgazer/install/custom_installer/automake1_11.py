@@ -6,7 +6,6 @@ from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.exceptions  import TarballLost
-from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
@@ -34,12 +33,10 @@ def GetTarballUrl():
 
     if maxUrl != "":
         return maxUrl
-    else:
-        raise TarballLost("Tarball url not found")
+
+    raise TarballLost("Tarball url not found")
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
-    hostTriplet = GetTriplet(platformData["host"])
-
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
@@ -58,12 +55,20 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          ".".join(tarballShortFilename.split(".")[0:-2]))
         with WorkingDir(extractedDir):
             RunCommand(
-             ["wget", "-O", "./lib/config.guess",
-              "https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD"],
+             [
+              "wget",
+              "-O", "./lib/config.guess",
+              "https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;"
+               "f=config.guess;hb=HEAD"
+             ],
              verbose)
             RunCommand(
-             ["wget", "-O", "./lib/config.sub",
-              "https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD"],
+             [
+              "wget",
+              "-O", "./lib/config.sub",
+              "https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;"
+               "f=config.sub;hb=HEAD"
+             ],
              verbose)
             RunCommand(
              ["./configure", "--prefix=/usr/local"],

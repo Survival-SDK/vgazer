@@ -16,13 +16,13 @@ def GetMirrorUrlFunc(mirrorsManager, firstTry):
     else:
         return mirrorsManager.GetNewMirrorUrl
 
-def GetTarballUrl(mirrorsManager, firstTry = True):
+def GetTarballUrl(mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
 
     try:
         response = requests.get(getMirrorUrl() + "/individual/proto/")
     except requests.exceptions.ConnectionError:
-        return GetTarballUrl(auth, mirrorsManager, firstTry = False)
+        return GetTarballUrl(mirrorsManager, firstTry=False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -32,7 +32,7 @@ def GetTarballUrl(mirrorsManager, firstTry = True):
     maxVersionMinor = -1
     maxVersionPatch = -1
     for link in links:
-        if ("xproto-" in link.text and not "dmxproto-" in link.text
+        if ("xproto-" in link.text and "dmxproto-" not in link.text
          and ".tar.gz" in link.text and ".sig" not in link.text):
             version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
             versionMajor = int(version[0])

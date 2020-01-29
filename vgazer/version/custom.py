@@ -2,7 +2,7 @@ import importlib
 from vgazer.exceptions import MissingChecker
 
 class VersionCustom:
-    def __init__(self, auth, customCheckers = {}):
+    def __init__(self, auth, customCheckers={}):
         self.customCheckers = customCheckers
         self.auth = auth
 

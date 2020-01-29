@@ -87,12 +87,6 @@ def GetLastKernelUrl(auth):
 
 def InstallLinuxHeaders(auth, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
-    #compilerTargetArch = triplet.split("-")[0]
-    #if compilerTargetArch in ["i386", "i486", "i586", "i686", "x86_64"]:
-        #kernelArch = "x86"
-    #else:
-        #raise UnknownTargetArch("Unknown compiler's target arch:",
-         #compilerTargetArch)
     kernelArch = platformData["target"].GetArch()
 
     storeTemp = StoreTemp()
@@ -129,7 +123,8 @@ def InstallLinuxHeaders(auth, platformData, verbose):
         print("VGAZER: Unable to install",
          "linux-headers-" + platformData["target"].GetArch())
         raise InstallError(
-         "linux-headers-" + platformData["target"].GetArch() + " not installed")
+         "linux-headers-" + platformData["target"].GetArch() + " not installed"
+        )
 
     print("VGAZER:", "linux-headers-" + platformData["target"].GetArch(),
      "installed")

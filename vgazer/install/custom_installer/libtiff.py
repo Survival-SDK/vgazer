@@ -24,6 +24,9 @@ def GetTarballUrl():
     return ("https://download.osgeo.org/libtiff/tiff-"
      + utils.GetVersionFromTag(link.text) + ".tar.gz")
 
+    raise TarballLost(
+     "Unable to find tarball with last stable release of libtiff")
+
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])

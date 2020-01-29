@@ -16,13 +16,29 @@ def GetMirrorUrlFunc(mirrorsManager, firstTry):
     else:
         return mirrorsManager.GetNewMirrorUrl
 
-def GetTarballUrl(mirrorsManager, firstTry = True):
+def GetVersionNumbers(versionText):
+    version = {}
+    version.major = int(versionText[0])
+    version.minor = int(versionText[1])
+    if len(versionText) == 3:
+        version.patch = int(versionText[2])
+        version.subpatch = 0
+    elif len(versionText) == 2:
+        version.patch = 0
+        version.subpatch = 0
+    else:
+        version.patch = int(versionText[2])
+        version.subpatch = int(versionText[3])
+
+    return version
+
+def GetTarballUrl(mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
 
     try:
         response = requests.get(getMirrorUrl() + "/individual/lib/")
     except requests.exceptions.ConnectionError:
-        return GetTarballUrl(auth, mirrorsManager, firstTry = False)
+        return GetTarballUrl(mirrorsManager, firstTry=False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -35,42 +51,33 @@ def GetTarballUrl(mirrorsManager, firstTry = True):
     for link in links:
         if ("libX11-" in link.text and ".tar.gz" in link.text
          and ".sig" not in link.text):
-            version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
-            versionMajor = int(version[0])
-            versionMinor = int(version[1])
-            if len(version) == 3:
-                versionPatch = int(version[2])
-                versionSubpatch = 0
-            elif len(version) == 2:
-                versionPatch = 0
-                versionSubpatch = 0
-            else:
-                versionPatch = int(version[2])
-                versionSubpatch = int(version[3])
+            versionText = link.text.split("-")[1].split(".tar.gz")[0].split(
+             ".")
+            version = GetVersionNumbers(versionText)
 
-            if versionMajor > maxVersionMajor:
-                maxVersionMajor = versionMajor
-                maxVersionMinor = versionMinor
-                maxVersionPatch = versionPatch
-                maxVersionSubpatch = versionSubpatch
+            if version.major > maxVersionMajor:
+                maxVersionMajor = version.major
+                maxVersionMinor = version.minor
+                maxVersionPatch = version.patch
+                maxVersionSubpatch = version.subpatch
                 url = (getMirrorUrl() + "/individual/lib/" + link["href"])
-            elif (versionMajor == maxVersionMajor
-             and versionMinor > maxVersionMinor):
-                maxVersionMinor = versionMinor
-                maxVersionPatch = versionPatch
-                maxVersionSubpatch = versionSubpatch
+            elif (version.major == maxVersionMajor
+             and version.minor > maxVersionMinor):
+                maxVersionMinor = version.minor
+                maxVersionPatch = version.patch
+                maxVersionSubpatch = version.subpatch
                 url = (getMirrorUrl() + "/individual/lib/" + link["href"])
-            elif (versionMajor == maxVersionMajor
-             and versionMinor == maxVersionMinor
-             and versionPatch > maxVersionPatch):
-                maxVersionPatch = versionPatch
-                maxVersionSubpatch = versionSubpatch
+            elif (version.major == maxVersionMajor
+             and version.minor == maxVersionMinor
+             and version.patch > maxVersionPatch):
+                maxVersionPatch = version.patch
+                maxVersionSubpatch = version.subpatch
                 url = (getMirrorUrl() + "/individual/lib/" + link["href"])
-            elif (versionMajor == maxVersionMajor
-             and versionMinor == maxVersionMinor
-             and versionPatch == maxVersionPatch
-             and versionSubpatch > maxVersionSubpatch):
-                maxVersionSubpatch = versionSubpatch
+            elif (version.major == maxVersionMajor
+             and version.minor == maxVersionMinor
+             and version.patch == maxVersionPatch
+             and version.subpatch > maxVersionSubpatch):
+                maxVersionSubpatch = version.subpatch
                 url = (getMirrorUrl() + "/individual/lib/" + link["href"])
 
     return url

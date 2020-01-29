@@ -1,5 +1,4 @@
 import requests
-import vgazer.version.utils as utils
 
 def Check(auth, mirrors):
     response = requests.get(

@@ -7,7 +7,11 @@ def SourceforgeDownloadTarballWhileErrorcodeFour(mirrorsManager, sfProject,
         try:
             RunCommand(
              ["wget", "--tries=1", "--timeout=10", "--continue", "-P", "./",
-              mirrorsManager.GetMirrorUrl() + "/project/" + sfProject + filename
+              "{url}/project/{sfProject}{filename}".format(
+               url=mirrorsManager.GetMirrorUrl() ,
+               sfProject=sfProject,
+               filename=filename
+              )
              ],
              verbose)
         except CommandError as e:

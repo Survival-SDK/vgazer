@@ -56,7 +56,7 @@ fallbackMirrorsList = {
     ],
 }
 
-def GetMirrorsList(noFallback = False):
+def GetMirrorsList(noFallback=False):
     print("VGAZER: Retrieving mirrors list for downloads.sourceforge.net...")
 
     mirrorsList = {
@@ -89,7 +89,7 @@ def GetMirrorsList(noFallback = False):
 
     rows = parsedHtml.find_all("tr")
     for row in rows:
-        cells = row.findChildren("td" , recursive=False)
+        cells = row.findChildren("td", recursive=False)
         if len(cells) < 4:
             continue
 

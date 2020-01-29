@@ -23,7 +23,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(tempPath):
             RunCommand(
              ["git", "clone", "https://github.com/haipome/utf8.git"],
-            verbose)
+             verbose)
         clonedDir = os.path.join(tempPath, "utf8")
         with WorkingDir(clonedDir):
             RunCommand(
@@ -31,7 +31,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand([ar, "rcs", "libutf8.a", "utf8.o"], verbose)
             if not os.path.exists(installPrefix + "/include"):
-                RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
+                RunCommand(["mkdir", "-p", installPrefix + "/include"],
+                 verbose)
             if not os.path.exists(installPrefix + "/lib"):
                 RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
             RunCommand(["cp", "./utf8.h", installPrefix + "/include"], verbose)

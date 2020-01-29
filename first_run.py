@@ -3,7 +3,7 @@
 from vgazer.vgazer import Vgazer
 
 def main():
-    gazer = Vgazer()
+    Vgazer()
 
 if __name__ == "__main__":
     main()

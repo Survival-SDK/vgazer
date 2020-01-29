@@ -1,6 +1,3 @@
-import requests
-from bs4 import BeautifulSoup
-
 def CheckPypi(auth, project):
     projectInfo = auth.GetJson("https://pypi.org/pypi/" + project + "/json")
 

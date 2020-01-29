@@ -9,7 +9,7 @@ class StoreBase():
         self.baseDirPath = baseDirPath
 
     def GetDirectoryPath(self):
-        return baseDirPath
+        return self.baseDirPath
 
     def GetSubdirectoryPath(self, subdirName):
         return os.path.join(self.baseDirPath, subdirName)
@@ -26,7 +26,9 @@ class StoreBase():
                 return True
             else:
                 raise DirNameEngaged(
-                 "Name of directory for storing local settings are engaged by file")
+                 "Name of directory for storing local settings are engaged "
+                 "by file"
+                )
         else:
             return False
 
@@ -48,7 +50,8 @@ class StoreBase():
                 return True
             else:
                 raise FilenameEngaged(
-                 subdirFilePath + " is not a file and its filename are engaged")
+                 subdirFilePath + " is not a file and its filename are engaged"
+                )
         else:
             return False
 
@@ -99,7 +102,7 @@ class StoreBase():
                 filePath = os.path.join(self.baseDirPath, filename)
                 open(filePath, "a").close()
             return True
-        except FileNameEngaged:
+        except FilenameEngaged:
             return False
 
     def ResolveSubdirectoryFile(self, subdirName, filename):
@@ -107,10 +110,11 @@ class StoreBase():
         self.ResolveSubdirectory(subdirName)
         try:
             if not self.SubdirectoryFileExists(subdirName, filename):
-                subdirFilePath = os.path.join(self.baseDirPath, subdirName, filename)
+                subdirFilePath = os.path.join(self.baseDirPath, subdirName,
+                 filename)
                 open(subdirFilePath, "a").close()
             return True
-        except FileNameEngaged:
+        except FilenameEngaged:
             return False
 
     def SubdirectoryFileIsEmpty(self, subdirName, filename):

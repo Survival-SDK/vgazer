@@ -12,7 +12,7 @@ def Check(auth, mirrors):
         if link["href"].find("archives/pa_stable_") != -1:
             strongs = link.findChildren("strong")
             if len(strongs) == 1:
-                versionText = strongs[0].text.split("_")[2];
+                versionText = strongs[0].text.split("_")[2]
                 major = int(versionText[1:3])
                 minor = int(versionText[3:5])
                 patch = int(versionText[5:7])

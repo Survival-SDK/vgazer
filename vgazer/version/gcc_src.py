@@ -34,4 +34,5 @@ def CheckGccSrc(auth):
              and versionPatch > maxVersionPatch):
                 maxVersionPatch = versionPatch
 
-    return str(maxVersionMajor) + "." + str(maxVersionMinor) + "." + str(maxVersionPatch)
+    return "{major}.{minor}.{patch}".format(major=maxVersionMajor,
+     minor=maxVersionMinor, patch=maxVersionPatch)

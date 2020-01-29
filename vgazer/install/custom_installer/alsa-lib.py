@@ -21,6 +21,8 @@ def GetTarballUrl():
         if "alsa-lib" in link.text:
             return link["href"]
 
+    raise TarballLost("Unable to find tarball of alsa-lib's last version")
+
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])

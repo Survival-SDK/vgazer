@@ -1,5 +1,4 @@
 import os
-import requests
 
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
@@ -44,7 +43,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             output = GetCommandOutputUtf8(
              ["tar", "--list", "--file", tarballShortFilename]
             )
-        extractedDir = os.path.join(tempPath, output.splitlines()[0].split("/")[0])
+        extractedDir = os.path.join(tempPath,
+         output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
              [cc, "-c", "ini.c", "-o", "ini.o", "-O2", "-Wall", "-fPIC",
@@ -56,7 +56,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand([ar, "rcs", "libinih.a", "ini.o"], verbose)
             if not os.path.exists(installPrefix + "/include"):
-                RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
+                RunCommand(["mkdir", "-p", installPrefix + "/include"],
+                 verbose)
             if not os.path.exists(installPrefix + "/lib"):
                 RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
             RunCommand(["cp", "./ini.h", installPrefix + "/include"], verbose)

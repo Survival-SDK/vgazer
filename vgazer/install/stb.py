@@ -8,7 +8,9 @@ from vgazer.platform    import GetInstallPrefix
 def InstallStb(library, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
-    url = "https://raw.githubusercontent.com/nothings/stb/master/" + library + ".h"
+    url = (
+     "https://raw.githubusercontent.com/nothings/stb/master/" + library + ".h"
+    )
 
     try:
         if not os.path.exists(installPrefix + "/include"):
