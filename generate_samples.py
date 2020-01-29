@@ -240,7 +240,7 @@ def GenerateSampleTargets(gazer, hostPlatformsList, targetPlatformsList,
             CreateInstallSample(installEntry)
 
 def main():
-    gazer = Vgazer(supportOnly = True)
+    gazer = Vgazer(supportOnly=True)
     hostPlatformsList = CreateHostPlatformsList(gazer)
     targetPlatformsList = CreateTargetPlatformsList(gazer)
     installList = CreateInstallList(gazer, hostPlatformsList,
