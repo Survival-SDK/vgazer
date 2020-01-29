@@ -1172,6 +1172,62 @@ data = {
             },
         ],
     },
+    "glu": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["linux"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "opengl",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "mesa-glu",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "mesa-glu",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "glu-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "glu-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libglu",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libglu1-mesa-dev",
+                },
+            },
+        ],
+    },
     "gpg": {
         "platform": "host",
         "projects": [
@@ -2119,6 +2175,10 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libdrm",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "libdrm-github",
+                    },
                 },
             },
             {
@@ -4975,7 +5035,6 @@ data = {
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
-                    #"{triplet}-pkg-config",
                     "make",
                     "alsa-lib",
                     "xlib",
@@ -5079,6 +5138,7 @@ data = {
                     "glew",
                     "stb_image",
                     "stb_image_write",
+                    "glu",
                 ],
                 "checker": {
                     "type": "github",
@@ -5101,6 +5161,17 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "sdl2",
+                    "jpeg",
+                    "libtiff",
+                    "libpng",
+                    "zlib",
+                    "libwebp",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "sdl2_image",
