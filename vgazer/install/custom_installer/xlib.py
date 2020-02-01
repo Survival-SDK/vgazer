@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
+from vgazer.exceptions  import TarballLost
 from vgazer.platform    import GetInstallPrefix
 from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
@@ -18,17 +19,17 @@ def GetMirrorUrlFunc(mirrorsManager, firstTry):
 
 def GetVersionNumbers(versionText):
     version = {}
-    version.major = int(versionText[0])
-    version.minor = int(versionText[1])
+    version["major"] = int(versionText[0])
+    version["minor"] = int(versionText[1])
     if len(versionText) == 3:
-        version.patch = int(versionText[2])
-        version.subpatch = 0
+        version["patch"] = int(versionText[2])
+        version["subpatch"] = 0
     elif len(versionText) == 2:
-        version.patch = 0
-        version.subpatch = 0
+        version["patch"] = 0
+        version["subpatch"] = 0
     else:
-        version.patch = int(versionText[2])
-        version.subpatch = int(versionText[3])
+        version["patch"] = int(versionText[2])
+        version["subpatch"] = int(versionText[3])
 
     return version
 
@@ -55,32 +56,35 @@ def GetTarballUrl(mirrorsManager, firstTry=True):
              ".")
             version = GetVersionNumbers(versionText)
 
-            if version.major > maxVersionMajor:
-                maxVersionMajor = version.major
-                maxVersionMinor = version.minor
-                maxVersionPatch = version.patch
-                maxVersionSubpatch = version.subpatch
+            if version["major"] > maxVersionMajor:
+                maxVersionMajor = version["major"]
+                maxVersionMinor = version["minor"]
+                maxVersionPatch = version["patch"]
+                maxVersionSubpatch = version["subpatch"]
                 url = (getMirrorUrl() + "/individual/lib/" + link["href"])
-            elif (version.major == maxVersionMajor
-             and version.minor > maxVersionMinor):
-                maxVersionMinor = version.minor
-                maxVersionPatch = version.patch
-                maxVersionSubpatch = version.subpatch
+            elif (version["major"] == maxVersionMajor
+             and version["minor"] > maxVersionMinor):
+                maxVersionMinor = version["minor"]
+                maxVersionPatch = version["patch"]
+                maxVersionSubpatch = version["subpatch"]
                 url = (getMirrorUrl() + "/individual/lib/" + link["href"])
-            elif (version.major == maxVersionMajor
-             and version.minor == maxVersionMinor
-             and version.patch > maxVersionPatch):
-                maxVersionPatch = version.patch
-                maxVersionSubpatch = version.subpatch
+            elif (version["major"] == maxVersionMajor
+             and version["minor"] == maxVersionMinor
+             and version["patch"] > maxVersionPatch):
+                maxVersionPatch = version["patch"]
+                maxVersionSubpatch = version["subpatch"]
                 url = (getMirrorUrl() + "/individual/lib/" + link["href"])
-            elif (version.major == maxVersionMajor
-             and version.minor == maxVersionMinor
-             and version.patch == maxVersionPatch
-             and version.subpatch > maxVersionSubpatch):
-                maxVersionSubpatch = version.subpatch
+            elif (version["major"] == maxVersionMajor
+             and version["minor"] == maxVersionMinor
+             and version["patch"] == maxVersionPatch
+             and version["subpatch"] > maxVersionSubpatch):
+                maxVersionSubpatch = version["subpatch"]
                 url = (getMirrorUrl() + "/individual/lib/" + link["href"])
 
-    return url
+    if url is not None:
+        return url
+
+    raise TarballLost("Unable to find tarball of xlib's last version")
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
