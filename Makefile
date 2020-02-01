@@ -2,7 +2,7 @@ ifeq ($(shell uname -m),x86_64)
 	ARCH=x86_64
 endif
 
-.PHONY: .FORCE
+.PHONY: samples
 
 samples:
 	./generate_samples.py
@@ -84,8 +84,9 @@ sample_tool:
 endif
 
 lint:
-	-pylama -i E128,E272,E302,E305 ./vgazer ./first_run.py ./generate_samples.py \
-     ./setup.py | tee pylama.log
+	-pylama -i E128,E272,E302,E305 ./vgazer ./first_run.py \
+     ./generate_samples.py ./setup.py ./samples/check_platform.py \
+     | tee pylama.log
 
 package:
 	python3 setup.py sdist
