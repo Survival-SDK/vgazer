@@ -2749,6 +2749,59 @@ data = {
             },
         ],
     },
+    "libopus": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "libopus",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libopus",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "opus-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "opus-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "opus",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libopus-dev",
+                },
+            },
+        ],
+    },
     "libpciaccess": {
         "platform": "target",
         "projects": [
@@ -4411,6 +4464,62 @@ data = {
             },
         ],
     },
+    "opusfile": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "libopus",
+                    "libogg",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "opusfile",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "opusfile",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "opusfile-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "opusfile-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "opusfile",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libopusfile-dev",
+                },
+            },
+        ],
+    },
     "p7": {
         "platform": "target",
         "projects": [
@@ -5220,6 +5329,18 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "sdl2",
+                    "libmodplug",
+                    "libogg",
+                    "libvorbis",
+                    "libflac",
+                    "mpg123",
+                    "opusfile",
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "sdl2_mixer",
