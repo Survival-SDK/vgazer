@@ -8,7 +8,10 @@ from vgazer.platform    import GetInstallPrefix
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
-    url = "https://raw.githubusercontent.com/vurtun/nuklear/master/nuklear.h"
+    url = (
+     "https://raw.githubusercontent.com/Immediate-Mode-UI/Nuklear/master/"
+     "nuklear.h"
+    )
 
     try:
         if not os.path.exists(installPrefix + "/include"):
