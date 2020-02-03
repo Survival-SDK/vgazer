@@ -2,8 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 import vgazer.version.utils as utils
 
-def Check(auth, mirrors):
-    response = requests.get("https://www.libsdl.org/projects/SDL_ttf/")
+def CheckSdl2Addon(auth, project):
+    projectSuburl = project.replace("SDL2", "SDL") + "/"
+    response = requests.get("https://www.libsdl.org/projects/" + projectSuburl)
     html = response.content
     parsedHtml = BeautifulSoup(html, "html.parser")
 

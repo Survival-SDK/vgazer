@@ -2,7 +2,6 @@ from vgazer.auth.base               import AuthBase
 from vgazer.auth.github             import AuthGithub
 from vgazer.software                import SoftwareData
 from vgazer.exceptions              import CompatibleProjectNotFound
-from vgazer.exceptions              import DebianPackageUnavailable
 from vgazer.exceptions              import InstallError
 from vgazer.exceptions              import UnknownSoftware
 from vgazer.exceptions              import VersionCheckError
@@ -29,15 +28,17 @@ from vgazer.version.github          import CheckGithub
 from vgazer.version.gitlab          import CheckGitlab
 from vgazer.version.linux_headers   import CheckLinuxHeaders
 from vgazer.version.musl_cross_make import CheckMuslCrossMake
+from vgazer.version.opus_codec      import CheckOpusCodec
 from vgazer.version.pypi            import CheckPypi
+from vgazer.version.sdl2_addon      import CheckSdl2Addon
 from vgazer.version.sourceforge     import CheckSourceforge
 from vgazer.version.stb             import CheckStb
 from vgazer.version.xiph            import CheckXiph
 
 class Vgazer:
-    def __init__(self, arch = None, os = None, osVersion = None,
-     abi = None, customCheckers = {}, customInstallers = {},
-     customSoftwareData = {}, supportOnly = False):
+    def __init__(self, arch=None, os=None, osVersion=None, abi=None,
+     customCheckers={}, customInstallers={}, customSoftwareData={},
+     supportOnly=False):
         if not supportOnly:
             self.auth = {
                 "base": AuthBase(),
@@ -57,7 +58,6 @@ class Vgazer:
             "host":   Platform(),
             "target": Platform(arch, os, osVersion, abi),
         }
-
 
     def GetHostPlatform(self):
         return self.platform["host"]
@@ -112,8 +112,12 @@ class Vgazer:
                 return CheckLinuxHeaders(self.auth["base"])
             elif checker["type"] == "musl-cross-make":
                 return CheckMuslCrossMake(self.auth["github"])
+            elif checker["type"] == "opus_codec":
+                return CheckOpusCodec(self.auth["base"], checker["project"])
             elif checker["type"] == "pypi":
                 return CheckPypi(self.auth["base"], checker["package"])
+            elif checker["type"] == "sdl2_addon":
+                return CheckSdl2Addon(self.auth["base"], checker["project"])
             elif checker["type"] == "sourceforge":
                 return CheckSourceforge(self.auth["base"], checker["project"])
             elif checker["type"] == "stb":
