@@ -21,3 +21,19 @@ def SourceforgeDownloadTarballWhileErrorcodeFour(mirrorsManager, sfProject,
                 raise e
         else:
             break
+
+def GetVersionNumbers(versionText):
+    version = {}
+    version["major"] = int(versionText[0])
+    version["minor"] = int(versionText[1])
+    if len(versionText) == 3:
+        version["patch"] = int(versionText[2])
+        version["subpatch"] = 0
+    elif len(versionText) == 2:
+        version["patch"] = 0
+        version["subpatch"] = 0
+    else:
+        version["patch"] = int(versionText[2])
+        version["subpatch"] = int(versionText[3])
+
+    return version
