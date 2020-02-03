@@ -2,36 +2,21 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-from vgazer.command     import RunCommand
-from vgazer.exceptions  import CommandError
-from vgazer.exceptions  import InstallError
-from vgazer.exceptions  import TarballLost
-from vgazer.platform    import GetInstallPrefix
-from vgazer.platform    import GetTriplet
-from vgazer.store.temp  import StoreTemp
-from vgazer.working_dir import WorkingDir
+from vgazer.command         import RunCommand
+from vgazer.exceptions      import CommandError
+from vgazer.exceptions      import InstallError
+from vgazer.exceptions      import TarballLost
+from vgazer.install.utils   import GetVersionNumbers
+from vgazer.platform        import GetInstallPrefix
+from vgazer.platform        import GetTriplet
+from vgazer.store.temp      import StoreTemp
+from vgazer.working_dir     import WorkingDir
 
 def GetMirrorUrlFunc(mirrorsManager, firstTry):
     if firstTry:
         return mirrorsManager.GetMirrorUrl
     else:
         return mirrorsManager.GetNewMirrorUrl
-
-def GetVersionNumbers(versionText):
-    version = {}
-    version["major"] = int(versionText[0])
-    version["minor"] = int(versionText[1])
-    if len(versionText) == 3:
-        version["patch"] = int(versionText[2])
-        version["subpatch"] = 0
-    elif len(versionText) == 2:
-        version["patch"] = 0
-        version["subpatch"] = 0
-    else:
-        version["patch"] = int(versionText[2])
-        version["subpatch"] = int(versionText[3])
-
-    return version
 
 def GetTarballUrl(mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)

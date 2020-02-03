@@ -2,13 +2,15 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-from vgazer.command     import RunCommand
-from vgazer.exceptions  import CommandError
-from vgazer.exceptions  import InstallError
-from vgazer.platform    import GetInstallPrefix
-from vgazer.platform    import GetTriplet
-from vgazer.store.temp  import StoreTemp
-from vgazer.working_dir import WorkingDir
+from vgazer.command         import RunCommand
+from vgazer.exceptions      import CommandError
+from vgazer.exceptions      import InstallError
+from vgazer.exceptions      import TarballLost
+from vgazer.install.utils   import GetVersionNumbers
+from vgazer.platform        import GetInstallPrefix
+from vgazer.platform        import GetTriplet
+from vgazer.store.temp      import StoreTemp
+from vgazer.working_dir     import WorkingDir
 
 def GetMirrorUrlFunc(mirrorsManager, firstTry):
     if firstTry:
@@ -35,48 +37,35 @@ def GetTarballUrl(mirrorsManager, firstTry=True):
     for link in links:
         if ("xextproto-" in link.text and ".tar.gz" in link.text):
             version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
-            versionMajor = int(version[0])
-            versionMinor = int(version[1])
-            if len(version) == 3:
-                versionPatch = int(version[2])
-                versionSubpatch = 0
-            elif len(version) == 2:
-                versionPatch = 0
-                versionSubpatch = 0
-            else:
-                versionPatch = int(version[2])
-                versionSubpatch = int(version[3])
+            version = GetVersionNumbers(versionText)
 
-            if versionMajor > maxVersionMajor:
-                maxVersionMajor = versionMajor
-                maxVersionMinor = versionMinor
-                maxVersionPatch = versionPatch
-                maxVersionSubpatch = versionSubpatch
-                url = (getMirrorUrl() + "/individual/proto/"
-                 + link["href"])
-            elif (versionMajor == maxVersionMajor
-             and versionMinor > maxVersionMinor):
-                maxVersionMinor = versionMinor
-                maxVersionPatch = versionPatch
-                maxVersionSubpatch = versionSubpatch
-                url = (getMirrorUrl() + "/individual/proto/"
-                 + link["href"])
-            elif (versionMajor == maxVersionMajor
-             and versionMinor == maxVersionMinor
-             and versionPatch > maxVersionPatch):
-                maxVersionPatch = versionPatch
-                maxVersionSubpatch = versionSubpatch
-                url = (getMirrorUrl() + "/individual/proto/"
-                 + link["href"])
-            elif (versionMajor == maxVersionMajor
-             and versionMinor == maxVersionMinor
-             and versionPatch == maxVersionPatch
-             and versionSubpatch > maxVersionSubpatch):
-                maxVersionSubpatch = versionSubpatch
-                url = (getMirrorUrl() + "/individual/proto/"
-                 + link["href"])
+            if version["major"] > maxVersionMajor:
+                maxVersionMajor = version["major"]
+                maxVersionMinor = version["minor"]
+                maxVersionPatch = version["patch"]
+                maxVersionSubpatch = version["subpatch"]
+                url = (getMirrorUrl() + "/individual/proto/" + link["href"])
+            elif (version["major"] == maxVersionMajor
+             and version["minor"] > maxVersionMinor):
+                maxVersionMinor = version["minor"]
+                maxVersionPatch = version["patch"]
+                maxVersionSubpatch = version["subpatch"]
+                url = (getMirrorUrl() + "/individual/proto/" + link["href"])
+            elif (version["major"] == maxVersionMajor
+             and version["minor"] == maxVersionMinor
+             and version["patch"] > maxVersionPatch):
+                maxVersionPatch = version["patch"]
+                maxVersionSubpatch = version["subpatch"]
+                url = (getMirrorUrl() + "/individual/proto/" + link["href"])
+            elif (version["major"] == maxVersionMajor
+             and version["minor"] == maxVersionMinor
+             and version["patch"] == maxVersionPatch
+             and version["subpatch"] > maxVersionSubpatch):
+                maxVersionSubpatch = version["subpatch"]
+                url = (getMirrorUrl() + "/individual/proto/" + link["href"])
 
-    return url
+    if url is not None:
+        return url
 
     raise TarballLost(
      "Unable to find tarball with last stable release of xextproto")

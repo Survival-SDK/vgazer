@@ -57,13 +57,13 @@ def GetMirrorUrlFunc(mirrorsManager, firstTry):
     else:
         return mirrorsManager.GetNewMirrorUrl
 
-def GetLastBinutilsSuburl(auth, mirrorsManager, firstTry = True):
+def GetLastBinutilsSuburl(auth, mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
 
     try:
         response = requests.get(getMirrorUrl() + "/binutils/")
     except requests.exceptions.ConnectionError:
-        return GetLastBinutilsSuburl(auth, mirrorsManager, firstTry = False)
+        return GetLastBinutilsSuburl(auth, mirrorsManager, firstTry=False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -79,13 +79,13 @@ def GetLastBinutilsSuburl(auth, mirrorsManager, firstTry = True):
 
     return "binutils/" + versionInfo["maxVersionFilename"]
 
-def GetLastGccSuburl(auth, mirrorsManager, firstTry = True):
+def GetLastGccSuburl(auth, mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
 
     try:
         response = requests.get(getMirrorUrl() + "/gcc/")
     except requests.exceptions.ConnectionError:
-        return GetLastGccSuburl(auth, mirrorsManager, firstTry = False)
+        return GetLastGccSuburl(auth, mirrorsManager, firstTry=False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -97,18 +97,16 @@ def GetLastGccSuburl(auth, mirrorsManager, firstTry = True):
             version = link.text.split("-")[1].split("/")[0].split(".")
             UpdateVersionInfo(versionInfo, version, link.text)
 
-    versionStr = GetVersionStr(versionInfo)
-
     return ("gcc/" + versionInfo["maxVersionFilename"]
      + versionInfo["maxVersionFilename"][:-1] + ".tar.gz")
 
-def GetLastGlibcSuburl(auth, mirrorsManager, firstTry = True):
+def GetLastGlibcSuburl(auth, mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
 
     try:
         response = requests.get(getMirrorUrl() + "/glibc/")
     except requests.exceptions.ConnectionError:
-        return GetLastGlibcSuburl(auth, mirrorsManager, firstTry = False)
+        return GetLastGlibcSuburl(auth, mirrorsManager, firstTry=False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -126,13 +124,13 @@ def GetLastGlibcSuburl(auth, mirrorsManager, firstTry = True):
 
     return "glibc/" + versionInfo["maxVersionFilename"]
 
-def GetLastMpfrSuburl(auth, mirrorsManager, firstTry = True):
+def GetLastMpfrSuburl(auth, mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
 
     try:
         response = requests.get(getMirrorUrl() + "/mpfr/")
     except requests.exceptions.ConnectionError:
-        return GetLastMpfrSuburl(auth, mirrorsManager, firstTry = False)
+        return GetLastMpfrSuburl(auth, mirrorsManager, firstTry=False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -148,13 +146,13 @@ def GetLastMpfrSuburl(auth, mirrorsManager, firstTry = True):
 
     return "mpfr/" + versionInfo["maxVersionFilename"]
 
-def GetLastGmpSuburl(auth, mirrorsManager, firstTry = True):
+def GetLastGmpSuburl(auth, mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
 
     try:
         response = requests.get(getMirrorUrl() + "/gmp/")
     except requests.exceptions.ConnectionError:
-        return GetLastGmpSuburl(auth, mirrorsManager, firstTry = False)
+        return GetLastGmpSuburl(auth, mirrorsManager, firstTry=False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -170,13 +168,13 @@ def GetLastGmpSuburl(auth, mirrorsManager, firstTry = True):
 
     return "gmp/" + versionInfo["maxVersionFilename"]
 
-def GetLastMpcSuburl(auth, mirrorsManager, firstTry = True):
+def GetLastMpcSuburl(auth, mirrorsManager, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
 
     try:
         response = requests.get(getMirrorUrl() + "/mpc/")
     except requests.exceptions.ConnectionError:
-        return GetLastMpcSuburl(auth, mirrorsManager, firstTry = False)
+        return GetLastMpcSuburl(auth, mirrorsManager, firstTry=False)
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
 
@@ -273,12 +271,6 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    if (GetFilesystemType(tempPath) == "overlay"
-     and platformData["host"].GetOs() == "debian"):
-        kernelTar = "bsdtar"
-    else:
-        kernelTar = "tar"
-
     gnuWebMirrorsManager = mirrorsGnu.CreateMirrorsManager(["https", "http"])
     gnuWgetMirrorsManager = mirrorsGnu.CreateMirrorsManager(
      ["https", "http", "ftp"])
@@ -316,8 +308,8 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
              binutilsTarballSuburl, binutilsTarballShortFilename, verbose)
             RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, gccTarballSuburl,
              gccTarballShortFilename, verbose)
-            RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, glibcTarballSuburl,
-             glibcTarballShortFilename, verbose)
+            RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager,
+             glibcTarballSuburl, glibcTarballShortFilename, verbose)
             RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, mpfrTarballSuburl,
              mpfrTarballShortFilename, verbose)
             RunWgetWhileErrorcodeFour(gnuWgetMirrorsManager, gmpTarballSuburl,
@@ -386,7 +378,8 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
               "--target=" + triplet, "--enable-languages=" + languages,
               "--disable-multilib"],
              verbose)
-            RunCommand(["make", "-j" + str(os.cpu_count()), "all-gcc"], verbose)
+            RunCommand(["make", "-j" + str(os.cpu_count()), "all-gcc"],
+             verbose)
             RunCommand(["make", "install-gcc"], verbose)
         with WorkingDir(tempPath):
             RunCommand(["mkdir", "build-glibc"], verbose)
@@ -415,7 +408,8 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
              verbose)
             RunCommand(
              [triplet + "-gcc", "-nostdlib", "-nostartfiles", "-shared", "-x",
-              "c", "/dev/null", "-o", "/usr/local/" + triplet + "/lib/libc.so"],
+              "c", "/dev/null", "-o",
+              "/usr/local/" + triplet + "/lib/libc.so"],
              verbose)
             RunCommand(
              ["touch", "/usr/local/" + triplet + "/include/gnu/stubs.h"],

@@ -71,21 +71,22 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "../src/externals/stb_image_write/stb_image_write.o"],
              verbose)
             RunCommand(
-             ["cmake", "..", "-G", "Unix Makefiles",
+             [
+              "cmake", "..", "-G", "Unix Makefiles",
               "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
               "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
               "-DSDL_gpu_BUILD_DEMOS=OFF", "-DSDL_gpu_USE_SYSTEM_GLEW=ON",
               "-DSTBI_INCLUDE_DIR=" + installPrefix + "/include",
               "-DSTBI_LIBRARY=" + buildDir
-               + "/../src/externals/stb_image/libstbi.a",
+              + "/../src/externals/stb_image/libstbi.a",
               "-DSTBI_FOUND=TRUE",
               "-DSTBI_WRITE_INCLUDE_DIR=" + installPrefix + "/include",
               "-DSTBI_WRITE_LIBRARY=" + buildDir
-               + "/../src/externals/stb_image_write/libstbi_write.a",
+              + "/../src/externals/stb_image_write/libstbi_write.a",
               "-DSTBI_WRITE_FOUND=TRUE",
               "-DM_LIB=/usr/lib/" + targetTriplet + "/libm.so"
              ],
-            verbose)
+             verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
             RunCommand(

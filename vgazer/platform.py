@@ -3,7 +3,6 @@ import os.path
 import platform
 from vgazer.command     import GetCommandOutputUtf8
 from vgazer.exceptions  import DebianReleaseDataNotFound
-from vgazer.exceptions  import DirectoryUnavailable
 from vgazer.exceptions  import MissingArgument
 from vgazer.exceptions  import OsDataNotFound
 from vgazer.exceptions  import UnexpectedOsType
@@ -94,7 +93,7 @@ def GetSoPrefix(platformData):
     elif platformData["target"].GetOs() == "windows":
         return GetInstallPrefix(platformData) + "/bin"
     else:
-        raise UnknownOs("Unknown OS: " + targetPlatformData.GetOs())
+        raise UnknownOs("Unknown OS: " + platformData["target"].GetOs())
 
 def GetCc(targetPlatformData):
     cc = GetTriplet(targetPlatformData) + "-gcc"
@@ -217,9 +216,9 @@ def GetSoFilename(targetPlatformData, name):
 
 class Platform:
     # Platforms comparing ratings
-    COMP_INCOMPATIBLE   = -1000
-    COMP_COMPATIBLE     =  0
-    COMP_EQUAL          =  1
+    COMP_INCOMPATIBLE = -1000
+    COMP_COMPATIBLE = 0
+    COMP_EQUAL = 1
 
     @staticmethod
     def GetLinuxOs():
@@ -274,8 +273,8 @@ class Platform:
         else:
             raise UnknownOs("Unknown OS: " + os)
 
-    def __init__(self, arch = None, os = None, osVersion = None, abi = None,
-     suppressGenericFallback = False):
+    def __init__(self, arch=None, os=None, osVersion=None, abi=None,
+     suppressGenericFallback=False):
         if (arch is None or os is None or osVersion is None or abi is None):
             self.host = True
         else:
@@ -317,7 +316,7 @@ class Platform:
     def GetAbi(self):
         return self.abi
 
-    def ArchsCompatible(self, platform = None, arch = None):
+    def ArchsCompatible(self, platform=None, arch=None):
         if platform is None:
             if arch is None:
                 raise MissingArgument("Missing value for argument 'arch'")
@@ -329,18 +328,14 @@ class Platform:
         if self.arch == comparingArch:
             return True
         if (
-         (self.arch == "i686" and (comparingArch == "i586"
-          or comparingArch == "i486" or comparingArch == "i386")
-         )
-         or (self.arch == "i586" and (comparingArch == "i486"
-          or comparingArch == "i386")
-         )
+         (self.arch == "i686" and comparingArch in ["i586", "i486", "i386"])
+         or (self.arch == "i586" and comparingArch in ["i486", "i386"])
          or (self.arch == "i486" and comparingArch == "i386")
         ):
             return True
         return False
 
-    def ArchsEqual(self, platform = None, arch = None):
+    def ArchsEqual(self, platform=None, arch=None):
         if platform is None:
             if arch is None:
                 raise MissingArgument("Missing value for argument 'arch'")
@@ -352,7 +347,7 @@ class Platform:
             return True
         return False
 
-    def OsesCompatible(self, platform = None, os = None):
+    def OsesCompatible(self, platform=None, os=None):
         if platform is None:
             if os is None:
                 raise MissingArgument("Missing value for argument 'os'")
@@ -367,7 +362,7 @@ class Platform:
             return True
         return False
 
-    def OsesEqual(self, platform = None, os = None):
+    def OsesEqual(self, platform=None, os=None):
         if platform is None:
             if os is None:
                 raise MissingArgument("Missing value for argument 'os'")
@@ -378,7 +373,7 @@ class Platform:
             return True
         return False
 
-    def OsVersionsCompatible(self, platform = None, osVersion = None):
+    def OsVersionsCompatible(self, platform=None, osVersion=None):
         if platform is None:
             if osVersion is None:
                 raise MissingArgument("Missing value for argument 'osVersion'")
@@ -391,7 +386,7 @@ class Platform:
             return True
         return False
 
-    def OsVersionsEqual(self, platform = None, osVersion = None):
+    def OsVersionsEqual(self, platform=None, osVersion=None):
         if platform is None:
             if osVersion is None:
                 raise MissingArgument("Missing value for argument 'osVersion'")
@@ -403,7 +398,7 @@ class Platform:
             return True
         return False
 
-    def AbisCompatible(self, platform = None, abi = None):
+    def AbisCompatible(self, platform=None, abi=None):
         if platform is None:
             if abi is None:
                 raise MissingArgument("Missing value for argument 'abi'")
@@ -416,7 +411,7 @@ class Platform:
             return True
         return False
 
-    def AbisEqual(self, platform = None, abi = None):
+    def AbisEqual(self, platform=None, abi=None):
         if platform is None:
             if abi is None:
                 raise MissingArgument("Missing value for argument 'abi'")
@@ -428,7 +423,7 @@ class Platform:
             return True
         return False
 
-    def GetArchsCompareRating(self, platform = None, arch = None):
+    def GetArchsCompareRating(self, platform=None, arch=None):
         if platform is None:
             if arch is None:
                 raise MissingArgument("Missing value for argument 'arch'")
@@ -442,7 +437,7 @@ class Platform:
         else:
             return Platform.COMP_INCOMPATIBLE
 
-    def GetOsesCompareRating(self, platform = None, os = None):
+    def GetOsesCompareRating(self, platform=None, os=None):
         if platform is None:
             if os is None:
                 raise MissingArgument("Missing value for argument 'os'")
@@ -456,7 +451,7 @@ class Platform:
         else:
             return Platform.COMP_INCOMPATIBLE
 
-    def GetOsVersionsCompareRating(self, platform = None, osVersion = None):
+    def GetOsVersionsCompareRating(self, platform=None, osVersion=None):
         if platform is None:
             if osVersion is None:
                 raise MissingArgument("Missing value for argument 'osVersion'")
@@ -470,7 +465,7 @@ class Platform:
         else:
             return Platform.COMP_INCOMPATIBLE
 
-    def GetAbisCompareRating(self, platform = None, abi = None):
+    def GetAbisCompareRating(self, platform=None, abi=None):
         if platform is None:
             if abi is None:
                 raise MissingArgument("Missing value for argument 'abi'")

@@ -11,9 +11,9 @@ def RunCommand(command, verbose):
             subprocess.check_output(command, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
         if not verbose:
-            print ("Output:")
-            print (e.output)
-        print ("Error occured while running utility:", command[0])
+            print("Output:")
+            print(e.output)
+        print("Error occured while running utility:", command[0])
         raise CommandError("Error occured while running utility:" + command[0],
          e.cmd, e.returncode)
 

@@ -21,7 +21,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(tempPath):
             RunCommand(
              ["git", "clone", "https://github.com/criptych/physfs.git"],
-            verbose)
+             verbose)
         clonedDir = os.path.join(tempPath, "physfs")
         with WorkingDir(clonedDir):
             RunCommand(["mkdir", "build"], verbose)

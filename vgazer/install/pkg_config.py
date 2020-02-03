@@ -16,35 +16,39 @@ def InstallPkgConfig(software, triplet, platformData, verbose):
               "echo '#!/bin/sh' > /usr/local/bin/" + triplet + "-pkg-config"],
              verbose)
             RunCommand(
-             ["sh",
+             [
+              "sh",
               "-c",
               "echo 'export PKG_CONFIG_DIR=' >> /usr/local/bin/" + triplet
                + "-pkg-config"
              ],
-            verbose)
+             verbose)
             RunCommand(
-             ["sh",
+             [
+              "sh",
               "-c",
               "echo 'export PKG_CONFIG_LIBDIR=/usr/local/" + triplet
                + "/lib/pkgconfig:/usr/local/" + triplet
                + "/share/pkgconfig' >> /usr/local/bin/" + triplet
                + "-pkg-config"
              ],
-            verbose)
+             verbose)
             RunCommand(
-             ["sh",
+             [
+              "sh",
               "-c",
               "echo 'export PKG_CONFIG_SYSROOT_DIR=/' >> /usr/local/bin/"
                + triplet + "-pkg-config"
              ],
-            verbose)
+             verbose)
             RunCommand(
-             ["sh",
+             [
+              "sh",
               "-c",
               "echo 'exec pkg-config \"$@\"' >> /usr/local/bin/" + triplet
                + "-pkg-config"
              ],
-            verbose)
+             verbose)
 
     except CommandError:
         print("VGAZER: Unable to install", software)

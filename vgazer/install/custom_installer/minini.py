@@ -23,7 +23,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(tempPath):
             RunCommand(
              ["git", "clone", "https://github.com/compuphase/minIni.git"],
-            verbose)
+             verbose)
         clonedDir = os.path.join(tempPath, "minIni")
         with WorkingDir(clonedDir + "/dev"):
             RunCommand(

@@ -3,6 +3,7 @@ import os
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
 from vgazer.exceptions      import CommandError
+from vgazer.exceptions      import InstallError
 from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.github_common   import GithubCheckApiRateLimitExceeded
 from vgazer.platform        import GetFilesystemType
@@ -37,7 +38,7 @@ def InstallMuslCrossMake(auth, software, languages, triplet, platformData,
         with WorkingDir(tempPath):
             RunCommand(
              ["wget", "-P", "./", "-O", tarballShortFilename, tarballUrl],
-            verbose)
+             verbose)
             RunCommand(
              ["tar", "--verbose", "--extract", "--gzip", "--file",
               tarballShortFilename],
@@ -59,7 +60,7 @@ def InstallMuslCrossMake(auth, software, languages, triplet, platformData,
               "sh",
               "-c",
               "echo 'COMMON_CONFIG += CFLAGS=\"-g0 -Os\" "
-               "CXXFLAGS=\"-g0 -Os\" LDFLAGS=\"-s\"' >> config.mak"
+              "CXXFLAGS=\"-g0 -Os\" LDFLAGS=\"-s\"' >> config.mak"
              ],
              verbose)
             RunCommand(
@@ -67,7 +68,7 @@ def InstallMuslCrossMake(auth, software, languages, triplet, platformData,
               "sh",
               "-c",
               "echo 'GCC_CONFIG += --enable-languages=" + languages
-               + "' >> config.mak"
+              + "' >> config.mak"
              ],
              verbose)
             RunCommand(
@@ -76,7 +77,7 @@ def InstallMuslCrossMake(auth, software, languages, triplet, platformData,
              verbose)
             if useBsdTar:
                 RunCommand(
-                 ["sed",  "-i", "-e", "s/\(tar z\|tar j\|tar J\)/bsdtar /g",
+                 ["sed",  "-i", "-e", r"s/\(tar z\|tar j\|tar J\)/bsdtar /g",
                   "./Makefile"],
                  verbose)
             RunCommand(["make"], verbose)

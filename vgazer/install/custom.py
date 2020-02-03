@@ -3,7 +3,7 @@ import importlib
 from vgazer.exceptions import MissingInstaller
 
 class InstallCustom:
-    def __init__(self, customInstallers = {}):
+    def __init__(self, customInstallers={}):
         self.customInstallers = customInstallers
 
     def AddData(self, customInstallers):

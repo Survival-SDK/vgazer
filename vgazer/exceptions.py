@@ -17,12 +17,12 @@ class DebianReleaseDataNotFound(Exception):
         super().__init__(message)
 
 class DirectoryUnavailable(Exception):
-        def __init__(self, message):
-            super().__init__(message)
+    def __init__(self, message):
+        super().__init__(message)
 
 class DirNameEngaged(Exception):
-        def __init__(self, message):
-            super().__init__(message)
+    def __init__(self, message):
+        super().__init__(message)
 
 class FilenameEngaged(Exception):
     def __init__(self, message):
