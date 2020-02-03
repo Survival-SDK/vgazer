@@ -1522,7 +1522,6 @@ data = {
                     "gpg",
                     "make",
                     "makeinfo",
-                    #"rsync",
                     "wget",
                     "linux-headers-i686",
                 ],
@@ -2763,8 +2762,8 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "libopus",
+                    "type": "opus_codec",
+                    "project": "libopus",
                 },
                 "installer": {
                     "type": "custom",
@@ -4379,8 +4378,8 @@ data = {
                 ],
                 "checker": {
                     "type": "github",
-                    "user": "vurtun",
-                    "repo": "nuklear",
+                    "user": "Immediate-Mode-UI",
+                    "repo": "Nuklear",
                 },
                 "installer": {
                     "type": "custom",
@@ -4481,8 +4480,8 @@ data = {
                     "libogg",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "opusfile",
+                    "type": "opus_codec",
+                    "project": "opusfile",
                 },
                 "installer": {
                     "type": "custom",
@@ -5250,10 +5249,8 @@ data = {
                     "glu",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "grimfang4",
-                    "repo": "sdl-gpu",
-                    "ignoreReleases": True,
+                    "type": "custom",
+                    "name": "sdl2_gpu",
                 },
                 "installer": {
                     "type": "custom",
@@ -5282,8 +5279,8 @@ data = {
                     "libwebp",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "sdl2_image",
+                    "type": "sdl2_addon",
+                    "project": "SDL2_image",
                 },
                 "installer": {
                     "type": "custom",
@@ -5342,8 +5339,8 @@ data = {
                     "opusfile",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "sdl2_mixer",
+                    "type": "sdl2_addon",
+                    "project": "SDL2_mixer",
                 },
                 "installer": {
                     "type": "custom",
@@ -5389,9 +5386,17 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "sdl2",
+                    "freetype",
+                ],
                 "checker": {
-                    "type": "custom",
-                    "name": "sdl2_ttf",
+                    "type": "sdl2_addon",
+                    "project": "SDL2_ttf",
                 },
                 "installer": {
                     "type": "custom",
@@ -5984,7 +5989,6 @@ data = {
                     "gpg",
                     "make",
                     "makeinfo",
-                    #"rsync",
                     "wget",
                     "linux-headers-x86_64",
                 ],
@@ -7031,7 +7035,7 @@ data = {
 }
 
 class SoftwareData:
-    def __init__(self, customData = {}):
+    def __init__(self, customData={}):
         self.data = {**data, **customData}
 
     def AddData(self, customData):
