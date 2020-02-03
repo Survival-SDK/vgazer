@@ -2,38 +2,27 @@ import os
 
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
-from vgazer.env_vars        import SetEnvVar
+from vgazer.config.cmake    import ConfigCmake
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
 from vgazer.github_common   import GithubCheckApiRateLimitExceeded
-from vgazer.platform        import GetCc
-from vgazer.platform        import GetCxx
 from vgazer.platform        import GetInstallPrefix
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
+    configCmake = ConfigCmake(platformData)
+    configCmake.GenerateCrossFile()
+
     installPrefix = GetInstallPrefix(platformData)
-    cc = GetCc(platformData["target"])
-    cxx = GetCxx(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
     releases = auth["github"].GetJson(
-     "https://api.github.com/repos/albertodemichelis/squirrel/releases")
-
-    if GithubCheckApiRateLimitExceeded(releases):
-        raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last version of "
-         "repo: albertodemichelis/squirrel"
-        )
-
-    if len(releases) == 0:
-        releases = auth["github"].GetJson(
-         "https://api.github.com/repos/albertodemichelis/squirrel/tags")
+     "https://api.github.com/repos/albertodemichelis/squirrel/tags")
 
     if GithubCheckApiRateLimitExceeded(releases):
         raise GithubApiRateLimitExceeded(
@@ -62,10 +51,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(extractedDir, "build")
         with WorkingDir(buildDir):
-            SetEnvVar("CC", cc)
-            SetEnvVar("CXX", cxx)
             RunCommand(
-             ["cmake", "..", "-DCMAKE_INSTALL_PREFIX=" + installPrefix],
+             ["cmake", "..",
+              "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
+              "-DCMAKE_INSTALL_PREFIX=" + installPrefix],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
