@@ -32,6 +32,9 @@ class InstallersManager:
                 InstallMuslCrossMake(auth["github"], software,
                  installerData["languages"], installerData["triplet"],
                  platformData, verbose),
+            "not_needed": lambda software, auth, platformData, installerData,
+             mirrors, verbose:
+                True,
             "pip": lambda software, auth, platformData, installerData, mirrors,
              verbose:
                 InstallPip(software, installerData["package"], verbose),
