@@ -156,8 +156,9 @@ def GenerateInstallTarget(installEntry):
     elif targetPlatform == anyPlatform:
         targetInstallString = software
     else:
-        targetInstallString = "{3}_{0}_{1}_{2}".format(targetPlatform.GetArch(),
-         targetPlatform.GetOs(), targetPlatform.GetAbi(), software)
+        targetInstallString = "{3}_{0}_{1}_{2}".format(
+         targetPlatform.GetArch(), targetPlatform.GetOs(),
+         targetPlatform.GetAbi(), software)
     return ("sample_{0}_{1}_{2}_install_{3}:\n"
      "\tdocker run -i -t \\\n"
      "     -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n"

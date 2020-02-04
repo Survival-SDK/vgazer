@@ -19,10 +19,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    sourceUrl = "https://sourceforge.net/projects/tinyfiledialogs/files/"
-     "tinyfiledialogs.c/download"
-    headerUrl = "https://sourceforge.net/projects/tinyfiledialogs/files/"
-     "tinyfiledialogs.h/download"
+    sourceUrl = ("https://sourceforge.net/projects/tinyfiledialogs/files/"
+     "tinyfiledialogs.c/download")
+    headerUrl = ("https://sourceforge.net/projects/tinyfiledialogs/files/"
+     "tinyfiledialogs.h/download")
 
     try:
         with WorkingDir(tempPath):

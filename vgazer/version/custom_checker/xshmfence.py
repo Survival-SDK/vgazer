@@ -10,7 +10,6 @@ def Check(auth, mirrors):
 
     maxVersionMajor = -1
     maxVersionMinor = -1
-    maxVersionPatch = -1
     for link in links:
         if ("libxshmfence-" in link.text and ".tar.gz" in link.text
          and ".sig" not in link.text):

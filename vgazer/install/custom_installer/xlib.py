@@ -35,11 +35,14 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./configure", "--host=" + targetTriplet,
+             [
+              "./configure",
+              "--host=" + targetTriplet,
               "--prefix=" + installPrefix,
               "CPPFLAGS=-I" + installPrefix + "/include",
-              "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig:"
-               + installPrefix + "/share/pkgconfig"
+              "PKG_CONFIG_PATH={installPrefix}/lib/pkgconfig:"
+              "{installPrefix}/share/pkgconfig".format(
+               installPrefix=installPrefix)
              ],
              verbose)
             RunCommand(["make"], verbose)

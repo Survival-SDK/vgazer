@@ -6,9 +6,15 @@ def SourceforgeDownloadTarballWhileErrorcodeFour(mirrorsManager, sfProject,
     while True:
         try:
             RunCommand(
-             ["wget", "--tries=1", "--timeout=10", "--continue", "-P", "./",
+             [
+              "wget",
+              "--tries=1",
+              "--timeout=10",
+              "--continue",
+              "-P",
+              "./",
               "{url}/project/{sfProject}{filename}".format(
-               url=mirrorsManager.GetMirrorUrl() ,
+               url=mirrorsManager.GetMirrorUrl(),
                sfProject=sfProject,
                filename=filename
               )

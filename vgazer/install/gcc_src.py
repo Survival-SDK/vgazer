@@ -425,7 +425,10 @@ def InstallGccSrc(auth, software, languages, triplet, platformData, mirrorsGnu,
         with WorkingDir(buildGccDir):
             if "linux" in triplet:
                 RunCommand(
-                 ["sed",  "-i", "-e",
+                 [
+                  "sed",
+                  "-i",
+                  "-e",
                   "s|#include <limits.h>|#include <linux/limits.h>|g",
                   os.path.join(gccExtractedFullDir,
                    "libsanitizer/asan/asan_linux.cc")

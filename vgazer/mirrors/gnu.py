@@ -89,14 +89,14 @@ def GetMirrorsList(noFallback=False):
 
     rows = parsedHtml.find_all("tr")
     for row in rows:
-        cells = row.findChildren("td" , recursive=False)
+        cells = row.findChildren("td", recursive=False)
         if len(cells) < 2:
             continue
         if cells[1].text not in ["http", "https", "ftp", "rsync"]:
             continue
         protocol = cells[1].text
         if protocol in ["http", "https", "ftp"]:
-            links = cells[0].findChildren("a" , recursive=False)
+            links = cells[0].findChildren("a", recursive=False)
             mirrorUrl = links[0]["href"][:-1]
         elif protocol == "rsync":
             mirrorUrl = "rsync://" + cells[0].text.split("\xa0\xa0")[0]

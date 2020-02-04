@@ -31,7 +31,7 @@ fallbackMirrorsList = {
     ],
 }
 
-def GetMirrorsList(noFallback = False):
+def GetMirrorsList(noFallback=False):
     print("VGAZER: Retrieving mirrors list for www.x.org/releases...")
 
     mirrorsList = {

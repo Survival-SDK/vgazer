@@ -56,7 +56,7 @@ class MirrorsBase():
                     print(
                      "VGAZER: Stored mirrors list for " + siteName
                       + " out of date")
-                    self.mirrorsList = getMirrorsList(noFallback = True)
+                    self.mirrorsList = getMirrorsList(noFallback=True)
                     if self.mirrorsList is None:
                         self.mirrorsList = self.MirrorsListFromText(data)
                     else:

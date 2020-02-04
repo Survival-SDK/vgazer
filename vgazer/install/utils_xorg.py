@@ -46,22 +46,23 @@ def UpdateMaxVersion(maxVersion, version):
     return result
 
 def UpdateUrl(oldUrl, maxVersion, version, getMirrorUrl, suburl, link):
-    if (version["major"] > maxVersion["major"]
-    or (
-     version["major"] == maxVersion["major"]
-     and version["minor"] > maxVersion["minor"]
-    )
-    or (
-     version["major"] == maxVersion["major"]
-     and version["minor"] == maxVersion["minor"]
-     and version["patch"] > maxVersion["patch"]
-    )
-    or (
-     version["major"] == maxVersion["major"]
-     and version["minor"] == maxVersion["minor"]
-     and version["patch"] == maxVersion["patch"]
-     and version["subpatch"] > maxVersion["subpatch"]
-    )):
+    if (
+     (
+      version["major"] > maxVersion["major"]
+     ) or (
+      version["major"] == maxVersion["major"]
+      and version["minor"] > maxVersion["minor"]
+     ) or (
+      version["major"] == maxVersion["major"]
+      and version["minor"] == maxVersion["minor"]
+      and version["patch"] > maxVersion["patch"]
+     ) or (
+      version["major"] == maxVersion["major"]
+      and version["minor"] == maxVersion["minor"]
+      and version["patch"] == maxVersion["patch"]
+      and version["subpatch"] > maxVersion["subpatch"]
+     )
+    ):
         return getMirrorUrl() + "/" + suburl + link["href"]
 
     return oldUrl
