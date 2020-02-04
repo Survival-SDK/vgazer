@@ -2762,7 +2762,7 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "opus_codec",
+                    "type": "opus-codec",
                     "project": "libopus",
                 },
                 "installer": {
@@ -4480,7 +4480,7 @@ data = {
                     "libogg",
                 ],
                 "checker": {
-                    "type": "opus_codec",
+                    "type": "opus-codec",
                     "project": "opusfile",
                 },
                 "installer": {
@@ -5279,7 +5279,7 @@ data = {
                     "libwebp",
                 ],
                 "checker": {
-                    "type": "sdl2_addon",
+                    "type": "sdl2-addon",
                     "project": "SDL2_image",
                 },
                 "installer": {
@@ -5339,7 +5339,7 @@ data = {
                     "opusfile",
                 ],
                 "checker": {
-                    "type": "sdl2_addon",
+                    "type": "sdl2-addon",
                     "project": "SDL2_mixer",
                 },
                 "installer": {
@@ -5395,7 +5395,7 @@ data = {
                     "freetype",
                 ],
                 "checker": {
-                    "type": "sdl2_addon",
+                    "type": "sdl2-addon",
                     "project": "SDL2_ttf",
                 },
                 "installer": {
