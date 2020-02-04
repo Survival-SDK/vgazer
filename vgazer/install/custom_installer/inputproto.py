@@ -2,73 +2,14 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-from vgazer.command         import RunCommand
-from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import InstallError
-from vgazer.exceptions      import TarballLost
-from vgazer.install.utils   import GetVersionNumbers
-from vgazer.platform        import GetInstallPrefix
-from vgazer.platform        import GetTriplet
-from vgazer.store.temp      import StoreTemp
-from vgazer.working_dir     import WorkingDir
-
-def GetMirrorUrlFunc(mirrorsManager, firstTry):
-    if firstTry:
-        return mirrorsManager.GetMirrorUrl
-    else:
-        return mirrorsManager.GetNewMirrorUrl
-
-def GetTarballUrl(mirrorsManager, firstTry=True):
-    getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
-
-    try:
-        response = requests.get(getMirrorUrl() + "/individual/proto/")
-    except requests.exceptions.ConnectionError:
-        return GetTarballUrl(mirrorsManager, firstTry=False)
-    html = response.content.decode("utf-8")
-    parsedHtml = BeautifulSoup(html, "html.parser")
-
-    links = parsedHtml.find_all("a")
-
-    maxVersionMajor = -1
-    maxVersionMinor = -1
-    maxVersionPatch = -1
-    maxVersionSubpatch = -1
-    for link in links:
-        if ("inputproto-" in link.text and ".tar.gz" in link.text
-         and ".sig" not in link.text):
-            version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
-            version = GetVersionNumbers(versionText)
-
-            if version["major"] > maxVersionMajor:
-                maxVersionMajor = version["major"]
-                maxVersionMinor = version["minor"]
-                maxVersionPatch = version["patch"]
-                maxVersionSubpatch = version["subpatch"]
-                url = (getMirrorUrl() + "/individual/proto/" + link["href"])
-            elif (version["major"] == maxVersionMajor
-             and version["minor"] > maxVersionMinor):
-                maxVersionMinor = version["minor"]
-                maxVersionPatch = version["patch"]
-                maxVersionSubpatch = version["subpatch"]
-                url = (getMirrorUrl() + "/individual/proto/" + link["href"])
-            elif (version["major"] == maxVersionMajor
-             and version["minor"] == maxVersionMinor
-             and version["patch"] > maxVersionPatch):
-                maxVersionPatch = version["patch"]
-                maxVersionSubpatch = version["subpatch"]
-                url = (getMirrorUrl() + "/individual/proto/" + link["href"])
-            elif (version["major"] == maxVersionMajor
-             and version["minor"] == maxVersionMinor
-             and version["patch"] == maxVersionPatch
-             and version["subpatch"] > maxVersionSubpatch):
-                maxVersionSubpatch = version["subpatch"]
-                url = (getMirrorUrl() + "/individual/proto/" + link["href"])
-
-    if url is not None:
-        return url
-
-    raise TarballLost("Unable to find tarball of inputproto's last version")
+from vgazer.command             import RunCommand
+from vgazer.exceptions          import CommandError
+from vgazer.exceptions          import InstallError
+from vgazer.install.utils_xorg  import GetTarballUrl
+from vgazer.platform            import GetInstallPrefix
+from vgazer.platform            import GetTriplet
+from vgazer.store.temp          import StoreTemp
+from vgazer.working_dir         import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -81,7 +22,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     xorgMirrorsManager = mirrors["xorg"].CreateMirrorsManager(
      ["https", "http"])
 
-    tarballUrl = GetTarballUrl(xorgMirrorsManager)
+    tarballUrl = GetTarballUrl(xorgMirrorsManager, suburl="individual/proto/",
+     projectName="inputproto", linksMustHave=["inputproto-", ".tar.gz"],
+     linksMustNotHave=[".sig"])
     tarballShortFilename = tarballUrl.split("/")[-1]
 
     try:
