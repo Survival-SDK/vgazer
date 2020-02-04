@@ -369,7 +369,8 @@ class Platform:
             comparingOs = os
         else:
             comparingOs = platform.os
-        if self.os == comparingOs and self.os != "any" and comparingOs != "any":
+        if (self.os == comparingOs and self.os != "any"
+         and comparingOs != "any"):
             return True
         return False
 
@@ -393,8 +394,8 @@ class Platform:
             comparingOsVersion = osVersion
         else:
             comparingOsVersion = platform.osVersion
-        if (self.osVersion == comparingOsVersion and self.osVersion != "any" and
-         comparingOsVersion != "any"):
+        if (self.osVersion == comparingOsVersion and self.osVersion != "any"
+         and comparingOsVersion != "any"):
             return True
         return False
 
@@ -430,9 +431,9 @@ class Platform:
             comparingArch = arch
         else:
             comparingArch = platform.arch
-        if self.ArchsEqual(arch = comparingArch):
+        if self.ArchsEqual(arch=comparingArch):
             return Platform.COMP_EQUAL
-        elif self.ArchsCompatible(arch = comparingArch):
+        elif self.ArchsCompatible(arch=comparingArch):
             return Platform.COMP_COMPATIBLE
         else:
             return Platform.COMP_INCOMPATIBLE
@@ -444,9 +445,9 @@ class Platform:
             comparingOs = os
         else:
             comparingOs = platform.os
-        if self.OsesEqual(os = comparingOs):
+        if self.OsesEqual(os=comparingOs):
             return Platform.COMP_EQUAL
-        elif self.OsesCompatible(os = comparingOs):
+        elif self.OsesCompatible(os=comparingOs):
             return Platform.COMP_COMPATIBLE
         else:
             return Platform.COMP_INCOMPATIBLE
@@ -458,9 +459,9 @@ class Platform:
             comparingOsVersion = osVersion
         else:
             comparingOsVersion = platform.osVersion
-        if self.OsVersionsEqual(osVersion = comparingOsVersion):
+        if self.OsVersionsEqual(osVersion=comparingOsVersion):
             return Platform.COMP_EQUAL
-        elif self.OsVersionsCompatible(osVersion = comparingOsVersion):
+        elif self.OsVersionsCompatible(osVersion=comparingOsVersion):
             return Platform.COMP_COMPATIBLE
         else:
             return Platform.COMP_INCOMPATIBLE
@@ -472,9 +473,9 @@ class Platform:
             comparingAbi = abi
         else:
             comparingAbi = platform.abi
-        if self.AbisEqual(abi = comparingAbi):
+        if self.AbisEqual(abi=comparingAbi):
             return Platform.COMP_EQUAL
-        elif self.AbisCompatible(abi = comparingAbi):
+        elif self.AbisCompatible(abi=comparingAbi):
             return Platform.COMP_COMPATIBLE
         else:
             return Platform.COMP_INCOMPATIBLE
@@ -489,21 +490,20 @@ class Platform:
         osVersionMaxRating = Platform.COMP_INCOMPATIBLE
         abiMaxRating = Platform.COMP_INCOMPATIBLE
         for comparingArch in archs:
-            archRating = self.GetArchsCompareRating(arch = comparingArch)
+            archRating = self.GetArchsCompareRating(arch=comparingArch)
             if archRating > archMaxRating:
                 archMaxRating = archRating
         for comparingOs in oses:
-            osRating = self.GetOsesCompareRating(os = comparingOs)
+            osRating = self.GetOsesCompareRating(os=comparingOs)
             if osRating > osMaxRating:
                 osMaxRating = osRating
         for comparingOsVersion in osVersions:
             osVersionRating = self.GetOsVersionsCompareRating(
-             osVersion = comparingOsVersion)
+             osVersion=comparingOsVersion)
             if osVersionRating > osVersionMaxRating:
                 osVersionMaxRating = osVersionRating
         for comparingAbi in abis:
-            abiRating = self.GetAbisCompareRating(
-             abi = comparingAbi)
+            abiRating = self.GetAbisCompareRating(abi=comparingAbi)
             if abiRating > abiMaxRating:
                 abiMaxRating = abiRating
 
