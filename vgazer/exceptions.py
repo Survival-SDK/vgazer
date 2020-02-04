@@ -92,6 +92,10 @@ class UnknownTargetArch(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+class UnknownVersionChecker(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class VersionCheckError(Exception):
     def __init__(self, message):
         super().__init__(message)
