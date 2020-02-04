@@ -261,6 +261,7 @@ $ make lint
 Currently project ignores these errors and warnings:
 
 * [**E128**](https://www.flake8rules.com/rules/E128.html)
+* [**E131**](https://www.flake8rules.com/rules/E131.html)
 * [**E272**](https://www.flake8rules.com/rules/E272.html)
 * [**E302**](https://www.flake8rules.com/rules/E302.html)
 * [**E305**](https://www.flake8rules.com/rules/E305.html)

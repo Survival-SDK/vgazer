@@ -84,7 +84,7 @@ sample_tool:
 endif
 
 lint:
-	-pylama -i E128,E272,E302,E305 ./vgazer ./first_run.py \
+	-pylama -i E128,E131,E272,E302,E305 ./vgazer ./first_run.py \
      ./generate_samples.py ./setup.py ./samples/check_platform.py \
      | tee pylama.log
 
