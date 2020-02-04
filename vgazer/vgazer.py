@@ -6,15 +6,7 @@ from vgazer.exceptions              import InstallError
 from vgazer.exceptions              import UnknownSoftware
 from vgazer.exceptions              import VersionCheckError
 from vgazer.install.custom          import InstallCustom
-from vgazer.install.apk             import InstallApk
-from vgazer.install.apt             import InstallApt
-from vgazer.install.gcc_src         import InstallGccSrc
-from vgazer.install.linux_headers   import InstallLinuxHeaders
-from vgazer.install.musl_cross_make import InstallMuslCrossMake
-from vgazer.install.pip             import InstallPip
-from vgazer.install.pip3            import InstallPip3
-from vgazer.install.pkg_config      import InstallPkgConfig
-from vgazer.install.stb             import InstallStb
+from vgazer.installers_manager      import InstallersManager
 from vgazer.mirrors.gnu             import MirrorsGnu
 from vgazer.mirrors.sourceforge     import MirrorsSourceforge
 from vgazer.mirrors.xorg            import MirrorsXorg
@@ -34,7 +26,8 @@ class Vgazer:
             }
             self.versionCustom = VersionCustom(self.auth["base"],
              customCheckers)
-            self.checkersManager = CheckersManager(self.auth["base"])
+            self.checkersManager = CheckersManager()
+            self.installersManager = InstallersManager()
             self.mirrors = {
                 "gnu": MirrorsGnu(),
                 "sourceforge": MirrorsSourceforge(),
@@ -115,44 +108,21 @@ class Vgazer:
             return
 
         try:
-            if installer["type"] == "apk":
-                InstallApk(software, installer["package"], verbose)
-            elif installer["type"] == "apt":
-                if isinstance(installer["package"], list):
-                    for package in installer["package"]:
-                        InstallApt(software, package, self.platform["host"],
-                         package is installer["package"][-1], verbose)
-                else:
-                    InstallApt(software, installer["package"],
-                     self.platform["host"], True, verbose)
-            elif installer["type"] == "custom":
+            if installer["type"] == "custom":
                 self.installCustom.Install(self.auth, software,
                  installer["name"], softwarePlatform, self.platform,
                  self.mirrors, verbose)
-            elif installer["type"] == "gcc-src":
-                InstallGccSrc(self.auth["base"], software,
-                 installer["languages"], installer["triplet"], self.platform,
-                 self.mirrors["gnu"], verbose)
-            elif installer["type"] == "linux-headers":
-                InstallLinuxHeaders(self.auth["base"], self.platform, verbose)
-            elif installer["type"] == "musl-cross-make":
-                InstallMuslCrossMake(self.auth["github"], software,
-                 installer["languages"], installer["triplet"], self.platform,
-                 verbose)
-            elif installer["type"] == "pip":
-                InstallPip(software, installer["package"], verbose)
-            elif installer["type"] == "pip3":
-                InstallPip3(software, installer["package"], verbose)
-            elif installer["type"] == "pkg-config":
-                InstallPkgConfig(software, installer["triplet"], self.platform,
-                 verbose)
-            elif installer["type"] == "stb":
-                InstallStb(installer["library"], self.platform, verbose)
+            else:
+                installFunc = self.installersManager.GetInstallFunc(
+                 installer["type"])
+                return installFunc(software, self.auth, self.platform,
+                 installer, self.mirrors, verbose)
+
         except InstallError as installError:
             if "fallback" in installer:
                 print(
-                 "VGAZER: Something goes wrong. Starting fallback installation "
-                 "steps"
+                 "VGAZER: Something goes wrong. Starting fallback "
+                 "installation steps"
                 )
                 if fallbackPreinstallList is not None:
                     self.InstallList(fallbackPreinstallList, verbose)
