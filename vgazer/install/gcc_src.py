@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
-from vgazer.platform    import GetFilesystemType
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 

@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-from vgazer.command         import RunCommand
-from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import TarballLost
 from vgazer.install.utils   import GetVersionNumbers
 
@@ -21,6 +19,53 @@ def IsLinkTextCorrect(link, linksMustHave, linksMustNotHave):
             return False
     return True
 
+def UpdateMaxVersion(maxVersion, version):
+    result = maxVersion
+
+    if version["major"] > maxVersion["major"]:
+        result["major"] = version["major"]
+        result["minor"] = version["minor"]
+        result["patch"] = version["patch"]
+        result["subpatch"] = version["subpatch"]
+    elif (version["major"] == maxVersion["major"]
+     and version["minor"] > maxVersion["minor"]):
+        result["minor"] = version["minor"]
+        result["patch"] = version["patch"]
+        result["subpatch"] = version["subpatch"]
+    elif (version["major"] == maxVersion["major"]
+     and version["minor"] == maxVersion["minor"]
+     and version["patch"] > maxVersion["patch"]):
+        result["patch"] = version["patch"]
+        result["subpatch"] = version["subpatch"]
+    elif (version["major"] == maxVersion["major"]
+     and version["minor"] == maxVersion["minor"]
+     and version["patch"] == maxVersion["patch"]
+     and version["subpatch"] > maxVersion["subpatch"]):
+        result["subpatch"] = version["subpatch"]
+
+    return result
+
+def UpdateUrl(oldUrl, maxVersion, version, getMirrorUrl, suburl, link):
+    if (version["major"] > maxVersion["major"]
+    or (
+     version["major"] == maxVersion["major"]
+     and version["minor"] > maxVersion["minor"]
+    )
+    or (
+     version["major"] == maxVersion["major"]
+     and version["minor"] == maxVersion["minor"]
+     and version["patch"] > maxVersion["patch"]
+    )
+    or (
+     version["major"] == maxVersion["major"]
+     and version["minor"] == maxVersion["minor"]
+     and version["patch"] == maxVersion["patch"]
+     and version["subpatch"] > maxVersion["subpatch"]
+    )):
+        return getMirrorUrl() + "/" + suburl + link["href"]
+
+    return oldUrl
+
 def GetTarballUrl(mirrorsManager, suburl, projectName, linksMustHave,
  linksMustNotHave, firstTry=True):
     getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
@@ -35,10 +80,13 @@ def GetTarballUrl(mirrorsManager, suburl, projectName, linksMustHave,
 
     links = parsedHtml.find_all("a")
 
-    maxVersionMajor = -1
-    maxVersionMinor = -1
-    maxVersionPatch = -1
-    maxVersionSubpatch = -1
+    maxVersion = {
+        "major": -1,
+        "minor": -1,
+        "patch": -1,
+        "subpatch": -1,
+    }
+    url = None
     for link in links:
         if not IsLinkTextCorrect(link, linksMustHave, linksMustNotHave):
             continue
@@ -46,34 +94,12 @@ def GetTarballUrl(mirrorsManager, suburl, projectName, linksMustHave,
         versionText = link.text.split("-")[1].split(".tar.gz")[0].split(".")
         version = GetVersionNumbers(versionText)
 
-        if version["major"] > maxVersionMajor:
-            maxVersionMajor = version["major"]
-            maxVersionMinor = version["minor"]
-            maxVersionPatch = version["patch"]
-            maxVersionSubpatch = version["subpatch"]
-            url = (getMirrorUrl() + "/" + suburl + link["href"])
-        elif (version["major"] == maxVersionMajor
-         and version["minor"] > maxVersionMinor):
-            maxVersionMinor = version["minor"]
-            maxVersionPatch = version["patch"]
-            maxVersionSubpatch = version["subpatch"]
-            url = (getMirrorUrl() + "/" + suburl + link["href"])
-        elif (version["major"] == maxVersionMajor
-         and version["minor"] == maxVersionMinor
-         and version["patch"] > maxVersionPatch):
-            maxVersionPatch = version["patch"]
-            maxVersionSubpatch = version["subpatch"]
-            url = (getMirrorUrl() + "/" + suburl + link["href"])
-        elif (version["major"] == maxVersionMajor
-         and version["minor"] == maxVersionMinor
-         and version["patch"] == maxVersionPatch
-         and version["subpatch"] > maxVersionSubpatch):
-            maxVersionSubpatch = version["subpatch"]
-            url = (getMirrorUrl() + "/" + suburl + link["href"])
+        url = UpdateUrl(url, maxVersion, version, getMirrorUrl, suburl, link)
+        maxVersion = UpdateMaxVersion(maxVersion, version)
 
-    try:
+    if url is not None:
         return url
-    except UnboundLocalError:
+    else:
         raise TarballLost(
          "Unable to find tarball of {project}'s last version".format(
           project=projectName)

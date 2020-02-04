@@ -132,7 +132,7 @@ class Vgazer:
                 raise installError
         self.installedSoftware.append(software)
 
-    def Install(self, software, verbose = False, fallbackPreinstallList = None):
+    def Install(self, software, verbose=False, fallbackPreinstallList=None):
         if software in self.installedSoftware:
             return
 
@@ -148,25 +148,12 @@ class Vgazer:
             raise CompatibleProjectNotFound(
              "Unable to find compatible project for sowtware: " + software)
 
-        if "prereqs" in project:
-            prereqs = project["prereqs"]
-        else:
-            prereqs = []
-
-        if "fallback_prereqs" in project:
-            fallback_prereqs = project["fallback_prereqs"]
-        else:
-            fallback_prereqs = []
-
-        if "postreqs" in project:
-            postreqs = project["postreqs"]
-        else:
-            postreqs = []
-
-        if "postreqsOnce" in project:
-            postreqsOnce = project["postreqsOnce"]
-        else:
-            postreqsOnce = []
+        prereqs = project["prereqs"] if "prereqs" in project else []
+        fallback_prereqs = (project["fallback_prereqs"] if "fallback_prereqs"
+         in project else [])
+        postreqs = project["postreqs"] if "postreqs" in project else []
+        postreqsOnce = (project["postreqsOnce"] if "postreqsOnce" in project
+         else [])
 
         for prereq in prereqs:
             prereq = prereq.format(
@@ -199,6 +186,6 @@ class Vgazer:
                  arch=self.platform["target"].GetArch())
                 self.Install(postreqOnce, verbose, None)
 
-    def InstallList(self, softwareList, verbose = False):
+    def InstallList(self, softwareList, verbose=False):
         for software in softwareList:
             self.Install(software, verbose, None)
