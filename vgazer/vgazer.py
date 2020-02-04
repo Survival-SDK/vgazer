@@ -1,6 +1,6 @@
 from vgazer.auth.base               import AuthBase
 from vgazer.auth.github             import AuthGithub
-from vgazer.software                import SoftwareData
+from vgazer.checkers_manager        import CheckersManager
 from vgazer.exceptions              import CompatibleProjectNotFound
 from vgazer.exceptions              import InstallError
 from vgazer.exceptions              import UnknownSoftware
@@ -20,20 +20,8 @@ from vgazer.mirrors.sourceforge     import MirrorsSourceforge
 from vgazer.mirrors.xorg            import MirrorsXorg
 from vgazer.platform                import GetGenericTriplet
 from vgazer.platform                import Platform
+from vgazer.software                import SoftwareData
 from vgazer.version.custom          import VersionCustom
-from vgazer.version.alpine          import CheckAlpine
-from vgazer.version.debian          import CheckDebian
-from vgazer.version.gcc_src         import CheckGccSrc
-from vgazer.version.github          import CheckGithub
-from vgazer.version.gitlab          import CheckGitlab
-from vgazer.version.linux_headers   import CheckLinuxHeaders
-from vgazer.version.musl_cross_make import CheckMuslCrossMake
-from vgazer.version.opus_codec      import CheckOpusCodec
-from vgazer.version.pypi            import CheckPypi
-from vgazer.version.sdl2_addon      import CheckSdl2Addon
-from vgazer.version.sourceforge     import CheckSourceforge
-from vgazer.version.stb             import CheckStb
-from vgazer.version.xiph            import CheckXiph
 
 class Vgazer:
     def __init__(self, arch=None, os=None, osVersion=None, abi=None,
@@ -46,6 +34,7 @@ class Vgazer:
             }
             self.versionCustom = VersionCustom(self.auth["base"],
              customCheckers)
+            self.checkersManager = CheckersManager(self.auth["base"])
             self.mirrors = {
                 "gnu": MirrorsGnu(),
                 "sourceforge": MirrorsSourceforge(),
@@ -87,45 +76,13 @@ class Vgazer:
         softwarePlatform = softwareData[software]["platform"]
 
         try:
-            if checker["type"] == "alpine":
-                return CheckAlpine(self.auth["base"],
-                 self.platform[softwarePlatform].GetArch(),
-                 self.platform[softwarePlatform].GetOsVersion(),
-                 checker["repo"], checker["package"])
-            elif checker["type"] == "debian":
-                return CheckDebian(self.auth["base"],
-                 self.platform[softwarePlatform].GetOsVersion(),
-                 checker["source"])
-            elif checker["type"] == "gcc-src":
-                return CheckGccSrc(self.auth["base"])
-            elif checker["type"] == "github":
-                if "ignoredTags" in checker:
-                    ignoredTags = checker["ignoredTags"]
-                else:
-                    ignoredTags = []
-                return CheckGithub(self.auth["github"], checker["user"],
-                 checker["repo"], "ignoreReleases" in checker, ignoredTags)
-            elif checker["type"] == "gitlab":
-                return CheckGitlab(self.auth["base"], checker["host"],
-                 checker["id"])
-            elif checker["type"] == "linux-headers":
-                return CheckLinuxHeaders(self.auth["base"])
-            elif checker["type"] == "musl-cross-make":
-                return CheckMuslCrossMake(self.auth["github"])
-            elif checker["type"] == "opus_codec":
-                return CheckOpusCodec(self.auth["base"], checker["project"])
-            elif checker["type"] == "pypi":
-                return CheckPypi(self.auth["base"], checker["package"])
-            elif checker["type"] == "sdl2_addon":
-                return CheckSdl2Addon(self.auth["base"], checker["project"])
-            elif checker["type"] == "sourceforge":
-                return CheckSourceforge(self.auth["base"], checker["project"])
-            elif checker["type"] == "stb":
-                return CheckStb(self.auth["base"], checker["library"])
-            elif checker["type"] == "xiph":
-                return CheckXiph(self.auth["base"], checker["project"])
-            elif checker["type"] == "custom":
+            if checker["type"] == "custom":
                 return self.versionCustom.Check(checker["name"], self.mirrors)
+            else:
+                checkFunc = self.checkersManager.GetCheckFunc(checker["type"])
+                return checkFunc(self.auth, self.platform[softwarePlatform],
+                 checker)
+
         except VersionCheckError as versionCheckError:
             if "fallback" in checker:
                 return self.UseChecker(software, checker["fallback"])
@@ -247,12 +204,6 @@ class Vgazer:
              arch=self.platform["target"].GetArch())
             if prereq not in self.installedSoftware:
                 self.Install(prereq, verbose, None)
-        #for fallback_prereq in fallback_prereqs:
-            #prereq = fallback_prereq.format(
-             #triplet=GetGenericTriplet(self.platform["target"]),
-             #arch=self.platform["target"].GetArch())
-            #if prereq not in self.installedSoftware:
-                #self.Install(prereq, verbose, None)
 
         installer = project["installer"]
 
