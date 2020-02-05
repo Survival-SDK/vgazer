@@ -106,6 +106,8 @@ and OS's version of base Docker image. Currently supported:
 * debian
     * stretch
     * buster
+* steamrt
+    * latest
 
 **tarch** - architecture of device for crossplatform compiling libraries. 
 Currently supported:

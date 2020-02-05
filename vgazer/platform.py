@@ -2,6 +2,7 @@ import os
 import os.path
 import platform
 from vgazer.command     import GetCommandOutputUtf8
+from vgazer.exceptions  import AlpineReleaseDataNotFound
 from vgazer.exceptions  import DebianReleaseDataNotFound
 from vgazer.exceptions  import MissingArgument
 from vgazer.exceptions  import OsDataNotFound
@@ -55,11 +56,12 @@ def GetTriplet(targetPlatformData):
 
     if os == "alpine":
         triplet += "-alpine"
-
-    if Platform.OsIsLinux(os):
+    elif Platform.OsIsLinux(os):
         triplet += "-linux"
     elif os == "windows":
         triplet += "-w64"
+    else:
+        raise UnknownOs("Unknown OS: " + os)
 
     triplet += "-" + abi
 
@@ -76,6 +78,8 @@ def GetGenericTriplet(targetPlatformData):
         triplet += "-linux"
     elif os == "windows":
         triplet += "-w64"
+    else:
+        raise UnknownOs("Unknown OS: " + os)
 
     triplet += "-" + abi
 
@@ -255,12 +259,12 @@ class Platform:
             kv = line.split("=")
             if kv[0] == "VERSION_ID":
                 return ".".join(kv[1].split(".")[0:2])
-        raise DebianReleaseDataNotFound(
-         "Unable to find data of Debian version: " + os.name)
+        raise AlpineReleaseDataNotFound(
+         "Unable to find data of Alpine version: " + os.name)
 
     @staticmethod
     def OsIsLinux(os):
-        return (os in ["linux", "alpine", "debian"])
+        return (os in ["linux", "alpine", "debian", "steamrt"])
 
     @staticmethod
     def GetGenericOs(os):
@@ -290,6 +294,9 @@ class Platform:
                     self.abi = "musl"
                 if self.os == "debian":
                     self.osVersion = Platform.GetDebianVersion()
+                    self.abi = "gnu"
+                if self.os == "steamrt":
+                    self.osVersion = "latest"
                     self.abi = "gnu"
             else:
                 raise UnexpectedOsType("Unexpected OS type: " + osType)

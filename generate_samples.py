@@ -16,6 +16,8 @@ def CreateHostPlatformsList(gazer):
          osVersion="stretch", abi="gnu", suppressGenericFallback=True),
         Platform(arch=gazer.GetHostPlatform().GetArch(), os="debian",
          osVersion="buster", abi="gnu", suppressGenericFallback=True),
+        Platform(arch=gazer.GetHostPlatform().GetArch(), os="steamrt",
+         osVersion="latest", abi="gnu", suppressGenericFallback=True),
     ]
 
 def CreateTargetPlatformsList(gazer):

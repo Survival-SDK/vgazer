@@ -50,6 +50,20 @@ data = {
                     "package": "libasound2-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "alsa-lib",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "autoconf": {
@@ -82,6 +96,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "autoconf",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "autoconf",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -132,6 +160,20 @@ data = {
                     "package": "automake",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "automake1.11",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "automake1.11": {
@@ -169,6 +211,20 @@ data = {
                     "package": "automake1.11",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "automake1.11",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "autopoint": {
@@ -203,6 +259,20 @@ data = {
                     "package": "autopoint",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "gettext",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "bash": {
@@ -230,6 +300,20 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
+                    "source": "bash",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
                     "source": "bash",
                 },
                 "installer": {
@@ -270,6 +354,20 @@ data = {
                     "package": "bison",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "bison",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "bsdtar": {
@@ -302,6 +400,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "bsdtar",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libarchive",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -376,6 +488,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "cmake",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "cmake",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -485,6 +611,20 @@ data = {
                     "package": "x11proto-damage-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-damage",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "dr_wav": {
@@ -560,6 +700,20 @@ data = {
                     "package": "x11proto-dri2-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-dri2",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "duktape": {
@@ -633,6 +787,20 @@ data = {
                     "type": "not_needed",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "file",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "fixesproto": {
@@ -686,6 +854,20 @@ data = {
                     "package": "x11proto-fixes-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-fixes",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "flex": {
@@ -718,6 +900,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "flex",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "flex",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -780,6 +976,20 @@ data = {
                     "package": "libfreetype6-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "freetype",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "gawk": {
@@ -814,6 +1024,20 @@ data = {
                     "package": "gawk",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "gawk",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "g++": {
@@ -842,6 +1066,20 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "gcc-4.6",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -879,6 +1117,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "gettext",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "gettext",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -934,6 +1186,20 @@ data = {
                     "package": "libgif-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "giflib",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "git": {
@@ -966,6 +1232,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "git",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "git",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -1021,6 +1301,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libglew-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "glew",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -1081,6 +1375,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libglib2.0-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "glib2.0",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -1170,6 +1478,20 @@ data = {
                     "package": "x11proto-gl-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-gl",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "glu": {
@@ -1226,6 +1548,20 @@ data = {
                     "package": "libglu1-mesa-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "mesa",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "gpg": {
@@ -1253,6 +1589,20 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
+                    "source": "gnupg2",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
                     "source": "gnupg2",
                 },
                 "installer": {
@@ -1314,6 +1664,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libgraphite2-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "graphite2",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -1749,6 +2113,20 @@ data = {
                     "package": "g++-mingw-w64-i686",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "gcc-mingw-w64",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "i686-w64-mingw32-gcc": {
@@ -1781,6 +2159,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "gcc-mingw-w64-i686",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "gcc-mingw-w64",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -1835,6 +2227,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libicu-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "icu",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -1942,6 +2348,20 @@ data = {
                     "package": "x11proto-input-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-input",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "jpeg": {
@@ -1995,6 +2415,20 @@ data = {
                     "package": "libjpeg-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libjpeg-turbo",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "kbproto": {
@@ -2046,6 +2480,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-kb-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-kb",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -2119,6 +2567,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libbz2-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "bzip2",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -2209,6 +2671,20 @@ data = {
                     "package": "libdrm-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libdrm",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libelf": {
@@ -2264,6 +2740,20 @@ data = {
                     "package": "libelf-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libelf",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libffi": {
@@ -2316,6 +2806,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libffi-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libffi",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -2393,6 +2897,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libflac-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "flac",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -2579,6 +3097,20 @@ data = {
                     "package": "liblzma-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "xz-utils",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libmodplug": {
@@ -2631,6 +3163,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libmodplug-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libmodplug",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -2693,6 +3239,20 @@ data = {
                     "package": "libmount-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "util-linux",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libogg": {
@@ -2744,6 +3304,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libogg-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libogg",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -2861,6 +3435,20 @@ data = {
                     "package": "libpciaccess-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libpciaccess",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libpcre": {
@@ -2913,6 +3501,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libpcre3-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "pcre3",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -3024,6 +3626,20 @@ data = {
                     "package": "libpng-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libpng",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libsensors": {
@@ -3066,6 +3682,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libsensors4-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "lm-sensors",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -3126,6 +3756,20 @@ data = {
                     "package": "libtiff-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "tiff",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libtool": {
@@ -3158,6 +3802,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libtool",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libtool",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -3224,6 +3882,20 @@ data = {
                     "package": "libva-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libva",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libvdpau": {
@@ -3282,6 +3954,20 @@ data = {
                     "package": " libvdpau-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libdvpau",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libvorbis": {
@@ -3337,6 +4023,20 @@ data = {
                     "package": "libvorbis-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libvorbis",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libwebp": {
@@ -3388,6 +4088,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libwebp-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libwebp",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -3466,6 +4180,20 @@ data = {
                     "package": "libxext-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libxext",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libxfixes": {
@@ -3528,6 +4256,20 @@ data = {
                     "package": " libxfixes-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libxfixes",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libxml2": {
@@ -3581,6 +4323,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libxml2-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libxml2",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -3647,6 +4403,20 @@ data = {
                     "package": "libxrandr-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libxrandr",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "libxxf86vm": {
@@ -3708,6 +4478,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libxxf86vm-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libxxf86vm",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -3931,6 +4715,20 @@ data = {
                     "package": "llvm",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "llvm-3.0",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "llvm8": {
@@ -4018,6 +4816,20 @@ data = {
                     "package": "liblua5.3-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "lua5.2",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "m4": {
@@ -4052,6 +4864,20 @@ data = {
                     "package": "m4",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "m4",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "make": {
@@ -4079,6 +4905,20 @@ data = {
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
+                    "source": "make-dfsg",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
                     "source": "make-dfsg",
                 },
                 "installer": {
@@ -4117,6 +4957,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "texinfo",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "texinfo",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -4261,6 +5115,20 @@ data = {
                     "package": "libmpg123-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "mpg123",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "musl": {
@@ -4329,6 +5197,20 @@ data = {
                     "package": "nasm",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "nasm",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "ninja": {
@@ -4361,6 +5243,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "ninja-build",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "ninja-build",
+                    "source": "nasm",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -4459,6 +5355,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libgl1-mesa-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "mesa",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -4577,6 +5487,20 @@ data = {
                     "package": "perl",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "perl",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "physfs": {
@@ -4643,6 +5567,20 @@ data = {
                     "package": "libphysfs-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libphysfs",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "pip2": {
@@ -4677,6 +5615,20 @@ data = {
                     "package": "python-pip",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "python-pip",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "pkg-config": {
@@ -4709,6 +5661,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "pkg-config",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -4765,6 +5731,20 @@ data = {
                     "package": "portaudio19-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "portaudio19",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "pthread-stubs": {
@@ -4818,6 +5798,20 @@ data = {
                     "package": "libpthread-stubs0-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "pthread-stubs",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "python2": {
@@ -4850,6 +5844,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "python2.7",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "python2.7",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -4887,6 +5895,20 @@ data = {
                 "installer": {
                     "type": "apk",
                     "package": "py2-yaml",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "pyyaml",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -4935,6 +5957,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "python3-mako",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "mako",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -5004,6 +6040,20 @@ data = {
                     "package": "x11proto-randr-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-randr",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "renderproto": {
@@ -5071,6 +6121,20 @@ data = {
                     "package": "x11proto-render-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-render",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "rsync": {
@@ -5103,6 +6167,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "rsync",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "rsync",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -5660,6 +6738,20 @@ data = {
                     "package": "libts-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "tslib",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "unzip": {
@@ -5692,6 +6784,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "unzip",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "unzip",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -5799,6 +6905,20 @@ data = {
                     "package": "libwayland-egl-backend-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "wayland",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "wayland-protocols": {
@@ -5889,6 +7009,20 @@ data = {
                     "package": ["libwayland-bin", "libwayland-dev"],
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "wayland",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "wget": {
@@ -5921,6 +7055,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "wget",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "wget",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -5965,6 +7113,20 @@ data = {
                 "checker": {
                     "type": "debian",
                     "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "gcc-4.6",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -6028,6 +7190,20 @@ data = {
                     "type": "not_needed",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "gcc-4.6",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "x86_64-linux-gnu-pkg-config": {
@@ -6080,6 +7256,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "pkg-config",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -6338,6 +7528,20 @@ data = {
                     "package": "libxau-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libxau",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "xcb": {
@@ -6395,6 +7599,20 @@ data = {
                     "package": "libx11-xcb-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libx11",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "xcb-proto": {
@@ -6445,6 +7663,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "xcb-proto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "xcb-proto",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -6507,6 +7739,20 @@ data = {
                     "package": "libxdamage-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libxdamage",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "xextproto": {
@@ -6558,6 +7804,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-xext-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-xext",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -6627,6 +7887,20 @@ data = {
                     "package": "x11proto-xf86vidmode-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-xf86vidmode",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "xlib": {
@@ -6687,6 +7961,20 @@ data = {
                     "package": "libx11-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libx11",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "xorg-macros": {
@@ -6739,6 +8027,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "xutils-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "xutils-dev",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -6794,6 +8096,20 @@ data = {
                     "package": "x11proto-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "x11proto-core",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "xrender": {
@@ -6843,7 +8159,7 @@ data = {
                 "arch": ["any"],
                 "os": ["alpine"],
                 "osVersion": ["any"],
-                "abi": ["any"],
+                "abi": ["musl"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6858,7 +8174,7 @@ data = {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
-                "abi": ["any"],
+                "abi": ["gnu"],
                 "checker": {
                     "type": "debian",
                     "source": "libxrender",
@@ -6866,6 +8182,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libxrender-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "libxrender",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -6977,6 +8307,20 @@ data = {
                     "package": "xtrans-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "xtrans",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "zlib": {
@@ -7028,6 +8372,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "zlib1g-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "zlib",
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],

@@ -37,6 +37,15 @@ else
 	echo "Error: host system's arch is not x86_64"
 endif
 
+image_x86_64_steamrt_latest_build:
+ifeq ($(ARCH),x86_64)
+	docker build \
+     -f dockerfiles/vgazer_min_env_x86_64_steamrt_latest.dockerfile \
+     -t vgazer_min_env_x86_64_steamrt_latest .
+else
+	echo "Error: host system's arch is not x86_64"
+endif
+
 ifneq ($(and $(arch),$(os),$(ver)),)
 image_build: image_$(arch)_$(os)_$(ver)_build
 else
