@@ -1,13 +1,15 @@
 import os
+import requests
 
-from vgazer.command     import RunCommand
-from vgazer.exceptions  import CommandError
-from vgazer.exceptions  import InstallError
-from vgazer.platform    import GetAr
-from vgazer.platform    import GetCc
-from vgazer.platform    import GetInstallPrefix
-from vgazer.store.temp  import StoreTemp
-from vgazer.working_dir import WorkingDir
+from vgazer.command         import RunCommand
+from vgazer.exceptions      import CommandError
+from vgazer.exceptions      import InstallError
+from vgazer.install.utils   import SourceforgeDownloadTarballWhileErrorcodeFour
+from vgazer.platform        import GetAr
+from vgazer.platform        import GetCc
+from vgazer.platform        import GetInstallPrefix
+from vgazer.store.temp      import StoreTemp
+from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -19,21 +21,21 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    sourceUrl = ("https://sourceforge.net/projects/tinyfiledialogs/files/"
-     "tinyfiledialogs.c/download")
-    headerUrl = ("https://sourceforge.net/projects/tinyfiledialogs/files/"
-     "tinyfiledialogs.h/download")
+    sourceforgeMirrorsManager = mirrors["sourceforge"].CreateMirrorsManager(
+     ["https", "http"])
+
+    filename = requests.get(
+     "https://sourceforge.net/projects/tinyfiledialogs/best_release.json"
+    ).json()["release"]["filename"]
+    archiveShortFilename = filename.split("/")[-1]
 
     try:
         with WorkingDir(tempPath):
-            RunCommand(
-             ["wget", "-P", "./", "-O", "tinyfiledialogs.c", sourceUrl],
-             verbose
-            )
-            RunCommand(
-             ["wget", "-P", "./", "-O", "tinyfiledialogs.h", headerUrl],
-             verbose
-            )
+            SourceforgeDownloadTarballWhileErrorcodeFour(
+             sourceforgeMirrorsManager, "tinyfiledialogs", filename, verbose)
+            RunCommand(["unzip", archiveShortFilename], verbose)
+        extractedDir = os.path.join(tempPath, archiveShortFilename[0:-4])
+        with WorkingDir(extractedDir):
             RunCommand(
              [cc, "-c", "tinyfiledialogs.c", "-o", "tinyfiledialogs.o", "-O2",
               "-Wall", "-fPIC"],
