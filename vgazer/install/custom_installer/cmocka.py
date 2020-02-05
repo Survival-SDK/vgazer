@@ -5,10 +5,8 @@ from bs4 import BeautifulSoup
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
 from vgazer.config.cmake    import ConfigCmake
-from vgazer.env_vars        import SetEnvVar
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import InstallError
-from vgazer.platform        import GetCc
 from vgazer.platform        import GetInstallPrefix
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
@@ -41,7 +39,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     configCmake.GenerateCrossFile()
 
     installPrefix = GetInstallPrefix(platformData)
-    cc = GetCc(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -74,12 +71,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(extractedDir, "build")
         with WorkingDir(buildDir):
-            SetEnvVar("CC", cc)
             RunCommand(
              ["cmake", "..",
               "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
               "-DCMAKE_BUILD_TYPE=Debug",
-              "-DCMAKE_INSTALL_PREFIX=" + installPrefix],
+              "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
+              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
