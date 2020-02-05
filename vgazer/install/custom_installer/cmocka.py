@@ -7,6 +7,7 @@ from vgazer.command         import RunCommand
 from vgazer.config.cmake    import ConfigCmake
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import InstallError
+from vgazer.platform        import GetArFullPath
 from vgazer.platform        import GetInstallPrefix
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
@@ -39,6 +40,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     configCmake.GenerateCrossFile()
 
     installPrefix = GetInstallPrefix(platformData)
+    ar = GetArFullPath(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -76,7 +78,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
               "-DCMAKE_BUILD_TYPE=Debug",
               "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
-              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"],
+              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON", "-DCMAKE_AR=" + ar],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
