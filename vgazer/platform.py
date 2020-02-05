@@ -139,6 +139,13 @@ def GetAr(targetPlatformData):
     else:
         return "ar"
 
+def GetArFullPath(targetPlatformData):
+    ar = GetAr(targetPlatformData)
+    if os.path.isfile(os.path.join("/usr/bin", ar)):
+        return os.path.join("/usr/bin", ar)
+    else:
+        return ar
+
 def GetRanlib(targetPlatformData):
     triplet = GetTriplet(targetPlatformData)
     if "i686" in triplet:
