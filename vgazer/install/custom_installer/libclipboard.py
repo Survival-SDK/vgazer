@@ -62,7 +62,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
               "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
               "-DCMAKE_C_FLAGS=-std=c99 -Wall -pedantic -g -I./include "
-              "-I../include -D_POSIX_C_SOURCE=199309L"
+              "-I../include -D_POSIX_C_SOURCE=199309L",
+              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
              ],
              verbose)
             RunCommand(["make"], verbose)

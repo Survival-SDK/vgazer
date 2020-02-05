@@ -52,7 +52,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(
              ["cmake", "..",
               "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
-              "-DCMAKE_INSTALL_PREFIX=" + installPrefix],
+              "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
+              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)

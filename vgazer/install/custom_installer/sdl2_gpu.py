@@ -84,7 +84,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-DSTBI_WRITE_LIBRARY=" + buildDir
               + "/../src/externals/stb_image_write/libstbi_write.a",
               "-DSTBI_WRITE_FOUND=TRUE",
-              "-DM_LIB=/usr/lib/" + targetTriplet + "/libm.so"
+              "-DM_LIB=/usr/lib/" + targetTriplet + "/libm.so",
+              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
              ],
              verbose)
             RunCommand(["make"], verbose)
