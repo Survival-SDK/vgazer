@@ -4,16 +4,16 @@ from vgazer.command         import RunCommand
 from vgazer.config.cmake    import ConfigCmake
 from vgazer.exceptions      import CommandError
 from vgazer.exceptions      import InstallError
-from vgazer.platform        import GetAr
+from vgazer.platform        import GetArFullPath
 from vgazer.platform        import GetCc
 from vgazer.platform        import GetInstallPrefix
-from vgazer.platform        import GetTriplet
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def GetVersionFromSource(filename):
     with open(filename) as f:
-        lines = f.readlines()
+        data = f.read()
+    lines = data.splitlines()
     for line in lines:
         if "#define SDL_GPU_VERSION_MAJOR" in line:
             versionMajor = line.split(" ")[2]
@@ -29,8 +29,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     configCmake = ConfigCmake(platformData)
     configCmake.GenerateCrossFile()
     installPrefix = GetInstallPrefix(platformData)
-    targetTriplet = GetTriplet(platformData["target"])
-    ar = GetAr(platformData["target"])
+    ar = GetArFullPath(platformData["target"])
     cc = GetCc(platformData["target"])
 
     storeTemp = StoreTemp()
@@ -84,8 +83,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-DSTBI_WRITE_LIBRARY=" + buildDir
               + "/../src/externals/stb_image_write/libstbi_write.a",
               "-DSTBI_WRITE_FOUND=TRUE",
-              "-DM_LIB=/usr/lib/" + targetTriplet + "/libm.so",
-              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
+              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON", "-DCMAKE_AR=" + ar
              ],
              verbose)
             RunCommand(["make"], verbose)
@@ -101,7 +99,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               installPrefix + "/lib/libSDL2_gpu.a"],
              verbose)
             RunCommand(
-             ["rm", "-f", installPrefix + "/SDL_gpu-" + version],
+             ["rm", "-rf", installPrefix + "/SDL_gpu-" + version],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
