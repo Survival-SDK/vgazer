@@ -1,3 +1,7 @@
+class AlpineReleaseDataNotFound(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class CommandError(Exception):
     def __init__(self, message, command, errorcode):
         super().__init__(message)
