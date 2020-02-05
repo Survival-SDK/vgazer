@@ -1245,7 +1245,8 @@ data = {
                     "source": "git",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "apt",
+                    "package": "git",
                 },
             },
         ],
@@ -4651,6 +4652,19 @@ data = {
                     "type": "not_needed",
                 },
             },
+            {
+                "arch": ["x86_64"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "linux-lts-trusty",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
         ],
     },
     "llvm": {
@@ -5908,7 +5922,8 @@ data = {
                     "source": "pyyaml",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "apt",
+                    "package": "python-yaml",
                 },
             },
         ],
@@ -6263,6 +6278,18 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libsdl2-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "dont_check", # Use preinstall version only
+                },
+                "installer": {
+                    "type": "not_needed",
                 },
             },
         ],
@@ -6672,6 +6699,7 @@ data = {
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
+                    "unzip",
                 ],
                 "checker": {
                     "type": "custom",
@@ -6797,7 +6825,8 @@ data = {
                     "source": "unzip",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "apt",
+                    "package": "unzip",
                 },
             },
         ],
