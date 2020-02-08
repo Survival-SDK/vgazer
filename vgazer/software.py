@@ -7,6 +7,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-2.1"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -26,6 +27,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -41,6 +43,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "debian",
                     "source": "alsa-lib",
@@ -55,6 +58,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -426,6 +430,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -447,6 +452,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "cjson",
@@ -514,6 +520,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["apache-2.0"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -534,6 +541,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["apache-2.0"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -549,6 +557,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["apache-2.0"],
                 "checker": {
                     "type": "debian",
                     "source": "cmocka",
@@ -568,6 +577,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["hpnd-sv"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -587,6 +597,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -602,6 +613,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-damage",
@@ -616,6 +628,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -635,6 +648,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["unlicense"],
                 "prereqs": [
                     "wget",
                 ],
@@ -657,6 +671,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["icu"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -676,6 +691,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["icu"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -691,6 +707,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["icu"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-dri2",
@@ -705,6 +722,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["icu"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -724,6 +742,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -745,6 +764,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "duktape",
@@ -811,6 +831,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit", "hpnd-sv"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -830,6 +851,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit", "hpnd-sv"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -845,6 +867,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-fixes",
@@ -859,6 +882,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "hpnd-sv"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -926,6 +950,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["ftl", "mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -952,6 +977,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["ftl", "mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -967,6 +993,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["ftl", "mit"],
                 "checker": {
                     "type": "debian",
                     "source": "freetype",
@@ -981,6 +1008,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["ftl", "mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -1143,6 +1171,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -1162,6 +1191,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -1177,6 +1207,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "giflib",
@@ -1191,6 +1222,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -1259,6 +1291,7 @@ data = {
                 "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3", "mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -1280,6 +1313,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3", "mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -1295,6 +1329,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3", "mit"],
                 "checker": {
                     "type": "debian",
                     "source": "glew",
@@ -1309,6 +1344,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3", "mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -1328,6 +1364,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-2.1"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -1354,6 +1391,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -1369,6 +1407,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "debian",
                     "source": "glib2.0",
@@ -1383,6 +1422,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -1402,6 +1442,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["sgi-b-2.0"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -1441,6 +1482,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["sgi-b-2.0"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -1456,6 +1498,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["stretch"],
                 "abi": ["gnu"],
+                "license": ["sgi-b-2.0"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-gl",
@@ -1470,6 +1513,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
+                "license": ["sgi-b-2.0"],
                 "checker": {
                     "type": "debian",
                     "source": "xorgproto",
@@ -1484,6 +1528,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["sgi-b-2.0"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -1503,6 +1548,7 @@ data = {
                 "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["sgi-b-1.1", "sgi-b-2.0"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -1525,6 +1571,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["sgi-b-1.1", "sgi-b-2.0"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -1540,6 +1587,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["sgi-b-1.1", "sgi-b-2.0"],
                 "checker": {
                     "type": "debian",
                     "source": "libglu",
@@ -1554,6 +1602,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["sgi-b-1.1", "sgi-b-2.0"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -1620,6 +1669,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-2.1"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -1691,6 +1741,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -1722,6 +1773,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -1737,6 +1789,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "harfbuzz",
@@ -2186,6 +2239,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2206,6 +2260,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2221,6 +2276,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
                 "checker": {
                     "type": "debian",
                     "source": "icu",
@@ -2235,6 +2291,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -2254,6 +2311,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2273,6 +2331,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "libinih",
@@ -2292,6 +2351,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit", "smlnj"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2311,6 +2371,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit", "smlnj"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2326,6 +2387,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["stretch"],
                 "abi": ["gnu"],
+                "license": ["mit", "smlnj"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-input",
@@ -2340,6 +2402,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
+                "license": ["mit", "smlnj"],
                 "checker": {
                     "type": "debian",
                     "source": "xorgproto",
@@ -2354,6 +2417,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "smlnj"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -2365,6 +2429,8 @@ data = {
             },
         ],
     },
+    # IJG-JPEG under IJG Licence
+    # libjpeg-turbo under IJG, BSD-3-clause and Zlib
     "jpeg": {
         "platform": "target",
         "projects": [
@@ -2373,6 +2439,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["ijg"], # IJG-JPEG
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2392,6 +2459,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["ijg"], # IJG-JPEG
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2407,6 +2475,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["ijg", "bsd-3", "zlib"], # libjpeg-turbo
                 "checker": {
                     "type": "debian",
                     "source": "libjpeg-turbo",
@@ -2421,6 +2490,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["ijg", "bsd-3", "zlib"], # libjpeg-turbo
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -2440,6 +2510,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["hpnd"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2459,6 +2530,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["hpnd"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2474,6 +2546,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-kb",
@@ -2488,6 +2561,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -2507,6 +2581,7 @@ data = {
                 "os": ["windows"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "checker": {
                     "type": "github",
                     "user": "DoumanAsh",
@@ -2527,6 +2602,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bzip2-1.0.6"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2546,6 +2622,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bzip2-1.0.6"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2561,6 +2638,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bzip2-1.0.6"],
                 "checker": {
                     "type": "debian",
                     "source": "bzip2",
@@ -2575,6 +2653,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bzip2-1.0.6"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -2594,6 +2673,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-g++",
@@ -2622,6 +2702,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2648,6 +2729,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2663,6 +2745,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "libdrm",
@@ -2677,6 +2760,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -2696,6 +2780,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2717,6 +2802,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["lgpl-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2732,6 +2818,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-3"],
                 "checker": {
                     "type": "debian",
                     "source": "elfutils",
@@ -2746,6 +2833,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-3"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -2765,6 +2853,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2785,6 +2874,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2800,6 +2890,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "libffi",
@@ -2814,6 +2905,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -2833,6 +2925,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2855,6 +2948,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -2876,6 +2970,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2891,6 +2986,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "flac",
@@ -2905,6 +3001,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -2924,6 +3021,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-2"],
                 "checker": {
                     "type": "custom",
                     "name": "libiconv",
@@ -2938,6 +3036,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["3.10", "edge"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2"],
                 "checker": {
                     "type": "alpine",
                     "repo": "community",
@@ -2953,6 +3052,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["lgpl-2"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -2968,6 +3068,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2"],
                 "checker": {
                     "type": "debian",
                     "source": "glibc",
@@ -2978,6 +3079,8 @@ data = {
             },
         ],
     },
+    # libintl under GNU LGPL 2.1
+    # libintl-lite under version 1 of the Boost Software License
     "libintl": {
         "platform": "target",
         "projects": [
@@ -2986,6 +3089,7 @@ data = {
                 "os": ["windows"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsl-1.0"],
                 "checker": {
                     "type": "github",
                     "user": "j-jorge",
@@ -3001,6 +3105,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3016,6 +3121,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "debian",
                     "source": "glibc",
@@ -3035,6 +3141,7 @@ data = {
                 "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["pd"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -3054,6 +3161,7 @@ data = {
                 "os": ["windows"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["pd"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -3074,6 +3182,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["pd"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3089,6 +3198,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["pd"],
                 "checker": {
                     "type": "debian",
                     "source": "xz-utils",
@@ -3103,6 +3213,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["pd"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3122,6 +3233,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["pd"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -3142,6 +3254,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["pd"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3157,6 +3270,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["pd"],
                 "checker": {
                     "type": "debian",
                     "source": "libmodplug",
@@ -3171,6 +3285,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["pd"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3190,6 +3305,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-2.1+"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -3216,6 +3332,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["lgpl-2.1+"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3231,6 +3348,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-2.1+"],
                 "checker": {
                     "type": "debian",
                     "source": "util-linux",
@@ -3245,6 +3363,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1+"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3264,6 +3383,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -3283,6 +3403,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3298,6 +3419,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "libogg",
@@ -3312,6 +3434,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3331,6 +3454,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -3350,6 +3474,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3365,6 +3490,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "opus",
@@ -3384,6 +3510,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit", "isc", "x11"],
                 "prereqs": [
                     "wget",
                     "autoconf",
@@ -3412,6 +3539,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit", "isc", "x11"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3427,6 +3555,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "isc", "x11"],
                 "checker": {
                     "type": "debian",
                     "source": "libpciaccess",
@@ -3441,6 +3570,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "isc", "x11"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3460,6 +3590,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -3480,6 +3611,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3495,6 +3627,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "pcre3",
@@ -3509,6 +3642,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3528,6 +3662,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "unzip",
@@ -3548,6 +3683,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3563,6 +3699,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "pcre2",
@@ -3582,6 +3719,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["libpng-2.0"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -3603,6 +3741,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["libpng-2.0"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3618,6 +3757,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["libpng-2.0"],
                 "checker": {
                     "type": "debian",
                     "source": "libpng1.6",
@@ -3632,6 +3772,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["libpng-2.0"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3651,6 +3792,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-2.1"],
                 "prereqs": [
                     "wget",
                     "make",
@@ -3676,6 +3818,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "debian",
                     "source": "lm-sensors",
@@ -3690,6 +3833,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3709,6 +3853,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["libtiff"],
                 "prereqs": [
                     "wget",
                     "make",
@@ -3733,6 +3878,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["libtiff"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3748,6 +3894,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["libtiff"],
                 "checker": {
                     "type": "debian",
                     "source": "tiff",
@@ -3762,6 +3909,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["libtiff"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3829,6 +3977,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "autoconf",
@@ -3859,6 +4008,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3874,6 +4024,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "libva",
@@ -3888,6 +4039,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3907,6 +4059,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-pkg-config",
@@ -3931,6 +4084,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -3946,6 +4100,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": " libvdpau",
@@ -3960,6 +4115,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -3979,6 +4135,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-pkg-config",
@@ -4000,6 +4157,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4015,6 +4173,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "libvorbis",
@@ -4029,6 +4188,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -4048,6 +4208,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -4067,6 +4228,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4082,6 +4244,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "libwebp",
@@ -4096,6 +4259,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -4115,6 +4279,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
                 "prereqs": [
                     "wget",
                     "autoconf",
@@ -4157,6 +4322,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4172,6 +4338,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
                 "checker": {
                     "type": "debian",
                     "source": "libxext",
@@ -4186,6 +4353,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -4205,6 +4373,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["hpnd-sv", "mit"],
                 "prereqs": [
                     "wget",
                     "autoconf",
@@ -4233,6 +4402,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["hpnd-sv", "mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4248,6 +4418,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv", "mit"],
                 "checker": {
                     "type": "debian",
                     "source": " libxfixes",
@@ -4262,6 +4433,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv", "mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -4281,6 +4453,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -4302,6 +4475,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4317,6 +4491,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "libxml2",
@@ -4331,6 +4506,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -4350,6 +4526,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["hpnd-sv"],
                 "prereqs": [
                     "wget",
                     "autoconf",
@@ -4380,6 +4557,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4395,6 +4573,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "libxrandr",
@@ -4409,6 +4588,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -4428,6 +4608,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["x11"],
                 "prereqs": [
                     "wget",
                     "autoconf",
@@ -4457,6 +4638,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["x11"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4472,6 +4654,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "debian",
                     "source": "libxxf86vm",
@@ -4486,6 +4669,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -4505,6 +4689,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "make",
@@ -4526,6 +4711,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4541,6 +4727,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "libzstd",
@@ -4560,6 +4747,7 @@ data = {
                 "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["gpl-2-lsn"],
                 "prereqs": [
                     "wget",
                     "make",
@@ -4578,6 +4766,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["gpl-2-lsn"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4593,6 +4782,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["gpl-2-lsn"],
                 "checker": {
                     "type": "debian",
                     "source": "linux-latest",
@@ -4611,6 +4801,7 @@ data = {
                 "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["gpl-2.0-lsn"],
                 "prereqs": [
                     "wget",
                     "make",
@@ -4629,6 +4820,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["gpl-2.0-lsn"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4644,6 +4836,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["gpl-2.0-lsn"],
                 "checker": {
                     "type": "debian",
                     "source": "linux-latest",
@@ -4657,6 +4850,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["gpl-2.0-lsn"],
                 "checker": {
                     "type": "debian",
                     "source": "linux-lts-trusty",
@@ -4787,6 +4981,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "make",
@@ -4806,6 +5001,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -4821,6 +5017,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "lua5.3",
@@ -4835,6 +5032,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -5047,6 +5245,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["apache-2.0"],
                 "prereqs": [
                     "git",
                     "{triplet}-gcc",
@@ -5066,6 +5265,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
+                "license": ["apache-2.0"],
                 "checker": {
                     "type": "debian",
                     "source": "libminini",
@@ -5085,6 +5285,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-2.1"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -5105,6 +5306,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -5120,6 +5322,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "debian",
                     "source": "libmpg123",
@@ -5134,6 +5337,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -5153,6 +5357,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -5168,6 +5373,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "musl",
@@ -5283,6 +5489,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["unlicense"],
                 "prereqs": [
                     "wget",
                 ],
@@ -5306,6 +5513,7 @@ data = {
                 "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -5347,6 +5555,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -5362,6 +5571,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
                 "checker": {
                     "type": "debian",
                     "source": "mesa",
@@ -5376,6 +5586,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -5395,6 +5606,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["bsd-3"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -5417,6 +5629,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -5432,6 +5645,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["bsd-3"],
                 "checker": {
                     "type": "debian",
                     "source": "opusfile",
@@ -5451,6 +5665,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-3"],
                 "prereqs": [
                     "wget",
                     "unzip",
@@ -5525,6 +5740,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["zlib"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -5557,6 +5773,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["edge"],
                 "abi": ["musl"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "alpine",
                     "repo": "testing",
@@ -5572,6 +5789,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "debian",
                     "source": "libphysfs",
@@ -5586,6 +5804,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -5701,6 +5920,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -5721,6 +5941,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -5736,6 +5957,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "portaudio19",
@@ -5750,6 +5972,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -5769,6 +5992,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["x11"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -5788,6 +6012,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["x11"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -5803,6 +6028,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "debian",
                     "source": "pthread-stubs",
@@ -5817,6 +6043,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -5998,6 +6225,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["hpnd-sv"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -6017,6 +6245,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6032,6 +6261,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["stretch"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-randr",
@@ -6046,6 +6276,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "xorgproto",
@@ -6060,6 +6291,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -6079,6 +6311,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["hpnd-sv"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -6098,6 +6331,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6113,6 +6347,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["stretch"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-render",
@@ -6127,6 +6362,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "xorgproto",
@@ -6141,6 +6377,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -6208,6 +6445,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "git",
                     "{triplet}-gcc",
@@ -6233,6 +6471,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["zlib"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -6256,6 +6495,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6271,6 +6511,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2",
@@ -6285,6 +6526,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "dont_check", # Use preinstall version only
                 },
@@ -6302,6 +6544,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["zlib"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -6323,6 +6566,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-gfx",
@@ -6342,6 +6586,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "git",
                     "{triplet}-g++",
@@ -6372,6 +6617,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["zlib"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -6397,6 +6643,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6412,6 +6659,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-image",
@@ -6431,6 +6679,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["zlib"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -6457,6 +6706,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6472,6 +6722,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-mixer",
@@ -6491,11 +6742,13 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["zlib"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
                     "make",
+                    "cmake",
                     "sdl2",
                     "freetype",
                 ],
@@ -6513,6 +6766,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6528,6 +6782,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "debian",
                     "source": "libsdl2-ttf",
@@ -6547,6 +6802,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-g++",
@@ -6568,6 +6824,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "squirrel3",
@@ -6587,6 +6844,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["unlicense"],
                 "prereqs": [
                     "wget",
                 ],
@@ -6604,6 +6862,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["any"],
+                "license": ["unlicense"],
                 "checker": {
                     "type": "debian",
                     "source": "libstb",
@@ -6623,6 +6882,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["unlicense"],
                 "prereqs": [
                     "wget",
                 ],
@@ -6640,6 +6900,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["any"],
+                "license": ["unlicense"],
                 "checker": {
                     "type": "debian",
                     "source": "libstb",
@@ -6659,6 +6920,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["unlicense"],
                 "prereqs": [
                     "wget",
                 ],
@@ -6676,6 +6938,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["any"],
+                "license": ["unlicense"],
                 "checker": {
                     "type": "debian",
                     "source": "libstb",
@@ -6696,6 +6959,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["zlib"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -6720,6 +6984,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["lgpl-2.1"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -6742,6 +7007,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6757,6 +7023,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "debian",
                     "source": "tslib",
@@ -6771,6 +7038,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -6839,6 +7107,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "git",
                     "{triplet}-gcc",
@@ -6863,6 +7132,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["pd"],
                 "prereqs": [
                     "git",
                     "{triplet}-gcc",
@@ -6887,6 +7157,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -6910,6 +7181,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6925,6 +7197,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "wayland",
@@ -6939,6 +7212,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -6958,6 +7232,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-pkg-config",
@@ -6980,6 +7255,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -6995,6 +7271,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "wayland-protocols",
@@ -7512,6 +7789,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -7533,6 +7811,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -7548,6 +7827,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "debian",
                     "source": "libxau",
@@ -7562,6 +7842,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -7581,6 +7862,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["x11"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -7604,6 +7886,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["x11"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -7619,6 +7902,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "debian",
                     "source": "libx11",
@@ -7633,6 +7917,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -7652,6 +7937,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["x11"],
                 "prereqs": [
                     "wget",
                     "make",
@@ -7670,6 +7956,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["x11"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -7685,6 +7972,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "debian",
                     "source": "xcb-proto",
@@ -7699,6 +7987,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -7718,6 +8007,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["hpnd-sv"],
                 "prereqs": [
                     "wget",
                     "make",
@@ -7744,6 +8034,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -7759,6 +8050,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "libxdamage",
@@ -7773,6 +8065,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -7792,6 +8085,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -7811,6 +8105,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -7826,6 +8121,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-xext",
@@ -7840,6 +8136,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -7859,6 +8156,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["x11"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -7878,6 +8176,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["x11"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -7893,6 +8192,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["stretch"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-xf86vidmode",
@@ -7907,6 +8207,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "debian",
                     "source": "xorgproto",
@@ -7921,6 +8222,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["x11"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -7940,6 +8242,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -7966,6 +8269,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -7981,6 +8285,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
                 "checker": {
                     "type": "debian",
                     "source": "libx11",
@@ -7995,6 +8300,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -8082,6 +8388,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit", "smlnj"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -8101,6 +8408,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit", "smlnj"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -8116,6 +8424,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "smlnj"],
                 "checker": {
                     "type": "debian",
                     "source": "xorgproto",
@@ -8130,6 +8439,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "smlnj"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -8149,6 +8459,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["hpnd-sv"],
                 "prereqs": [
                     "wget",
                     "autoconf",
@@ -8189,6 +8500,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -8204,6 +8516,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "libxrender",
@@ -8218,6 +8531,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -8237,6 +8551,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["hpnd-sv"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -8259,6 +8574,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -8274,6 +8590,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "libxshmfence",
@@ -8293,6 +8610,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit", "hpnd", "x11", "hpnd-sv"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -8312,6 +8630,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["mit", "hpnd", "x11", "hpnd-sv"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -8327,6 +8646,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "hpnd", "x11", "hpnd-sv"],
                 "checker": {
                     "type": "debian",
                     "source": "xtrans",
@@ -8341,6 +8661,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["mit", "hpnd", "x11", "hpnd-sv"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -8360,6 +8681,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["zlib"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -8379,6 +8701,7 @@ data = {
                 "os": ["alpine"],
                 "osVersion": ["any"],
                 "abi": ["musl"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "alpine",
                     "repo": "main",
@@ -8394,6 +8717,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "debian",
                     "source": "zlib",
@@ -8408,6 +8732,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "license": ["zlib"],
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
