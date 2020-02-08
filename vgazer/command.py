@@ -13,7 +13,7 @@ def RunCommand(command, verbose):
         if not verbose:
             print("Output:")
             print(e.output)
-        print("Error occured while running utility:", command[0])
+        print("VGAZER: Error occured while running utility:", command[0])
         raise CommandError("Error occured while running utility:" + command[0],
          e.cmd, e.returncode)
 
