@@ -46,17 +46,25 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
-            RunCommand(
-             ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix, "--disable-sdltest",
-              "--disable-freetypetest", "--with-sdl-prefix=" + installPrefix,
-              "CPPFLAGS=-I" + installPrefix + "/include/SDL2",
-              "LDFLAGS=-L" + installPrefix + "/lib",
-              "LIBS=-lSDL2 -lglib-2.0 -lgraphite2",
-              #"CPPFLAGS=-I" + installPrefix + "/include",
-              #"LDFLAGS=-L" + installPrefix + "/lib"
-              ],
-             verbose)
+            try:
+                RunCommand(
+                 ["./configure", "--host=" + targetTriplet,
+                  "--prefix=" + installPrefix, "--disable-sdltest",
+                  "--disable-freetypetest",
+                  "--with-sdl-prefix=" + installPrefix,
+                  "CPPFLAGS=-I" + installPrefix + "/include/SDL2",
+                  "LDFLAGS=-L" + installPrefix + "/lib -W1,-rpath-link,"
+                  + installPrefix + "/lib",
+                  "LIBS=-lSDL2 -lglib-2.0 -lgraphite2",
+                  ],
+                 verbose)
+            except CommandError as e:
+                try:
+                    RunCommand(["cat", "./config.log"], verbose)
+                except CommandError:
+                    print("VGAZER: 'config.log' not found")
+                finally:
+                    raise e
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
