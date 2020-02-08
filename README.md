@@ -118,10 +118,12 @@ Currently supported:
 **tos** - generic name of target's OS. Currently supported:
 
 * linux
+* windows
 
 **tabi** - target's ABI. Currently supported:
 
 * gnu
+* mingw32
 * musl
 
 **arch**, **os** and **ver** - same as **harch**, **hos** and **hver** in that

@@ -24,8 +24,10 @@ def CreateTargetPlatformsList(gazer):
     return [
         Platform(arch="i686", os="linux", osVersion="any", abi="gnu"),
         Platform(arch="i686", os="linux", osVersion="any", abi="musl"),
+        Platform(arch="i686", os="windows", osVersion="any", abi="mingw32"),
         Platform(arch="x86_64", os="linux", osVersion="any", abi="gnu"),
         Platform(arch="x86_64", os="linux", osVersion="any", abi="musl"),
+        Platform(arch="x86_64", os="windows", osVersion="any", abi="mingw32"),
     ]
 
 def AddHostInstallEntries(gazer, installList, hostPlatformsList, software,
@@ -68,7 +70,8 @@ def GenerateImageLaunchTarget(hostPlatform):
     return ("image_{1}_{2}_{3}_launch:\n"
      "\tdocker run --entrypoint {0} -i -t \\\n"
      "     -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n"
-     "     vgazer_min_env_{1}_{2}_{3}\n"
+     "     -v `pwd`:/vgazer --entrypoint sudo vgazer_min_env_{1}_{2}_{3} \\\n"
+     "     -E sh\n"
      "\n".format(shell, hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion()))
 

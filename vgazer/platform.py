@@ -56,14 +56,12 @@ def GetTriplet(targetPlatformData):
 
     if os == "alpine":
         triplet += "-alpine"
-    elif Platform.OsIsLinux(os):
-        triplet += "-linux"
+    if Platform.OsIsLinux(os):
+        triplet += "-linux-" + abi
     elif os == "windows":
-        triplet += "-w64"
+        triplet += "-w64-mingw32"
     else:
         raise UnknownOs("Unknown OS: " + os)
-
-    triplet += "-" + abi
 
     return triplet
 
@@ -75,13 +73,11 @@ def GetGenericTriplet(targetPlatformData):
     triplet = arch
 
     if Platform.OsIsLinux(os):
-        triplet += "-linux"
+        triplet += "-linux-" + abi
     elif os == "windows":
-        triplet += "-w64"
+        triplet += "-w64-mingw32"
     else:
         raise UnknownOs("Unknown OS: " + os)
-
-    triplet += "-" + abi
 
     return triplet
 
