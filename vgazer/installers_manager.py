@@ -18,7 +18,10 @@ class InstallersManager:
             "apt": lambda software, auth, platformData, installerData, mirrors,
              verbose:
                 InstallApt(software, installerData["package"],
-                 platformData["host"], verbose),
+                 installerData["postInstallCommands"] if "postInstallCommands"
+                  in installerData else None,
+                 platformData["host"],
+                 verbose),
             "gcc-src": lambda software, auth, platformData, installerData,
              mirrors, verbose:
                 InstallGccSrc(auth["base"], software,

@@ -2,8 +2,7 @@ from vgazer.command     import RunCommand
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 
-def InstallPackageFromBackport(software, package, hostPlatform,
- showInstalledMessage, verbose):
+def InstallPackageFromBackport(software, package, hostPlatform, verbose):
     try:
         RunCommand(
          ["apt-get", "-t", hostPlatform.GetOsVersion() + "-backports",
@@ -13,28 +12,26 @@ def InstallPackageFromBackport(software, package, hostPlatform,
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
 
-    if showInstalledMessage:
-        print("VGAZER:", software, "installed")
-
-def InstallPackage(software, package, hostPlatform, showInstalledMessage,
- verbose):
+def InstallPackage(software, package, hostPlatform, verbose):
     try:
         RunCommand(["apt-get", "install", "-y", package], verbose)
     except CommandError as e:
         if e.errorcode == 100 and hostPlatform.GetOs() == "debian":
             InstallPackageFromBackport(software, package, hostPlatform,
-             showInstalledMessage, verbose)
+             verbose)
         else:
             print("VGAZER: Unable to install", software)
             raise InstallError(software + " not installed")
 
-    if showInstalledMessage:
-        print("VGAZER:", software, "installed")
-
-def InstallApt(software, packages, hostPlatform, verbose):
+def InstallApt(software, packages, postInstallCommands, hostPlatform, verbose):
     if isinstance(packages, list):
         for package in packages:
-            InstallPackage(software, package, hostPlatform,
-             package is packages[-1], verbose)
+            InstallPackage(software, package, hostPlatform, verbose)
     else:
-        InstallPackage(software, packages, hostPlatform, True, verbose)
+        InstallPackage(software, packages, hostPlatform, verbose)
+
+    if postInstallCommands is not None:
+        for command in postInstallCommands:
+            RunCommand(command, verbose)
+
+    print("VGAZER:", software, "installed")
