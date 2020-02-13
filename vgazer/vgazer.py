@@ -115,9 +115,9 @@ class Vgazer:
             else:
                 installFunc = self.installersManager.GetInstallFunc(
                  installer["type"])
-                return installFunc(software, self.auth, self.platform,
+                installFunc(software, self.auth, self.platform,
                  installer, self.mirrors, verbose)
-
+            self.installedSoftware.append(software)
         except InstallError as installError:
             if "fallback" in installer:
                 print(
@@ -130,7 +130,6 @@ class Vgazer:
                  None)
             else:
                 raise installError
-        self.installedSoftware.append(software)
 
     def Install(self, software, verbose=False, fallbackPreinstallList=None):
         if software in self.installedSoftware:
@@ -157,6 +156,7 @@ class Vgazer:
 
         for prereq in prereqs:
             prereq = prereq.format(
+             hostTriplet=GetGenericTriplet(self.platform["host"]),
              triplet=GetGenericTriplet(self.platform["target"]),
              arch=self.platform["target"].GetArch())
             if prereq not in self.installedSoftware:
