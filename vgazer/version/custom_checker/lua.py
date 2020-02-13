@@ -1,13 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 
+from vgazer.version.utils import GetVersionFromFilename
+
 def Check(auth, mirrors):
-    response = requests.get("http://www.lua.org/")
+    response = requests.get("http://www.lua.org/download.html")
     html = response.content
     parsedHtml = BeautifulSoup(html, "html.parser")
 
     links = parsedHtml.find_all("a")
     for link in links:
-        href = link["href"]
-        if href.find("versions.html") != -1:
-            return link.text.split(" ")[1]
+        if "ftp/lua-" in link["href"]:
+            return GetVersionFromFilename(link["href"])
