@@ -98,6 +98,6 @@ lint:
      | tee pylama.log
 
 package:
-	python3 setup.py sdist
+	python3 setup.py sdist bdist_wheel
 
 -include ./sample_targets.mk
