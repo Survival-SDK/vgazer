@@ -27,9 +27,8 @@ def InstallPkgConfig(software, triplet, platformData, verbose):
              [
               "sh",
               "-c",
-              "echo 'export PKG_CONFIG_LIBDIR=/usr/local/" + triplet
-               + "/lib/pkgconfig:/usr/local/" + triplet
-               + "/share/pkgconfig' >> /usr/local/bin/" + triplet
+              "echo 'export PKG_CONFIG_PATH=/usr/local/" + triplet
+               + "/lib/pkgconfig' >> /usr/local/bin/" + triplet
                + "-pkg-config"
              ],
              verbose)
@@ -47,6 +46,11 @@ def InstallPkgConfig(software, triplet, platformData, verbose):
               "-c",
               "echo 'exec pkg-config \"$@\"' >> /usr/local/bin/" + triplet
                + "-pkg-config"
+             ],
+             verbose)
+            RunCommand(
+             [
+              "chmod", "u+x", "/usr/local/bin/" + triplet + "-pkg-config"
              ],
              verbose)
 
