@@ -24,6 +24,7 @@ def GetTarballUrl():
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])
+    targetOs = platformData["target"].GetOs()
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -42,9 +43,29 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         SetEnvVar("CHOST", targetTriplet)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
-            RunCommand(["./configure", "--prefix=" + installPrefix], verbose)
-            RunCommand(["make"], verbose)
-            RunCommand(["make", "install"], verbose)
+            if targetOs == "windows":
+                RunCommand(
+                 ["make", "-f", "./win32/Makefile.gcc",
+                  "PREFIX=" + targetTriplet + "-"],
+                 verbose)
+                if not os.path.exists(installPrefix + "/include"):
+                    RunCommand(["mkdir", "-p", installPrefix + "/include"],
+                     verbose)
+                if not os.path.exists(installPrefix + "/lib"):
+                    RunCommand(["mkdir", "-p", installPrefix + "/lib"],
+                     verbose)
+                RunCommand(
+                 ["make", "install", "-f", "./win32/Makefile.gcc",
+                  "prefix=" + installPrefix,
+                  "BINARY_PATH=" + installPrefix + "/bin",
+                  "INCLUDE_PATH=" + installPrefix + "/include",
+                  "LIBRARY_PATH=" + installPrefix + "/lib"],
+                 verbose)
+            else:
+                RunCommand(
+                 ["./configure", "--prefix=" + installPrefix], verbose)
+                RunCommand(["make"], verbose)
+                RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
