@@ -32,6 +32,10 @@ class FilenameEngaged(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+class FileNotFound(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class GithubApiRateLimitExceeded(Exception):
     def __init__(self, message):
         super().__init__(message)
