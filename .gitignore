@@ -3,3 +3,6 @@
 samples/install_*
 samples/software_versions_*
 *.log
+build/*
+dist/*
+vgazer.egg-info/*
