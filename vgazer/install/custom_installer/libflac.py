@@ -53,9 +53,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix, "--enable-static=yes",
-              "--disable-thorough-tests", "--disable-doxygen-docs",
-              "--disable-xmms-plugin", "--disable-cpplibs", "--enable-ogg",
-              "--disable-oggtest"],
+              "--disable-shared", "--disable-thorough-tests",
+              "--disable-doxygen-docs", "--disable-xmms-plugin",
+              "--disable-cpplibs", "--enable-ogg", "--disable-oggtest"],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)

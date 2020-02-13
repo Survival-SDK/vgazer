@@ -52,8 +52,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-DINI_CALL_HANDLER_ON_NEW_SECTION=1", "-DINI_USE_STACK=0",
               "-DINI_ALLOW_REALLOC=1"],
              verbose)
-            RunCommand([cc, "-shared", "-s", "-o", "libinih.so", "ini.o"],
-             verbose)
             RunCommand([ar, "rcs", "libinih.a", "ini.o"], verbose)
             if not os.path.exists(installPrefix + "/include"):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"],
@@ -62,7 +60,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
                 RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
             RunCommand(["cp", "./ini.h", installPrefix + "/include"], verbose)
             RunCommand(["cp", "./libinih.a", installPrefix + "/lib"], verbose)
-            RunCommand(["cp", "./libinih.so", installPrefix + "/lib"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
