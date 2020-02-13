@@ -4,11 +4,14 @@ import platform
 from vgazer.command     import GetCommandOutputUtf8
 from vgazer.exceptions  import AlpineReleaseDataNotFound
 from vgazer.exceptions  import DebianReleaseDataNotFound
+from vgazer.exceptions  import FileNotFound
 from vgazer.exceptions  import MissingArgument
 from vgazer.exceptions  import OsDataNotFound
 from vgazer.exceptions  import UnexpectedOsType
 from vgazer.exceptions  import UnknownOs
 from vgazer.exceptions  import UnknownTargetArch
+from vgazer.utils       import FindFileInDir
+from vgazer.utils       import NewListWithReplace
 
 def GetFilesystemType(path):
     output = GetCommandOutputUtf8(["df", "-T", path])
@@ -95,112 +98,92 @@ def GetSoPrefix(platformData):
     else:
         raise UnknownOs("Unknown OS: " + platformData["target"].GetOs())
 
+def GetTripletFilenames(triplet, suffixes):
+    filenames = []
+    for suffix in suffixes:
+        filenames.append(triplet + suffix)
+    initialFilenamesLen = len(filenames)
+    currentTripletFilenamesList = filenames.copy()
+
+    if "i686" in triplet:
+        currentTripletFilenamesList = NewListWithReplace(
+         currentTripletFilenamesList, "i686", "i586")
+        triplet.replace("i686", "i586")
+        filenames.extend(currentTripletFilenamesList)
+    if "i586" in triplet:
+        currentTripletFilenamesList = NewListWithReplace(
+         currentTripletFilenamesList, "i586", "i486")
+        triplet.replace("i586", "i486")
+        filenames.extend(currentTripletFilenamesList)
+    if "i486" in triplet:
+        currentTripletFilenamesList = NewListWithReplace(
+         currentTripletFilenamesList, "i486", "i386")
+        triplet.replace("i486", "i386")
+        filenames.extend(currentTripletFilenamesList)
+
+    return filenames
+
+def GetUtility(targetPlatformData, directories, suffixes, fallbackFilenames):
+    triplet = GetGenericTriplet(targetPlatformData)
+    vendoredTriplet = GetTriplet(targetPlatformData)
+
+    filenames = GetTripletFilenames(triplet, suffixes)
+    filenames.extend(GetTripletFilenames(vendoredTriplet, suffixes))
+    try:
+        return FindFileInDir(directories, filenames)
+    except FileNotFound:
+        return FindFileInDir(directories, fallbackFilenames)
+
 def GetCc(targetPlatformData):
-    cc = GetTriplet(targetPlatformData) + "-gcc"
-    if "i686" in cc:
-        if not os.path.isfile(os.path.join("/usr/bin", cc)):
-            cc.replace("i686", "i586")
-    if "i586" in cc:
-        if not os.path.isfile(os.path.join("/usr/bin", cc)):
-            cc.replace("i586", "i486")
-    if "i486" in cc:
-        if not os.path.isfile(os.path.join("/usr/bin", cc)):
-            cc.replace("i486", "i386")
-    if os.path.isfile(os.path.join("/usr/bin", cc)):
-        return cc
-    else:
-        return "gcc"
+    return GetUtility(
+     targetPlatformData,
+     directories=["/usr/bin", "/usr/local/bin"],
+     suffixes=["-gcc-posix", "-gcc"],
+     fallbackFilenames=["gcc"]
+    )
 
 def GetCxx(targetPlatformData):
-    return GetCc(targetPlatformData).replace("gcc", "g++")
+    return GetUtility(
+     targetPlatformData,
+     directories=["/usr/bin", "/usr/local/bin"],
+     suffixes=["-g++-posix", "-g++"],
+     fallbackFilenames=["g++"]
+    )
 
 def GetAr(targetPlatformData):
-    triplet = GetTriplet(targetPlatformData)
-    if "i686" in triplet:
-        if not (os.path.isfile(os.path.join("/usr/bin", triplet + "-ar"))
-         and os.path.isfile(os.path.join("/usr/bin", triplet + "-gcc-ar"))):
-            triplet.replace("i686", "i586")
-    if "i586" in triplet:
-        if not (os.path.isfile(os.path.join("/usr/bin", triplet + "-ar"))
-         and os.path.isfile(os.path.join("/usr/bin", triplet + "-gcc-ar"))):
-            triplet.replace("i586", "i486")
-    if "i486" in triplet:
-        if not (os.path.isfile(os.path.join("/usr/bin", triplet + "-ar"))
-         and os.path.isfile(os.path.join("/usr/bin", triplet + "-gcc-ar"))):
-            triplet.replace("i486", "i386")
-    if os.path.isfile(os.path.join("/usr/bin", triplet + "-ar")):
-        return triplet + "-ar"
-    elif os.path.isfile(os.path.join("/usr/bin", triplet + "-gcc-ar")):
-        return triplet + "-gcc-ar"
-    else:
-        return "ar"
+    return GetUtility(
+     targetPlatformData,
+     directories=["/usr/bin", "/usr/local/bin"],
+     suffixes=["-ar-posix", "-gcc-ar-posix", "-ar", "-gcc-ar"],
+     fallbackFilenames=["ar"]
+    )
 
 def GetArFullPath(targetPlatformData):
-    ar = GetAr(targetPlatformData)
-    if os.path.isfile(os.path.join("/usr/bin", ar)):
-        return os.path.join("/usr/bin", ar)
-    else:
-        return ar
+    return os.path.join("/usr/bin", GetAr(targetPlatformData))
 
 def GetRanlib(targetPlatformData):
-    triplet = GetTriplet(targetPlatformData)
-    if "i686" in triplet:
-        if not os.path.isfile(
-         os.path.join("/usr/bin", triplet + "-ranlib")
-        ):
-            triplet.replace("i686", "i586")
-    if "i586" in triplet:
-        if not os.path.isfile(
-         os.path.join("/usr/bin", triplet + "-ranlib")
-        ):
-            triplet.replace("i586", "i486")
-    if "i486" in triplet:
-        if not os.path.isfile(
-         os.path.join("/usr/bin", triplet + "-ranlib")
-        ):
-            triplet.replace("i486", "i386")
-    if os.path.isfile(os.path.join("/usr/bin", triplet + "-ranlib")):
-        return triplet + "-ranlib"
-    else:
-        return "ranlib"
+    return GetUtility(
+     targetPlatformData,
+     directories=["/usr/bin", "/usr/local/bin"],
+     suffixes=["-ranlib-posix", "-gcc-ranlib-posix", "-ranlib", "-gcc-ranlib"],
+     fallbackFilenames=["ranlib"]
+    )
 
 def GetPkgConfig(targetPlatformData):
-    triplet = GetTriplet(targetPlatformData)
-    if "i686" in triplet:
-        if not os.path.isfile(
-         os.path.join("/usr/bin", triplet + "-pkg-config")
-        ):
-            triplet.replace("i686", "i586")
-    if "i586" in triplet:
-        if not os.path.isfile(
-         os.path.join("/usr/bin", triplet + "-pkg-config")
-        ):
-            triplet.replace("i586", "i486")
-    if "i486" in triplet:
-        if not os.path.isfile(
-         os.path.join("/usr/bin", triplet + "-pkg-config")
-        ):
-            triplet.replace("i486", "i386")
-    if os.path.isfile(os.path.join("/usr/bin", triplet + "-pkg-config")):
-        return triplet + "-pkg-config"
-    else:
-        return "pkg-config"
+    return GetUtility(
+     targetPlatformData,
+     directories=["/usr/bin", "/usr/local/bin"],
+     suffixes=["-pkg-config"],
+     fallbackFilenames=["pkg-config"]
+    )
 
 def GetStrip(targetPlatformData):
-    triplet = GetTriplet(targetPlatformData)
-    if "i686" in triplet:
-        if not os.path.isfile(os.path.join("/usr/bin", triplet + "-strip")):
-            triplet.replace("i686", "i586")
-    if "i586" in triplet:
-        if not os.path.isfile(os.path.join("/usr/bin", triplet + "-strip")):
-            triplet.replace("i586", "i486")
-    if "i486" in triplet:
-        if not os.path.isfile(os.path.join("/usr/bin", triplet + "-strip")):
-            triplet.replace("i486", "i386")
-    if os.path.isfile(os.path.join("/usr/bin", triplet + "-strip")):
-        return triplet + "-strip"
-    else:
-        return "strip"
+    return GetUtility(
+     targetPlatformData,
+     directories=["/usr/bin", "/usr/local/bin"],
+     suffixes=["-strip"],
+     fallbackFilenames=["strip"]
+    )
 
 def GetLlvmConfig(targetPlatformData):
     if os.path.isfile("/usr/bin/llvm-config"):
