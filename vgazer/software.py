@@ -960,9 +960,10 @@ data = {
                     "libbzip2",
                     "libpng",
                 ],
-                "postreqsOnce": [
-                    "harfbuzz",
-                ],
+                # Building SDL2_ttf with harfbuzzed Freetype have some issues
+                # "postreqsOnce": [
+                #     "harfbuzz",
+                # ],
                 "checker": {
                     "type": "custom",
                     "name": "freetype",
@@ -1298,6 +1299,26 @@ data = {
                     "make",
                     "xlib",
                     "opengl",
+                ],
+                "checker": {
+                    "type": "sourceforge",
+                    "project": "glew",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "glew",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["windows"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["bsd-3", "mit"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
                 ],
                 "checker": {
                     "type": "sourceforge",
@@ -1801,81 +1822,6 @@ data = {
             },
         ],
     },
-    "i586-linux-musl-g++": {
-        "platform": "host",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "prereqs": [
-                    "i586-linux-musl-gcc",
-                ],
-                "checker": {
-                    "type": "musl-cross-make",
-                },
-                "installer": {
-                    "type": "dummy",
-                },
-            },
-            {
-                "arch": ["i686"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "g++",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "g++",
-                },
-            },
-        ],
-    },
-    "i586-linux-musl-gcc": {
-        "platform": "host",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "prereqs": [
-                    "wget",
-                    "bsdtar",
-                    "g++",
-                    "make",
-                ],
-                "checker": {
-                    "type": "musl-cross-make",
-                },
-                "installer": {
-                    "type": "musl-cross-make",
-                    "languages": "c,c++",
-                    "triplet": "i586-linux-musl",
-                },
-            },
-            {
-                "arch": ["i686"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "gcc",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "gcc",
-                },
-            },
-        ],
-    },
     "i686-linux-gnu-g++": {
         "platform": "host",
         "projects": [
@@ -2019,20 +1965,6 @@ data = {
                     "triplet": "i686-linux-gnu",
                 },
             },
-            {
-                "arch": ["i686"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "checker": {
-                    "type": "debian",
-                    "source": "pkg-config",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "pkg-config",
-                },
-            },
         ],
     },
     "i686-linux-musl-g++": {
@@ -2051,6 +1983,21 @@ data = {
                 },
                 "installer": {
                     "type": "dummy",
+                },
+            },
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "g++",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "g++",
                 },
             },
         ],
@@ -2078,6 +2025,21 @@ data = {
                     "triplet": "i686-linux-musl",
                 },
             },
+            {
+                "arch": ["i686"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "gcc",
+                },
+            },
         ],
     },
     "i686-linux-musl-pkg-config": {
@@ -2099,21 +2061,6 @@ data = {
                 "installer": {
                     "type": "pkg-config",
                     "triplet": "i686-linux-musl",
-                },
-            },
-            {
-                "arch": ["i686"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "pkgconf",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "pkgconf",
                 },
             },
             {
@@ -2165,6 +2112,14 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "g++-mingw-w64-i686",
+                    "postInstallCommands": [
+                        ["update-alternatives", "--set",
+                         "i686-w64-mingw32-gcc",
+                         "/usr/bin/i686-w64-mingw32-gcc-posix"],
+                        ["update-alternatives", "--set",
+                         "i686-w64-mingw32-g++",
+                         "/usr/bin/i686-w64-mingw32-g++-posix"],
+                    ],
                 },
             },
             {
@@ -2213,6 +2168,11 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "gcc-mingw-w64-i686",
+                    "postInstallCommands": [
+                        ["update-alternatives", "--set",
+                         "i686-w64-mingw32-gcc",
+                         "/usr/bin/i686-w64-mingw32-gcc-posix"],
+                    ],
                 },
             },
             {
@@ -2231,6 +2191,46 @@ data = {
             },
         ],
     },
+    "i686-w64-mingw32-pkg-config": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "i686-w64-mingw32",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "i686-w64-mingw32",
+                },
+            },
+        ],
+    },
     "icu": {
         "platform": "target",
         "projects": [
@@ -2242,6 +2242,8 @@ data = {
                 "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
                 "prereqs": [
                     "wget",
+                    "{hostTriplet}-gcc",
+                    "{hostTriplet}-g++",
                     "{triplet}-gcc",
                     "{triplet}-g++",
                     "make",
@@ -2573,6 +2575,7 @@ data = {
             },
         ],
     },
+    # TODO
     "lazy-winapi.c": {
         "platform": "target",
         "projects": [
@@ -2670,7 +2673,7 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
@@ -2681,6 +2684,29 @@ data = {
                     "{triplet}-pkg-config",
                     "cmake",
                     "xcb",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "jtanx",
+                    "repo": "libclipboard",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libclipboard",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["windows"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-g++",
+                    "make",
+                    "{triplet}-pkg-config",
+                    "cmake",
                 ],
                 "checker": {
                     "type": "github",
@@ -3015,6 +3041,7 @@ data = {
     },
     "libiconv": {
         "platform": "target",
+        # TODO
         "projects": [
             {
                 "arch": ["any"],
@@ -3083,6 +3110,7 @@ data = {
     # libintl-lite under version 1 of the Boost Software License
     "libintl": {
         "platform": "target",
+        # TODO
         "projects": [
             {
                 "arch": ["any"],
@@ -3166,7 +3194,7 @@ data = {
                     "wget",
                     "{triplet}-gcc",
                     "make",
-                    "libintl",
+                    # "libintl",
                 ],
                 "checker": {
                     "type": "sourceforge",
@@ -3302,7 +3330,7 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["lgpl-2.1+"],
@@ -3502,6 +3530,7 @@ data = {
             },
         ],
     },
+    # MinGW version here: https://github.com/smurfy/libpciaccess
     "libpciaccess": {
         "platform": "target",
         "projects": [
@@ -4695,6 +4724,7 @@ data = {
                     "make",
                     "cmake",
                     "{triplet}-gcc",
+                    "{triplet}-g++",
                 ],
                 "checker": {
                     "type": "github",
@@ -5662,7 +5692,7 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["lgpl-3"],
@@ -5917,7 +5947,7 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
@@ -5926,6 +5956,27 @@ data = {
                     "{triplet}-gcc",
                     "make",
                     "alsa-lib",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "portaudio",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "portaudio",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["windows"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "make",
                 ],
                 "checker": {
                     "type": "custom",
@@ -6468,17 +6519,42 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["zlib"],
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "{triplet}-pkg-config",
                     "make",
                     "alsa-lib",
                     "xlib",
                     "opengl",
+                    "tslib",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "sdl2",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "sdl2",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["windows"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["zlib"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "{triplet}-pkg-config",
+                    "make",
                     "tslib",
                 ],
                 "checker": {
@@ -6583,7 +6659,7 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
@@ -6597,6 +6673,31 @@ data = {
                     "stb_image",
                     "stb_image_write",
                     "glu",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "sdl2_gpu",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "sdl2_gpu",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["windows"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "git",
+                    "{triplet}-g++",
+                    "make",
+                    "cmake",
+                    "sdl2",
+                    "glew",
+                    "stb_image",
+                    "stb_image_write",
                 ],
                 "checker": {
                     "type": "custom",
@@ -6621,6 +6722,9 @@ data = {
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "autoconf",
+                    "libtool",
                     "make",
                     "sdl2",
                     "jpeg",
@@ -6685,7 +6789,7 @@ data = {
                     "{triplet}-gcc",
                     "make",
                     "sdl2",
-                    "libmodplug",
+                    #"libmodplug",
                     "libogg",
                     "libvorbis",
                     "libflac",
@@ -6748,7 +6852,6 @@ data = {
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
                     "make",
-                    "cmake",
                     "sdl2",
                     "freetype",
                 ],
@@ -6981,7 +7084,7 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["any"],
+                "os": ["linux"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["lgpl-2.1"],
@@ -6990,7 +7093,30 @@ data = {
                     "{triplet}-gcc",
                     "make",
                     "cmake",
-
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "libts",
+                    "repo": "tslib",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "tslib",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["windows"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["lgpl-2.1"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "make",
+                    "autoconf",
+                    "libtool",
                 ],
                 "checker": {
                     "type": "github",
@@ -7551,20 +7677,6 @@ data = {
                 },
             },
             {
-                "arch": ["x86_64"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "checker": {
-                    "type": "debian",
-                    "source": "pkg-config",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "pkg-config",
-                },
-            },
-            {
                 "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
@@ -7575,7 +7687,8 @@ data = {
                     "source": "pkg-config",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "pkg-config",
+                    "triplet": "x86_64-linux-gnu",
                 },
             },
         ],
@@ -7680,21 +7793,6 @@ data = {
                 },
             },
             {
-                "arch": ["x86_64"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "pkgconf",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "pkgconf",
-                },
-            },
-            {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
@@ -7743,6 +7841,14 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "g++-mingw-w64-x86-64",
+                    "postInstallCommands": [
+                        ["update-alternatives", "--set",
+                         "x86_64-w64-mingw32-gcc",
+                         "/usr/bin/x86_64-w64-mingw32-gcc-posix"],
+                        ["update-alternatives", "--set",
+                         "x86_64-w64-mingw32-g++",
+                         "/usr/bin/x86_64-w64-mingw32-g++-posix"],
+                    ],
                 },
             },
         ],
@@ -7777,6 +7883,51 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "gcc-mingw-w64-x86-64",
+                    "postInstallCommands": [
+                        ["update-alternatives", "--set",
+                         "x86_64-w64-mingw32-gcc",
+                         "/usr/bin/x86_64-w64-mingw32-gcc-posix"],
+                    ],
+                },
+            },
+        ],
+    },
+    "x86_64-w64-mingw32-pkg-config": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "x86_64-w64-mingw32",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "x86_64-w64-mingw32",
                 },
             },
         ],
