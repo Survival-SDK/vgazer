@@ -57,10 +57,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-fPIC", "-o", "./build/duktape.o", "-c", "./build/duktape.c"],
              verbose)
             RunCommand(
-             [cc, "-o", "./build/libduktape.so", "-s", "-shared",
-              "./build/duktape.o"],
-             verbose)
-            RunCommand(
              [ar, "rcs", "./build/libduktape.a", "./build/duktape.o"],
              verbose)
             RunCommand(
@@ -86,8 +82,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand(["sh", "-c",
              "cp ./build/*.a " + installPrefix + "/lib"],
-             verbose)
-            RunCommand(["cp", "./build/libduktape.so", installPrefix + "/lib"],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

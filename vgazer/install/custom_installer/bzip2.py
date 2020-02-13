@@ -15,6 +15,7 @@ from vgazer.working_dir     import WorkingDir
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     cc = GetCc(platformData["target"])
+    cflags = "-Wall -Winline -O2 -g -D_FILE_OFFSED_BITS=64 -fPIC"
     ar = GetAr(platformData["target"])
     ranlib = GetRanlib(platformData["target"])
 
@@ -41,18 +42,17 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["make", "CC=" + cc, "AR=" + ar, "RANLIB=" + ranlib,
-              "CFLAGS=-Wall -Winline -O2 -g -D_FILE_OFFSED_BITS=64 -fPIC"],
+             ["make", "libbz2.a", "CC=" + cc, "AR=" + ar, "RANLIB=" + ranlib,
+              "CFLAGS=" + cflags],
              verbose)
-            RunCommand(["make", "install", "PREFIX=" + installPrefix], verbose)
-            RunCommand(
-             ["make", "-f", "Makefile-libbz2_so", "CC=" + cc],
+            if not os.path.exists(installPrefix + "/include"):
+                RunCommand(["mkdir", "-p", installPrefix + "/include"],
+                 verbose)
+            if not os.path.exists(installPrefix + "/lib"):
+                RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
+            RunCommand(["cp", "./bzlib.h", installPrefix + "/include"],
              verbose)
-            RunCommand(
-             ["sh", "-c", "ln -s ./libbz2.so.?.? ./libbz2.so"],
-             verbose)
-            RunCommand(["cp", "./libbz2.so", installPrefix + "/lib"],
-             verbose)
+            RunCommand(["cp", "./libbz2.a", installPrefix + "/lib"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
