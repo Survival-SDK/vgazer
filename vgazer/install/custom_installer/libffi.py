@@ -48,8 +48,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix,
-              "--with-gcc-arch=" + gccArch],
+              "--prefix=" + installPrefix, "--disable-shared",
+              "--enable-portable-binary", "--with-gcc-arch=" + gccArch],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
