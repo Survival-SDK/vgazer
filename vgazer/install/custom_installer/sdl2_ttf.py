@@ -53,10 +53,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
                   "--disable-freetypetest",
                   "--with-sdl-prefix=" + installPrefix,
                   "CPPFLAGS=-I" + installPrefix + "/include/SDL2",
-                  "LDFLAGS=-L" + installPrefix + "/lib -W1,-rpath-link,"
-                  + installPrefix + "/lib",
-                  "LIBS=-lSDL2 -lglib-2.0 -lgraphite2",
-                  ],
+                  "LDFLAGS=-L" + installPrefix +"/lib"],
                  verbose)
             except CommandError as e:
                 try:

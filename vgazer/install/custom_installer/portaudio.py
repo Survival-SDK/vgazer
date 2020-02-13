@@ -38,6 +38,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     tarballUrl = GetTarballUrl()
     tarballShortFilename = tarballUrl.split("/")[-1]
 
+    libs = {
+        "linux": "LIBS=-lasound",
+        "windows": "",
+    }[platformData["target"].GetOs()]
+
     try:
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
@@ -49,8 +54,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix, "--with-alsa=yes", "--with-oss=yes",
-              "LDFLAGS=-L" + installPrefix + "/lib", "LIBS=-lasound",
+              "--prefix=" + installPrefix, "--disable-shared",
+              "--with-alsa=yes", "--with-oss=yes",
+              "--with-winapi=wmme,directx,wdmks",
+              "LDFLAGS=-L" + installPrefix + "/lib", libs,
               "CPPFLAGS=-I" + installPrefix + "/include"],
              verbose)
             RunCommand(

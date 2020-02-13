@@ -14,16 +14,14 @@ from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
 def GetTarballUrl():
-    response = requests.get("http://www.lua.org/")
+    response = requests.get("http://www.lua.org/download.html")
     html = response.content
     parsedHtml = BeautifulSoup(html, "html.parser")
 
     links = parsedHtml.find_all("a")
     for link in links:
-        href = link["href"]
-        if href.find("versions.html") != -1:
-            return ("http://www.lua.org/ftp/lua-" + link.text.split(" ")[1]
-             + ".tar.gz")
+        if "ftp/lua-" in link["href"]:
+            return "http://www.lua.org/" + link["href"]
 
     raise TarballLost(
      "Unable to find tarball with last stable release of portaudio")
@@ -40,6 +38,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     tarballUrl = GetTarballUrl()
     tarballShortFilename = tarballUrl.split("/")[-1]
+
+    luaTarget = {
+        "linux": "linux",
+        "windows": "mingw",
+    }[platformData["target"].GetOs()]
 
     try:
         with WorkingDir(tempPath):
@@ -60,11 +63,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             # INSTALL_BIN=
             # INSTALL_EXEC=true
             RunCommand(
-             ["make", "linux", "CC=" + cc, "AR=" + ar, "RANLIB=" + ranlib,
+             ["make", luaTarget, "CC=" + cc, "AR=" + ar, "RANLIB=" + ranlib,
               "TO_BIN=", "LUA_T=", "LUAC_T="],
              verbose)
             RunCommand(
-             ["make", "linux", "install", "INSTALL_TOP=" + installPrefix,
+             ["make", luaTarget, "install", "INSTALL_TOP=" + installPrefix,
               "TO_BIN=", "LUA_T=", "LUAC_T=", "INSTALL_BIN=",
               "INSTALL_EXEC=true"],
              verbose)

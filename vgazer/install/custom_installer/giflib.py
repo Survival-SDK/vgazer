@@ -39,8 +39,15 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
-            RunCommand(["make", "CC=" + cc, "AR=" + ar], verbose)
-            RunCommand(["make", "install", "PREFIX=" + installPrefix], verbose)
+            RunCommand(["make", "libgif.a", "CC=" + cc, "AR=" + ar], verbose)
+            if not os.path.exists(installPrefix + "/include"):
+                RunCommand(["mkdir", "-p", installPrefix + "/include"],
+                 verbose)
+            if not os.path.exists(installPrefix + "/lib"):
+                RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
+            RunCommand(["cp", "./gif_lib.h", installPrefix + "/include"],
+             verbose)
+            RunCommand(["cp", "./libgif.a", installPrefix + "/lib"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")

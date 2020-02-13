@@ -7,15 +7,20 @@ from vgazer.exceptions      import InstallError
 from vgazer.install.utils   import SourceforgeDownloadTarballWhileErrorcodeFour
 from vgazer.platform        import GetAr
 from vgazer.platform        import GetCc
+from vgazer.platform        import GetStrip
 from vgazer.platform        import GetInstallPrefix
+from vgazer.platform        import GetTriplet
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
+    targetTriplet = GetTriplet(platformData["target"])
+    targetOs = platformData["target"].GetOs()
 
     cc = GetCc(platformData["target"])
     ar = GetAr(platformData["target"])
+    strip = GetStrip(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -39,15 +44,44 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-4])
         with WorkingDir(extractedDir):
-            RunCommand(
-             ["make", "glew.lib", "CC=" + cc, "LD=" + cc, "AR=" + ar,
-              "CFLAGS.EXTRA=-I" + installPrefix + "/include -fPIC",
-              "LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],
-             verbose)
-            RunCommand(
-             ["make", "install", "GLEW_PREFIX=" + installPrefix,
-              "GLEW_DEST=" + installPrefix],
-             verbose)
+            if targetOs == "windows":
+                RunCommand(
+                 ["make", "glew.lib.static", "SYSTEM=linux-mingw64",
+                  "HOST=" + targetTriplet, "AR=" + ar, "STRIP=" + strip,
+                  "CFLAGS.EXTRA=-I" + installPrefix + "/include -fPIC",
+                  "LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],
+                 verbose)
+                RunCommand(
+                 ["make", "install.include", "SYSTEM=linux-mingw64",
+                  "GLEW_PREFIX=" + installPrefix,
+                  "GLEW_DEST=" + installPrefix],
+                 verbose)
+                if not os.path.exists(installPrefix + "/lib"):
+                    RunCommand(["mkdir", "-p", installPrefix + "/lib"],
+                     verbose)
+                #if not os.path.exists(installPrefix + "/bin"):
+                    #RunCommand(["mkdir", "-p", installPrefix + "/bin"],
+                     #verbose)
+                RunCommand(["cp", "lib/libglew32.a", installPrefix + "/lib"],
+                 verbose)
+                #RunCommand(["cp", "lib/glew32.dll", installPrefix + "/bin"],
+                 #verbose)
+                RunCommand(
+                 ["make", "install.pkgconfig", "SYSTEM=linux-mingw64",
+                  "GLEW_PREFIX=" + installPrefix,
+                  "GLEW_DEST=" + installPrefix],
+                 verbose)
+            else:
+                RunCommand(
+                 ["make", "glew.lib", "CC=" + cc, "LD=" + cc, "AR=" + ar,
+                  "STRIP=" + strip,
+                  "CFLAGS.EXTRA=-I" + installPrefix + "/include -fPIC",
+                  "LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],
+                 verbose)
+                RunCommand(
+                 ["make", "install", "GLEW_PREFIX=" + installPrefix,
+                  "GLEW_DEST=" + installPrefix],
+                 verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")

@@ -7,6 +7,8 @@ from vgazer.exceptions      import InstallError
 from vgazer.platform        import GetArFullPath
 from vgazer.platform        import GetCc
 from vgazer.platform        import GetInstallPrefix
+from vgazer.platform        import GetSoPrefix
+from vgazer.platform        import GetSoFilename
 from vgazer.store.temp      import StoreTemp
 from vgazer.working_dir     import WorkingDir
 
@@ -31,6 +33,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     ar = GetArFullPath(platformData["target"])
     cc = GetCc(platformData["target"])
+    os = platformData["target"].GetOs()
+    soPrefix = GetSoPrefix(platformData)
+    soFilename = GetSoFilename(platformData["target"], "SDL2_gpu")
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -44,9 +49,20 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         clonedDir = os.path.join(tempPath, "sdl2-gpu")
         with WorkingDir(clonedDir):
+            RunCommand(
+             ["sed", "-i",
+              "-e", '/\t\t\tlink_libraries (${GLEW_LIBRARIES})/i \t\t\tadd_definitions("-DGLEW_STATIC")',
+              "./CMakeLists.txt"],
+             verbose)
             RunCommand(["mkdir", "build"], verbose)
         sdlGpuHeader = os.path.join(clonedDir, "include/SDL_gpu.h")
         version = GetVersionFromSource(sdlGpuHeader)
+        if os == "linux":
+            soLibname = "libSDL2_gpu.so"
+            installedLibPrefix = installPrefix + "/SDL_gpu-" + version + "/lib"
+        elif os == "windows":
+            soLibname = "libSDL2_gpu.dll"
+            installedLibPrefix = installPrefix + "/SDL_gpu-MINGW-" + version + "/lib"
         buildDir = os.path.join(clonedDir, "build")
         with WorkingDir(buildDir):
             RunCommand(
@@ -74,7 +90,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "cmake", "..", "-G", "Unix Makefiles",
               "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
               "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
-              "-DSDL_gpu_BUILD_DEMOS=OFF", "-DSDL_gpu_USE_SYSTEM_GLEW=ON",
+              "-DSDL_gpu_INSTALL=ON", "-DSDL_gpu_BUILD_DEMOS=OFF",
+              "-DSDL_gpu_USE_SYSTEM_GLEW=ON",
               "-DSTBI_INCLUDE_DIR=" + installPrefix + "/include",
               "-DSTBI_LIBRARY=" + buildDir
               + "/../src/externals/stb_image/libstbi.a",
@@ -89,13 +106,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
             RunCommand(
-             ["mv",
-              installPrefix + "/SDL_gpu-" + version + "/lib/libSDL2_gpu.so",
-              installPrefix + "/lib/libSDL2_gpu.so"],
+             ["mv", installedLibPrefix + "/" + soLibname,
+              soPrefix + "/" + soFilename],
              verbose)
             RunCommand(
-             ["mv",
-              installPrefix + "/SDL_gpu-" + version + "/lib/libSDL2_gpu.a",
+             ["mv", installedLibPrefix + "/libSDL2_gpu.a",
               installPrefix + "/lib/libSDL2_gpu.a"],
              verbose)
             RunCommand(
