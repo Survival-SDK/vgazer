@@ -51,7 +51,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix, "--disable-jbig",
+              "--prefix=" + installPrefix, "--disable-shared",
+              "--disable-jbig",
               "--with-zlib-include-dir=" + installPrefix + "/include",
               "--with-zlib-lib-dir=" + installPrefix + "/lib",
               "--with-jpeg-include-dir=" + installPrefix + "/include",

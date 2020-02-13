@@ -41,10 +41,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-Wall", "-fPIC"],
              verbose)
             RunCommand(
-             [cc, "-shared", "-s", "-o", "libtinyfiledialogs.so",
-              "tinyfiledialogs.o"],
-             verbose)
-            RunCommand(
              [ar, "rcs", "libtinyfiledialogs.a", "tinyfiledialogs.o"],
              verbose)
             if not os.path.exists(installPrefix + "/include"):
@@ -57,9 +53,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand(
              ["cp", "./libtinyfiledialogs.a", installPrefix + "/lib"],
-             verbose)
-            RunCommand(
-             ["cp", "./libtinyfiledialogs.so", installPrefix + "/lib"],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

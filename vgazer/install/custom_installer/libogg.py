@@ -51,7 +51,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix],
+              "--prefix=" + installPrefix, "--disable-shared"],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)

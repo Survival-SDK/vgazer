@@ -38,7 +38,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix,
+              "--prefix=" + installPrefix, "--disable-shared",
               "--enable-hardware-optimizations=yes",
               "CPPFLAGS=-I" + installPrefix + "/include",
               "LDFLAGS=-L" + installPrefix + "/lib"],

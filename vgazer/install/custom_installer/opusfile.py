@@ -50,7 +50,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix, "--disable-doc",
+              "--prefix=" + installPrefix, "--disable-shared", "--disable-doc",
               "--disable-examples", "--disable-http",
               "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig"],
              verbose)
