@@ -7,9 +7,7 @@ from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.platform    import GetAr
 from vgazer.platform    import GetCxx
-from vgazer.platform    import GetSoFilename
 from vgazer.platform    import GetInstallPrefix
-from vgazer.platform    import GetSoPrefix
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
 
@@ -26,10 +24,8 @@ def GetArchiveUrl(auth):
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
-    soPrefix = GetSoPrefix(platformData)
     ar = GetAr(platformData["target"])
     cxx = GetCxx(platformData["target"])
-    soFilename = GetSoFilename(platformData["target"], "P7")
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -49,12 +45,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(sourcesDir):
             RunCommand(
              ["sed", "-i", "-e", "s/g++/$(CXX)/g", "-e", "s/\\tar/\\t$(AR)/g",
-              "-e", "s/libP7.so/" + soFilename + "/g", "./makefile"],
+              "./makefile"],
              verbose)
             RunCommand(["mkdir", "-p", "./../Binaries"], verbose)
             RunCommand(["mkdir", "-p", "./../Binaries/Temp"], verbose)
             RunCommand(
-             ["make", "./../Binaries/" + soFilename, "CXX=" + cxx, "AR=" + ar],
+             ["make", "./../Binaries/libP7.so", "CXX=" + cxx, "AR=" + ar],
              verbose)
         with WorkingDir(buildDir):
             if not os.path.exists(installPrefix + "/include"):
@@ -62,13 +58,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
                  verbose)
             if not os.path.exists(installPrefix + "/lib"):
                 RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
-            if not os.path.exists(soPrefix):
-                RunCommand(["mkdir", "-p", soPrefix], verbose)
             RunCommand(
              ["sh", "-c", "cp ./Headers/*.h " + installPrefix + "/include"],
              verbose)
-            RunCommand(["cp", "./Binaries/" + soFilename, soPrefix], verbose)
-            RunCommand(["cp", "./Binaries/libP7.a", installPrefix + "/lib"],
+            RunCommand(["cp", "./Binaries/libP7.so", installPrefix + "/lib"],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
