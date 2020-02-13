@@ -11,19 +11,20 @@ setup(
  author="Vasiliy Edomin",
  author_email="Vasiliy.Edomin@gmail.com",
  description="Library for checking versions and installing various software",
- long_description=long_description,
- long_description_content_type="text/markdown",
+ #long_description=long_description,
+ #long_description_content_type="text/markdown",
  packages=find_packages(exclude=["samples"]),
  install_requires=[
   "requests",
   "bs4",
  ],
  classifiers=[
-  "Topic :: Software Development :: Build Tools",
-  "Programming Language :: Python :: 3",
+  "Development Status :: 2 - Pre-Alpha",
   "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
-  "Operating System :: POSIX :: Linux",
   "Natural Language :: English",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Build Tools",
  ],
  zip_safe=False
 )
