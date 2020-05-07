@@ -24,7 +24,7 @@ def GetTarballUrl():
             return "http://www.lua.org/" + link["href"]
 
     raise TarballLost(
-     "Unable to find tarball with last stable release of portaudio")
+     "Unable to find tarball with last stable release of Lua")
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
