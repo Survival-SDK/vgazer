@@ -2575,6 +2575,31 @@ data = {
             },
         ],
     },
+    "ketopt": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "attractivechaos",
+                    "repo": "klib",
+                    "ignoreReleases": True,
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "ketopt",
+                },
+            },
+        ],
+    },
     # TODO
     "lazy-winapi.c": {
         "platform": "target",
@@ -3874,6 +3899,32 @@ data = {
             },
         ],
     },
+    "libsir": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "{triplet}-gcc",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "ryanlederman",
+                    "repo": "libsir",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libsir",
+                },
+            },
+        ],
+    },
     "libtiff": {
         "platform": "target",
         "projects": [
@@ -3994,6 +4045,33 @@ data = {
                 },
                 "installer": {
                     "type": "not_needed",
+                },
+            },
+        ],
+    },
+    "libuc": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["cc0"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                    "cmake",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "edomin",
+                    "repo": "libuc",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libuc",
                 },
             },
         ],
