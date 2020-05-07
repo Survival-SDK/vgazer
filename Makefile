@@ -97,7 +97,12 @@ lint:
      ./generate_samples.py ./setup.py ./samples/check_platform.py \
      | tee pylama.log
 
-package:
+package_build:
+	rm -r -f ./build ./dist ./vgazer.egg-info
 	python3 setup.py sdist bdist_wheel
+
+package_upload:
+	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ \
+     dist/*
 
 -include ./sample_targets.mk
