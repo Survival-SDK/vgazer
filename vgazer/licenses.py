@@ -7,6 +7,11 @@ data = {
             "distributeOriginalLicenseText": True,
         }
     },
+    "beerware": {
+        "name": "Beerware",
+        "fullName": "Beerware",
+        "rules": {}
+    },
     "bsd-1": {
         "name": "BSD 1-clause",
         "fullName": "BSD 1-Clause License",
