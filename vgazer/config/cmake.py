@@ -1,9 +1,9 @@
-from vgazer.platform    import GetCc
-from vgazer.platform    import GetCxx
-from vgazer.platform    import GetInstallPrefix
-from vgazer.platform    import GetTriplet
-from vgazer.platform    import Platform
-from vgazer.store.temp  import StoreTemp
+from vgazer.platform   import GetCc
+from vgazer.platform   import GetCxx
+from vgazer.platform   import GetInstallPrefix
+from vgazer.platform   import GetTriplet
+from vgazer.platform   import Platform
+from vgazer.store.temp import StoreTemp
 
 class ConfigCmake():
     def __init__(self, platformData):
