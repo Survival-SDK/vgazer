@@ -2622,6 +2622,37 @@ data = {
             },
         ],
     },
+    # Original libbsd have some parts of code with BSD-4-clause license which
+    # not suitable for this project
+    "libbsd": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["bsd-2", "bsd-3", "isc"],
+                "prereqs": [
+                    "git",
+                    "{triplet}-gcc",
+                    "make",
+                    "autoconf",
+                    "automake",
+                    "libtool",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "AltSysrq",
+                    "repo": "libbsd-minimal",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libbsd-minimal",
+                },
+            },
+        ],
+    },
     "libbzip2": {
         "platform": "target",
         "projects": [
@@ -4965,6 +4996,32 @@ data = {
                 },
                 "installer": {
                     "type": "not_needed",
+                },
+            },
+        ],
+    },
+    "list": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "{triplet}-gcc",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "clibs",
+                    "repo": "list",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "list",
                 },
             },
         ],
