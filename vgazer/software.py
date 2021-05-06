@@ -569,6 +569,32 @@ data = {
             },
         ],
     },
+    "crc32c-hw": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["zlib"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "robertvazan",
+                    "repo": "crc32c-hw",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "crc32c-hw",
+                },
+            },
+        ],
+    },
     "damageproto": {
         "platform": "target",
         "projects": [
