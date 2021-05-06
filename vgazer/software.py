@@ -8598,6 +8598,32 @@ data = {
             },
         ],
     },
+    "xmempool": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "XadillaX",
+                    "repo": "xmempool",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "xmempool",
+                },
+            },
+        ],
+    },
     "xorg-macros": {
         "platform": "host",
         "projects": [
