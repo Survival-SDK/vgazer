@@ -39,13 +39,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "CFLAGS=-D__THROW= -include features.h"],
              verbose)
             RunCommand(
-            ["sed", "-i",
-             "s"
+             ["sed", "-i",
+              "s"
               "/#define __nonnull(x)\t__attribute__((__nonnull__(x)))"
               "/#define __nonnull(x)    __attribute__((__nonnull__ x))"
               "/g",
               "include/bsd/sys/freebsd-cdefs.h"],
-            verbose)
+             verbose)
             RunCommand(["make", "V=1"], verbose)
             RunCommand(["make", "install"], verbose)
             # RunCommand(["make", "CC=" + cc, "AR=" + ar], verbose)
