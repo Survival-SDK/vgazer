@@ -5235,6 +5235,77 @@ data = {
             },
         ],
     },
+    "luajit": {
+        "platform": "target",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                    "make",
+                    "{triplet}-gcc",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "luajit",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "luajit",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["alpine"],
+                "osVersion": ["any"],
+                "abi": ["musl"],
+                "license": ["mit"],
+                "checker": {
+                    "type": "alpine",
+                    "repo": "main",
+                    "package": "luajit-dev",
+                },
+                "installer": {
+                    "type": "apk",
+                    "package": "luajit-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "checker": {
+                    "type": "debian",
+                    "source": "luajit",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libluajit-5.1-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "luajit5.1",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
+        ],
+    },
     "m4": {
         "platform": "host",
         "projects": [

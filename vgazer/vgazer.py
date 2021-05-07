@@ -121,7 +121,7 @@ class Vgazer:
         except InstallError as installError:
             if "fallback" in installer:
                 print(
-                 "VGAZER: Something goes wrong. Starting fallback "
+                 "VGAZER: Something went wrong. Starting fallback "
                  "installation steps"
                 )
                 if fallbackPreinstallList is not None:
