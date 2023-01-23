@@ -36,7 +36,7 @@ class FileNotFound(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class GithubApiRateLimitExceeded(Exception):
+class GithubApiError(Exception):
     def __init__(self, message):
         super().__init__(message)
 

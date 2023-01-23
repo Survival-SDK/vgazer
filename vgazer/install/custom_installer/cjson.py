@@ -1,15 +1,15 @@
 import os
 
-from vgazer.command         import GetCommandOutputUtf8
-from vgazer.command         import RunCommand
-from vgazer.config.cmake    import ConfigCmake
-from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import GithubApiRateLimitExceeded
-from vgazer.exceptions      import InstallError
-from vgazer.github_common   import GithubCheckApiRateLimitExceeded
-from vgazer.platform        import GetInstallPrefix
-from vgazer.store.temp      import StoreTemp
-from vgazer.working_dir     import WorkingDir
+from vgazer.command              import GetCommandOutputUtf8
+from vgazer.command              import RunCommand
+from vgazer.config.cmake         import ConfigCmake
+from vgazer.exceptions           import CommandError
+from vgazer.exceptions           import GithubApiError
+from vgazer.exceptions           import InstallError
+from vgazer.github_api_error_mgr import GithubApiErrorMgr
+from vgazer.platform             import GetInstallPrefix
+from vgazer.store.temp           import StoreTemp
+from vgazer.working_dir          import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     configCmake = ConfigCmake(platformData)
@@ -22,17 +22,15 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
     try:
-      releases = auth["github"].GetJson(
-       "https://api.github.com/repos/DaveGamble/cJSON/releases")
+        releases = auth["github"].GetJson(
+         "https://api.github.com/repos/DaveGamble/cJSON/releases")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
         raise InstallError(software + " not installed")
 
-    if GithubCheckApiRateLimitExceeded(releases):
-        raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last version of "
-         "repo: DaveGamble/cJSON"
-        )
+    with GithubApiErrorMgr(releases, "DaveGamble/cJSON") as errMgr:
+        if errMgr.IsErrorOccured():
+            raise GithubApiError(errMgr.GetErrorText())
 
     tarballUrl = releases[0]["tarball_url"]
     tarballShortFilename = tarballUrl.split("/")[-1]
