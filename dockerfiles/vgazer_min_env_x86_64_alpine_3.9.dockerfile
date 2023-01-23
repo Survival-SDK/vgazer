@@ -10,4 +10,4 @@ USER vgazer_user
 RUN sudo apk add --no-cache python3 \
     && sudo pip3 install --upgrade pip \
     && sudo pip3 install requests bs4
-WORKDIR /vgazer
+WORKDIR /mnt/vgazer

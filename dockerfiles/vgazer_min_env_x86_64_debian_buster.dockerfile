@@ -11,4 +11,4 @@ RUN sudo bash -c 'echo "deb http://deb.debian.org/debian buster-backports main" 
     && sudo apt-get update \
     && sudo apt-get install -y python3 python3-pip \
     && pip3 install requests bs4
-WORKDIR /vgazer
+WORKDIR /mnt/vgazer
