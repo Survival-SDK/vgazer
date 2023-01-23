@@ -18,7 +18,8 @@ def GetTarballUrl():
     links = parsedHtml.find_all("a")
 
     for link in links:
-        if link.text.startswith("libxcb") and ".sig" not in link.text:
+        if (link.text.startswith("libxcb") and ".tar.gz" in link.text
+         and ".sig" not in link.text):
             url = "https://xcb.freedesktop.org/dist/" + link["href"]
 
     return url
