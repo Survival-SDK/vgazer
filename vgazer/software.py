@@ -153,7 +153,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
@@ -450,7 +450,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["mit"],
                 "checker": {
@@ -637,7 +637,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch"],
                 "abi": ["gnu"],
                 "license": ["hpnd-sv"],
                 "checker": {
@@ -647,6 +647,36 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-damage-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster"],
+                "abi": ["gnu"],
+                "license": ["hpnd-sv"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-damage-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["hpnd-sv"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dev",
                 },
             },
             {
@@ -731,12 +761,27 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch"],
                 "abi": ["gnu"],
                 "license": ["icu"],
                 "checker": {
                     "type": "debian",
                     "source": "x11proto-dri2",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dri2-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["icu"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
                 },
                 "installer": {
                     "type": "apt",
@@ -891,7 +936,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch"],
                 "abi": ["gnu"],
                 "license": ["mit", "hpnd-sv"],
                 "checker": {
@@ -901,6 +946,36 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-fixes-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster"],
+                "abi": ["gnu"],
+                "license": ["mit", "hpnd-sv"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-fixes-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["mit", "hpnd-sv"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto--dev",
                 },
             },
             {
@@ -1018,7 +1093,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch", "buster"],
                 "abi": ["gnu"],
                 "license": ["ftl", "mit"],
                 "checker": {
@@ -1028,6 +1103,21 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libfreetype6-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm"],
+                "abi": ["gnu"],
+                "license": ["ftl", "mit"],
+                "checker": {
+                    "type": "debian",
+                    "source": "freetype",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libfreetype-dev",
                 },
             },
             {
@@ -1558,7 +1648,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster"],
                 "abi": ["gnu"],
                 "license": ["sgi-b-2.0"],
                 "checker": {
@@ -1568,6 +1658,21 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-gl-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["sgi-b-2.0"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dev",
                 },
             },
             {
@@ -1882,7 +1987,7 @@ data = {
             {
                 "arch": ["x86_64"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
@@ -1940,7 +2045,7 @@ data = {
             {
                 "arch": ["x86_64"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
@@ -2357,7 +2462,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["bsd-3"],
                 "checker": {
@@ -2428,7 +2533,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster"],
                 "abi": ["gnu"],
                 "license": ["mit", "smlnj"],
                 "checker": {
@@ -2438,6 +2543,21 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-input-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["mit", "smlnj"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dev",
                 },
             },
             {
@@ -2572,7 +2692,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch"],
                 "abi": ["gnu"],
                 "license": ["hpnd"],
                 "checker": {
@@ -2582,6 +2702,36 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-kb-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster"],
+                "abi": ["gnu"],
+                "license": ["hpnd"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-kb-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["hpnd"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dev",
                 },
             },
             {
@@ -2675,6 +2825,21 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libbsd-minimal",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["beerware", "bsd-2", "bsd-3", "isc", "mit"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libbsd",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libbsd-dev",
                 },
             },
         ],
@@ -3927,7 +4092,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch"],
                 "abi": ["gnu"],
                 "license": ["lgpl-2.1"],
                 "checker": {
@@ -3937,6 +4102,21 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libsensors4-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
+                "checker": {
+                    "type": "debian",
+                    "source": "lm-sensors",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libsensors-dev",
                 },
             },
             {
@@ -3970,6 +4150,9 @@ data = {
                     "make",
                     "{triplet}-gcc",
                 ],
+                "fallback_prereqs": [
+                    "git",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "ryanlederman",
@@ -3978,6 +4161,10 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libsir",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "libsir-master",
+                    }
                 },
             },
         ],
@@ -5151,7 +5338,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
@@ -5206,7 +5393,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch", "buster"],
                 "abi": ["gnu"],
                 "license": ["mit"],
                 "checker": {
@@ -5216,6 +5403,21 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "liblua5.3-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "checker": {
+                    "type": "debian",
+                    "source": "lua5.4",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "liblua5.4-dev",
                 },
             },
             {
@@ -5525,7 +5727,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["apache-2.0"],
                 "checker": {
@@ -6010,9 +6212,6 @@ data = {
                     "make",
                     "cmake",
                 ],
-                "fallback_prereqs": [
-                    "git",
-                ],
                 "checker": {
                     "type": "custom",
                     "name": "physfs",
@@ -6359,7 +6558,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
@@ -6368,6 +6567,20 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "python2.7",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "python-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "python2",
                 },
             },
             {
@@ -6419,6 +6632,20 @@ data = {
                 "installer": {
                     "type": "apk",
                     "package": "py2-yaml",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["stretch", "buster"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "pyyaml",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "python-pyyaml",
                 },
             },
             {
@@ -6557,7 +6784,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster"],
                 "abi": ["gnu"],
                 "license": ["hpnd-sv"],
                 "checker": {
@@ -6567,6 +6794,21 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-randr-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["hpnd-sv"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dev",
                 },
             },
             {
@@ -6643,7 +6885,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster"],
                 "abi": ["gnu"],
                 "license": ["hpnd-sv"],
                 "checker": {
@@ -6653,6 +6895,21 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-render-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["hpnd-sv"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dev",
                 },
             },
             {
@@ -7157,7 +7414,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch", "buster", "bullseye", "sid"],
                 "abi": ["gnu"],
                 "license": ["mit"],
                 "checker": {
@@ -7195,7 +7452,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "checker": {
@@ -7233,7 +7490,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "checker": {
@@ -7271,7 +7528,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "checker": {
@@ -7379,7 +7636,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["lgpl-2.1"],
                 "checker": {
@@ -7758,7 +8015,7 @@ data = {
             {
                 "arch": ["i686"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
@@ -7830,7 +8087,7 @@ data = {
             {
                 "arch": ["i686"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
@@ -8502,7 +8759,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch"],
                 "abi": ["gnu"],
                 "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
                 "checker": {
@@ -8512,6 +8769,36 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-xext-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster"],
+                "abi": ["gnu"],
+                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-xext-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dev",
                 },
             },
             {
@@ -8588,7 +8875,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["buster"],
                 "abi": ["gnu"],
                 "license": ["x11"],
                 "checker": {
@@ -8598,6 +8885,21 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "x11proto-xf86vidmode-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["x11"],
+                "checker": {
+                    "type": "debian",
+                    "source": "xorgproto",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-dev",
                 },
             },
             {
@@ -8831,7 +9133,22 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch"],
+                "abi": ["gnu"],
+                "license": ["mit", "smlnj"],
+                "checker": {
+                    "type": "debian",
+                    "source": "x11proto-core",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "x11proto-core-dev",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["mit", "smlnj"],
                 "checker": {
