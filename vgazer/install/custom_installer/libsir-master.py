@@ -3,9 +3,7 @@ import os
 from vgazer.command         import GetCommandOutputUtf8
 from vgazer.command         import RunCommand
 from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import GithubApiRateLimitExceeded
 from vgazer.exceptions      import InstallError
-from vgazer.github_common   import GithubCheckApiRateLimitExceeded
 from vgazer.platform        import GetAr
 from vgazer.platform        import GetCc
 from vgazer.platform        import GetInstallPrefix
