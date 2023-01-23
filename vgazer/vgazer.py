@@ -145,7 +145,7 @@ class Vgazer:
          self.platform[softwarePlatform])
         if project is None:
             raise CompatibleProjectNotFound(
-             "Unable to find compatible project for sowtware: " + software)
+             "Unable to find compatible project for software: " + software)
 
         prereqs = project["prereqs"] if "prereqs" in project else []
         fallback_prereqs = (project["fallback_prereqs"] if "fallback_prereqs"
