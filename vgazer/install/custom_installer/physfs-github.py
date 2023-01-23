@@ -18,12 +18,33 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
     try:
+        tags = auth["github"].GetJson(
+         "https://api.github.com/repos/criptych/physfs/tags")
+    except ConnectionError:
+        print("VGAZER: Unable to know last version of", software)
+        raise InstallError(software + " not installed")
+
+    if GithubCheckApiRateLimitExceeded(tags):
+        raise GithubApiRateLimitExceeded(
+         "Github API rate limit reached while searching last version of "
+         "repo: ryanlederman/libsir"
+        )
+    tarballUrl = tags[0]["tarball_url"]
+    tarballShortFilename = tarballUrl.split("/")[-1]
+
+    try:
         with WorkingDir(tempPath):
+            RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
-             ["git", "clone", "https://github.com/criptych/physfs.git"],
+             ["tar", "--verbose", "--extract", "--gzip", "--file",
+              tarballShortFilename],
              verbose)
-        clonedDir = os.path.join(tempPath, "physfs")
-        with WorkingDir(clonedDir):
+            output = GetCommandOutputUtf8(
+             ["tar", "--list", "--file", tarballShortFilename]
+            )
+        extractedDir = os.path.join(tempPath,
+         output.splitlines()[0].split("/")[0])
+        with WorkingDir(extractedDir):
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(clonedDir, "build")
         with WorkingDir(buildDir):
