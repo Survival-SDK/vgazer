@@ -17,8 +17,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tags = auth["github"].GetJson(
-     "https://api.github.com/repos/wayland-project/wayland-protocols/tags")
+    try:
+        tags = auth["github"].GetJson(
+         "https://api.github.com/repos/wayland-project/wayland-protocols/tags")
+    except ConnectionError:
+        print("VGAZER: Unable to know last version of", software)
+        raise InstallError(software + " not installed")
 
     if GithubCheckApiRateLimitExceeded(tags):
         raise GithubApiRateLimitExceeded(

@@ -21,8 +21,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    releases = auth["github"].GetJson(
-     "https://api.github.com/repos/silnrsi/graphite/releases")
+    try:
+        releases = auth["github"].GetJson(
+         "https://api.github.com/repos/silnrsi/graphite/releases")
+    except ConnectionError:
+        print("VGAZER: Unable to know last version of", software)
+        raise InstallError(software + " not installed")
 
     if GithubCheckApiRateLimitExceeded(releases):
         raise GithubApiRateLimitExceeded(

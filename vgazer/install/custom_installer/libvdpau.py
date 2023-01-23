@@ -20,8 +20,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tags = auth["base"].GetJson(
-     "https://gitlab.freedesktop.org/api/v4/projects/887/repository/tags")
+    try:
+        tags = auth["base"].GetJson(
+         "https://gitlab.freedesktop.org/api/v4/projects/887/repository/tags")
+    except ConnectionError:
+        print("VGAZER: Unable to know last version of", software)
+        raise InstallError(software + " not installed")
 
     tarballUrl = (
      "https://gitlab.freedesktop.org/api/v4/projects/887/repository/"
