@@ -29,10 +29,7 @@ def GetTarballUrl():
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
-    # ar = GetAr(platformData["target"]) + " rcu"
-    # cc = GetCc(platformData["target"])
     triplet = GetTriplet(platformData["target"])
-    # ranlib = GetRanlib(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -40,11 +37,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     tarballUrl = GetTarballUrl()
     tarballShortFilename = tarballUrl.split("/")[-1]
-
-    # luaTarget = {
-    #     "linux": "linux",
-    #     "windows": "mingw",
-    # }[platformData["target"].GetOs()]
 
     try:
         with WorkingDir(tempPath):
@@ -56,28 +48,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath,
          tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
-            # We need not Lua commandline tools, because it depends on readline
-            # library. We need not extra depends like it. We need unly lua
-            # library. This arguments prevent building commandline tools:
-            # TO_BIN=
-            # LUA_T=
-            # LUAC_T=
-            # INSTALL_BIN=
-            # INSTALL_EXEC=true
             RunCommand(
              ["make", "BUILDMODE=static", "CROSS=" + triplet + "-",
               "TARGET_SYS=" + platformData["target"].GetOs().capitalize()],
              verbose)
             RunCommand(["make", "install", "PREFIX=" + installPrefix], verbose)
-            # RunCommand(
-            #  ["make", luaTarget, "CC=" + cc, "AR=" + ar, "RANLIB=" + ranlib,
-            #   "TO_BIN=", "LUA_T=", "LUAC_T="],
-            #  verbose)
-            # RunCommand(
-            #  ["make", luaTarget, "install", "INSTALL_TOP=" + installPrefix,
-            #   "TO_BIN=", "LUA_T=", "LUAC_T=", "INSTALL_BIN=",
-            #   "INSTALL_EXEC=true"],
-            #  verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
