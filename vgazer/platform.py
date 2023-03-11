@@ -1,17 +1,15 @@
-import os
 import os.path
-import platform
-from vgazer.command     import GetCommandOutputUtf8
-from vgazer.exceptions  import AlpineReleaseDataNotFound
-from vgazer.exceptions  import DebianReleaseDataNotFound
-from vgazer.exceptions  import FileNotFound
-from vgazer.exceptions  import MissingArgument
-from vgazer.exceptions  import OsDataNotFound
-from vgazer.exceptions  import UnexpectedOsType
-from vgazer.exceptions  import UnknownOs
-from vgazer.exceptions  import UnknownTargetArch
-from vgazer.utils       import FindFileInDir
-from vgazer.utils       import NewListWithReplace
+
+from vgazer.command       import GetCommandOutputUtf8
+from vgazer.exceptions    import FileNotFound
+from vgazer.exceptions    import MissingArgument
+from vgazer.exceptions    import UnexpectedOsType
+from vgazer.exceptions    import UnknownOs
+from vgazer.exceptions    import UnknownTargetArch
+from vgazer.host_detector import HostDetector
+from vgazer.utils         import FindFileInDir
+from vgazer.utils         import NewListWithReplace
+from vgazer.utils         import OneOfIsNone
 
 def GetFilesystemType(path):
     output = GetCommandOutputUtf8(["df", "-T", path])
@@ -102,24 +100,23 @@ def GetTripletFilenames(triplet, suffixes):
     filenames = []
     for suffix in suffixes:
         filenames.append(triplet + suffix)
-    initialFilenamesLen = len(filenames)
     currentTripletFilenamesList = filenames.copy()
 
     if "i686" in triplet:
         currentTripletFilenamesList = NewListWithReplace(
          currentTripletFilenamesList, "i686", "i586")
-        triplet.replace("i686", "i586")
         filenames.extend(currentTripletFilenamesList)
+        triplet.replace("i686", "i586")
     if "i586" in triplet:
         currentTripletFilenamesList = NewListWithReplace(
          currentTripletFilenamesList, "i586", "i486")
-        triplet.replace("i586", "i486")
         filenames.extend(currentTripletFilenamesList)
+        triplet.replace("i586", "i486")
     if "i486" in triplet:
         currentTripletFilenamesList = NewListWithReplace(
          currentTripletFilenamesList, "i486", "i386")
-        triplet.replace("i486", "i386")
         filenames.extend(currentTripletFilenamesList)
+        triplet.replace("i486", "i386")
 
     return filenames
 
@@ -211,44 +208,6 @@ class Platform:
     COMP_EQUAL = 1
 
     @staticmethod
-    def GetLinuxOs():
-        osReleaseFile = open("/etc/os-release", "r")
-        data = osReleaseFile.read()
-        osReleaseFile.close()
-        lines = data.splitlines()
-        for line in lines:
-            kv = line.split("=")
-            if kv[0] == "ID":
-                return kv[1]
-        raise OsDataNotFound("Unable to find data of host OS: " + os.name)
-
-    @staticmethod
-    def GetDebianVersion():
-        osReleaseFile = open("/etc/os-release", "r")
-        data = osReleaseFile.read()
-        osReleaseFile.close()
-        lines = data.splitlines()
-        for line in lines:
-            kv = line.split("=")
-            if kv[0] == "VERSION":
-                return kv[1].split("(")[1][:-2:]
-        raise DebianReleaseDataNotFound(
-         "Unable to find data of Debian version: " + os.name)
-
-    @staticmethod
-    def GetAlpineVersion():
-        osReleaseFile = open("/etc/os-release", "r")
-        data = osReleaseFile.read()
-        osReleaseFile.close()
-        lines = data.splitlines()
-        for line in lines:
-            kv = line.split("=")
-            if kv[0] == "VERSION_ID":
-                return ".".join(kv[1].split(".")[0:2])
-        raise AlpineReleaseDataNotFound(
-         "Unable to find data of Alpine version: " + os.name)
-
-    @staticmethod
     def OsIsLinux(os):
         return (os in ["linux", "alpine", "debian", "steamrt"])
 
@@ -265,27 +224,18 @@ class Platform:
 
     def __init__(self, arch=None, os=None, osVersion=None, abi=None,
      suppressGenericFallback=False):
-        if (arch is None or os is None or osVersion is None or abi is None):
-            self.host = True
-        else:
-            self.host = False
+        self.host = OneOfIsNone(arch, os, osVersion, abi)
 
         if self.host:
-            self.arch = platform.machine()
-            osType = platform.system()
-            if osType == "Linux":
-                self.os = Platform.GetLinuxOs()
-                if self.os == "alpine":
-                    self.osVersion = Platform.GetAlpineVersion()
-                    self.abi = "musl"
-                if self.os == "debian":
-                    self.osVersion = Platform.GetDebianVersion()
-                    self.abi = "gnu"
-                if self.os == "steamrt":
-                    self.osVersion = "latest"
-                    self.abi = "gnu"
-            else:
-                raise UnexpectedOsType("Unexpected OS type: " + osType)
+            with HostDetector() as hostDetector:
+                if hostDetector.OsIsUnknown():
+                    raise UnexpectedOsType(hostDetector.GetErrorMsg)
+
+                self.arch = hostDetector.GetArch()
+                self.os = hostDetector.GetOs()
+                self.osVersion = hostDetector.GetOsVersion()
+                self.abi = hostDetector.GetAbi()
+
         elif not suppressGenericFallback:
             self.arch = arch
             self.os = Platform.GetGenericOs(os)

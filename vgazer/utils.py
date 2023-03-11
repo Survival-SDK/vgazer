@@ -18,3 +18,10 @@ def FindFileInDir(directories, filenames):
                 return filename
     raise FileNotFound(
      "Unable to find any file from list: " + ", ".join(filenames))
+
+def OneOfIsNone(*args):
+    for arg in args:
+        if arg is None:
+            return True
+
+    return False
