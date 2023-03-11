@@ -27,9 +27,16 @@ class ConfigCmake():
         cc = GetCc(self.platformData["target"])
         cxx = GetCxx(self.platformData["target"])
 
+        pkgConfigLibdirs = ("{prefix}/lib/pkgconfig:"
+         "/usr/lib/{triplet}/pkgconfig").format(
+          prefix=prefix,
+          triplet=targetTriplet
+         )
+
         if self.platformData["target"].PlatformsEqual(
          self.platformData["host"]):
             findMode = "BOTH"
+            pkgConfigLibdirs += ":/usr/share/pkgconfig"
         else:
             findMode = "ONLY"
 
@@ -41,8 +48,7 @@ class ConfigCmake():
          "set(CMAKE_FIND_ROOT_PATH {prefix})\n"
          "SET("
           "ENV{{PKG_CONFIG_LIBDIR}} "
-          "${{CMAKE_FIND_ROOT_PATH}}/lib/pkgconfig/:"
-          "/usr/lib/{triplet}/pkgconfig"
+          "{pkgConfigLibdirs}"
          ")\n"
          "SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)\n"
          "SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY {findMode})\n"
@@ -52,7 +58,7 @@ class ConfigCmake():
           cc=cc,
           cxx=cxx,
           prefix=prefix,
-          triplet=targetTriplet,
+          pkgConfigLibdirs=pkgConfigLibdirs,
           findMode=findMode
          )
         )
