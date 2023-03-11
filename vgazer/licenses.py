@@ -41,6 +41,11 @@ data = {
         "fullName": "bzip2 and libbzip2 License v1.0.6",
         "rules": {}
     },
+    "cc0": {
+        "name": "CC0",
+        "fullName": "CC0",
+        "rules": {}
+    },
     "ftl": {
         "name": "FTL",
         "fullName": "MIT License",
