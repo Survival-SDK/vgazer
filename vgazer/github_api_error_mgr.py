@@ -7,22 +7,22 @@ class GithubApiErrorMgr:
 
     def ApiRateLimitExceeded(self):
         return ("message" in self.responseJson
-         and responseJson["documentation_url"]
+         and self.responseJson["documentation_url"]
           == "https://developer.github.com/v3/#rate-limiting")
 
     def BadCredentials(self):
         return ("message" in self.responseJson
-         and responseJson["message"] == "Bad credentials")
+         and self.responseJson["message"] == "Bad credentials")
 
     def ProcessErrors(self):
         if self.ApiRateLimitExceeded():
             self.errorOccured = True
-            self.errorText = "Github API rate limit reached while searching "
-             "last version of repo: {0}".format(repo)
-        if self.GithubCheckBadCredentials():
+            self.errorText = ("Github API rate limit reached while searching "
+             "last version of repo: {0}".format(self.repo))
+        if self.BadCredentials():
             self.errorOccured = True
-            self.errorText = "Github API bad credentials passed while "
-             "searching last version of repo: {0}".format(repo)
+            self.errorText = ("Github API bad credentials passed while "
+             "searching last version of repo: {0}".format(self.repo))
 
     def __enter__(self):
         self.ProcessErrors()
@@ -31,8 +31,8 @@ class GithubApiErrorMgr:
     def __exit__(self, etype, value, traceback):
         pass
 
-    def IsErrorOccured():
+    def IsErrorOccured(self):
         return self.errorOccured
 
-    def GetErrorText():
+    def GetErrorText(self):
         return self.errorText

@@ -1,14 +1,14 @@
 import os
 
-from vgazer.command         import GetCommandOutputUtf8
-from vgazer.command         import RunCommand
-from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import InstallError
-from vgazer.exceptions      import GithubApiRateLimitExceeded
-from vgazer.github_common   import GithubCheckApiRateLimitExceeded
-from vgazer.platform        import GetFilesystemType
-from vgazer.store.temp      import StoreTemp
-from vgazer.working_dir     import WorkingDir
+from vgazer.command              import GetCommandOutputUtf8
+from vgazer.command              import RunCommand
+from vgazer.exceptions           import CommandError
+from vgazer.exceptions           import GithubApiError
+from vgazer.exceptions           import InstallError
+from vgazer.github_api_error_mgr import GithubApiErrorMgr
+from vgazer.platform             import GetFilesystemType
+from vgazer.store.temp           import StoreTemp
+from vgazer.working_dir          import WorkingDir
 
 def InstallMuslCrossMake(auth, software, languages, triplet, platformData,
  verbose):
@@ -25,11 +25,9 @@ def InstallMuslCrossMake(auth, software, languages, triplet, platformData,
     tags = auth.GetJson(
      "https://api.github.com/repos/richfelker/musl-cross-make/tags")
 
-    if GithubCheckApiRateLimitExceeded(tags):
-        raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching tarball url in repo: "
-         "richfelker/musl-cross-make"
-        )
+    with GithubApiErrorMgr(tags, "richfelker/musl-cross-make") as errMgr:
+        if errMgr.IsErrorOccured():
+            raise GithubApiError(errMgr.GetErrorText())
 
     tarballUrl = tags[0]["tarball_url"]
     tarballShortFilename = "musl-cross-make.tar.gz"

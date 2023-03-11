@@ -1,16 +1,15 @@
 import requests
-from vgazer.github_common import GithubCheckApiRateLimitExceeded
-from vgazer.exceptions import GithubApiRateLimitExceeded
+
+from vgazer.exceptions           import GithubApiError
+from vgazer.github_api_error_mgr import GithubApiErrorMgr
 
 def CheckMuslCrossMake(auth):
     tags = auth.GetJson(
      "https://api.github.com/repos/richfelker/musl-cross-make/tags")
 
-    if GithubCheckApiRateLimitExceeded(tags):
-        raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last version of gcc in"
-         "repo: richfelker/musl-cross-make"
-        )
+    with GithubApiErrorMgr(tags, "richfelker/musl-cross-make") as errMgr:
+        if errMgr.IsErrorOccured():
+            raise GithubApiError(errMgr.GetErrorText())
 
     lastVersionCommitSha = tags[0]["commit"]["sha"]
 

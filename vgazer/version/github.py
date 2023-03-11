@@ -1,16 +1,14 @@
 import vgazer.version.utils as utils
-from vgazer.github_common import GithubCheckApiRateLimitExceeded
-from vgazer.exceptions import GithubApiRateLimitExceeded
+from vgazer.exceptions           import GithubApiError
+from vgazer.github_api_error_mgr import GithubApiErrorMgr
 
 def CheckLastCommit(auth, user, repo):
     commits = auth.GetJson(
      "https://api.github.com/repos/" + user + "/" + repo + "/commits")
 
-    if GithubCheckApiRateLimitExceeded(commits):
-        raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last commit info of "
-         "repo: " + user + "/" + repo
-        )
+    with GithubApiErrorMgr(commits, user + "/" + repo) as errMgr:
+        if errMgr.IsErrorOccured():
+            raise GithubApiError(errMgr.GetErrorText())
 
     lastCommitDateTime = commits[0]["commit"]["author"]["date"]
 
@@ -26,11 +24,9 @@ def CheckGithub(auth, user, repo, ignoreReleases, ignoredTags):
     releases = auth.GetJson(
      "https://api.github.com/repos/" + user + "/" + repo + "/releases")
 
-    if GithubCheckApiRateLimitExceeded(releases):
-        raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last version of "
-         "repo: " + user + "/" + repo
-        )
+    with GithubApiErrorMgr(releases, user + "/" + repo) as errMgr:
+        if errMgr.IsErrorOccured():
+            raise GithubApiError(errMgr.GetErrorText())
 
     if len(releases) != 0:
         return utils.GetVersionFromTag(releases[0]["tag_name"])
@@ -38,11 +34,9 @@ def CheckGithub(auth, user, repo, ignoreReleases, ignoredTags):
     tags = auth.GetJson(
      "https://api.github.com/repos/" + user + "/" + repo + "/tags")
 
-    if GithubCheckApiRateLimitExceeded(tags):
-        raise GithubApiRateLimitExceeded(
-         "Github API rate limit reached while searching last version of "
-         "repo: " + user + "/" + repo
-        )
+    with GithubApiErrorMgr(tags, user + "/" + repo) as errMgr:
+        if errMgr.IsErrorOccured():
+            raise GithubApiError(errMgr.GetErrorText())
 
     tagNum = 0
     for tag in tags:
