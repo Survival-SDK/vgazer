@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from vgazer.vgazer import Vgazer
+from vgazer import Vgazer
 
 def main():
     Vgazer()

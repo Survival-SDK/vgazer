@@ -3,7 +3,7 @@
 import os
 import stat
 
-from vgazer.vgazer      import Vgazer
+from vgazer             import Vgazer
 from vgazer.platform    import Platform
 
 anyPlatform = Platform(arch="any", os="any", osVersion="any", abi="any")
@@ -127,8 +127,8 @@ def CreateSoftwareVersionsSample(targetPlatform):
          "\n"
          "sys.path.insert(0, parentDir)\n"
          "\n"
-         "from vgazer.vgazer      import Vgazer\n"
-         "from vgazer.exceptions  import CompatibleProjectNotFound\n"
+         "from vgazer            import Vgazer\n"
+         "from vgazer.exceptions import CompatibleProjectNotFound\n"
          "\n"
          "def main():\n"
          "    gazer = Vgazer({0})\n"
@@ -207,7 +207,7 @@ def CreateInstallSample(installEntry):
          "\n"
          "sys.path.insert(0, parentDir)\n"
          "\n"
-         "from vgazer.vgazer import Vgazer\n"
+         "from vgazer import Vgazer\n"
          "\n"
          "def main():\n"
          "    gazer = Vgazer({0})\n"
