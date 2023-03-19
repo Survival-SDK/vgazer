@@ -170,10 +170,11 @@ def GenerateInstallTarget(installEntry):
     return ("sample_{0}_{1}_{2}_install_{3}:\n"
      "\tdocker run -i -t \\\n"
      "     -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n"
-     "     -v `pwd`:/mnt/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n"
+     "     -v `pwd`:/mnt/vgazer -v `pwd`/.vgazer_{4}:/mnt/vgazer_output \\\n"
+     "     --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n"
      "     -E sh -c ./samples/install_{3}.py | tee install.log\n"
      "\n".format(hostPlatform.GetArch(), hostPlatform.GetOs(),
-      hostPlatform.GetOsVersion(), targetInstallString))
+      hostPlatform.GetOsVersion(), targetInstallString, targetPlatformString))
 
 def CreateInstallSample(installEntry):
     software = installEntry[0]
