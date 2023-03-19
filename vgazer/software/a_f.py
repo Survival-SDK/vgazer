@@ -468,6 +468,26 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "wget",
+                    "g++",
+                    "make",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "cmake",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "cmake",
+                },
+            },
+            {
                 "arch": ["any"],
                 "os": ["alpine"],
                 "osVersion": ["any"],
