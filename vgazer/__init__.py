@@ -64,6 +64,11 @@ class Vgazer:
         else:
             return None
 
+    def SearchFallbackProject(self, projects):
+        for project in projects:
+            if project.fallback:
+                return project;
+
     def UseChecker(self, software, checker):
         softwareData = self.softwareData.GetData()
         softwarePlatform = softwareData[software]["platform"]
@@ -164,7 +169,18 @@ class Vgazer:
 
         installer = project["installer"]
 
-        self.UseInstaller(software, installer, verbose, fallback_prereqs)
+        try:
+            self.UseInstaller(software, installer, verbose, fallback_prereqs)
+        except InstallError as installError:
+            fallbackProject = self.SearchFallbackProject(softwareProjects);
+            if (fallbackProject is not None):
+                print(
+                     "VGAZER: Something went wrong. Starting fallback "
+                     "installation steps"
+                    )
+                self.UseInstaller(software, fallbackProject["installer"], verbose, fallback_prereqs)
+            else:
+                raise installError
 
         # Resolving circullar dependencies
         # for example:
