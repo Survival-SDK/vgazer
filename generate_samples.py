@@ -71,8 +71,8 @@ def GenerateImageLaunchTarget(hostPlatform):
 
     return ("image_{1}_{2}_{3}_launch:\n"
      "\tdocker run --entrypoint {0} -i -t \\\n"
-     "     -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n"
-     "     -v `pwd`:/mnt/vgazer --entrypoint sudo vgazer_min_env_{1}_{2}_{3} \\\n"
+     "     -v ~/.vgazer:/home/vgazer_user/.vgazer -v `pwd`:/mnt/vgazer \\\n"
+     "     --entrypoint sudo vgazer_min_env_{1}_{2}_{3} \\\n"
      "     -E sh\n"
      "\n".format(shell, hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion()))
@@ -158,14 +158,15 @@ def GenerateInstallTarget(installEntry):
     software = installEntry[0]
     hostPlatform = installEntry[1]
     targetPlatform = installEntry[2]
+    targetPlatformString = "{0}_{1}_{2}".format(targetPlatform.GetArch(),
+     targetPlatform.GetOs(), targetPlatform.GetAbi())
     if targetPlatform.PlatformsEqual(hostPlatform):
         targetInstallString = software + "_host"
     elif targetPlatform == anyPlatform:
         targetInstallString = software
     else:
-        targetInstallString = "{3}_{0}_{1}_{2}".format(
-         targetPlatform.GetArch(), targetPlatform.GetOs(),
-         targetPlatform.GetAbi(), software)
+        targetInstallString = "{0}_{1}".format(software,
+         targetPlatformString)
     return ("sample_{0}_{1}_{2}_install_{3}:\n"
      "\tdocker run -i -t \\\n"
      "     -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n"
