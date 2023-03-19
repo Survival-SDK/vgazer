@@ -7,7 +7,6 @@ RUN apt-get update \
     && adduser vgazer_user sudo \
     && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER vgazer_user
-RUN sudo apt-get update \
-    && sudo apt-get install -y python3 python3-pip \
+RUN sudo apt-get install -y python3 python3-pip \
     && pip3 install requests bs4
 WORKDIR /mnt/vgazer
