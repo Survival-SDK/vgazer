@@ -1451,4 +1451,23 @@ data = {
             },
         ],
     },
+    "iwyu": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "iwyu",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "iwyu",
+                },
+            },
+        ],
+    },
 }

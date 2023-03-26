@@ -467,6 +467,25 @@ data = {
             },
         ],
     },
+    "clang-tidy": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "llvm-defaults",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "clang-tidy",
+                },
+            },
+        ],
+    },
     "cmake": {
         "platform": "host",
         "projects": [
