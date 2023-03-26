@@ -92,7 +92,8 @@ class Vgazer:
     def CheckVersion(self, software):
         softwareData = self.softwareData.GetData()
         if software not in softwareData:
-            raise UnknownSoftware("Unknown software: " + software)
+            raise UnknownSoftware("Unknown software: {software}".format(
+             software=software))
 
         softwarePlatform = softwareData[software]["platform"]
         softwareProjects = softwareData[software]["projects"]
@@ -100,7 +101,8 @@ class Vgazer:
          self.platform[softwarePlatform])
         if project is None:
             raise CompatibleProjectNotFound(
-             "Unable to find compatible project for software: " + software)
+             "Unable to find compatible project for software: "
+             "{software}".format(software=software))
 
         checker = project["checker"]
 
@@ -177,10 +179,11 @@ class Vgazer:
             fallbackProject = self.SearchFallbackProject(softwareProjects);
             if (fallbackProject is not None and fallbackProject is not project):
                 print(
-                     "VGAZER: Something went wrong. Starting fallback "
-                     "installation steps"
-                    )
-                self.UseInstaller(software, fallbackProject["installer"], verbose, fallback_prereqs)
+                 "VGAZER: Something went wrong. Starting fallback installation "
+                 "steps"
+                )
+                self.UseInstaller(software, fallbackProject["installer"], 
+                 verbose, fallback_prereqs)
             else:
                 raise installError
 
