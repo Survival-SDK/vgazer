@@ -624,7 +624,7 @@ data = {
                 "abi": ["any"],
                 "license": ["apache-2.0"],
                 "prereqs": [
-                    "git",
+                    "wget",
                     "{triplet}-gcc",
                 ],
                 "checker": {
