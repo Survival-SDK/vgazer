@@ -102,8 +102,10 @@ sample_library:
 	@echo 'Error: variables "arch", "os", "ver" and "lib" must be defined'
 endif
 
-ifneq ($(and $(arch),$(os),$(ver),$(tool)),)
-sample_tool: sample_$(arch)_$(os)_$(ver)_install_$(tool)
+ifneq ($(and $(harch),$(hos),$(hver),$(tool),$(tarch),$(tos),$(tabi)),)
+sample_tool: sample_$(harch)_$(hos)_$(hver)_install_$(tool)_$(tarch)_$(tos)_$(tabi)
+else ifneq ($(and $(arch),$(os),$(ver),$(tool)),)
+sample_tool: sample_$(arch)_$(os)_$(ver)_install_$(tool)_host
 else
 sample_tool:
 	@echo 'Error: variables "arch", "os", "ver" and "tool" must be defined'
