@@ -904,6 +904,10 @@ data = {
                     "fallback": {
                         "type": "custom",
                         "name": "xau-gitlab",
+                        "fallback": {
+                            "type": "custom",
+                            "name": "xau-github",
+                        },
                     },
                 },
             },
