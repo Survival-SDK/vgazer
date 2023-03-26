@@ -1047,6 +1047,9 @@ data = {
                     "wget",
                     "make",
                 ],
+                "fallback_prereqs": [
+                    "autoconf"
+                ],
                 "checker": {
                     "type": "custom",
                     "name": "xcb-proto",
@@ -1054,6 +1057,10 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "xcb-proto",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "xcb-proto-gitlab",
+                    },
                 },
             },
             {
