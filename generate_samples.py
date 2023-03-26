@@ -70,19 +70,18 @@ def GenerateImageLaunchTarget(hostPlatform):
     shell = GetShell(hostPlatform)
 
     return ("image_{1}_{2}_{3}_launch:\n"
-     "\tdocker run --entrypoint {0} -i -t \\\n"
-     "     -v ~/.vgazer:/home/vgazer_user/.vgazer -v `pwd`:/mnt/vgazer \\\n"
-     "     --entrypoint sudo vgazer_min_env_{1}_{2}_{3} \\\n"
-     "     -E sh\n"
+     "\tdocker run --net=host --entrypoint {0} -i -t \\\n"
+     "     -v ~/.vgazer:/root/.vgazer -v `pwd`:/mnt/vgazer \\\n"
+     "     --entrypoint sh vgazer_min_env_{1}_{2}_{3} \\\n"
      "\n".format(shell, hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion()))
 
 def GenerateCheckPlatformTarget(hostPlatform):
     return ("sample_{0}_{1}_{2}_check_platform:\n"
      "\tdocker run -i -t \\\n"
-     "     -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n"
-     "     -v `pwd`:/mnt/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n"
-     "     -E sh -c ./samples/check_platform.py\n"
+     "     -v ~/.vgazer:/root/.vgazer \\\n"
+     "     -v `pwd`:/mnt/vgazer --entrypoint sh vgazer_min_env_{0}_{1}_{2} \\\n"
+     "     -E -c ./samples/check_platform.py\n"
      "\n".format(hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion()))
 
@@ -93,10 +92,10 @@ def GenerateSoftwareVersionsTarget(hostPlatform, targetPlatform):
         targetPlatformString = "{0}_{1}_{2}".format(targetPlatform.GetArch(),
          targetPlatform.GetOs(), targetPlatform.GetAbi())
     return ("sample_{0}_{1}_{2}_software_versions_{3}:\n"
-     "\tdocker run -i -t \\\n"
-     "     -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n"
-     "     -v `pwd`:/mnt/vgazer --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n"
-     "     -E sh -c ./samples/software_versions_{3}.py | tee versions.log\n"
+     "\tdocker run --net=host -i -t \\\n"
+     "     -v ~/.vgazer:/root/.vgazer \\\n"
+     "     -v `pwd`:/mnt/vgazer --entrypoint sh vgazer_min_env_{0}_{1}_{2} \\\n"
+     "     -E -c ./samples/software_versions_{3}.py | tee versions.log\n"
      "\n".format(hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion(), targetPlatformString))
 
@@ -168,11 +167,11 @@ def GenerateInstallTarget(installEntry):
         targetInstallString = "{0}_{1}".format(software,
          targetPlatformString)
     return ("sample_{0}_{1}_{2}_install_{3}:\n"
-     "\tdocker run -i -t \\\n"
-     "     -v ~/.vgazer:/home/vgazer_user/.vgazer \\\n"
+     "\tdocker run --net=host -i -t \\\n"
+     "     -v ~/.vgazer:/root/.vgazer \\\n"
      "     -v `pwd`:/mnt/vgazer -v `pwd`/.vgazer_{4}:/mnt/vgazer_output \\\n"
-     "     --entrypoint sudo vgazer_min_env_{0}_{1}_{2} \\\n"
-     "     -E sh -c ./samples/install_{3}.py | tee install.log\n"
+     "     --entrypoint sh vgazer_min_env_{0}_{1}_{2} \\\n"
+     "     -E -c ./samples/install_{3}.py | tee install.log\n"
      "\n".format(hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion(), targetInstallString, targetPlatformString))
 
