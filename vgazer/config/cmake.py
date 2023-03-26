@@ -1,3 +1,4 @@
+from vgazer.platform   import GetAr
 from vgazer.platform   import GetCc
 from vgazer.platform   import GetCxx
 from vgazer.platform   import GetInstallPrefix
@@ -26,6 +27,7 @@ class ConfigCmake():
 
         cc = GetCc(self.platformData["target"])
         cxx = GetCxx(self.platformData["target"])
+        ar = GetAr(self.platformData["target"])
 
         pkgConfigLibdirs = ("{prefix}/lib/pkgconfig:"
          "/usr/lib/{triplet}/pkgconfig").format(
@@ -45,6 +47,7 @@ class ConfigCmake():
          "set(CMAKE_SYSTEM_PROCESSOR {cpu})\n"
          "set(CMAKE_C_COMPILER {cc})\n"
          "set(CMAKE_CXX_COMPILER {cxx})\n"
+         "set(CMAKE_AR {ar})\n"
          "set(CMAKE_FIND_ROOT_PATH {prefix})\n"
          "SET("
           "ENV{{PKG_CONFIG_LIBDIR}} "
@@ -57,6 +60,7 @@ class ConfigCmake():
           cpu=self.platformData["target"].GetArch(),
           cc=cc,
           cxx=cxx,
+          ar=ar,
           prefix=prefix,
           pkgConfigLibdirs=pkgConfigLibdirs,
           findMode=findMode
