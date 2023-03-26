@@ -27,13 +27,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/jtanx/libclipboard/releases")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(releases, "jtanx/libclipboard") as errMgr:
         if errMgr.IsErrorOccured():
             raise GithubApiError(errMgr.GetErrorText())
-
-    print("releases: ", releases)
 
     tarballUrl = releases[0]["tarball_url"]
     tarballShortFilename = tarballUrl.split("/")[-1]
@@ -55,27 +53,18 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         buildDir = os.path.join(extractedDir, "build")
         with WorkingDir(buildDir):
             RunCommand(
-             ["sed", "-i",
-              "s"
-              "#    include/libclipboard-config.h"
-              "#    ${CMAKE_BINARY_DIR}/include/libclipboard-config.h"
-              "#g",
-              "../CMakeLists.txt"],
-             verbose)
-            RunCommand(
              [
               "cmake", "..",
-              "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
-              "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
-              "-DCMAKE_C_FLAGS=-std=c99 -Wall -pedantic -g -I./include "
-              "-I../include -D_POSIX_C_SOURCE=199309L",
-              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON", "-DCMAKE_AR=" + ar
+              "-DCMAKE_TOOLCHAIN_FILE={toolchain}".format(
+               toolchain=configCmake.GetCrossFileName()),
+              "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),
+              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
              ],
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
