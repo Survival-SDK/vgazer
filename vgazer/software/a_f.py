@@ -3,6 +3,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -184,6 +185,7 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -426,6 +428,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -536,6 +539,7 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -560,6 +564,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -617,6 +622,7 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -640,6 +646,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -666,6 +673,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -767,6 +775,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -790,6 +799,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -876,6 +886,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -965,6 +976,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -1114,6 +1126,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],

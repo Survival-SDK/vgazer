@@ -5,6 +5,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -76,6 +77,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -177,6 +179,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -226,6 +229,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -270,6 +274,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -393,6 +398,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -471,6 +477,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -544,6 +551,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -713,6 +721,7 @@ data = {
         # TODO
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
@@ -926,6 +935,7 @@ data = {
         "platform": "target",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
                 "os": ["any"],
                 "osVersion": ["any"],
