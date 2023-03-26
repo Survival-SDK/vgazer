@@ -32,10 +32,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tarballUrl = GetTarballUrl()
-    tarballShortFilename = tarballUrl.split("/")[-1]
-
     try:
+        tarballUrl = GetTarballUrl()
+        tarballShortFilename = tarballUrl.split("/")[-1]
+
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
@@ -49,6 +49,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "--prefix=" + installPrefix],
              verbose)
             RunCommand(["make", "install"], verbose)
+    except requests.exceptions.ConnectionError:
+        print("VGAZER: Unable get tarball for", software)
+        raise InstallError(software + " not installed")
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
