@@ -71,10 +71,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     xorgMirrorsManager = mirrors["xorg"].CreateMirrorsManager(
      ["https", "http"])
 
-    tarballUrl = GetTarballUrl(xorgMirrorsManager)
-    tarballShortFilename = tarballUrl.split("/")[-1]
-
     try:
+        tarballUrl = GetTarballUrl(xorgMirrorsManager)
+        tarballShortFilename = tarballUrl.split("/")[-1]
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
@@ -90,6 +89,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand(["make"], verbose)
             RunCommand(["make", "install"], verbose)
+    except requests.exceptions.ConnectionError:
+        print("VGAZER: Unable to get tarball url for", software)
+        raise InstallError(software + " not installed")
+
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
