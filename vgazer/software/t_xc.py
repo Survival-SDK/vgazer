@@ -901,6 +901,10 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "xau",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "xau-gitlab",
+                    },
                 },
             },
             {
