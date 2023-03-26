@@ -66,8 +66,10 @@ class Vgazer:
 
     def SearchFallbackProject(self, projects):
         for project in projects:
-            if project.fallback:
+            if "fallback" in project:
                 return project;
+
+        return None;
 
     def UseChecker(self, software, checker):
         softwareData = self.softwareData.GetData()
@@ -173,7 +175,7 @@ class Vgazer:
             self.UseInstaller(software, installer, verbose, fallback_prereqs)
         except InstallError as installError:
             fallbackProject = self.SearchFallbackProject(softwareProjects);
-            if (fallbackProject is not None):
+            if (fallbackProject is not None and fallbackProject is not project):
                 print(
                      "VGAZER: Something went wrong. Starting fallback "
                      "installation steps"
