@@ -31,13 +31,38 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix, "--disable-shared",
-              "CFLAGS=-D__THROW= -include features.h"],
+              "CFLAGS=-D__THROW= -include features.h"
+              ],
+             verbose)
+            RunCommand(
+             ["sed", "-i",
+              "s"
+              "|#define\t__P(protos)\tprotos"
+              "|#ifndef __P\\n#define __P(protos) protos\\n#endif"
+              "|g",
+              "include/bsd/sys/freebsd-cdefs.h"],
+             verbose)
+            RunCommand(
+             ["sed", "-i",
+              "s"
+              "/#define\t__CONCAT(x,y)\t__CONCAT1(x,y)"
+              "/#ifndef __CONCAT\\n#define __CONCAT(x,y) __CONCAT1(x,y)\\n#endif"
+              "/g",
+              "include/bsd/sys/freebsd-cdefs.h"],
+             verbose)
+            RunCommand(
+             ["sed", "-i",
+              "s"
+              "/#define\t__always_inline\t__attribute__((__always_inline__))"
+              "/#ifndef __always_inline\\n#define __always_inline __attribute__((__always_inline__))\\n#endif"
+              "/g",
+              "include/bsd/sys/freebsd-cdefs.h"],
              verbose)
             RunCommand(
              ["sed", "-i",
               "s"
               "/#define __nonnull(x)\t__attribute__((__nonnull__(x)))"
-              "/#define __nonnull(x)    __attribute__((__nonnull__ x))"
+              "/#ifndef __nonnull\\n#define __nonnull(x) __attribute__((__nonnull__ x))\\n#endif"
               "/g",
               "include/bsd/sys/freebsd-cdefs.h"],
              verbose)
