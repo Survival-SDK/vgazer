@@ -58,6 +58,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-DCMAKE_TOOLCHAIN_FILE={toolchain}".format(
                toolchain=configCmake.GetCrossFileName()),
               "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),
+              "-DLIB_INSTALL_DIR=lib",
               "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
              ],
              verbose)
