@@ -22,7 +22,7 @@ def GetTarballUrl():
     links = parsedHtml.find_all("a")
     for link in links:
         if "download/LuaJIT-" in link["href"]:
-            return "http://luajit.org/" + link["href"]
+            return link["href"]
 
     raise TarballLost(
      "Unable to find tarball with last stable release of Lua")
