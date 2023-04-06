@@ -13,7 +13,7 @@ data = {
                     "unzip",
                     "{triplet}-g++",
                     "make",
-                    "linux-headers-{arch}",
+                    "cmake",
                 ],
                 "checker": {
                     "type": "custom",
