@@ -886,6 +886,35 @@ data = {
             },
         ],
     },
+    "safeclib": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "autoconf",
+                    "libtool",
+                    "make",
+                    "{triplet}-gcc",
+                    "wget",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "rurban",
+                    "repo": "safeclib",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "safeclib",
+                },
+            },
+        ],
+    },
     "saneopt": {
         "platform": "target",
         "projects": [
