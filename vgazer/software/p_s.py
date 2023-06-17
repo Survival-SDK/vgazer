@@ -861,6 +861,31 @@ data = {
             },
         ],
     },
+    "safe_memcpy": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "wangzhicheng2013",
+                    "repo": "safe_memcpy",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "safe_memcpy",
+                },
+            },
+        ],
+    },
     "saneopt": {
         "platform": "target",
         "projects": [
