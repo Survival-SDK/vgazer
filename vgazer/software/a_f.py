@@ -1141,6 +1141,32 @@ data = {
             },
         ],
     },
+    # TODO(edomin): Add custom checker
+    "freebsd-queue": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["bsd-3"],
+                "prereqs": [
+                    "wget",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "opensource-mirrors",
+                    "repo": "freebsd-queue",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "freebsd-queue",
+                },
+            },
+        ],
+    },
     "freetype": {
         "platform": "target",
         "projects": [
