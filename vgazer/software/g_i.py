@@ -820,6 +820,33 @@ data = {
             },
         ],
     },
+    "hash_table": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "git",
+                    "{triplet}-gcc",
+
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "anholt",
+                    "repo": "hash_table",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "hash_table",
+                },
+            },
+        ],
+    },
     "i686-linux-gnu-g++": {
         "platform": "host",
         "projects": [

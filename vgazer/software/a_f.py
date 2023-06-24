@@ -1141,6 +1141,33 @@ data = {
             },
         ],
     },
+    "fnv_hash": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "git",
+                    "{triplet}-gcc",
+
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "anholt",
+                    "repo": "hash_table",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "fnv_hash",
+                },
+            },
+        ],
+    },
     # TODO(edomin): Add custom checker
     "freebsd-queue": {
         "platform": "target",
