@@ -48,7 +48,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath,
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
-            RunCommand(["make", "static", "CC=" + cc, "AR=" + ar], verbose)
+            RunCommand(
+             [
+              "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
+              "static", "CC=" + cc, "AR=" + ar
+             ],
+             verbose
+            )
             if not os.path.exists(installPrefix + "/include"):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"],
                  verbose)

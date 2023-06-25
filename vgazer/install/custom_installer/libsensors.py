@@ -47,8 +47,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["make", "PREFIX=" + installPrefix, "CC=" + cc],
-             verbose)
+             [
+              "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
+              "PREFIX=" + installPrefix, "CC=" + cc
+             ],
+             verbose
+            )
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

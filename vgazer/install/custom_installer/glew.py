@@ -46,7 +46,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             if targetOs == "windows":
                 RunCommand(
-                 ["make", "glew.lib.static", "SYSTEM=linux-mingw64",
+                 ["make", "-j{cores_count}".format(cores_count=os.cpu_count()),
+                  "glew.lib.static", "SYSTEM=linux-mingw64",
                   "HOST=" + targetTriplet, "AR=" + ar, "STRIP=" + strip,
                   "CFLAGS.EXTRA=-I" + installPrefix + "/include -fPIC",
                   "LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],
@@ -59,13 +60,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
                 if not os.path.exists(installPrefix + "/lib"):
                     RunCommand(["mkdir", "-p", installPrefix + "/lib"],
                      verbose)
-                #if not os.path.exists(installPrefix + "/bin"):
-                    #RunCommand(["mkdir", "-p", installPrefix + "/bin"],
-                     #verbose)
                 RunCommand(["cp", "lib/libglew32.a", installPrefix + "/lib"],
                  verbose)
-                #RunCommand(["cp", "lib/glew32.dll", installPrefix + "/bin"],
-                 #verbose)
                 RunCommand(
                  ["make", "install.pkgconfig", "SYSTEM=linux-mingw64",
                   "GLEW_PREFIX=" + installPrefix,
@@ -73,7 +69,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
                  verbose)
             else:
                 RunCommand(
-                 ["make", "glew.lib", "CC=" + cc, "LD=" + cc, "AR=" + ar,
+                 ["make", "-j{cores_count}".format(cores_count=os.cpu_count()),
+                  "glew.lib", "CC=" + cc, "LD=" + cc, "AR=" + ar,
                   "STRIP=" + strip,
                   "CFLAGS.EXTRA=-I" + installPrefix + "/include -fPIC",
                   "LDFLAGS.EXTRA=-L" + installPrefix + "/lib"],

@@ -66,7 +66,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "/g",
               "include/bsd/sys/freebsd-cdefs.h"],
              verbose)
-            RunCommand(["make", "V=1"], verbose)
+            RunCommand(
+             [
+              "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
+              "V=1"
+             ],
+             verbose
+            )
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

@@ -52,7 +52,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand(["sed", "-i", "s/()/(void)/g", "crc32c/crc32c.h"],
              verbose)
-            RunCommand(["make", "build", "CC=" + cc, "AR=" + ar], verbose)
+            RunCommand(
+             [
+              "make", "build",
+              "-j{cores_count}".format(cores_count=os.cpu_count()), "CC=" + cc,
+              "AR=" + ar
+             ],
+             verbose)
             if not os.path.exists(installPrefix + "/include"):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"],
                  verbose)

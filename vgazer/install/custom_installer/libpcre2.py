@@ -39,7 +39,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "--enable-pcre2-32", "--enable-jit=auto",
               "--enable-newline-is-any"],
              verbose)
-            RunCommand(["make"], verbose)
+            RunCommand(
+             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+             verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

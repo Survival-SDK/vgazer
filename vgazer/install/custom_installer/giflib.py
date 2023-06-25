@@ -39,7 +39,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
-            RunCommand(["make", "libgif.a", "CC=" + cc, "AR=" + ar], verbose)
+            RunCommand(
+             [
+              "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
+              "libgif.a", "CC=" + cc, "AR=" + ar
+             ],
+             verbose
+            )
             if not os.path.exists(installPrefix + "/include"):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"],
                  verbose)

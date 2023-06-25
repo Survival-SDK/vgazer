@@ -42,8 +42,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["make", "libbz2.a", "CC=" + cc, "AR=" + ar, "RANLIB=" + ranlib,
-              "CFLAGS=" + cflags],
+             ["make", "libbz2.a",
+              "-j{cores_count}".format(cores_count=os.cpu_count()),
+              "CC=" + cc, "AR=" + ar, "RANLIB=" + ranlib, "CFLAGS=" + cflags],
              verbose)
             if not os.path.exists(installPrefix + "/include"):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"],

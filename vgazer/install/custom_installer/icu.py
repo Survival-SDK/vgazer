@@ -89,7 +89,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "--with-library-bits=" + str(hostBitness), "CC=" + hostCc,
               "CXX=" + hostCxx],
              verbose)
-            RunCommand(["make"], verbose)
+            RunCommand(
+             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+             verbose)
             if not isCrossbuild:
                 RunCommand(["make", "install"], verbose)
         if isCrossbuild:
@@ -106,7 +108,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
                   "--enable-tools", "--enable-tests=no", "--enable-samples=no",
                   "CC=" + targetCc, "CXX=" + targetCxx],
                  verbose)
-                RunCommand(["make"], verbose)
+                RunCommand(
+                 ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+                 verbose)
                 RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

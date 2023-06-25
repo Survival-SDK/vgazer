@@ -49,28 +49,15 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
-            #tiffLibs = GetCommandOutputUtf8(
-             #[pkgConfig, "--libs", "--static", "libtiff-4"], verbose=False)
-            #RunCommand(
-             #["sed", "-i",
-              #"-e", "s/"
-              #"AC_CHECK_LIB("
-              #"[tiff], [TIFFClientOpen], [have_tif_lib=yes], [], [-lz]"
-              #")/"
-              #"AC_CHECK_LIB("
-              #"[tiff], [TIFFClientOpen], [have_tif_lib=yes], [], "
-              #"[" + tiffLibs + "]"
-              #")/g",
-              #"./configure.in"],
-             #verbose)
-            #RunCommand(["./autogen.sh"], verbose)
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix, "--disable-sdltest",
               "CPPFLAGS=-I" + installPrefix + "/include",
               "LDFLAGS=-L" + installPrefix + "/lib"],
              verbose)
-            RunCommand(["make"], verbose)
+            RunCommand(
+             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+             verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

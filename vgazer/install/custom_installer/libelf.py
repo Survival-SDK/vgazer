@@ -69,9 +69,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "LDFLAGS=-L" + installPrefix + "/lib"],
              verbose)
         with WorkingDir(extractedDir + "/lib"):
-            RunCommand(["make"], verbose)
+            RunCommand(
+             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+             verbose)
         with WorkingDir(extractedDir + "/libelf"):
-            RunCommand(["make"], verbose)
+            RunCommand(
+             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+             verbose)
             RunCommand(["make", "install"], verbose)
         with WorkingDir(extractedDir + "/config"):
             RunCommand(["make", "install"], verbose)

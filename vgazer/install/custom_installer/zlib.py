@@ -45,9 +45,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             if targetOs == "windows":
                 RunCommand(
-                 ["make", "-f", "./win32/Makefile.gcc",
-                  "PREFIX=" + targetTriplet + "-"],
-                 verbose)
+                 [
+                  "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
+                  "-f", "./win32/Makefile.gcc", "PREFIX=" + targetTriplet + "-"
+                 ],
+                 verbose
+                )
                 if not os.path.exists(installPrefix + "/include"):
                     RunCommand(["mkdir", "-p", installPrefix + "/include"],
                      verbose)
@@ -64,7 +67,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             else:
                 RunCommand(
                  ["./configure", "--prefix=" + installPrefix], verbose)
-                RunCommand(["make"], verbose)
+                RunCommand(
+                 ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+                 verbose)
                 RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

@@ -103,7 +103,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON", "-DCMAKE_AR=" + ar
              ],
              verbose)
-            RunCommand(["make"], verbose)
+            RunCommand(
+             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+             verbose)
             RunCommand(["make", "install"], verbose)
             RunCommand(
              ["mv", installedLibPrefix + "/" + soLibname,

@@ -63,9 +63,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             # INSTALL_BIN=
             # INSTALL_EXEC=true
             RunCommand(
-             ["make", luaTarget, "CC=" + cc, "AR=" + ar, "RANLIB=" + ranlib,
-              "TO_BIN=", "LUA_T=", "LUAC_T="],
-             verbose)
+             [
+              "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
+              luaTarget, "CC=" + cc, "AR=" + ar, "RANLIB=" + ranlib, "TO_BIN=",
+              "LUA_T=", "LUAC_T="
+             ],
+             verbose
+            )
             RunCommand(
              ["make", luaTarget, "install", "INSTALL_TOP=" + installPrefix,
               "TO_BIN=", "LUA_T=", "LUAC_T=", "INSTALL_BIN=",

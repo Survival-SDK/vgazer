@@ -74,7 +74,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["./configure", "--prefix=/usr/local"],
              verbose
             )
-            RunCommand(["make"], verbose)
+            RunCommand(
+             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+             verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

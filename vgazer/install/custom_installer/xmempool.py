@@ -54,7 +54,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "s/(unsigned int)pool->end);/pool->end);/g",
               "xmempool.c"],
              verbose)
-            RunCommand(["make", "static", "CC=" + cc, "AR=" + ar], verbose)
+            RunCommand(
+             [
+              "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
+              "static", "CC=" + cc, "AR=" + ar
+             ],
+             verbose
+            )
             if not os.path.exists(installPrefix + "/include"):
                 RunCommand(["mkdir", "-p", installPrefix + "/include"],
                  verbose)

@@ -59,7 +59,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "-DHB_HAVE_GLIB=ON", "-DHB_HAVE_ICU=ON", "-DHB_BUILD_TESTS=OFF",
               "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"],
              verbose)
-            RunCommand(["make"], verbose)
+            RunCommand(
+             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
+             verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
