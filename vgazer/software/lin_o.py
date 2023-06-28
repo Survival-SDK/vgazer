@@ -365,10 +365,19 @@ data = {
                 "checker": {
                     "type": "custom",
                     "name": "luajit",
+                    "fallback": {
+                        "type": "github",
+                        "user": "LuaJIT",
+                        "repo": "LuaJIT",
+                    },
                 },
                 "installer": {
                     "type": "custom",
                     "name": "luajit",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "luajit-github",
+                    },
                 },
             },
             {
