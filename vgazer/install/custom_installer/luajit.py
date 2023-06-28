@@ -32,7 +32,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tarballUrl = GetTarballUrl()
+    try:
+        tarballUrl = GetTarballUrl()
+    except TarballLost:
+        print("VGAZER: Unable to install", software)
+        raise InstallError("{software} not installed".format(software=software))
+        
     tarballShortFilename = tarballUrl.split("/")[-1]
 
     try:
