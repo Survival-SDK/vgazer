@@ -27,6 +27,17 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
         clonedDir = os.path.join(tempPath, "hash_table")
         with WorkingDir(clonedDir):
+            RunCommand(
+             ["sed", "-i", "-e",
+              "s/int (\*\+key_equals_function)/bool (*key_equals_function)/",
+              "./hash_table.c"],
+             verbose)
+            RunCommand(
+             ["sed", "-i", "-e",
+              "/#include <inttypes.h>/a #include <stdbool.h>", "-e",
+              "s/int (\*\+key_equals_function)/bool (*key_equals_function)/",
+              "./hash_table.h"],
+             verbose)
             RunCommand([cc, "-O2", "-c", "hash_table.c", "-o", "hash_table.o"],
              verbose)
             RunCommand([ar, "rcs", "libhash_table.a", "hash_table.o"], verbose)
