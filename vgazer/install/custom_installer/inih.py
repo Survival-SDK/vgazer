@@ -50,9 +50,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(extractedDir):
             RunCommand(
              [cc, "-c", "ini.c", "-o", "ini.o", "-O2", "-Wall", "-fPIC",
-              "-DINI_STOP_ON_FIRST_ERROR=1", "-DINI_HANDLER_LINENO=1",
-              "-DINI_CALL_HANDLER_ON_NEW_SECTION=1", "-DINI_USE_STACK=0",
-              "-DINI_ALLOW_REALLOC=1"],
+              "-DINI_HANDLER_LINENO=1", "-DINI_CALL_HANDLER_ON_NEW_SECTION=1",
+              "-DINI_USE_STACK=1", "-DINI_MAX_LINE=8192"],
              verbose)
             RunCommand([ar, "rcs", "libinih.a", "ini.o"], verbose)
             if not os.path.exists(installPrefix + "/include"):
