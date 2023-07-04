@@ -2,20 +2,20 @@ import os
 
 from vgazer.command              import GetCommandOutputUtf8
 from vgazer.command              import RunCommand
+from vgazer.config.meson         import ConfigMeson
 from vgazer.exceptions           import CommandError
 from vgazer.exceptions           import GithubApiError
 from vgazer.exceptions           import InstallError
 from vgazer.github_api_error_mgr import GithubApiErrorMgr
-from vgazer.platform             import GetAr
-from vgazer.platform             import GetCc
 from vgazer.platform             import GetInstallPrefix
 from vgazer.store.temp           import StoreTemp
 from vgazer.working_dir          import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
+    configMeson = ConfigMeson(platformData)
+    configMeson.GenerateCrossFile()
+
     installPrefix = GetInstallPrefix(platformData)
-    ar = GetAr(platformData["target"])
-    cc = GetCc(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -26,7 +26,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/benhoyt/inih/releases")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(releases, "benhoyt/inih") as errMgr:
         if errMgr.IsErrorOccured():
@@ -49,20 +49,19 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
-             [cc, "-c", "ini.c", "-o", "ini.o", "-O2", "-Wall", "-fPIC",
-              "-DINI_HANDLER_LINENO=1", "-DINI_CALL_HANDLER_ON_NEW_SECTION=1",
-              "-DINI_USE_STACK=1", "-DINI_MAX_LINE=8192"],
+             [
+              "meson", "_build", "-Dprefix=" + installPrefix,
+              "--libdir={prefix}/lib".format(prefix=installPrefix),
+              "--cross-file", configMeson.GetCrossFileName(),
+              "-Dbuildtype=release", "-Ddefault_library=static", "-Dstrip=true",
+              "-Dwith_INIReader=false", "-Dreport_line_numbers=true",
+              "-Dcall_handler_on_new_section=true", "-Dmax_line_length=8192",
+             ],
              verbose)
-            RunCommand([ar, "rcs", "libinih.a", "ini.o"], verbose)
-            if not os.path.exists(installPrefix + "/include"):
-                RunCommand(["mkdir", "-p", installPrefix + "/include"],
-                 verbose)
-            if not os.path.exists(installPrefix + "/lib"):
-                RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
-            RunCommand(["cp", "./ini.h", installPrefix + "/include"], verbose)
-            RunCommand(["cp", "./libinih.a", installPrefix + "/lib"], verbose)
+            RunCommand(["ninja", "-C", "_build"], verbose)
+            RunCommand(["ninja", "-C", "_build", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
