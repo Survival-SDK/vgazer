@@ -1346,10 +1346,8 @@ data = {
                 "abi": ["any"],
                 "license": ["bsd-3"],
                 "prereqs": [
-                    "meson",
                     "wget",
                     "{triplet}-gcc",
-                    "{triplet}-pkg-config",
                 ],
                 "checker": {
                     "type": "github",
