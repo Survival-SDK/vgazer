@@ -769,6 +769,34 @@ data = {
             },
         ],
     },
+    "zip": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-g++",
+                    "make",
+                    "cmake",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "kuba--",
+                    "repo": "zip",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "zip",
+                },
+            },
+        ],
+    },
     "zlib": {
         "platform": "target",
         "projects": [
