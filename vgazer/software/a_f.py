@@ -424,6 +424,31 @@ data = {
             },
         ],
     },
+    "cfgpath": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "prereqs": [
+                    "wget",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "Malvineous",
+                    "repo": "cfgpath",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "cfgpath",
+                },
+            },
+        ],
+    },
     "cjson": {
         "platform": "target",
         "projects": [
