@@ -6,7 +6,7 @@ from vgazer.config.cmake         import ConfigCmake
 from vgazer.exceptions           import CommandError
 from vgazer.exceptions           import GithubApiError
 from vgazer.exceptions           import InstallError
-from vgazer.github_apierror_mgr import GithubApiErrorMgr
+from vgazer.github_api_error_mgr import GithubApiErrorMgr
 from vgazer.platform             import GetArFullPath
 from vgazer.platform             import GetInstallPrefix
 from vgazer.store.temp           import StoreTemp
