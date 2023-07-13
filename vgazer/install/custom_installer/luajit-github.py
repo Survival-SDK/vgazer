@@ -49,7 +49,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(
              [
               "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
-              "BUILDMODE=static",
+              "CFLAGS=-fPIC", "BUILDMODE=static",
               "CROSS={triplet}-".format(triplet=triplet),
               "TARGET_SYS={os}".format(
                os=platformData["target"].GetOs().capitalize())
@@ -57,8 +57,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand(
              ["make", "install",
-              "PREFIX={prefix}".format(prefix=installPrefix)
-             ],
+              "PREFIX={prefix}".format(prefix=installPrefix)],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
