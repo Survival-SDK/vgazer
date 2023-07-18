@@ -55,16 +55,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ],
              verbose
             )
-            if not os.path.exists(installPrefix + "/include"):
-                RunCommand(["mkdir", "-p", installPrefix + "/include"],
-                 verbose)
-            if not os.path.exists(installPrefix + "/lib"):
-                RunCommand(["mkdir", "-p", installPrefix + "/lib"], verbose)
-            RunCommand(["sh", "-c", "cp ./*.h " + installPrefix + "/include"],
-             verbose)
             RunCommand(
-             ["cp", "./build/lib/libsir_s.a", installPrefix + "/lib"],
-             verbose)
+             [
+              "make", "install", "PREFIX={prefix}".format(prefix=installPrefix)
+             ],
+             verbose
+            )
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")
