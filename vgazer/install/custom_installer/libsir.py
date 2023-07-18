@@ -26,7 +26,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/ryanlederman/libsir/releases")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(releases, "ryanlederman/libsir") as errMgr:
         if errMgr.IsErrorOccured():
@@ -39,9 +39,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
-             ["tar", "--verbose", "--extract", "--gzip", "--file",
-              tarballShortFilename],
-             verbose)
+             [
+              "tar", "--verbose", "--extract", "--gzip", "--file",
+              tarballShortFilename
+             ],
+             verbose
+            )
             output = GetCommandOutputUtf8(
              ["tar", "--list", "--file", tarballShortFilename]
             )
@@ -51,7 +54,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(
              [
               "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
-              "static", "CC=" + cc, "AR=" + ar
+              "static", "CC={cc}".format(cc=cc), "AR={ar}".format(ar=ar)
              ],
              verbose
             )
@@ -63,6 +66,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             )
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
