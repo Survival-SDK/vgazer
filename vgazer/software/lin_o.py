@@ -428,6 +428,32 @@ data = {
             },
         ],
     },
+    "lwrb": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                    "{triplet}-gcc",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "MaJerle",
+                    "repo": "lwrb",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "lwrb",
+                },
+            },
+        ],
+    },
     "m4": {
         "platform": "host",
         "projects": [
