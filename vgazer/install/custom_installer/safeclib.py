@@ -51,7 +51,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["./configure", "--host={triplet}".format(triplet=targetTriplet),
               "--prefix={prefix}".format(prefix=installPrefix),
               "--disable-shared", "--enable-unsafe", "--disable-doc",
-              "--enable-compile-warnings=no", "--disable-Werror"
+              "--enable-compile-warnings=no", "--disable-Werror",
+              "--enable-strmax=268435456"
              ],
              verbose)
             RunCommand(
