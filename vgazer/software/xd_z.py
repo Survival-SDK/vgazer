@@ -389,7 +389,7 @@ data = {
         ],
     },
     "xorg-macros": {
-        "platform": "host",
+        "platform": "target",
         "projects": [
             {
                 "fallback": True,
@@ -403,9 +403,9 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "freedesktop",
-                    "repo": "xorg-macros",
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "798",
                 },
                 "installer": {
                     "type": "custom",
@@ -710,7 +710,9 @@ data = {
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
+                    "{triplet}-pkg-config",
                     "make",
+                    "xorg-macros",
                 ],
                 "checker": {
                     "type": "custom",

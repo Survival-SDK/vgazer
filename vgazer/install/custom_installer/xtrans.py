@@ -84,8 +84,14 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix],
+             [
+              "./configure", "--host=" + targetTriplet,
+              "--prefix=" + installPrefix,
+              "PKG_CONFIG_PATH={prefix}/lib/pkgconfig:"
+              "{prefix}/share/pkgconfig".format(prefix=installPrefix),
+              "PKG_CONFIG_LIBDIR={prefix}/lib/pkgconfig:"
+              "{prefix}/share/pkgconfig".format(prefix=installPrefix),
+             ],
              verbose)
             RunCommand(["make", "install"], verbose)
     except CommandError:
