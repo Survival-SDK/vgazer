@@ -6,7 +6,7 @@ class MirrorsManager():
         self.permittedProtocols = permittedProtocols
         for protocol in permittedProtocols:
             if len(mirrorsList[protocol]) == 0:
-                self.PermittedProtocols.remove(protocol)
+                self.permittedProtocols.remove(protocol)
         if len(self.permittedProtocols) == 0:
             raise NoSuitableMirrors(
              "No suitable mirrors for permitted protocols")
@@ -18,12 +18,12 @@ class MirrorsManager():
 
     def ChangeMirror(self):
         if self.currentMirrorIndex < len(
-         self.mirrorsList[self.currentProtocol]):
+         self.mirrorsList[self.currentProtocol]) - 1:
             self.currentMirrorIndex += 1
         else:
-            protocolIndex = self.permittedProtocols.index[self.currentProtocol]
-            if protocolIndex < len(self.PermittedProtocols):
-                self.currentProtocol = self.PermittedProtocols[
+            protocolIndex = self.permittedProtocols.index(self.currentProtocol)
+            if protocolIndex < len(self.permittedProtocols) - 1:
+                self.currentProtocol = self.permittedProtocols[
                  protocolIndex + 1]
                 self.currentMirrorIndex = 0
             else:
