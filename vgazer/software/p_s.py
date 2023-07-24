@@ -367,6 +367,10 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "pthread-stubs",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "pthread-stubs-gitlab",
+                    }
                 },
             },
             {
