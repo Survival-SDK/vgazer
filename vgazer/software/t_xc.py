@@ -429,7 +429,20 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["buster", "bullseye"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "wget",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
