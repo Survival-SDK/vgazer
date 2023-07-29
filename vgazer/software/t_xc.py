@@ -311,16 +311,16 @@ data = {
                 "abi": ["any"],
                 "license": ["mit"],
                 "prereqs": [
-                    "wget",
                     "{triplet}-pkg-config",
-                    "autoconf",
-                    "make",
+                    "meson",
+                    "ninja",
                     "wayland-scanner",
+                    "wget",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "wayland-project",
-                    "repo": "wayland-protocols",
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "2891",
                 },
                 "installer": {
                     "type": "custom",
