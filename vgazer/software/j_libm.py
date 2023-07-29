@@ -419,10 +419,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libdrm",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "libdrm-github",
-                    },
                 },
             },
             {
