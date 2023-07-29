@@ -651,6 +651,37 @@ data = {
             },
         ],
     },
+    "libudev": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["lgpl-2"],
+                "prereqs": [
+                    "{triplet}-gcc",
+                    "{triplet}-pkg-config",
+                    "autoconf",
+                    "gperf",
+                    "libtool",
+                    "make",
+                    "wget",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "eudev-project",
+                    "repo": "eudev",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libudev",
+                },
+            },
+        ],
+    },
     "libuc": {
         "platform": "target",
         "projects": [
