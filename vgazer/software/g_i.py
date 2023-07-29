@@ -557,6 +557,25 @@ data = {
             },
         ],
     },
+    "glslangvalidator": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "glslang",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "glslang-tools",
+                },
+            },
+        ],
+    },
     "glu": {
         "platform": "target",
         "projects": [
@@ -627,6 +646,25 @@ data = {
                 },
                 "installer": {
                     "type": "not_needed",
+                },
+            },
+        ],
+    },
+    "gperf": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gperf",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "gperf",
                 },
             },
         ],
