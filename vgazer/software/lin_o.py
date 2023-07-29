@@ -148,66 +148,59 @@ data = {
             },
         ],
     },
+    # llvm >= 15.0 required for building mesa
     "llvm": {
         "platform": "host",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["v3.9"],
+                "os": ["any"],
+                "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "{triplet}-gcc",
+                    "cmake",
+                    "git",
+                    "make",
+                    "wget",
+                ],
                 "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "llvm5",
+                    "type": "github",
+                    "user": "llvm",
+                    "repo": "llvm-project",
                 },
                 "installer": {
-                    "type": "apk",
-                    "package": "llvm5",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["v3.10"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "llvm8",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "llvm8",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["edge"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "llvm9",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "llvm9",
+                    "type": "custom",
+                    "name": "llvm",
                 },
             },
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["buster", "bullseye"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
-                    "source": "llvm-defaults",
+                    "source": "llvm-toolchain-17",
                 },
                 "installer": {
                     "type": "apt",
-                    "package": "llvm",
+                    "package": "llvm-17",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bookworm", "trixie", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "llvm-toolchain-15",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "llvm-15",
                 },
             },
             {
