@@ -94,6 +94,38 @@ data = {
             },
         ],
     },
+    "gcc": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "gcc-defaults",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "launchpad",
+                    "distribution": "precise",
+                    "source": "gcc-4.6",
+                },
+                "installer": {
+                    "type": "not_needed",
+                },
+            },
+        ],
+    },
     "gettext": {
         "platform": "host",
         "projects": [
