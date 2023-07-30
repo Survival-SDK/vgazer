@@ -378,11 +378,10 @@ data = {
                 "abi": ["any"],
                 "license": ["lgpl-3"],
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
                     "make",
-                    "zlib",
+                    "wget",
                 ],
                 "checker": {
                     "type": "custom",
