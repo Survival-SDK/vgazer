@@ -159,8 +159,8 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "prereqs": [
-                    "{triplet}-gcc",
                     "cmake",
+                    "gcc",
                     "git",
                     "make",
                     "wget",
