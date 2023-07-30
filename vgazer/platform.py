@@ -167,12 +167,15 @@ def GetRanlib(targetPlatformData):
     )
 
 def GetPkgConfig(targetPlatformData):
-    return GetUtility(
-     targetPlatformData,
-     directories=["/usr/bin", "/usr/local/bin"],
-     suffixes=["-pkg-config"],
-     fallbackFilenames=["pkg-config"]
-    )
+    try:
+        return GetUtility(
+         targetPlatformData,
+         directories=["/usr/bin", "/usr/local/bin"],
+         suffixes=["-pkg-config"],
+         fallbackFilenames=["pkg-config"]
+        )
+    except FileNotFound:
+        return "pkg-config"
 
 def GetStrip(targetPlatformData):
     return GetUtility(
