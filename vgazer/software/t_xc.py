@@ -364,32 +364,25 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "fallback": True,
                 "arch": ["any"],
-                "os": ["alpine"],
+                "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "gcc",
+                    "meson",
+                    "pkg-config",
+                    "wget",
+                ],
                 "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "wayland-dev",
+                    "type": "custom",
+                    "name": "wayland",
                 },
                 "installer": {
-                    "type": "apk",
-                    "package": "wayland-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "debian",
-                    "source": "wayland",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": ["libwayland-bin", "libwayland-dev"],
+                    "type": "custom",
+                    "name": "wayland-scanner",
                 },
             },
             {
