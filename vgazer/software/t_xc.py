@@ -904,11 +904,11 @@ data = {
                 "abi": ["any"],
                 "license": ["mit"],
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
-                    "make",
                     "{triplet}-pkg-config",
-                    "xproto"
+                    "make",
+                    "wget",
+                    "xorgproto"
                 ],
                 "checker": {
                     "type": "custom",

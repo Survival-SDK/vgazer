@@ -10,16 +10,14 @@ data = {
                 "abi": ["any"],
                 "license": ["hpnd-sv"],
                 "prereqs": [
-                    "wget",
-                    "make",
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
-                    "xorg-macros",
-                    "damageproto",
                     "libxfixes",
-                    "fixesproto",
-                    "xextproto",
+                    "make",
+                    "wget",
                     "xlib",
+                    "xorg-macros",
+                    "xorgproto",
                 ],
                 "checker": {
                     "type": "custom",
@@ -71,210 +69,6 @@ data = {
                     "type": "launchpad",
                     "distribution": "precise",
                     "source": "libxdamage",
-                },
-                "installer": {
-                    "type": "not_needed",
-                },
-            },
-        ],
-    },
-    "xextproto": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
-                "prereqs": [
-                    "wget",
-                    "{triplet}-gcc",
-                    "make",
-                ],
-                "checker": {
-                    "type": "custom",
-                    "name": "xextproto",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "xextproto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "xorgproto",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "xorgproto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["stretch"],
-                "abi": ["gnu"],
-                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
-                "checker": {
-                    "type": "debian",
-                    "source": "x11proto-xext",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "x11proto-xext-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["buster"],
-                "abi": ["gnu"],
-                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
-                "checker": {
-                    "type": "debian",
-                    "source": "xorgproto",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "x11proto-xext-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["bullseye", "bookworm", "sid"],
-                "abi": ["gnu"],
-                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
-                "checker": {
-                    "type": "debian",
-                    "source": "xorgproto",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "x11proto-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "hpnd", "hpnd-sv", "x11", "smlnj"],
-                "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "x11proto-xext",
-                },
-                "installer": {
-                    "type": "not_needed",
-                },
-            },
-        ],
-    },
-    "xf86vidmodeproto": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["x11"],
-                "prereqs": [
-                    "wget",
-                    "{triplet}-gcc",
-                    "make",
-                ],
-                "checker": {
-                    "type": "custom",
-                    "name": "xf86vidmodeproto",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "xf86vidmodeproto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["x11"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "xorgproto",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "xorgproto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["stretch"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "checker": {
-                    "type": "debian",
-                    "source": "x11proto-xf86vidmode",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "x11proto-xf86vidmode-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["buster"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "checker": {
-                    "type": "debian",
-                    "source": "xorgproto",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "x11proto-xf86vidmode-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["bullseye", "bookworm", "sid"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "checker": {
-                    "type": "debian",
-                    "source": "xorgproto",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "x11proto-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "x11proto-xf86vidmode",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -293,16 +87,13 @@ data = {
                 "abi": ["any"],
                 "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
-                    "make",
                     "{triplet}-pkg-config",
-                    "xproto",
-                    "xextproto",
-                    "xtrans",
+                    "make",
+                    "wget",
                     "xcb",
-                    "kbproto",
-                    "inputproto",
+                    "xtrans",
+                    "xorgproto",
                 ],
                 "checker": {
                     "type": "custom",
@@ -457,7 +248,7 @@ data = {
             },
         ],
     },
-    "xproto": {
+    "xorgproto": {
         "platform": "target",
         "projects": [
             {
@@ -466,19 +257,23 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
-                "license": ["mit", "smlnj"],
+                "license": [
+                    "bsd-2", "hpnd", "hpnd-sv", "icu", "mit", "sgi-b-2",
+                    "smlnj", "x11"
+                ],
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
-                    "make",
+                    "meson",
+                    "wget",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "xproto",
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "788",
                 },
                 "installer": {
                     "type": "custom",
-                    "name": "xproto",
+                    "name": "xorgproto",
                 },
             },
             {
@@ -555,15 +350,15 @@ data = {
                 "abi": ["any"],
                 "license": ["hpnd-sv"],
                 "prereqs": [
-                    "wget",
-                    "autoconf",
-                    "libtool",
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
+                    "autoconf",
+                    "libtool",
                     "make",
-                    "xorg-macros",
+                    "wget",
                     "xlib",
-                    "renderproto",
+                    "xorg-macros",
+                    "xorgproto",
                 ],
                 "checker": {
                     "type": "github",
@@ -648,12 +443,12 @@ data = {
                 "abi": ["any"],
                 "license": ["hpnd-sv"],
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
                     "make",
+                    "wget",
                     "xorg-macros",
-                    "xproto",
+                    "xorgproto",
                 ],
                 "checker": {
                     "type": "custom",
