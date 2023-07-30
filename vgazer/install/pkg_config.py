@@ -61,7 +61,7 @@ def InstallPkgConfig(software, triplet, platformData, verbose):
              verbose)
             RunCommand(
              [
-              "chmod", "u+x", "/usr/local/bin/" + triplet + "-pkg-config"
+              "chmod", "+x", "/usr/local/bin/" + triplet + "-pkg-config"
              ],
              verbose)
 
