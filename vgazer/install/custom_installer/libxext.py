@@ -1,16 +1,14 @@
 import os
 
-from vgazer.command              import GetCommandOutputUtf8
-from vgazer.command              import RunCommand
-from vgazer.exceptions           import CommandError
-from vgazer.exceptions           import GithubApiError
-from vgazer.exceptions           import InstallError
-from vgazer.github_api_error_mgr import GithubApiErrorMgr
-from vgazer.platform             import GetInstallPrefix
-from vgazer.platform             import GetTriplet
-from vgazer.store.temp           import StoreTemp
-from vgazer.working_dir          import WorkingDir
+from vgazer.command     import GetCommandOutputUtf8
+from vgazer.command     import RunCommand
 from vgazer.env_vars    import EnvVar
+from vgazer.exceptions  import CommandError
+from vgazer.exceptions  import InstallError
+from vgazer.platform    import GetInstallPrefix
+from vgazer.platform    import GetTriplet
+from vgazer.store.temp  import StoreTemp
+from vgazer.working_dir import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -20,39 +18,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    try:
-        tags = auth["github"].GetJson(
-         "https://api.github.com/repos/freedesktop/libXext/tags")
-    except ConnectionError:
-        print("VGAZER: Unable to know last version of", software)
-        raise InstallError(software + " not installed")
+    tags = auth["base"].GetJson(
+     "https://gitlab.freedesktop.org/api/v4/projects/714/repository/tags")
 
-    with GithubApiErrorMgr(tags, "freedesktop/libXext") as errMgr:
-        if errMgr.IsErrorOccured():
-            raise GithubApiError(errMgr.GetErrorText())
-
-    tagNum = 0
-    for tag in tags:
-        if tag["name"] in [
-         "xo-6_7_0",
-         "xf86-012804-2330",
-         "xf86-4_4_99_1",
-         "xf86-4_4_0",
-         "xf86-4_3_99_903",
-         "xf86-4_3_99_903_special",
-         "xf86-4_3_99_902",
-         "xf86-4_3_99_901",
-         "xf86-4_3_99_16",
-         "xf86-4_3_0_1",
-         "sco_port_update-base",
-         "rel-0-6-1",
-         "lg3d-rel-0-7-0",
-        ]:
-            tagNum = tagNum + 1
-        else:
-            break
-
-    tarballUrl = tags[tagNum]["tarball_url"]
+    tarballUrl = (
+     "https://gitlab.freedesktop.org/api/v4/projects/714/repository/"
+     "archive.tar.gz?sha=" + tags[0]["name"]
+    )
     tarballShortFilename = tarballUrl.split("/")[-1]
 
     try:
