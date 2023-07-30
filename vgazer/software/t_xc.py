@@ -224,7 +224,7 @@ data = {
             },
         ],
     },
-    "wayland-egl-backend": {
+    "wayland-libs": {
         "platform": "target",
         "projects": [
             {
@@ -235,13 +235,13 @@ data = {
                 "abi": ["any"],
                 "license": ["mit"],
                 "prereqs": [
-                    "wget",
-                    "{triplet}-gcc",
                     "{triplet}-g++",
+                    "{triplet}-gcc",
                     "{triplet}-pkg-config",
-                    "make",
                     "libffi",
-                    "libxml2",
+                    "meson",
+                    "wayland-scanner",
+                    "wget",
                 ],
                 "checker": {
                     "type": "custom",
@@ -280,7 +280,7 @@ data = {
                 },
                 "installer": {
                     "type": "apt",
-                    "package": "libwayland-egl-backend-dev",
+                    "package": ["libwayland-dev", "libwayland-egl-backend-dev"],
                 },
             },
             {

@@ -2,13 +2,13 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-from vgazer.command         import RunCommand
-from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import InstallError
-from vgazer.platform        import GetInstallPrefix
-from vgazer.platform        import GetTriplet
-from vgazer.store.temp      import StoreTemp
-from vgazer.working_dir     import WorkingDir
+from vgazer.command      import RunCommand
+from vgazer.config.meson import ConfigMeson
+from vgazer.exceptions   import CommandError
+from vgazer.exceptions   import InstallError
+from vgazer.platform     import GetInstallPrefix
+from vgazer.store.temp   import StoreTemp
+from vgazer.working_dir  import WorkingDir
 
 def GetTarballUrl():
     response = requests.get("https://wayland.freedesktop.org/releases.html")
@@ -21,8 +21,8 @@ def GetTarballUrl():
     maxVersionMinor = -1
     maxVersionPatch = -1
     for link in links:
-        if ("wayland-" in link.text and ".tar.xz" in link.text and "-protocols"
-         not in link.text):
+        if ("wayland-" in link.text and ".tar.xz" in link.text
+         and "-protocols" not in link.text and "-utils" not in link.text):
             version = link.text.split("-")[1].split(".tar.xz")[0].split(".")
             versionMajor = int(version[0])
             versionMinor = int(version[1])
@@ -32,26 +32,25 @@ def GetTarballUrl():
                 maxVersionMajor = versionMajor
                 maxVersionMinor = versionMinor
                 maxVersionPatch = versionPatch
-                url = ("https://wayland.freedesktop.org/"
-                 + link["href"])
+                url = link["href"]
             elif (versionMajor == maxVersionMajor
              and versionMinor > maxVersionMinor):
                 maxVersionMinor = versionMinor
                 maxVersionPatch = versionPatch
-                url = ("https://wayland.freedesktop.org/"
-                 + link["href"])
+                url = link["href"]
             elif (versionMajor == maxVersionMajor
              and versionMinor == maxVersionMinor
              and versionPatch > maxVersionPatch):
                 maxVersionPatch = versionPatch
-                url = ("https://wayland.freedesktop.org/"
-                 + link["href"])
+                url = link["href"]
 
     return url
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
+    configMeson = ConfigMeson(platformData)
+    configMeson.GenerateCrossFile()
+
     installPrefix = GetInstallPrefix(platformData)
-    targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -70,20 +69,17 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix, "--enable-static",
-              "--disable-documentation",
-              "FFI_CFLAGS=-I" + installPrefix + "/include",
-              "FFI_LIBS=-L" + installPrefix + "/lib -lffi",
-              "LIBXML_CFLAGS=-I" + installPrefix + "/include/libxml2",
-              "LIBXML_LIBS=-L" + installPrefix + "/lib -lxml2"],
+             [
+              "meson", "setup", "build/",
+              "--prefix={prefix}".format(prefix=installPrefix), "--cross-file",
+              configMeson.GetCrossFileName(), "-Dscanner=false",
+              "-Dtests=false", "-Ddocumentation=false", "-Ddtd_validation=false"
+             ],
              verbose)
-            RunCommand(
-             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
-             verbose)
-            RunCommand(["make", "install"], verbose)
+            RunCommand(["ninja", "-C", "build/"], verbose)
+            RunCommand(["ninja", "-C", "build/", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
