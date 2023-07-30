@@ -382,6 +382,7 @@ data = {
                     "{triplet}-pkg-config",
                     "make",
                     "wget",
+                    "zlib",
                 ],
                 "checker": {
                     "type": "custom",
