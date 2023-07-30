@@ -1,13 +1,14 @@
 import os
 
-from vgazer.command         import GetCommandOutputUtf8
-from vgazer.command         import RunCommand
-from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import InstallError
-from vgazer.platform        import GetInstallPrefix
-from vgazer.platform        import GetTriplet
-from vgazer.store.temp      import StoreTemp
-from vgazer.working_dir     import WorkingDir
+from vgazer.command     import GetCommandOutputUtf8
+from vgazer.command     import RunCommand
+from vgazer.env_vars    import EnvVar
+from vgazer.exceptions  import CommandError
+from vgazer.exceptions  import InstallError
+from vgazer.platform    import GetInstallPrefix
+from vgazer.platform    import GetTriplet
+from vgazer.store.temp  import StoreTemp
+from vgazer.working_dir import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -38,9 +39,20 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             )
         extractedDir = os.path.join(tempPath,
          output.splitlines()[0].split("/")[0])
-        with WorkingDir(extractedDir):
+        with (WorkingDir(extractedDir),
+         EnvVar("ACLOCAL", "aclocal -I {prefix}/share/aclocal".format(
+          prefix=installPrefix))):
+            RunCommand(["libtoolize"], verbose)
             RunCommand(
-             ["./autogen.sh", "--host=" + targetTriplet,
+             ["aclocal", "-I",
+              "{prefix}/share/aclocal".format(prefix=installPrefix)
+             ],
+             verbose)
+            RunCommand(["autoheader"], verbose)
+            RunCommand(["automake", "--add-missing"], verbose)
+            RunCommand(["autoreconf"], verbose)
+            RunCommand(
+             ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix,
               "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig"],
              verbose)

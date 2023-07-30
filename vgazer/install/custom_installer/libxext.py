@@ -10,6 +10,7 @@ from vgazer.platform             import GetInstallPrefix
 from vgazer.platform             import GetTriplet
 from vgazer.store.temp           import StoreTemp
 from vgazer.working_dir          import WorkingDir
+from vgazer.env_vars    import EnvVar
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -66,7 +67,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             )
         extractedDir = os.path.join(tempPath,
          output.splitlines()[0].split("/")[0])
-        with WorkingDir(extractedDir):
+        with (WorkingDir(extractedDir),
+         EnvVar("ACLOCAL", "aclocal -I {prefix}/share/aclocal".format(
+          prefix=installPrefix))):
             RunCommand(
              ["./autogen.sh", "--host=" + targetTriplet,
               "--prefix=" + installPrefix,
