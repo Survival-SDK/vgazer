@@ -2,14 +2,14 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-from vgazer.command         import RunCommand
-from vgazer.config.meson    import ConfigMeson
-from vgazer.env_vars        import SetEnvVar
-from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import InstallError
-from vgazer.platform        import GetInstallPrefix
-from vgazer.store.temp      import StoreTemp
-from vgazer.working_dir     import WorkingDir
+from vgazer.command      import RunCommand
+from vgazer.config.meson import ConfigMeson
+from vgazer.env_vars     import SetEnvVar
+from vgazer.exceptions   import CommandError
+from vgazer.exceptions   import InstallError
+from vgazer.platform     import GetInstallPrefix
+from vgazer.store.temp   import StoreTemp
+from vgazer.working_dir  import WorkingDir
 
 def GetTarballUrl():
     response = requests.get("https://mesa.freedesktop.org/archive/")
@@ -101,10 +101,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["meson", "build/", "--prefix=" + installPrefix,
-              "--libdir=" + installPrefix + "/lib",
+             ["meson", "setup", "build/", "--prefix=" + installPrefix,
+              "--libdir=lib",
               "--cross-file", configMeson.GetCrossFileName(),
-              "-Dplatforms=x11,wayland,drm,surfaceless"],
+              "-Dplatforms=x11,wayland", "-Dvalgrind=disabled"],
              verbose)
             RunCommand(["ninja", "-C", "build/"], verbose)
             RunCommand(["ninja", "-C", "build/", "install"], verbose)
