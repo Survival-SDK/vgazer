@@ -194,6 +194,11 @@ def GetLlvmConfig(targetPlatformData):
         if os.path.isfile(llvmFilename):
             return llvmFilename
 
+        llvmFilename = "/usr/local/bin/llvm-config-{ver}".format(
+         ver=str(llvmVersion))
+        if os.path.isfile(llvmFilename):
+            return llvmFilename
+
     return "llvm-config"
 
 def GetSoFilename(targetPlatformData, name):
