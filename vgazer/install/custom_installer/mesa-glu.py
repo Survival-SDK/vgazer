@@ -1,15 +1,16 @@
 import os
 import requests
-from bs4 import BeautifulSoup
+from bs4     import BeautifulSoup
+from pathlib import Path
 
-from vgazer.command         import RunCommand
-from vgazer.exceptions      import CommandError
-from vgazer.exceptions      import InstallError
-from vgazer.exceptions      import TarballLost
-from vgazer.platform        import GetInstallPrefix
-from vgazer.platform        import GetTriplet
-from vgazer.store.temp      import StoreTemp
-from vgazer.working_dir     import WorkingDir
+from vgazer.command      import RunCommand
+from vgazer.config.meson import ConfigMeson
+from vgazer.exceptions   import CommandError
+from vgazer.exceptions   import InstallError
+from vgazer.exceptions   import TarballLost
+from vgazer.platform     import GetInstallPrefix
+from vgazer.store.temp   import StoreTemp
+from vgazer.working_dir  import WorkingDir
 
 def GetTarballUrl():
     response = requests.get("https://mesa.freedesktop.org/archive/glu")
@@ -22,9 +23,12 @@ def GetTarballUrl():
     maxVersionMinor = -1
     maxVersionPatch = -1
     for link in links:
-        if ("glu-" in link.text and ".tar.gz" in link.text
+        if ("glu-" in link.text
+         and (".tar.gz" in link.text or ".tar.xz" in link.text)
          and ".sig" not in link.text):
-            version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
+            arfmt = ".tar.gz" if ".tar.gz" in link.text else ".tar.xz";
+
+            version = link.text.split("-")[1].split(arfmt)[0].split(".")
             versionMajor = int(version[0])
             versionMinor = int(version[1])
             versionPatch = int(version[2])
@@ -51,11 +55,13 @@ def GetTarballUrl():
     if url is not None:
         return url
 
-    raise TarballLost("Unable to find tarball of glib's last version")
+    raise TarballLost("Unable to find tarball of mesa-glu last version")
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
+    configMeson = ConfigMeson(platformData)
+    configMeson.GenerateCrossFile()
+
     installPrefix = GetInstallPrefix(platformData)
-    targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -63,27 +69,31 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     tarballUrl = GetTarballUrl()
     tarballShortFilename = tarballUrl.split("/")[-1]
+    ext = Path(tarballShortFilename).suffix
 
     try:
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
-             ["tar", "--verbose", "--extract", "--gzip", "--file",
-              tarballShortFilename],
+             [
+              "tar", "--verbose", "--extract",
+              "--gzip" if ext == "gz" else "--xz", "--file",
+              tarballShortFilename
+             ],
              verbose)
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix,
-              "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig"],
+             ["meson", "setup", "build/",
+              "--prefix={prefix}".format(prefix=installPrefix),
+              "--cross-file", configMeson.GetCrossFileName(),
+              "-Dgl_provider=gl"
+             ],
              verbose)
-            RunCommand(
-             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
-             verbose)
-            RunCommand(["make", "install"], verbose)
+            RunCommand(["ninja", "-C", "build/"], verbose)
+            RunCommand(["ninja", "-C", "build/", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
