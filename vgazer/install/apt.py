@@ -1,6 +1,8 @@
-from vgazer.command     import RunCommand
-from vgazer.exceptions  import CommandError
-from vgazer.exceptions  import InstallError
+from vgazer.command    import RunCommand
+from vgazer.exceptions import CommandError
+from vgazer.exceptions import InstallError
+
+aptUpdateCalled = False
 
 def InstallPackageDebian(software, package, hostPlatform, verbose):
     try:
@@ -33,6 +35,12 @@ def InstallPackage(software, package, hostPlatform, verbose):
         InstallPackageOther(software, package, hostPlatform, verbose);
 
 def InstallApt(software, packages, postInstallCommands, hostPlatform, verbose):
+    global aptUpdateCalled
+
+    if not aptUpdateCalled:
+        RunCommand(["apt-get", "update"], verbose)
+        aptUpdateCalled = True
+
     if isinstance(packages, list):
         for package in packages:
             InstallPackage(software, package, hostPlatform, verbose)
