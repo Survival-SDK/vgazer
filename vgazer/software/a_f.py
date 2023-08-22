@@ -437,6 +437,9 @@ data = {
                 "prereqs": [
                     "wget",
                 ],
+                "fallback_prereqs": [
+                    "git",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "Malvineous",
@@ -445,6 +448,10 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "cfgpath",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "cfgpath-master",
+                    }
                 },
             },
         ],

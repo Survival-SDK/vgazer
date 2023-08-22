@@ -86,6 +86,9 @@ data = {
                 "prereqs": [
                     "wget",
                 ],
+                "fallback_prereqs": [
+                    "git",
+                ],
                 "checker": {
                     "type": "github",
                     "user": "attractivechaos",
@@ -95,6 +98,10 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "ketopt",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "ketopt-master",
+                    }
                 },
             },
         ],
