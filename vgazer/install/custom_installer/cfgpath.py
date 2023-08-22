@@ -1,9 +1,9 @@
 import os
 
-from vgazer.command     import RunCommand
-from vgazer.exceptions  import CommandError
-from vgazer.exceptions  import InstallError
-from vgazer.platform    import GetInstallPrefix
+from vgazer.command    import RunCommand
+from vgazer.exceptions import CommandError
+from vgazer.exceptions import InstallError
+from vgazer.platform   import GetInstallPrefix
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -17,7 +17,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["mkdir", "-p", "{prefix}/include".format(prefix=installPrefix)],
              verbose)
         RunCommand(
-         ["wget", "-P", "{prefix}/include".format(prefix=installPrefix), url],
+         [
+          "wget", "--read-timeout=10", "-P",
+          "{prefix}/include".format(prefix=installPrefix), url
+         ],
          verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
