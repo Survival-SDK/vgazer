@@ -351,10 +351,11 @@ data = {
                 "abi": ["any"],
                 "license": ["mit"],
                 "prereqs": [
-                    "wget",
+                    "git",
                     "make",
                     "{triplet}-gcc",
                 ],
+                # TODO(edomin): check version like in installer
                 "checker": {
                     "type": "custom",
                     "name": "luajit",
@@ -367,10 +368,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "luajit",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "luajit-github",
-                    },
                 },
             },
             {

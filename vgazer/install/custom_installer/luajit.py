@@ -1,28 +1,42 @@
 import os
-import requests
-from bs4 import BeautifulSoup
 
-from vgazer.command     import RunCommand
-from vgazer.exceptions  import CommandError
-from vgazer.exceptions  import InstallError
-from vgazer.exceptions  import TarballLost
-from vgazer.platform    import GetInstallPrefix
-from vgazer.platform    import GetTriplet
-from vgazer.store.temp  import StoreTemp
-from vgazer.working_dir import WorkingDir
+from vgazer.command              import RunCommand
+from vgazer.exceptions           import CommandError
+from vgazer.exceptions           import GithubApiError
+from vgazer.exceptions           import InstallError
+from vgazer.exceptions           import VersionCheckError
+from vgazer.github_api_error_mgr import GithubApiErrorMgr
+from vgazer.platform             import GetInstallPrefix
+from vgazer.platform             import GetTriplet
+from vgazer.store.temp           import StoreTemp
+from vgazer.working_dir          import WorkingDir
 
-def GetTarballUrl():
-    response = requests.get("http://luajit.org/download.html")
-    html = response.content
-    parsedHtml = BeautifulSoup(html, "html.parser")
+def getLatestVersion(branches, software):
+    maxMajor = -1
+    maxMinor = -1
 
-    links = parsedHtml.find_all("a")
-    for link in links:
-        if "download/LuaJIT-" in link["href"]:
-            return link["href"]
+    for branch in branches:
+        if not branch["name"].startswith("v"):
+            continue
 
-    raise TarballLost(
-     "Unable to find tarball with last stable release of Lua")
+        tokens = branch["name"][1:].split(".")
+        major = int(tokens[0])
+        minor = int(tokens[1])
+
+        if major > maxMajor:
+            maxMajor = major
+            maxMinor = 0
+            continue
+
+        if major == maxMajor and minor > maxMinor:
+            maxMinor = minor
+            continue
+
+    if maxMajor == -1 or maxMinor == -1:
+        raise VersionCheckError(
+         "Unable to get last version of {software}".format(software=software))
+
+    return "v{major}.{minor}".format(major=maxMajor, minor=maxMinor)
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -33,22 +47,30 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
     try:
-        tarballUrl = GetTarballUrl()
-    except TarballLost:
-        print("VGAZER: Unable to install", software)
+        branches = auth["github"].GetJson(
+         "https://api.github.com/repos/LuaJIT/LuaJIT/branches")
+    except ConnectionError:
+        print("VGAZER: Unable to know last version of", software)
         raise InstallError("{software} not installed".format(software=software))
-        
-    tarballShortFilename = tarballUrl.split("/")[-1]
+
+    with GithubApiErrorMgr(branches, "LuaJIT/LuaJIT") as errMgr:
+        if errMgr.IsErrorOccured():
+            raise GithubApiError(errMgr.GetErrorText())
+
+    try:
+        latest = getLatestVersion(branches, software)
+    except VersionCheckError:
+        print("VGAZER: Unable to know last version branch of", software)
+        print("VGAZER: Building master branch")
+        latest = "master"
 
     try:
         with WorkingDir(tempPath):
-            RunCommand(["wget", "-P", "./", tarballUrl], verbose)
-            RunCommand(
-             ["tar", "--verbose", "--extract", "--gzip", "--file",
-              tarballShortFilename],
+            RunCommand(["git", "clone", "https://github.com/LuaJIT/LuaJIT.git"],
              verbose)
-        extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
-        with WorkingDir(extractedDir):
+        clonedDir = os.path.join(tempPath, "LuaJIT")
+        with WorkingDir(clonedDir):
+            RunCommand(["git", "checkout", latest], verbose)
             RunCommand(
              [
               "make", "-j{cores_count}".format(cores_count=os.cpu_count()),
