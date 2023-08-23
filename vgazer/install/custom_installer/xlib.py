@@ -1,13 +1,13 @@
 import os
 
-from vgazer.command             import RunCommand
-from vgazer.exceptions          import CommandError
-from vgazer.exceptions          import InstallError
-from vgazer.install.utils_xorg  import GetTarballUrl
-from vgazer.platform            import GetInstallPrefix
-from vgazer.platform            import GetTriplet
-from vgazer.store.temp          import StoreTemp
-from vgazer.working_dir         import WorkingDir
+from vgazer.command            import RunCommand
+from vgazer.exceptions         import CommandError
+from vgazer.exceptions         import InstallError
+from vgazer.install.utils_xorg import GetTarballUrl
+from vgazer.platform           import GetInstallPrefix
+from vgazer.platform           import GetTriplet
+from vgazer.store.temp         import StoreTemp
+from vgazer.working_dir        import WorkingDir
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
