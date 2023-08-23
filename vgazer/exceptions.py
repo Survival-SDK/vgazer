@@ -76,11 +76,11 @@ class TarballLost(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class UnknownInstaller(Exception):
+class UnexpectedOsType(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class UnexpectedOsType(Exception):
+class UnknownInstaller(Exception):
     def __init__(self, message):
         super().__init__(message)
 
