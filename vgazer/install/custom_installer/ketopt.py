@@ -14,14 +14,19 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     )
 
     try:
-        if not os.path.exists("{prefix}/include".format(prefix=installPrefix)):
+        if not os.path.exists(
+         "{prefix}/include/klib".format(prefix=installPrefix)):
             RunCommand(
-             ["mkdir", "-p", "{prefix}/include".format(prefix=installPrefix)],
-             verbose)
+             [
+              "mkdir", "-p",
+              "{prefix}/include/klib".format(prefix=installPrefix)
+             ],
+             verbose
+            )
         RunCommand(
          [
           "wget", "--read-timeout=10", "-P",
-          "{prefix}/include".format(prefix=installPrefix), url
+          "{prefix}/include/klib".format(prefix=installPrefix), url
          ],
          verbose)
     except CommandError:

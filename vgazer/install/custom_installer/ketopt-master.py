@@ -22,16 +22,17 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         clonedDir = os.path.join(tempPath, "klib")
         with WorkingDir(clonedDir):
             if not os.path.exists(
-             "{prefix}/include".format(prefix=installPrefix)):
+             "{prefix}/include/klib".format(prefix=installPrefix)):
                 RunCommand(
                  [
-                  "mkdir", "-p", "{prefix}/include".format(prefix=installPrefix)
+                  "mkdir", "-p",
+                  "{prefix}/include/klib".format(prefix=installPrefix)
                  ],
                  verbose)
             RunCommand(
              [
               "cp", "./ketopt.h",
-              "{prefix}/include".format(prefix=installPrefix)
+              "{prefix}/include/klib".format(prefix=installPrefix)
              ],
              verbose)
     except CommandError:
