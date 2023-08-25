@@ -106,6 +106,39 @@ data = {
             },
         ],
     },
+    "kvec": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "wget",
+                ],
+                "fallback_prereqs": [
+                    "git",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "attractivechaos",
+                    "repo": "klib",
+                    "ignoreReleases": True,
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "kvec",
+                    "fallback": {
+                        "type": "custom",
+                        "name": "kvec-master",
+                    }
+                },
+            },
+        ],
+    },
     # TODO
     "lazy-winapi.c": {
         "platform": "target",
