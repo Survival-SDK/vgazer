@@ -742,6 +742,32 @@ data = {
             },
         ],
     },
+    "scv": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "prereqs": [
+                    "{triplet}-gcc",
+                    "git",
+                ],
+                "checker": {
+                    "type": "github",
+                    "user": "jibsen",
+                    "repo": "scv",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "scv",
+                },
+            },
+        ],
+    },
     "sdl2": {
         "platform": "target",
         "projects": [
