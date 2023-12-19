@@ -130,7 +130,6 @@ package_build:
 	python3 setup.py sdist bdist_wheel
 
 package_upload:
-	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ \
-     dist/*
+	python3 -m twine upload -r testpypi dist/*
 
 -include ./sample_targets.mk
