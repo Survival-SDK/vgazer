@@ -2,27 +2,15 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
+from vgazer.command     import GetCommandOutputUtf8
 from vgazer.command     import RunCommand
+from vgazer.env_vars    import EnvVar
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.platform    import GetInstallPrefix
 from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
-
-def GetTarballUrl():
-    response = requests.get("https://xcb.freedesktop.org/dist/")
-    html = response.content.decode("utf-8")
-    parsedHtml = BeautifulSoup(html, "html.parser")
-
-    links = parsedHtml.find_all("a")
-
-    for link in links:
-        if (link.text.startswith("libxcb") and ".tar.gz" in link.text
-         and ".sig" not in link.text):
-            url = "https://xcb.freedesktop.org/dist/" + link["href"]
-
-    return url
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -32,29 +20,47 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tarballUrl = GetTarballUrl()
-    tarballShortFilename = tarballUrl.split("/")[-1]
-
     try:
+        tags = auth["base"].GetJson(
+         "https://gitlab.freedesktop.org/api/v4/projects/2429/repository/tags")
+
+        tarballUrl = (
+         "https://gitlab.freedesktop.org/api/v4/projects/2429/repository/"
+         "archive.tar.gz?sha={tag}".format(tag=tags[0]["name"])
+        )
+        tarballShortFilename = tarballUrl.split("/")[-1]
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
              ["tar", "--verbose", "--extract", "--gzip", "--file",
               tarballShortFilename],
              verbose)
-        extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
-        with WorkingDir(extractedDir):
+            output = GetCommandOutputUtf8(
+             ["tar", "--list", "--file", tarballShortFilename]
+            )
+        extractedDir = os.path.join(tempPath,
+         output.splitlines()[0].split("/")[0])
+        with (WorkingDir(extractedDir),
+         EnvVar("ACLOCAL", "aclocal -I {prefix}/share/aclocal".format(
+          prefix=installPrefix))):
             RunCommand(
-             ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix,
-              "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig"],
+             [
+              "./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
+              "--prefix={prefix}".format(prefix=installPrefix),
+              "PKG_CONFIG_PATH={prefix}/lib/pkgconfig".format(
+               prefix=installPrefix)
+             ],
              verbose)
             RunCommand(
              ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
              verbose)
             RunCommand(["make", "install"], verbose)
+
+    except requests.exceptions.ConnectionError:
+        print("VGAZER: Unable to get tarball url for", software)
+        raise InstallError("{software} not installed".format(software=software))
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
