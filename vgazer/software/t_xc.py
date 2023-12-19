@@ -906,24 +906,29 @@ data = {
                 "prereqs": [
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
+                    "autoconf",
+                    "libtool",
                     "make",
                     "wget",
-                    "xorgproto"
+                    "xorg-macros",
+                    "xorgproto",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "xau",
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "706",
+                    "fallback": {
+                        "type": "github",
+                        "user": "freedesktop",
+                        "repo": "xorg-libXau",
+                    }
                 },
                 "installer": {
                     "type": "custom",
                     "name": "xau",
                     "fallback": {
                         "type": "custom",
-                        "name": "xau-gitlab",
-                        "fallback": {
-                            "type": "custom",
-                            "name": "xau-github",
-                        },
+                        "name": "xau-github",
                     },
                 },
             },

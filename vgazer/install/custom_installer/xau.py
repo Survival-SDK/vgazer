@@ -1,64 +1,15 @@
 import os
 import requests
-from bs4 import BeautifulSoup
 
+from vgazer.command     import GetCommandOutputUtf8
 from vgazer.command     import RunCommand
+from vgazer.env_vars    import EnvVar
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.platform    import GetInstallPrefix
 from vgazer.platform    import GetTriplet
 from vgazer.store.temp  import StoreTemp
 from vgazer.working_dir import WorkingDir
-
-def GetMirrorUrlFunc(mirrorsManager, firstTry):
-    if firstTry:
-        return mirrorsManager.GetMirrorUrl
-    else:
-        return mirrorsManager.GetNewMirrorUrl
-
-def GetTarballUrl(mirrorsManager, firstTry=True):
-    getMirrorUrl = GetMirrorUrlFunc(mirrorsManager, firstTry)
-
-    try:
-        response = requests.get(getMirrorUrl() + "/individual/lib/")
-    except requests.exceptions.ConnectionError:
-        return GetTarballUrl(mirrorsManager, firstTry=False)
-    html = response.content.decode("utf-8")
-    parsedHtml = BeautifulSoup(html, "html.parser")
-
-    links = parsedHtml.find_all("a")
-
-    maxVersionMajor = -1
-    maxVersionMinor = -1
-    maxVersionPatch = -1
-    for link in links:
-        if ("libXau-" in link.text and ".tar.gz" in link.text
-         and ".sig" not in link.text):
-            version = link.text.split("-")[1].split(".tar.gz")[0].split(".")
-            versionMajor = int(version[0])
-            versionMinor = int(version[1])
-            versionPatch = int(version[2])
-
-            if versionMajor > maxVersionMajor:
-                maxVersionMajor = versionMajor
-                maxVersionMinor = versionMinor
-                maxVersionPatch = versionPatch
-                url = (getMirrorUrl() + "/individual/lib/"
-                 + link["href"])
-            elif (versionMajor == maxVersionMajor
-             and versionMinor > maxVersionMinor):
-                maxVersionMinor = versionMinor
-                maxVersionPatch = versionPatch
-                url = (getMirrorUrl() + "/individual/lib/"
-                 + link["href"])
-            elif (versionMajor == maxVersionMajor
-             and versionMinor == maxVersionMinor
-             and versionPatch > maxVersionPatch):
-                maxVersionPatch = versionPatch
-                url = (getMirrorUrl() + "/individual/lib/"
-                 + link["href"])
-
-    return url
 
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
@@ -68,11 +19,14 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    xorgMirrorsManager = mirrors["xorg"].CreateMirrorsManager(
-     ["https", "http"])
-
     try:
-        tarballUrl = GetTarballUrl(xorgMirrorsManager)
+        tags = auth["base"].GetJson(
+         "https://gitlab.freedesktop.org/api/v4/projects/706/repository/tags")
+
+        tarballUrl = (
+         "https://gitlab.freedesktop.org/api/v4/projects/706/repository/"
+         "archive.tar.gz?sha={tag}".format(tag=tags[0]["name"])
+        )
         tarballShortFilename = tarballUrl.split("/")[-1]
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
@@ -80,23 +34,31 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["tar", "--verbose", "--extract", "--gzip", "--file",
               tarballShortFilename],
              verbose)
-        extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
-        with WorkingDir(extractedDir):
+            output = GetCommandOutputUtf8(
+             ["tar", "--list", "--file", tarballShortFilename]
+            )
+        extractedDir = os.path.join(tempPath,
+         output.splitlines()[0].split("/")[0])
+        with (WorkingDir(extractedDir),
+         EnvVar("ACLOCAL", "aclocal -I {prefix}/share/aclocal".format(
+          prefix=installPrefix))):
             RunCommand(
-             ["./configure", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix,
-              "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig"],
+             ["./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
+              "--prefix={prefix}".format(prefix=installPrefix),
+              "PKG_CONFIG_PATH={prefix}/lib/pkgconfig:"
+              "{prefix}/share/pkgconfig".format(prefix=installPrefix)
+             ],
              verbose)
             RunCommand(
              ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
              verbose)
             RunCommand(["make", "install"], verbose)
+
     except requests.exceptions.ConnectionError:
         print("VGAZER: Unable to get tarball url for", software)
-        raise InstallError(software + " not installed")
-
+        raise InstallError("{software} not installed".format(software=software))
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
