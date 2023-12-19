@@ -496,8 +496,9 @@ data = {
                     "xorg-macros",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "xtrans",
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "749",
                 },
                 "installer": {
                     "type": "custom",
