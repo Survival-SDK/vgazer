@@ -40,7 +40,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./configure", "--host={triplet}".format(triplet=targetTriplet),
+             ["./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
               "--prefix={prefix}".format(prefix=installPrefix)],
              verbose)
             RunCommand(["make", "install"], verbose)

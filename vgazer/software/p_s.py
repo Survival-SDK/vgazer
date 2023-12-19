@@ -356,6 +356,7 @@ data = {
                 "abi": ["any"],
                 "license": ["x11"],
                 "prereqs": [
+                    "autoconf",
                     "wget",
                     "{triplet}-gcc",
                     "make",
