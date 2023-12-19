@@ -361,16 +361,13 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "pthread-stubs",
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "2428",
                 },
                 "installer": {
                     "type": "custom",
                     "name": "pthread-stubs",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "pthread-stubs-gitlab",
-                    }
                 },
             },
             {
