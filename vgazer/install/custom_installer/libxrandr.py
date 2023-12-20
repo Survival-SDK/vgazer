@@ -23,7 +23,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     tarballUrl = (
      "https://gitlab.freedesktop.org/api/v4/projects/728/repository/"
-     "archive.tar.gz?sha=" + tags[0]["name"]
+     "archive.tar.gz?sha={sha}".format(sha=tags[0]["name"])
     )
     tarballShortFilename = tarballUrl.split("/")[-1]
 
@@ -42,10 +42,13 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with (WorkingDir(extractedDir),
          EnvVar("ACLOCAL", "aclocal -I {prefix}/share/aclocal".format(
           prefix=installPrefix))):
+            RunCommand(["mkdir", "./m4"], verbose)
             RunCommand(
-             ["./autogen.sh", "--host=" + targetTriplet,
-              "--prefix=" + installPrefix,
-              "PKG_CONFIG_PATH=" + installPrefix + "/lib/pkgconfig"],
+             ["./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
+              "--prefix={prefix}".format(prefix=installPrefix),
+              "PKG_CONFIG_PATH={prefix}/lib/pkgconfig".format(
+               prefix=installPrefix)
+             ],
              verbose)
             RunCommand(
              ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
@@ -53,6 +56,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
