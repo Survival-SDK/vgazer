@@ -9,7 +9,8 @@ def InstallPackageDebian(software, package, hostPlatform, verbose):
         RunCommand(
          ["apt-get", "-t",
           "{osver}-backports".format(osver=hostPlatform.GetOsVersion()),
-          "install", "-y", package
+          "install", "-y", "--no-install-recommends", "--no-install-suggests",
+          package
          ],
          verbose)
     except CommandError as e:
@@ -22,7 +23,10 @@ def InstallPackageDebian(software, package, hostPlatform, verbose):
 
 def InstallPackageOther(software, package, hostPlatform, verbose):
     try:
-        RunCommand(["apt-get", "install", "-y", package], verbose)
+        RunCommand(
+         ["apt-get", "install", "-y", "--no-install-recommends",
+          "--no-install-suggests", package],
+         verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(
