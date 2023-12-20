@@ -692,6 +692,7 @@ data = {
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
                     "autoconf",
+                    "automake",
                     "gperf",
                     "libtool",
                     "make",

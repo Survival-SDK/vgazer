@@ -26,14 +26,14 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         print("VGAZER: Unable to know last version of", software)
         raise InstallError("{software} not installed".format(software=software))
 
-    with GithubApiErrorMgr(tags, "eudev-project/eudev") as errMgr:
-        if errMgr.IsErrorOccured():
-            raise GithubApiError(errMgr.GetErrorText())
-
-    tarballUrl = tags[0]["tarball_url"]
-    tarballShortFilename = tarballUrl.split("/")[-1]
-
     try:
+        with GithubApiErrorMgr(tags, "eudev-project/eudev") as errMgr:
+            if errMgr.IsErrorOccured():
+                raise GithubApiError(errMgr.GetErrorText())
+
+        tarballUrl = tags[0]["tarball_url"]
+        tarballShortFilename = tarballUrl.split("/")[-1]
+
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
@@ -64,6 +64,10 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+    except GithubApiError as e:
+        print("VGAZER: Unable to install", software, "-", e)
+    else:
+        print("VGAZER:", software, "installed")
+        return
 
-    print("VGAZER:", software, "installed")
+    raise InstallError("{software} not installed".format(software=software))
