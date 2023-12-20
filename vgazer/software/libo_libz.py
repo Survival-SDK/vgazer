@@ -624,7 +624,34 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch", "buster", "bullseye"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "libtool",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libtool",
+                    "postInstallCommands": [
+                        ["mkdir", "-p", "/usr/local/share/aclocal"],
+                        ["ln", "-s", "/usr/share/aclocal/libtool.m4",
+                         "/usr/local/share/aclocal/libtool.m4"],
+                        ["ln", "-s", "/usr/share/aclocal/ltoptions.m4",
+                         "/usr/local/share/aclocal/ltoptions.m4"],
+                        ["ln", "-s", "/usr/share/aclocal/ltsugar.m4",
+                         "/usr/local/share/aclocal/ltsugar.m4"],
+                        ["ln", "-s", "/usr/share/aclocal/ltversion.m4",
+                         "/usr/local/share/aclocal/ltversion.m4"],
+                        ["ln", "-s", "/usr/share/aclocal/lt~obsolete.m4",
+                         "/usr/local/share/aclocal/lt~obsolete.m4"],
+                    ],
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",

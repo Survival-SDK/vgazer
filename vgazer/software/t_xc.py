@@ -1069,23 +1069,19 @@ data = {
                 "abi": ["any"],
                 "license": ["x11"],
                 "prereqs": [
-                    "wget",
+                    "autoconf",
+                    "automake",
                     "make",
-                ],
-                "fallback_prereqs": [
-                    "autoconf"
+                    "wget",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "xcb-proto",
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "2430",
                 },
                 "installer": {
                     "type": "custom",
                     "name": "xcb-proto",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "xcb-proto-gitlab",
-                    },
                 },
             },
             {

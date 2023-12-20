@@ -41,6 +41,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          output.splitlines()[0].split("/")[0])
         with (WorkingDir(extractedDir),
          EnvVar("ACLOCAL", "aclocal -I {prefix}/share/aclocal".format(
+          prefix=installPrefix)),
+         EnvVar("ACLOCAL_PATH", "{prefix}/share/aclocal".format(
           prefix=installPrefix))):
             RunCommand(
              ["./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),

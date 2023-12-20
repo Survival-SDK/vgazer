@@ -225,11 +225,30 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["stretch", "buster", "bullseye"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
                     "source": "pkg-config",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "pkg-config",
+                    "postInstallCommands": [
+                        ["mkdir", "-p", "/usr/local/share/aclocal"],
+                        ["ln", "-s", "/usr/share/aclocal/pkg.m4",
+                         "/usr/local/share/aclocal/pkg.m4"],
+                    ],
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bookworm", "trixie", "sid"],
+                "abi": ["any"],
+                "checker": {
+                    "type": "debian",
+                    "source": "pkgconf",
                 },
                 "installer": {
                     "type": "apt",
@@ -356,10 +375,11 @@ data = {
                 "abi": ["any"],
                 "license": ["x11"],
                 "prereqs": [
-                    "autoconf",
-                    "wget",
                     "{triplet}-gcc",
+                    "autoconf",
+                    "automake",
                     "make",
+                    "wget",
                 ],
                 "checker": {
                     "type": "gitlab",

@@ -3,6 +3,7 @@ import requests
 
 from vgazer.command     import GetCommandOutputUtf8
 from vgazer.command     import RunCommand
+from vgazer.env_vars    import EnvVar
 from vgazer.exceptions  import CommandError
 from vgazer.exceptions  import InstallError
 from vgazer.platform    import GetInstallPrefix
@@ -38,7 +39,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             )
         extractedDir = os.path.join(tempPath,
          output.splitlines()[0].split("/")[0])
-        with WorkingDir(extractedDir):
+        with (WorkingDir(extractedDir),
+         EnvVar("ACLOCAL", "aclocal -I {prefix}/share/aclocal".format(
+          prefix=installPrefix))):
             RunCommand(
              ["./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
               "--prefix={prefix}".format(prefix=installPrefix)],

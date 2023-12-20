@@ -75,6 +75,26 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "m4",
+                    "make",
+                    "wget",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "autoconf",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "autoconf",
+                },
+            },
+            {
                 "arch": ["any"],
                 "os": ["alpine"],
                 "osVersion": ["any"],
@@ -92,7 +112,9 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                # autoconf >=2.70 required for building xlib
+                # Debian bullseye has only 2.69
+                "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",
@@ -123,6 +145,26 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "prereqs": [
+                    "autoconf",
+                    "make",
+                    "wget",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "automake",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "automake",
+                },
+            },
+            {
                 "arch": ["any"],
                 "os": ["alpine"],
                 "osVersion": ["any"],
@@ -140,21 +182,10 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["stretch"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "debian",
-                    "source": "automake-1.15",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "automake",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
+                # autoconf >=2.70 required for building xlib
+                # Debian bullseye has only 2.69
+                # automake depends on autoconf
+                "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",

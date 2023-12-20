@@ -89,6 +89,7 @@ data = {
                 "prereqs": [
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
+                    "autoconf",
                     "make",
                     "wget",
                     "xcb",
@@ -96,8 +97,9 @@ data = {
                     "xorgproto",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "xlib",
+                    "type": "gitlab",
+                    "host": "gitlab.freedesktop.org",
+                    "id": "701",
                 },
                 "installer": {
                     "type": "custom",
@@ -189,9 +191,10 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "prereqs": [
-                    "wget",
                     "autoconf",
+                    "automake",
                     "make",
+                    "wget",
                 ],
                 "checker": {
                     "type": "gitlab",
