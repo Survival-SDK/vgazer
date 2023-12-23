@@ -47,19 +47,19 @@ def GetTarballUrl():
                 maxVersionMinor = versionMinor
                 maxVersionPatch = versionPatch
                 maxVersionRc = versionRc
-                url = "https://mesa.freedesktop.org/archive/" + link["href"]
+                url = "https://mesa.freedesktop.org/archive/{href}".format(href=link["href"])
             elif (versionMajor == maxVersionMajor
              and versionMinor > maxVersionMinor):
                 maxVersionMinor = versionMinor
                 maxVersionPatch = versionPatch
                 maxVersionRc = versionRc
-                url = "https://mesa.freedesktop.org/archive/" + link["href"]
+                url = "https://mesa.freedesktop.org/archive/{href}".format(href=link["href"])
             elif (versionMajor == maxVersionMajor
              and versionMinor == maxVersionMinor
              and versionPatch > maxVersionPatch):
                 maxVersionPatch = versionPatch
                 maxVersionRc = versionRc
-                url = "https://mesa.freedesktop.org/archive/" + link["href"]
+                url = "https://mesa.freedesktop.org/archive/{href}".format(href=link["href"])
             elif (versionMajor == maxVersionMajor
              and versionMinor == maxVersionMinor
              and versionPatch == maxVersionPatch
@@ -69,7 +69,7 @@ def GetTarballUrl():
              )
             ):
                 maxVersionRc = versionRc
-                url = "https://mesa.freedesktop.org/archive/" + link["href"]
+                url = "https://mesa.freedesktop.org/archive/{href}".format(href=link["href"])
 
     return url
 
@@ -101,7 +101,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["meson", "setup", "build/", "--prefix=" + installPrefix,
+             ["meson", "setup", "build/", "--prefix={prefix}".format(prefix=installPrefix),
               "--libdir=lib",
               "--cross-file", configMeson.GetCrossFileName(),
               "-Dplatforms=x11,wayland", "-Dvalgrind=disabled"],
@@ -110,6 +110,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["ninja", "-C", "build/", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError("{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
