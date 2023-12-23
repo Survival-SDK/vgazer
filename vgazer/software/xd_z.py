@@ -267,6 +267,7 @@ data = {
                 "prereqs": [
                     "{triplet}-gcc",
                     "meson",
+                    "ninja",
                     "wget",
                 ],
                 "checker": {
