@@ -500,7 +500,8 @@ data = {
                     "{triplet}-gcc",
                     "{triplet}-g++",
                     "{triplet}-pkg-config",
-                    "make",
+                    "meson",
+                    "ninja",
                     "opengl",
                 ],
                 "checker": {
