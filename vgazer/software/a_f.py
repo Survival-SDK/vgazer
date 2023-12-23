@@ -212,58 +212,6 @@ data = {
             },
         ],
     },
-    "automake1.11": {
-        "platform": "host",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "prereqs": [
-                    "autoconf",
-                    "make",
-                ],
-                "checker": {
-                    "type": "custom",
-                    "name": "automake1_11",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "automake1_11",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "debian",
-                    "source": "automake1.11",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "automake1.11",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "automake1.11",
-                },
-                "installer": {
-                    "type": "not_needed",
-                },
-            },
-        ],
-    },
     "autopoint": {
         "platform": "host",
         "projects": [
