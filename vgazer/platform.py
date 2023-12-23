@@ -201,6 +201,15 @@ def GetLlvmConfig(targetPlatformData):
 
     return "llvm-config"
 
+def GetCmake(targetPlatformData):
+    if os.path.isfile("/usr/bin/cmake"):
+        return "/usr/bin/cmake"
+
+    if os.path.isfile("/usr/local/bin/cmake"):
+        return "/usr/local/bin/cmake"
+
+    return "cmake"
+
 def GetSoFilename(targetPlatformData, name):
     if Platform.OsIsLinux(targetPlatformData.GetOs()):
         return "lib" + name + ".so"
