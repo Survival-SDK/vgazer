@@ -123,7 +123,6 @@ Currently supported:
 
 * gnu
 * mingw32
-* musl
 
 **arch**, **os** and **ver** - same as **harch**, **hos** and **hver** in that
 cases when not used target platform parameters such as **tarch**, **tos** and
