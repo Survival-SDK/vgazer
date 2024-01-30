@@ -10,8 +10,6 @@ anyPlatform = Platform(arch="any", os="any", osVersion="any", abi="any")
 
 def CreateHostPlatformsList(gazer):
     return [
-        Platform(arch=gazer.GetHostPlatform().GetArch(), os="alpine",
-         osVersion="3.9", abi="musl", suppressGenericFallback=True),
         Platform(arch=gazer.GetHostPlatform().GetArch(), os="debian",
          osVersion="stretch", abi="gnu", suppressGenericFallback=True),
         Platform(arch=gazer.GetHostPlatform().GetArch(), os="debian",
@@ -63,10 +61,7 @@ def CreateInstallList(gazer, hostPlatformsList, targetPlatformsList):
     return installList
 
 def GetShell(hostPlatform):
-    if hostPlatform.GetOs() == "alpine":
-        return "/bin/sh"
-    else:
-        return "/bin/bash"
+    return "/bin/bash"
 
 def GenerateImageLaunchTarget(hostPlatform):
     shell = GetShell(hostPlatform)

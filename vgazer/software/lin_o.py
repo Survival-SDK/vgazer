@@ -25,22 +25,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "lua5.3-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "lua5.3-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["stretch", "buster"],
                 "abi": ["gnu"],
@@ -118,22 +102,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "luajit-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "luajit-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -195,21 +163,6 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "m4",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "m4",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -241,21 +194,6 @@ data = {
     "make": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "make",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "make",
-                },
-            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -305,22 +243,8 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "meson",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "meson",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
+                # TODO: check old comment below
                 # glib requires minimal version of Meson 0.49.2. Debian Stretch
                 # repos have Meson with version smaller than 0.49.2
                 "osVersion": ["buster", "bullseye", "sid"],
@@ -380,21 +304,6 @@ data = {
     "ninja": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "ninja",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "ninja",
-                },
-            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -476,22 +385,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libglvnd",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "mesa-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "mesa-dev",
                 },
             },
             {

@@ -113,22 +113,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libdrm-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libdrm-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -186,22 +170,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libffi-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libffi-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -254,38 +222,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["3.10", "edge"],
-                "abi": ["gnu"],
-                "license": ["lgpl-2"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "community",
-                    "package": "gnu-libiconv-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "gnu-libiconv-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["lgpl-2"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "musl-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "musl-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -320,22 +256,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libintl-lite",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["lgpl-2.1"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "gettext-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "gettext-dev",
                 },
             },
             {
@@ -397,22 +317,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "liblzma",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["pd"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "xz-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "xz-dev",
                 },
             },
             {

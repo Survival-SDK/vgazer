@@ -1,5 +1,4 @@
 from vgazer.exceptions         import UnknownInstaller
-from vgazer.install.apk        import InstallApk
 from vgazer.install.apt        import InstallApt
 from vgazer.install.pip        import InstallPip
 from vgazer.install.pip3       import InstallPip3
@@ -9,9 +8,6 @@ from vgazer.install.stb        import InstallStb
 class InstallersManager:
     def __init__(self):
         self.installFuncs = {
-            "apk": lambda software, auth, platformData, installerData, mirrors,
-             verbose:
-                InstallApk(software, installerData["package"], verbose),
             "apt": lambda software, auth, platformData, installerData, mirrors,
              verbose:
                 InstallApt(software, installerData["package"],

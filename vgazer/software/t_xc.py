@@ -31,21 +31,6 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "unzip",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "unzip",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -101,22 +86,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "wayland",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "wayland-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "wayland-dev",
                 },
             },
             {
@@ -195,21 +164,6 @@ data = {
     "wget": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "wget",
-                },
-                "installer": {
-                    "type": "pkg-config",
-                    "triplet": "x86_64-linux-gnu",
-                },
-            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -322,24 +276,6 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "prereqs": [
-                    "pkg-config",
-                ],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "pkgconf",
-                },
-                "installer": {
-                    "type": "pkg-config",
-                    "triplet": "x86_64-linux-gnu",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -376,21 +312,6 @@ data = {
         "platform": "host",
         "projects": [
             {
-                "arch": ["x86_64"],
-                "os": ["alpine"],
-                "osVersion": ["edge"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "testing",
-                    "package": "mingw-w64-gcc",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "mingw-w64-gcc",
-                },
-            },
-            {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
@@ -418,21 +339,6 @@ data = {
         "platform": "host",
         "projects": [
             {
-                "arch": ["x86_64"],
-                "os": ["alpine"],
-                "osVersion": ["edge"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "testing",
-                    "package": "mingw-w64-gcc",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "mingw-w64-gcc",
-                },
-            },
-            {
                 "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
@@ -456,24 +362,6 @@ data = {
     "x86_64-w64-mingw32-pkg-config": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "prereqs": [
-                    "pkg-config",
-                ],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "pkgconf",
-                },
-                "installer": {
-                    "type": "pkg-config",
-                    "triplet": "x86_64-w64-mingw32",
-                },
-            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -530,22 +418,6 @@ data = {
                         "type": "custom",
                         "name": "xau-github",
                     },
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libxau-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libxau-dev",
                 },
             },
             {
@@ -612,22 +484,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["x11"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libxcb-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libxcb-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -682,22 +538,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "xcb-proto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["x11"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "xcb-proto",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "xcb-proto",
                 },
             },
             {

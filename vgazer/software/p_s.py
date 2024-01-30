@@ -62,22 +62,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["edge"],
-                "abi": ["musl"],
-                "license": ["zlib"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "testing",
-                    "package": "physfs-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "physfs-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -111,21 +95,6 @@ data = {
     "pkg-config": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "pkgconf",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "pkgconf",
-                },
-            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -222,22 +191,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "portaudio-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "portaudio-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -293,22 +246,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "pthread-stubs",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["x11"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libpthread-stubs",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libpthread-stubs",
                 },
             },
             {

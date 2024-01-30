@@ -1,5 +1,4 @@
 from vgazer.exceptions          import UnknownVersionChecker
-from vgazer.version.alpine      import CheckAlpine
 from vgazer.version.debian      import CheckDebian
 from vgazer.version.github      import CheckGithub
 from vgazer.version.gitlab      import CheckGitlab
@@ -11,13 +10,6 @@ from vgazer.version.xiph        import CheckXiph
 class CheckersManager:
     def __init__(self):
         self.checkFuncs = {
-            "alpine": lambda auth, platform, checkerData: CheckAlpine(
-             auth["base"],
-             platform.GetArch(),
-             platform.GetOsVersion(),
-             checkerData["repo"],
-             checkerData["package"]
-            ),
             "debian": lambda auth, platform, checkerData: CheckDebian(
              auth["base"],
              platform.GetOsVersion(),

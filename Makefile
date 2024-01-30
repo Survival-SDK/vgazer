@@ -46,15 +46,6 @@ else
 	echo "Error: host system's arch is not x86_64"
 endif
 
-image_x86_64_alpine_3.9_build:
-ifeq ($(ARCH),x86_64)
-	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer_min_env_x86_64_alpine_3.9.dockerfile \
-     -t vgazer_min_env_x86_64_alpine_3.9 .
-else
-	echo "Error: host system's arch is not x86_64"
-endif
-
 image_x86_64_steamrt_latest_build:
 ifeq ($(ARCH),x86_64)
 	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \

@@ -101,8 +101,6 @@ Description of parameters:
 Distribution. This is not OS and OS's version of your PC. Typically it is OS
 and OS's version of base Docker image. Currently supported:
 
-* alpine
-    * 3.9
 * debian
     * stretch
     * buster

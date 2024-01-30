@@ -4,21 +4,6 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "g++",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "g++",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -81,21 +66,6 @@ data = {
     "git": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "git",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "git",
-                },
-            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -171,22 +141,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "mesa-glu",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["sgi-b-1.1", "sgi-b-2.0"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "glu-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "glu-dev",
                 },
             },
             {
@@ -273,22 +227,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "icu",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "icu-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "icu-dev",
                 },
             },
             {
