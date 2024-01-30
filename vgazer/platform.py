@@ -185,22 +185,6 @@ def GetStrip(targetPlatformData):
      fallbackFilenames=["strip"]
     )
 
-def GetLlvmConfig(targetPlatformData):
-    if os.path.isfile("/usr/bin/llvm-config"):
-        return "/usr/bin/llvm-config"
-
-    for llvmVersion in range(100)[::-1]:
-        llvmFilename = "/usr/bin/llvm-config-" + str(llvmVersion)
-        if os.path.isfile(llvmFilename):
-            return llvmFilename
-
-        llvmFilename = "/usr/local/bin/llvm-config-{ver}".format(
-         ver=str(llvmVersion))
-        if os.path.isfile(llvmFilename):
-            return llvmFilename
-
-    return "llvm-config"
-
 def GetCmake(targetPlatformData):
     if os.path.isfile("/usr/bin/cmake"):
         return "/usr/bin/cmake"
