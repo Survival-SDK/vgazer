@@ -5,7 +5,6 @@ Library for tracking and installing new versions of software
 This software required for working vgazer:
 
 * python3
-* pip3
 
 Also required these python packages:
 
@@ -19,8 +18,7 @@ Optional Requirements for running samples (Linux only):
 Installing requirements on Debian:
 
 ```console
-# apt-get install python3 python3-pip docker
-$ pip3 install requests bs4
+# apt-get install python3 python3-requests python3-bs4 docker
 ```
 
 # Store your github data on PC
@@ -102,7 +100,7 @@ Distribution. This is not OS and OS's version of your PC. Typically it is OS
 and OS's version of base Docker image. Currently supported:
 
 * debian
-    * stretch
+    * stretch (possibly not working yet)
     * buster
     * bullseye
     * bookworm
@@ -144,9 +142,9 @@ OS:
 $ make image_build arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
 **Example**. Build docker image of environment with x86_64 architecture (your
-PC's arch must be x86_64) and Debian Stretch as base image:
+PC's arch must be x86_64) and Debian Bullseye as base image:
 ```console
-$ make image_build arch=x86_64 os=debian ver=stretch
+$ make image_build arch=x86_64 os=debian ver=bullseye
 ```
 
 ### Run test image in interactive mode (bash or sh)
@@ -154,9 +152,9 @@ $ make image_build arch=x86_64 os=debian ver=stretch
 $ make image_launch arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
 **Example**. Launch docker image of environment with x86_64 architecture and
-Debian Stretch as base image in interactive mode:
+Debian Bullseye as base image in interactive mode:
 ```console
-$ make image_launch arch=x86_64 os=debian ver=stretch
+$ make image_launch arch=x86_64 os=debian ver=bullseye
 ```
 
 ### Output host platform of image
@@ -164,9 +162,9 @@ $ make image_launch arch=x86_64 os=debian ver=stretch
 $ make sample_platform arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
 **Example**. Output info about host platform in environment with x86_64
-architecture and Debian Stretch as base image:
+architecture and Debian Bullseye as base image:
 ```console
-$ make sample_platform arch=x86_64 os=debian ver=stretch
+$ make sample_platform arch=x86_64 os=debian ver=bullseye
 ```
 
 ### Output last versions of all software for target platform on given host
@@ -178,10 +176,10 @@ $ make sample_versions harch=<host_arch> hos=<host_os> hver=<host_os_version> \
 ```
 **Example**. Output last versions of all tools for building libraries to
 x86-linux-gnu target and last versions of all libraries that can be built for
-x86-linux-gnu target in environment with x86_64 architecture and Debian Stretch
+x86-linux-gnu target in environment with x86_64 architecture and Debian Bullseye
 as base image:
 ```console
-$ make sample_versions harch=x86_64 hos=debian hver=stretch tarch=x86_64 \
+$ make sample_versions harch=x86_64 hos=debian hver=bullseye tarch=x86_64 \
     tos=linux tabi=gnu
 ```
 
@@ -193,9 +191,9 @@ $ make sample_versions arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
 **Example**. Output last versions of all tools and all libraries that can be
 installed with apt-get or built manually on host environment with x86_64
-architecture and Debian Stretch as base image.
+architecture and Debian Bullseye as base image.
 ```console
-$ make sample_versions arch=x86_64 os=debian ver=stretch
+$ make sample_versions arch=x86_64 os=debian ver=bullseye
 ```
 
 ### Install tool on host platform
@@ -206,9 +204,9 @@ $ make sample_tool tool=<tool> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example**. Install CMake via apt-get on host environment with x86_64
-architecture and Debian Stretch as base image.
+architecture and Debian Bullseye as base image.
 ```console
-$ make sample_tool tool=cmake arch=x86_64 os=debian ver=stretch
+$ make sample_tool tool=cmake arch=x86_64 os=debian ver=bullseye
 ```
 
 ### Install library for target platform on host platform
@@ -219,9 +217,9 @@ $ make sample_library lib=<library> harch=<host_arch> hos=<host_os> \
 ```
 **Example**. Install manually (download, build and copy to system path) cjson
 library for x86-linux-gnu target on host environment with x86_64 architecture
-and Debian Stretch as base image.
+and Debian Bullseye as base image.
 ```console
-$ make sample_library lib=cjson harch=x86_64 hos=debian hver=stretch \
+$ make sample_library lib=cjson harch=x86_64 hos=debian hver=bullseye \
     tarch=x86_64 tos=linux tabi=gnu
 ```
 
@@ -233,9 +231,9 @@ $ make sample_library lib=<library> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example 1**. Install zlib library via apt-get on host environment with x86_64
-architecture and Debian Stretch as base image.
+architecture and Debian Bullseye as base image.
 ```console
-$ make sample_library lib=zlib arch=x86_64 os=debian ver=stretch
+$ make sample_library lib=zlib arch=x86_64 os=debian ver=bullseye
 ```
 **Example 2**. Try to install cjson library via apt-get on host environment
 with x86_64 architecture and Debian Stretch as base image. Repos of Debian
