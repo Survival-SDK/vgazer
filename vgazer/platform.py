@@ -40,9 +40,7 @@ def GetTempDirectoryPath():
 def GetBitness(targetPlatformData):
     arch = targetPlatformData.GetArch()
 
-    if arch in ["i386", "i486", "i586", "i686"]:
-        return 32
-    elif arch == "x86_64":
+    if arch == "x86_64":
         return 64
     else:
         raise UnknownTargetArch(
@@ -99,22 +97,6 @@ def GetTripletFilenames(triplet, suffixes):
     for suffix in suffixes:
         filenames.append(triplet + suffix)
     currentTripletFilenamesList = filenames.copy()
-
-    if "i686" in triplet:
-        currentTripletFilenamesList = NewListWithReplace(
-         currentTripletFilenamesList, "i686", "i586")
-        filenames.extend(currentTripletFilenamesList)
-        triplet.replace("i686", "i586")
-    if "i586" in triplet:
-        currentTripletFilenamesList = NewListWithReplace(
-         currentTripletFilenamesList, "i586", "i486")
-        filenames.extend(currentTripletFilenamesList)
-        triplet.replace("i586", "i486")
-    if "i486" in triplet:
-        currentTripletFilenamesList = NewListWithReplace(
-         currentTripletFilenamesList, "i486", "i386")
-        filenames.extend(currentTripletFilenamesList)
-        triplet.replace("i486", "i386")
 
     return filenames
 
@@ -269,12 +251,7 @@ class Platform:
             return True
         if self.arch == comparingArch:
             return True
-        if (
-         (self.arch == "i686" and comparingArch in ["i586", "i486", "i386"])
-         or (self.arch == "i586" and comparingArch in ["i486", "i386"])
-         or (self.arch == "i486" and comparingArch == "i386")
-        ):
-            return True
+
         return False
 
     def ArchsEqual(self, platform=None, arch=None):

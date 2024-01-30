@@ -24,9 +24,6 @@ def CreateHostPlatformsList(gazer):
 
 def CreateTargetPlatformsList(gazer):
     return [
-        Platform(arch="i686", os="linux", osVersion="any", abi="gnu"),
-        Platform(arch="i686", os="linux", osVersion="any", abi="musl"),
-        Platform(arch="i686", os="windows", osVersion="any", abi="mingw32"),
         Platform(arch="x86_64", os="linux", osVersion="any", abi="gnu"),
         Platform(arch="x86_64", os="linux", osVersion="any", abi="musl"),
         Platform(arch="x86_64", os="windows", osVersion="any", abi="mingw32"),

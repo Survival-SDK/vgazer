@@ -32,11 +32,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     tarballUrl = GetTarballUrl()
     tarballShortFilename = tarballUrl.split("/")[-1]
 
-    if platformData["target"].GetArch() in ["i386", "i486", "i586", "i686"]:
-        gccArch = platformData["target"].GetArch()
-    elif platformData["target"].GetArch() == "x86_64":
-        gccArch = "x86-64"
-
     try:
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
@@ -50,7 +45,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["./configure", "--host={triplet}".format(triplet=targetTriplet),
               "--prefix={prefix}".format(prefix=installPrefix),
               "--disable-shared", "--enable-portable-binary",
-              "--with-gcc-arch={arch}".format(arch=gccArch), "CFLAGS=-fPIC"
+              "--with-gcc-arch={arch}".format(arch=targetTriplet.split("-")[0]),
+              "CFLAGS=-fPIC"
              ],
              verbose)
             RunCommand(
