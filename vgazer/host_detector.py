@@ -1,7 +1,6 @@
 import os
 import platform
 
-from vgazer.exceptions import AlpineReleaseDataNotFound
 from vgazer.exceptions import DebianReleaseDataNotFound
 from vgazer.exceptions import OsDataNotFound
 from vgazer.os_release import OsRelease
@@ -25,16 +24,6 @@ class HostDetector:
                 raise DebianReleaseDataNotFound(
                  "Unable to find data of Debian version: " + os.name)
 
-    @staticmethod
-    def GetAlpineVersion():
-        with OsRelease() as osRelease:
-            try:
-                return ".".join(
-                 osRelease.GetEntry("VERSION_ID").split(".")[0:2])
-            except KeyError:
-                raise AlpineReleaseDataNotFound(
-                 "Unable to find data of Alpine version: " + os.name)
-
     def __init__(self):
         self.unknownOs = False
         self.errorMsg = "No error"
@@ -42,9 +31,6 @@ class HostDetector:
         osType = platform.system()
         if osType == "Linux":
             self.os = HostDetector.GetLinuxOs()
-            if self.os == "alpine":
-                self.osVersion = HostDetector.GetAlpineVersion()
-                self.abi = "musl"
             if self.os == "debian":
                 self.osVersion = HostDetector.GetDebianVersion()
                 self.abi = "gnu"

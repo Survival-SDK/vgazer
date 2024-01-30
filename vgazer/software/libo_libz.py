@@ -25,22 +25,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["bsd-3"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libogg-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libogg-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -107,22 +91,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit", "isc", "x11"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libpciaccess-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libpciaccess-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -177,22 +145,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libpng",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["libpng-2.0"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libpng-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libpng-dev",
                 },
             },
             {
@@ -264,21 +216,6 @@ data = {
     "libtool": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libtool",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libtool",
-                },
-            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -364,22 +301,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["bsd-3"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libvorbis-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libvorbis-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -439,22 +360,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libxext",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libxext-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libxext-dev",
                 },
             },
             {

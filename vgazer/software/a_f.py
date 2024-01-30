@@ -25,22 +25,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["lgpl-2.1"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "alsa-lib-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "alsa-lib-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -96,21 +80,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "autoconf",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "autoconf",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 # autoconf >=2.70 required for building xlib
                 # Debian bullseye has only 2.69
@@ -162,21 +131,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "automake",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "automake",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "automake",
                 },
             },
             {
@@ -331,21 +285,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "cmake",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "cmake",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -422,22 +361,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "cmocka",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["apache-2.0"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "cmocka-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "cmocka-dev",
                 },
             },
             {

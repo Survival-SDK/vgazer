@@ -55,8 +55,6 @@ def GetTriplet(targetPlatformData):
 
     triplet = arch
 
-    if os == "alpine":
-        triplet += "-alpine"
     if Platform.OsIsLinux(os):
         triplet += "-linux-" + abi
     elif os == "windows":
@@ -210,7 +208,7 @@ class Platform:
 
     @staticmethod
     def OsIsLinux(os):
-        return (os in ["linux", "alpine", "debian", "steamrt"])
+        return (os in ["linux", "debian", "steamrt"])
 
     @staticmethod
     def GetGenericOs(os):

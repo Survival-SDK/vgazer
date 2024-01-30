@@ -31,22 +31,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "libx11-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "libx11-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -131,21 +115,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "util-macros",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "util-macros",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -201,22 +170,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "xorgproto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit", "smlnj"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "xorgproto",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "xorgproto",
                 },
             },
             {
@@ -291,22 +244,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "xtrans",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["mit", "hpnd", "x11", "hpnd-sv"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "xtrans",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "xtrans",
                 },
             },
             {
@@ -391,22 +328,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "zlib",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["alpine"],
-                "osVersion": ["any"],
-                "abi": ["musl"],
-                "license": ["zlib"],
-                "checker": {
-                    "type": "alpine",
-                    "repo": "main",
-                    "package": "zlib-dev",
-                },
-                "installer": {
-                    "type": "apk",
-                    "package": "zlib-dev",
                 },
             },
             {
