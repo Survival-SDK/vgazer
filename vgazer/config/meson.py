@@ -27,11 +27,7 @@ class ConfigMeson():
         strip = GetStrip(self.platformData["target"])
         cmake = GetCmake(self.platformData["target"])
         genericOs = Platform.GetGenericOs(self.platformData["target"].GetOs())
-        if self.platformData["target"].GetArch() in ["i386", "i486", "i586",
-         "i686"]:
-            mesonCpuFamily = "x86"
-            mesonCpu = self.platformData["target"].GetArch()
-        elif self.platformData["target"].GetArch() == "x86_64":
+        if self.platformData["target"].GetArch() == "x86_64":
             mesonCpuFamily = "x86_64"
             mesonCpu = "x86_64"
         else:

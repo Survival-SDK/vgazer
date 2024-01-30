@@ -112,7 +112,6 @@ and OS's version of base Docker image. Currently supported:
 **tarch** - architecture of device for crossplatform compiling libraries.
 Currently supported:
 
-* i686
 * x86_64
 
 **tos** - generic name of target's OS. Currently supported:
