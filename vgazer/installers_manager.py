@@ -1,13 +1,10 @@
-from vgazer.exceptions              import UnknownInstaller
-from vgazer.install.apk             import InstallApk
-from vgazer.install.apt             import InstallApt
-from vgazer.install.gcc_src         import InstallGccSrc
-from vgazer.install.linux_headers   import InstallLinuxHeaders
-from vgazer.install.musl_cross_make import InstallMuslCrossMake
-from vgazer.install.pip             import InstallPip
-from vgazer.install.pip3            import InstallPip3
-from vgazer.install.pkg_config      import InstallPkgConfig
-from vgazer.install.stb             import InstallStb
+from vgazer.exceptions         import UnknownInstaller
+from vgazer.install.apk        import InstallApk
+from vgazer.install.apt        import InstallApt
+from vgazer.install.pip        import InstallPip
+from vgazer.install.pip3       import InstallPip3
+from vgazer.install.pkg_config import InstallPkgConfig
+from vgazer.install.stb        import InstallStb
 
 class InstallersManager:
     def __init__(self):
@@ -22,19 +19,6 @@ class InstallersManager:
                   in installerData else None,
                  platformData["host"],
                  verbose),
-            "gcc-src": lambda software, auth, platformData, installerData,
-             mirrors, verbose:
-                InstallGccSrc(auth["base"], software,
-                 installerData["languages"], installerData["triplet"],
-                 platformData, mirrors["gnu"], verbose),
-            "linux-headers": lambda software, auth, platformData,
-             installerData, mirrors, verbose:
-                InstallLinuxHeaders(auth["base"], platformData, verbose),
-            "musl-cross-make": lambda software, auth, platformData,
-             installerData, mirrors, verbose:
-                InstallMuslCrossMake(auth["github"], software,
-                 installerData["languages"], installerData["triplet"],
-                 platformData, verbose),
             "not_needed": lambda software, auth, platformData, installerData,
              mirrors, verbose:
                 True,

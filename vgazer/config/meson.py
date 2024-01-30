@@ -3,7 +3,6 @@ from vgazer.platform    import GetAr
 from vgazer.platform    import GetCc
 from vgazer.platform    import GetCmake
 from vgazer.platform    import GetCxx
-from vgazer.platform    import GetLlvmConfig
 from vgazer.platform    import GetPkgConfig
 from vgazer.platform    import GetStrip
 from vgazer.platform    import Platform
@@ -26,7 +25,6 @@ class ConfigMeson():
         cxx = GetCxx(self.platformData["target"])
         pkgConfig = GetPkgConfig(self.platformData["target"])
         strip = GetStrip(self.platformData["target"])
-        llvmConfig = GetLlvmConfig(self.platformData["target"])
         cmake = GetCmake(self.platformData["target"])
         genericOs = Platform.GetGenericOs(self.platformData["target"].GetOs())
         if self.platformData["target"].GetArch() in ["i386", "i486", "i586",
@@ -49,7 +47,6 @@ class ConfigMeson():
          "ar = '{ar}'\n"
          "strip = '{strip}'\n"
          "pkgconfig = '{pkgConfig}'\n"
-         "llvm-config = '{llvmConfig}'\n"
          "cmake = '{cmake}'\n"
          "\n"
          "[host_machine]\n"
@@ -57,6 +54,6 @@ class ConfigMeson():
          "cpu_family = '{mesonCpuFamily}'\n"
          "cpu = '{mesonCpu}'\n"
          "endian = 'little'".format(ar=ar, cc=cc, cmake=cmake, cxx=cxx,
-          pkgConfig=pkgConfig, llvmConfig=llvmConfig, strip=strip,
-          genericOs=genericOs, mesonCpuFamily=mesonCpuFamily, mesonCpu=mesonCpu)
+          pkgConfig=pkgConfig, strip=strip, genericOs=genericOs,
+          mesonCpuFamily=mesonCpuFamily, mesonCpu=mesonCpu)
         )
