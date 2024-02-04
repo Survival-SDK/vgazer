@@ -3,8 +3,8 @@
 import os
 import stat
 
-from vgazer             import Vgazer
-from vgazer.platform    import Platform
+from libvgazer             import Vgazer
+from libvgazer.platform    import Platform
 
 anyPlatform = Platform(arch="any", os="any", osVersion="any", abi="any")
 
