@@ -11,7 +11,7 @@ parentDir = os.path.dirname(currentDir)
 
 sys.path.insert(0, parentDir)
 
-from vgazer.vgazer import Vgazer # noqa
+from libvgazer import Vgazer
 
 def main():
     gazer = Vgazer()
