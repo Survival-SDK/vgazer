@@ -69,15 +69,6 @@ def GenerateImageLaunchTarget(hostPlatform):
      "\n".format(shell, hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion()))
 
-def GenerateCheckPlatformTarget(hostPlatform):
-    return ("sample_{0}_{1}_{2}_check_platform:\n"
-     "\tdocker run -i -t \\\n"
-     "     -v ~/.vgazer:/root/.vgazer \\\n"
-     "     -v `pwd`:/mnt/vgazer --entrypoint sh vgazer_min_env_{0}_{1}_{2} \\\n"
-     "     -E -c ./samples/check_platform.py\n"
-     "\n".format(hostPlatform.GetArch(), hostPlatform.GetOs(),
-      hostPlatform.GetOsVersion()))
-
 def GenerateSoftwareVersionsTarget(hostPlatform, targetPlatform):
     if targetPlatform.PlatformsEqual(hostPlatform):
         targetPlatformString = "host"
@@ -228,8 +219,6 @@ def GenerateSampleTargets(gazer, hostPlatformsList, targetPlatformsList,
         for hostPlatform in hostPlatformsList:
             imageLaunchTarget = GenerateImageLaunchTarget(hostPlatform)
             sampleTargetsFile.write(imageLaunchTarget)
-            checkPlatformTarget = GenerateCheckPlatformTarget(hostPlatform)
-            sampleTargetsFile.write(checkPlatformTarget)
             for targetPlatform in targetPlatformsList:
                 softwareVersionsTarget = GenerateSoftwareVersionsTarget(
                  hostPlatform, targetPlatform)
