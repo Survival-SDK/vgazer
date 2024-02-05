@@ -108,6 +108,15 @@ class Vgazer:
 
         return self.UseChecker(software, checker)
 
+    def VersionsList(self, softwareList):
+        result = []
+        for software in softwareList:
+            result.append({
+                "software": software,
+                "version": self.CheckVersion(software)
+            })
+        return result
+
     def UseInstaller(self, software, installer, verbose,
      fallbackPreinstallList):
         softwareData = self.softwareData.GetData()
