@@ -45,20 +45,6 @@ def GenerateImageLaunchTarget(hostPlatform):
      "\n".format("/bin/bash", hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion()))
 
-def GenerateSoftwareVersionsTarget(hostPlatform, targetPlatform):
-    if targetPlatform.PlatformsEqual(hostPlatform):
-        targetPlatformString = "host"
-    else:
-        targetPlatformString = "{0}_{1}_{2}".format(targetPlatform.GetArch(),
-         targetPlatform.GetOs(), targetPlatform.GetAbi())
-    return ("sample_{0}_{1}_{2}_software_versions_{3}:\n"
-     "\tdocker run --net=host -i -t \\\n"
-     "     -v ~/.vgazer:/root/.vgazer \\\n"
-     "     -v `pwd`:/mnt/vgazer --entrypoint sh vgazer_min_env_{0}_{1}_{2} \\\n"
-     "     -E -c ./samples/software_versions_{3}.py | tee versions.log\n"
-     "\n".format(hostPlatform.GetArch(), hostPlatform.GetOs(),
-      hostPlatform.GetOsVersion(), targetPlatformString))
-
 def GenerateInstallAndVersionTarget(installEntry):
     software = installEntry[0]
     hostPlatform = installEntry[1]
