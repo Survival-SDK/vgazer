@@ -1,5 +1,6 @@
 from libvgazer.exceptions          import UnknownVersionChecker
 from libvgazer.version.debian      import CheckDebian
+from libvgazer.version.git         import CheckGit
 from libvgazer.version.github      import CheckGithub
 from libvgazer.version.gitlab      import CheckGitlab
 from libvgazer.version.pypi        import CheckPypi
@@ -15,6 +16,9 @@ class CheckersManager:
              platform.GetOsVersion(),
              checkerData["source"]
             ),
+            "git": lambda auth, platform, checkerData: CheckGit(
+             checkerData["url"],
+             checkerData["hint"] if "hint" in checkerData else None),
             "github": lambda auth, platform, checkerData: CheckGithub(
              auth["github"],
              checkerData["user"],
