@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+import argparse
+import sys
+
+from libvgazer import Vgazer
+
+def init_parser() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+
+    subparsers = parser.add_subparsers()
+    version_parser = subparsers.add_parser('version')
+    install_parser = subparsers.add_parser('install')
+
+    version_parser.add_argument("version_software", type=str, nargs="*")
+    install_parser.add_argument("install_software", type=str, nargs="*")
+
+    version_parser.add_argument('--target', type=str, default=None)
+    install_parser.add_argument('--target', type=str, default=None)
+
+    return parser.parse_args()
+
+def main() -> int:
+    args = init_parser()
+
+    if args.target is None:
+        gazer = Vgazer()
+    else:
+        target_splitted = args.target.split("-")
+        gazer = Vgazer(arch=target_splitted[0], os=target_splitted[1],
+         osVersion="any", abi=target_splitted[2])
+
+    if "version_software" in args:
+        versions = gazer.VersionsList(args.version_software)
+        for versionEntry in versions:
+            print("{software}: {version}".format(
+             software=versionEntry["software"], version=versionEntry["version"])
+            )
+
+    if "install_software" in args:
+        gazer.InstallList(args.install_software, verbose=True)
+
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())
