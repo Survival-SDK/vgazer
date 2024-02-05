@@ -24,8 +24,8 @@ def CheckGit(url, hint=None):
                 if line.endswith("^{}"):
                     continue
                 tag = line.split("/")[-1]
-                if hint is not None and re.fullmatch(hint, tag) is not None:
-                    return line.split("/")[-1]
+                if hint is None or re.fullmatch(hint, tag) is not None:
+                    return tag
 
         clonedDir = os.path.join(tempPath, "cloned")
         RunCommand(["rm", "-rf", clonedDir], False)
