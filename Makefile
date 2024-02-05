@@ -71,9 +71,9 @@ image_build_no_cache:
 endif
 
 ifneq ($(and $(arch),$(os),$(ver)),)
-image_launch: image_$(arch)_$(os)_$(ver)_launch
+image-launch: image-$(arch)-$(os)-$(ver)-launch
 else
-image_launch:
+image-launch:
 	@echo 'Error: variables "arch", "os" and "ver" must be defined'
 endif
 
