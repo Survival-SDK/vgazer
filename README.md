@@ -9,8 +9,9 @@ This software required for working vgazer:
 
 Also required these python packages:
 
-* requests
 * bs4
+* requests
+* multimethod
 
 Optional Requirements for running samples (Linux only):
 
@@ -19,7 +20,8 @@ Optional Requirements for running samples (Linux only):
 Installing requirements on Debian:
 
 ```console
-# apt-get install python3 python3-requests python3-bs4 docker
+# apt-get install python3 python3-pip python3-bs4 python3-requests docker git
+# pip3 install multimethod
 ```
 
 # Store your github data on PC

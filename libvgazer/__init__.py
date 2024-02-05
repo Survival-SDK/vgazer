@@ -1,3 +1,5 @@
+from multimethod import multimethod
+
 from libvgazer.auth.base           import AuthBase
 from libvgazer.auth.github         import AuthGithub
 from libvgazer.checkers_manager    import CheckersManager
@@ -50,13 +52,12 @@ class Vgazer:
     def GetSoftwareData(self):
         return self.softwareData
 
-    def ChooseProject(self, softwareData):
+    @multimethod
+    def ChooseProject(self, projects: list, platformData: Platform):
         maxRatingProject = None
         maxRating = Platform.COMP_INCOMPATIBLE
-        for project in softwareData["projects"]:
-            projectRating = self.platform[
-             softwareData["platform"]
-            ].GetCompatibilityRating(project["arch"],
+        for project in projects:
+            projectRating = platformData.GetCompatibilityRating(project["arch"],
              project["os"], project["osVersion"], project["abi"])
             if projectRating > maxRating:
                 maxRating = projectRating
@@ -65,6 +66,11 @@ class Vgazer:
             return maxRatingProject
         else:
             return None
+
+    @multimethod
+    def ChooseProject(self, softwareData: dict):
+        return self.ChooseProject(softwareData["projects"],
+         self.platform[softwareData["platform"]])
 
     def SearchFallbackProject(self, projects):
         for project in projects:
