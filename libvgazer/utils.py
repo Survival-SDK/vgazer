@@ -7,13 +7,6 @@ def GetKeyByValue(dictionary, value):
     values = list(dictionary.values())
     return keys[values.index(value)]
 
-def NewListWithReplace(array, oldText, newText):
-    newArray = []
-    for element in array:
-        newArray.append(element.replace(oldText, newText))
-
-    return newArray
-
 def FindFileInDir(directories, filenames):
     for directory in directories:
         for filename in filenames:

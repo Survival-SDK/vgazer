@@ -1,6 +1,5 @@
 import os
 
-from libvgazer.command     import GetCommandOutputUtf8
 from libvgazer.command     import RunCommand
 from libvgazer.exceptions  import CommandError
 from libvgazer.exceptions  import InstallError

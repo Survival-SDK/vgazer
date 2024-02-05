@@ -1,11 +1,12 @@
 import os
 
+from libvgazer.command              import GetCommandOutputUtf8
 from libvgazer.command              import RunCommand
 from libvgazer.config.cmake         import ConfigCmake
 from libvgazer.exceptions           import CommandError
 from libvgazer.exceptions           import GithubApiError
 from libvgazer.exceptions           import InstallError
-from libvgazer.github_api_error_mgr import GithubErrorMgr
+from libvgazer.github_api_error_mgr import GithubApiErrorMgr
 from libvgazer.platform             import GetInstallPrefix
 from libvgazer.store.temp           import StoreTemp
 from libvgazer.working_dir          import WorkingDir
@@ -47,7 +48,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(["mkdir", "build"], verbose)
-        buildDir = os.path.join(clonedDir, "build")
+        buildDir = os.path.join(extractedDir, "build")
         with WorkingDir(buildDir):
             RunCommand(
              ["cmake", "..",

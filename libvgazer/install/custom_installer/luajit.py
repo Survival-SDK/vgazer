@@ -51,7 +51,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/LuaJIT/LuaJIT/branches")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(branches, "LuaJIT/LuaJIT") as errMgr:
         if errMgr.IsErrorOccured():
@@ -66,7 +67,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     try:
         with WorkingDir(tempPath):
-            RunCommand(["git", "clone", "https://github.com/LuaJIT/LuaJIT.git"],
+            RunCommand(["git", "clone",
+             "https://github.com/LuaJIT/LuaJIT.git"],
              verbose)
         clonedDir = os.path.join(tempPath, "LuaJIT")
         with WorkingDir(clonedDir):
@@ -86,6 +88,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

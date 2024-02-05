@@ -49,6 +49,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["cp", "./libhash_table.a", libDir], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{softare} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

@@ -3,7 +3,8 @@ import requests
 
 def Check(auth, mirrors):
     response = requests.get(
-     "https://raw.githubusercontent.com/bilke/cmake-modules/master/CodeCoverage.cmake"
+     "https://raw.githubusercontent.com/bilke/cmake-modules/master/"
+     "CodeCoverage.cmake"
     )
 
     source = response.content.decode("utf-8")

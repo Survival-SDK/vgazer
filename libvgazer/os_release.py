@@ -1,6 +1,3 @@
-import os
-import platform
-
 class OsRelease:
     def __init__(self):
         self.entries = {}

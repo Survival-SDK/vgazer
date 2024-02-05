@@ -17,7 +17,7 @@ def GetTarballUrl():
     headers3 = parsedHtml.find_all("h3")
     for header in headers3:
         if header.text.find("Latest Release") != -1:
-            version = header.text.split("(")[1][:-1:];
+            version = header.text.split("(")[1][:-1:]
             return ("https://github.com/Kitware/CMake/releases/download/"
              "v{version}/cmake-{version}.tar.gz").format(version=version)
 

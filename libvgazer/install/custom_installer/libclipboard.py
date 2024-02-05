@@ -7,7 +7,6 @@ from libvgazer.exceptions           import CommandError
 from libvgazer.exceptions           import GithubApiError
 from libvgazer.exceptions           import InstallError
 from libvgazer.github_api_error_mgr import GithubApiErrorMgr
-from libvgazer.platform             import GetArFullPath
 from libvgazer.platform             import GetInstallPrefix
 from libvgazer.store.temp           import StoreTemp
 from libvgazer.working_dir          import WorkingDir
@@ -16,7 +15,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     configCmake = ConfigCmake(platformData)
     configCmake.GenerateCrossFile()
     installPrefix = GetInstallPrefix(platformData)
-    ar = GetArFullPath(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -27,7 +25,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/jtanx/libclipboard/releases")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(releases, "jtanx/libclipboard") as errMgr:
         if errMgr.IsErrorOccured():
@@ -68,6 +67,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

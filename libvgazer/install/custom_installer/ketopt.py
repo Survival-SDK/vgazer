@@ -31,6 +31,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

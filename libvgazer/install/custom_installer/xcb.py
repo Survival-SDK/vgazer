@@ -1,6 +1,5 @@
 import os
 import requests
-from bs4 import BeautifulSoup
 
 from libvgazer.command     import GetCommandOutputUtf8
 from libvgazer.command     import RunCommand
@@ -58,9 +57,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     except requests.exceptions.ConnectionError:
         print("VGAZER: Unable to get tarball url for", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

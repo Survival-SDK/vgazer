@@ -26,7 +26,7 @@ def GetTarballUrl():
         if ("glu-" in link.text
          and (".tar.gz" in link.text or ".tar.xz" in link.text)
          and ".sig" not in link.text):
-            arfmt = ".tar.gz" if ".tar.gz" in link.text else ".tar.xz";
+            arfmt = ".tar.gz" if ".tar.gz" in link.text else ".tar.xz"
 
             version = link.text.split("-")[1].split(arfmt)[0].split(".")
             versionMajor = int(version[0])
@@ -84,7 +84,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["meson", "setup", "build/",
+             [
+              "meson", "setup", "build/",
               "--prefix={prefix}".format(prefix=installPrefix),
               "--cross-file", configMeson.GetCrossFileName(),
               "-Dgl_provider=gl"
@@ -94,6 +95,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["ninja", "-C", "build/", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

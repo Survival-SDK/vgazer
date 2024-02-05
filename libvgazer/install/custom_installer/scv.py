@@ -32,7 +32,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              "{prefix}/include".format(prefix=installPrefix)):
                 RunCommand(
                  [
-                  "mkdir", "-p", "{prefix}/include".format(prefix=installPrefix)
+                  "mkdir", "-p",
+                  "{prefix}/include".format(prefix=installPrefix)
                  ],
                  verbose
                 )
@@ -41,13 +42,15 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
                  ["mkdir", "-p", "{prefix}/lib".format(prefix=installPrefix)],
                  verbose)
             RunCommand(
-             ["cp", "./scv.h", "{prefix}/include".format(prefix=installPrefix)],
+             ["cp", "./scv.h",
+              "{prefix}/include".format(prefix=installPrefix)],
              verbose)
             RunCommand(
              ["cp", "./libscv.a", "{prefix}/lib".format(prefix=installPrefix)],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

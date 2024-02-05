@@ -7,7 +7,8 @@ aptUpdateCalled = False
 def InstallPackageDebian(software, package, hostPlatform, verbose):
     try:
         RunCommand(
-         ["apt-get", "-t",
+         [
+          "apt-get", "-t",
           "{osver}-backports".format(osver=hostPlatform.GetOsVersion()),
           "install", "-y", "--no-install-recommends", "--no-install-suggests",
           package
@@ -34,9 +35,9 @@ def InstallPackageOther(software, package, hostPlatform, verbose):
 
 def InstallPackage(software, package, hostPlatform, verbose):
     if hostPlatform.GetOs() == "debian":
-        InstallPackageDebian(software, package, hostPlatform, verbose);
+        InstallPackageDebian(software, package, hostPlatform, verbose)
     else:
-        InstallPackageOther(software, package, hostPlatform, verbose);
+        InstallPackageOther(software, package, hostPlatform, verbose)
 
 def InstallApt(software, packages, postInstallCommands, hostPlatform, verbose):
     global aptUpdateCalled

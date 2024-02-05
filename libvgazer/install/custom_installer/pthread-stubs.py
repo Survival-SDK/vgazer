@@ -50,9 +50,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     except requests.exceptions.ConnectionError:
         print("VGAZER: Unable to get tarball url for", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
