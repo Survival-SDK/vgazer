@@ -38,7 +38,7 @@ def GenerateImageLaunchTarget(hostPlatform):
     return ("image-{1}-{2}-{3}-launch:\n"
      "\tdocker run --net=host -i -t \\\n"
      "     -v ~/.vgazer:/root/.vgazer -v `pwd`:/mnt/vgazer \\\n"
-     "     --entrypoint {0} vgazer_min_env_{1}_{2}_{3} \\\n"
+     "     --entrypoint {0} vgazer-deps:{1}-{2}-{3} \\\n"
      "\n".format("/bin/bash", hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion()))
 
@@ -65,7 +65,7 @@ def GenerateInstallAndVersionTarget(installEntry):
      "     -v ~/.vgazer:/root/.vgazer \\\n"
      "     -v `pwd`:/mnt/vgazer \\\n"
      "     -v `pwd`/.vgazer-{triplet}:/mnt/vgazer_output \\\n"
-     "     --entrypoint ./vgazer vgazer_min_env_{harch}_{hos}_{hver} \\\n"
+     "     --entrypoint ./vgazer vgazer-deps:{harch}-{hos}-{hver} \\\n"
      "     version {targetArg} {software} | tee version.log\n"
      "\n"
      "sample-{harch}-{hos}-{hver}-install-{platform}:\n"
@@ -73,7 +73,7 @@ def GenerateInstallAndVersionTarget(installEntry):
      "     -v ~/.vgazer:/root/.vgazer \\\n"
      "     -v `pwd`:/mnt/vgazer \\\n"
      "     -v `pwd`/.vgazer-{triplet}:/mnt/vgazer_output \\\n"
-     "     --entrypoint ./vgazer vgazer_min_env_{harch}_{hos}_{hver} \\\n"
+     "     --entrypoint ./vgazer vgazer-deps:{harch}-{hos}-{hver} \\\n"
      "     install {targetArg} {software} | tee install.log\n"
      "\n".format(
         harch=hostPlatform.GetArch(),

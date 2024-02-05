@@ -10,53 +10,53 @@ samples:
 first_run:
 	./first_run.py
 
-image_x86_64_debian_stretch_build:
+image-x86_64-debian-stretch-build:
 ifeq ($(ARCH),x86_64)
 	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer_min_env_x86_64_debian_stretch.dockerfile \
-     -t vgazer_min_env_x86_64_debian_stretch .
+     -f dockerfiles/vgazer-deps-x86_64-debian-stretch.dockerfile \
+     -t vgazer-deps:x86_64-debian-stretch .
 else
 	echo "Error: host system's arch is not x86_64"
 endif
 
-image_x86_64_debian_buster_build:
+image-x86_64-debian-buster-build:
 ifeq ($(ARCH),x86_64)
 	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer_min_env_x86_64_debian_buster.dockerfile \
-     -t vgazer_min_env_x86_64_debian_buster .
+     -f dockerfiles/vgazer-deps-x86_64-debian-buster.dockerfile \
+     -t vgazer-deps:x86_64-debian-buster .
 else
 	echo "Error: host system's arch is not x86_64"
 endif
 
-image_x86_64_debian_bullseye_build:
+image-x86_64-debian-bullseye-build:
 ifeq ($(ARCH),x86_64)
 	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer_min_env_x86_64_debian_bullseye.dockerfile \
-     -t vgazer_min_env_x86_64_debian_bullseye .
+     -f dockerfiles/vgazer-deps-x86_64-debian-bullseye.dockerfile \
+     -t vgazer-deps:x86_64-debian-bullseye .
 else
 	echo "Error: host system's arch is not x86_64"
 endif
 
-image_x86_64_debian_bookworm_build:
+image-x86_64-debian-bookworm-build:
 ifeq ($(ARCH),x86_64)
 	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer_min_env_x86_64_debian_bookworm.dockerfile \
-     -t vgazer_min_env_x86_64_debian_bookworm .
+     -f dockerfiles/vgazer-deps-x86_64-debian-bookworm.dockerfile \
+     -t vgazer-deps:x86_64-debian-bookworm .
 else
 	echo "Error: host system's arch is not x86_64"
 endif
 
-image_x86_64_steamrt_latest_build:
+image-x86_64-steamrt-latest-build:
 ifeq ($(ARCH),x86_64)
 	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer_min_env_x86_64_steamrt_latest.dockerfile \
-     -t vgazer_min_env_x86_64_steamrt_latest .
+     -f dockerfiles/vgazer-deps-x86_64-steamrt-latest.dockerfile \
+     -t vgazer-deps:x86_64-steamrt-latest .
 else
 	echo "Error: host system's arch is not x86_64"
 endif
 
 ifneq ($(and $(arch),$(os),$(ver)),)
-image_build: image_$(arch)_$(os)_$(ver)_build
+image_build: image-$(arch)-$(os)-$(ver)-build
 else
 image_build:
 	@echo 'Error: variables "arch", "os" and "ver" must be defined'
@@ -64,7 +64,7 @@ endif
 
 ifneq ($(and $(arch),$(os),$(ver)),)
 DOCKER_NO_CACHE=--no-cache
-image_build_no_cache: image_$(arch)_$(os)_$(ver)_build
+image_build_no_cache: image-$(arch)-$(os)-$(ver)-build
 else
 image_build_no_cache:
 	@echo 'Error: variables "arch", "os" and "ver" must be defined'
