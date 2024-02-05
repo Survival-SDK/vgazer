@@ -143,12 +143,12 @@ paths on host platform.
 Build docker image of environment with given architecture, OS and version of
 OS:
 ```console
-$ make image_build arch=<host_arch> os=<host_os> ver=<host_os_version>
+$ make image-build arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
 **Example**. Build docker image of environment with x86_64 architecture (your
 PC's arch must be x86_64) and Debian Bullseye as base image:
 ```console
-$ make image_build arch=x86_64 os=debian ver=bullseye
+$ make image-build arch=x86_64 os=debian ver=bullseye
 ```
 
 ### Run test image in interactive mode (bash or sh)

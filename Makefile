@@ -7,7 +7,7 @@ endif
 samples:
 	./generate_samples.py
 
-first_run:
+first-run:
 	./first_run.py
 
 image-x86_64-debian-stretch-build:
@@ -56,17 +56,17 @@ else
 endif
 
 ifneq ($(and $(arch),$(os),$(ver)),)
-image_build: image-$(arch)-$(os)-$(ver)-build
+image-build: image-$(arch)-$(os)-$(ver)-build
 else
-image_build:
+image-build:
 	@echo 'Error: variables "arch", "os" and "ver" must be defined'
 endif
 
 ifneq ($(and $(arch),$(os),$(ver)),)
 DOCKER_NO_CACHE=--no-cache
-image_build_no_cache: image-$(arch)-$(os)-$(ver)-build
+image-build-no-cache: image-$(arch)-$(os)-$(ver)-build
 else
-image_build_no_cache:
+image-build-no-cache:
 	@echo 'Error: variables "arch", "os" and "ver" must be defined'
 endif
 
@@ -99,11 +99,11 @@ lint:
 	-pylama -i E128,E131,E272,E302,E305 ./libvgazer ./first_run.py \
      ./generate_samples.py ./setup.py | tee pylama.log
 
-package_build:
+package-build:
 	rm -r -f ./build ./dist ./vgazer.egg-info
 	python3 setup.py sdist bdist_wheel
 
-package_upload:
+package-upload:
 	python3 -m twine upload -r testpypi dist/*
 
 -include ./sample_targets.mk
