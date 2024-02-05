@@ -63,40 +63,6 @@ data = {
             },
         ],
     },
-    "git": {
-        "platform": "host",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "debian",
-                    "source": "git",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "git",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "git",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "git",
-                },
-            },
-        ],
-    },
     "glslangvalidator": {
         "platform": "host",
         "projects": [
@@ -186,9 +152,7 @@ data = {
                 "abi": ["any"],
                 "license": ["mit"],
                 "prereqs": [
-                    "git",
                     "{triplet}-gcc",
-
                 ],
                 "checker": {
                     "type": "github",

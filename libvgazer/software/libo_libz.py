@@ -194,9 +194,6 @@ data = {
                     "make",
                     "{triplet}-gcc",
                 ],
-                "fallback_prereqs": [
-                    "git",
-                ],
                 "checker": {
                     "type": "github",
                     "user": "ryanlederman",

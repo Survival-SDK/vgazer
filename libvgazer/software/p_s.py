@@ -322,7 +322,6 @@ data = {
                 "license": ["mit"],
                 "prereqs": [
                     "{triplet}-gcc",
-                    "git",
                 ],
                 "checker": {
                     "type": "github",

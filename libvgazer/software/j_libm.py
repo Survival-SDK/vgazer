@@ -12,9 +12,6 @@ data = {
                 "prereqs": [
                     "wget",
                 ],
-                "fallback_prereqs": [
-                    "git",
-                ],
                 "checker": {
                     "type": "github",
                     "user": "attractivechaos",

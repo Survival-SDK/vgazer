@@ -81,7 +81,6 @@ data = {
                 "abi": ["any"],
                 "license": ["mit"],
                 "prereqs": [
-                    "git",
                     "make",
                     "{triplet}-gcc",
                 ],
