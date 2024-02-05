@@ -7,7 +7,7 @@ from libvgazer.exceptions  import CommandError
 from libvgazer.store.temp  import StoreTemp
 from libvgazer.working_dir import WorkingDir
 
-def CheckGit(url):
+def CheckGit(url, hint=None):
     storeTemp = StoreTemp()
     tempPath = storeTemp.GetDirectoryPath()
 
@@ -23,7 +23,9 @@ def CheckGit(url):
             for line in lines:
                 if line.endswith("^{}"):
                     continue
-                return re.sub(' +', ' ', line).split(" ")[1]
+                tag = line.split("/")[-1]
+                if hint is not None and re.fullmatch(hint, tag) is not None:
+                    return line.split("/")[-1]
 
         clonedDir = os.path.join(tempPath, "cloned")
         RunCommand(["rm", "-rf", clonedDir], False)
