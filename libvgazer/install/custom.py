@@ -13,7 +13,7 @@ class InstallCustom:
      mirrors, verbose):
         try:
             installer = importlib.import_module(
-             'vgazer.install.custom_installer.' + installerName)
+             'libvgazer.install.custom_installer.' + installerName)
         except ImportError:
             if len(self.customInstallers) == 0:
                 raise MissingInstaller(
