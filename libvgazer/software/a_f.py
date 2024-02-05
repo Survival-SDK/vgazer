@@ -179,9 +179,6 @@ data = {
                 "prereqs": [
                     "wget",
                 ],
-                "fallback_prereqs": [
-                    "git",
-                ],
                 "checker": {
                     "type": "github",
                     "user": "Malvineous",
@@ -323,9 +320,6 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["cc0"],
-                "prereqs": [
-                    "git",
-                ],
                 "checker": {
                     "type": "github",
                     "user": "edomin",
