@@ -13,7 +13,7 @@ class VersionCustom:
     def Check(self, checker, mirrors):
         try:
             versionChecker = importlib.import_module(
-             'vgazer.version.custom_checker.' + checker)
+             'libvgazer.version.custom_checker.' + checker)
         except ImportError:
             if len(self.customCheckers) == 0:
                 raise MissingChecker(
