@@ -12,7 +12,7 @@ def CheckGit(url):
     tempPath = storeTemp.GetDirectoryPath()
 
     try:
-        with WorkingDir(tempPath):
+        with WorkingDir(tempPath, verbose=False):
             output = GetCommandOutputUtf8([
              "git", "-c", "'versionsort.suffix=-'", "ls-remote", "--tags",
              "--sort='-v:refname'", url]
@@ -28,8 +28,8 @@ def CheckGit(url):
         clonedDir = os.path.join(tempPath, "cloned")
         RunCommand(["rm", "-rf", clonedDir], False)
         RunCommand(["mkdir", "-p", clonedDir], False)
-        with WorkingDir(clonedDir):
             RunCommand(["git", "clone", ".", "--depth", "1", url], False)
+        with WorkingDir(clonedDir, verbose=False):
             output = GetCommandOutputUtf8([
              "git", "--no-pager", "log", "-1", "--format=%ai"]
             )
