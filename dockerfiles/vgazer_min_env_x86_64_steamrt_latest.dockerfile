@@ -1,7 +1,8 @@
-FROM registry.gitlab.steamos.cloud/steamrt/scout/sdk:latest as build
+FROM registry.gitlab.steamos.cloud/steamrt/scout/sdk:latest-steam-client-general-availability as build
 MAINTAINER Vasiliy Edomin <Vasiliy.Edomin@gmail.com>
 RUN apt-get update \
     && apt-get remove -y libssl-dev \
+    && apt-get install -y git \
     && update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-9 1 \
     && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 1 \
     && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 1 \

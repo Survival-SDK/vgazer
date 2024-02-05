@@ -5,6 +5,7 @@ Library for tracking and installing new versions of software
 This software required for working vgazer:
 
 * python3
+* git
 
 Also required these python packages:
 
