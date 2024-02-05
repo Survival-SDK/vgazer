@@ -96,9 +96,8 @@ sample-install:
 endif
 
 lint:
-	-pylama -i E128,E131,E272,E302,E305 ./vgazer ./first_run.py \
-     ./generate_samples.py ./setup.py ./samples/check_platform.py \
-     | tee pylama.log
+	-pylama -i E128,E131,E272,E302,E305 ./libvgazer ./first_run.py \
+     ./generate_samples.py ./setup.py | tee pylama.log
 
 package_build:
 	rm -r -f ./build ./dist ./vgazer.egg-info
