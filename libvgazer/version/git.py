@@ -14,8 +14,8 @@ def CheckGit(url):
     try:
         with WorkingDir(tempPath, verbose=False):
             output = GetCommandOutputUtf8([
-             "git", "-c", "'versionsort.suffix=-'", "ls-remote", "--tags",
-             "--sort='-v:refname'", url]
+             "git", "-c", "versionsort.suffix=-", "ls-remote", "--tags",
+             "--sort=-v:refname", url]
             )
 
         if (output != ""):
@@ -28,8 +28,8 @@ def CheckGit(url):
         clonedDir = os.path.join(tempPath, "cloned")
         RunCommand(["rm", "-rf", clonedDir], False)
         RunCommand(["mkdir", "-p", clonedDir], False)
-            RunCommand(["git", "clone", ".", "--depth", "1", url], False)
         with WorkingDir(clonedDir, verbose=False):
+            RunCommand(["git", "clone", "--depth", "1", url, "."], False)
             output = GetCommandOutputUtf8([
              "git", "--no-pager", "log", "-1", "--format=%ai"]
             )
