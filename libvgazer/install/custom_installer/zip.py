@@ -27,7 +27,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/kuba--/zip/releases")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(releases, "kuba--/zip") as errMgr:
         if errMgr.IsErrorOccured():
@@ -58,7 +59,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              ["cmake", "..",
               "-DCMAKE_TOOLCHAIN_FILE={crossfile}".format(crossfile=crossfile),
               "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),
-              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON", "-DCMAKE_DISABLE_TESTING=ON"],
+              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
+              "-DCMAKE_DISABLE_TESTING=ON"],
              verbose)
             RunCommand(
              ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
@@ -66,6 +68,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

@@ -26,7 +26,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/MaJerle/lwrb/releases")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(releases, "MaJerle/lwrb") as errMgr:
         if errMgr.IsErrorOccured():
@@ -63,7 +64,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              "{prefix}/include".format(prefix=installPrefix)):
                 RunCommand(
                  [
-                  "mkdir", "-p", "{prefix}/include".format(prefix=installPrefix)
+                  "mkdir", "-p",
+                  "{prefix}/include".format(prefix=installPrefix)
                  ],
                  verbose
                 )
@@ -79,10 +81,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose
             )
             RunCommand(
-             ["cp", "./liblwrb.a", "{prefix}/lib".format(prefix=installPrefix)],
+             ["cp", "./liblwrb.a",
+              "{prefix}/lib".format(prefix=installPrefix)],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

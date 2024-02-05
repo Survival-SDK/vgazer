@@ -6,8 +6,6 @@ from libvgazer.command      import RunCommand
 from libvgazer.config.cmake import ConfigCmake
 from libvgazer.exceptions   import CommandError
 from libvgazer.exceptions   import InstallError
-from libvgazer.platform     import GetAr
-from libvgazer.platform     import GetCxx
 from libvgazer.platform     import GetInstallPrefix
 from libvgazer.store.temp   import StoreTemp
 from libvgazer.working_dir  import WorkingDir
@@ -29,8 +27,6 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     toolchainFile = configCmake.GetCrossFileName()
 
     installPrefix = GetInstallPrefix(platformData)
-    ar = GetAr(platformData["target"])
-    cxx = GetCxx(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
@@ -59,6 +55,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

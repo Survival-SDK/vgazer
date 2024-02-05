@@ -22,7 +22,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         srcDir = os.path.join(tempPath, "cmake_barebones")
         with WorkingDir(srcDir):
             RunCommand(
-             ["./install.sh", "--prefix={prefix}".format(prefix=installPrefix)],
+             ["./install.sh",
+              "--prefix={prefix}".format(prefix=installPrefix)],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)

@@ -45,7 +45,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          EnvVar("ACLOCAL_PATH", "{prefix}/share/aclocal".format(
           prefix=installPrefix))):
             RunCommand(
-             ["./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
+             [
+              "./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
               "--prefix={prefix}".format(prefix=installPrefix),
               "PKG_CONFIG_PATH={prefix}/lib/pkgconfig:"
               "{prefix}/share/pkgconfig".format(prefix=installPrefix)
@@ -58,9 +59,11 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     except requests.exceptions.ConnectionError:
         print("VGAZER: Unable to get tarball url for", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

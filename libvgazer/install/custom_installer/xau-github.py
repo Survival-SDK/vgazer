@@ -25,7 +25,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/freedesktop/xorg-libXau/tags")
     except requests.exceptions.ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(tags, "freedesktop/xorg-libXau") as errMgr:
         if errMgr.IsErrorOccured():
@@ -68,7 +69,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./configure", "--host={triplet}".format(triplet=targetTriplet),
+             [
+              "./configure", "--host={triplet}".format(triplet=targetTriplet),
               "--prefix={prefix}".format(prefix=installPrefix),
               "PKG_CONFIG_PATH={prefix}/lib/pkgconfig".format(
                prefix=installPrefix)
@@ -81,6 +83,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

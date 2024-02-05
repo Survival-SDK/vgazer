@@ -50,11 +50,13 @@ class Vgazer:
     def GetSoftwareData(self):
         return self.softwareData
 
-    def ChooseProject(self, projects, platform):
+    def ChooseProject(self, softwareData):
         maxRatingProject = None
         maxRating = Platform.COMP_INCOMPATIBLE
-        for project in projects:
-            projectRating = platform.GetCompatibilityRating(project["arch"],
+        for project in softwareData["projects"]:
+            projectRating = self.platform[
+             softwareData["platform"]
+            ].GetCompatibilityRating(project["arch"],
              project["os"], project["osVersion"], project["abi"])
             if projectRating > maxRating:
                 maxRating = projectRating
@@ -67,9 +69,9 @@ class Vgazer:
     def SearchFallbackProject(self, projects):
         for project in projects:
             if "fallback" in project:
-                return project;
+                return project
 
-        return None;
+        return None
 
     def UseChecker(self, software, checker):
         softwareData = self.softwareData.GetData()
@@ -95,10 +97,7 @@ class Vgazer:
             raise UnknownSoftware("Unknown software: {software}".format(
              software=software))
 
-        softwarePlatform = softwareData[software]["platform"]
-        softwareProjects = softwareData[software]["projects"]
-        project = self.ChooseProject(softwareProjects,
-         self.platform[softwarePlatform])
+        project = self.ChooseProject(softwareData[software])
         if project is None:
             raise CompatibleProjectNotFound(
              "Unable to find compatible project for software: "
@@ -157,20 +156,12 @@ class Vgazer:
         if software not in softwareData:
             raise UnknownSoftware("Unknown software: " + software)
 
-        softwarePlatform = softwareData[software]["platform"]
-        softwareProjects = softwareData[software]["projects"]
-        project = self.ChooseProject(softwareProjects,
-         self.platform[softwarePlatform])
+        project = self.ChooseProject(softwareData[software])
         if project is None:
             raise CompatibleProjectNotFound(
              "Unable to find compatible project for software: " + software)
 
         prereqs = project["prereqs"] if "prereqs" in project else []
-        fallback_prereqs = (project["fallback_prereqs"] if "fallback_prereqs"
-         in project else [])
-        postreqs = project["postreqs"] if "postreqs" in project else []
-        postreqsOnce = (project["postreqsOnce"] if "postreqsOnce" in project
-         else [])
 
         for prereq in prereqs:
             prereq = prereq.format(
@@ -179,42 +170,6 @@ class Vgazer:
              arch=self.platform["target"].GetArch())
             if prereq not in self.installedSoftware:
                 self.Install(prereq, verbose, None)
-
-        installer = project["installer"]
-
-        try:
-            self.UseInstaller(software, installer, verbose, fallback_prereqs)
-        except InstallError as installError:
-            fallbackProject = self.SearchFallbackProject(softwareProjects);
-            if (fallbackProject is not None and fallbackProject is not project):
-                print(
-                 "VGAZER: Something went wrong. Starting fallback installation "
-                 "steps"
-                )
-                self.UseInstaller(software, fallbackProject["installer"], 
-                 verbose, fallback_prereqs)
-            else:
-                raise installError
-
-        # Resolving circullar dependencies
-        # for example:
-        # Mesa requires libva, libva requires Mesa.
-        # Firstly install libva without mesa support as prereq of Mesa,
-        # then install Mesa, then reinstall libva with Mesa support
-        # Another example - Freetype-Harfbuzz-Freetype
-        if len(postreqs) != 0:
-            for postreq in postreqs:
-                postreq = postreq.format(
-                 triplet=GetGenericTriplet(self.platform["target"]),
-                 arch=self.platform["target"].GetArch())
-                self.installedSoftware.remove(postreq)
-                self.Install(postreq, verbose, None)
-        if len(postreqsOnce) != 0:
-            for postreqOnce in postreqsOnce:
-                postreqOnce = postreqOnce.format(
-                 triplet=GetGenericTriplet(self.platform["target"]),
-                 arch=self.platform["target"].GetArch())
-                self.Install(postreqOnce, verbose, None)
 
     def InstallList(self, softwareList, verbose=False):
         for software in softwareList:

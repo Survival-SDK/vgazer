@@ -38,7 +38,7 @@ class HostDetector:
                 self.osVersion = "latest"
                 self.abi = "gnu"
         else:
-            unknownOs = True
+            self.unknownOs = True
             self.errorMsg = "Unexpected OS type: " + osType
 
     def __enter__(self):

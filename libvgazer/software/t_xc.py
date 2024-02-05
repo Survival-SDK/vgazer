@@ -100,7 +100,10 @@ data = {
                 },
                 "installer": {
                     "type": "apt",
-                    "package": ["libwayland-dev", "libwayland-egl-backend-dev"],
+                    "package": [
+                        "libwayland-dev",
+                        "libwayland-egl-backend-dev"
+                    ],
                 },
             },
             {

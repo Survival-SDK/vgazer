@@ -27,7 +27,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/compuphase/minIni/releases")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(releases, "compuphase/minIni") as errMgr:
         if errMgr.IsErrorOccured():
@@ -56,7 +57,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             if not os.path.exists(
              "{prefix}/include".format(prefix=installPrefix)):
                 RunCommand(
-                 ["mkdir", "-p",
+                 [
+                  "mkdir", "-p",
                   "{prefix}/include".format(prefix=installPrefix)
                  ],
                  verbose)
@@ -65,22 +67,26 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
                  ["mkdir", "-p", "{prefix}/lib".format(prefix=installPrefix)],
                  verbose)
             RunCommand(
-             ["mkdir", "-p",
+             [
+              "mkdir", "-p",
               "{prefix}/include/minINI".format(prefix=installPrefix)
              ],
              verbose)
             RunCommand(
-             ["sh", "-c",
+             [
+              "sh", "-c",
               "cp ./*.h {prefix}/include/minINI".format(prefix=installPrefix)
              ],
              verbose)
             RunCommand(
-             ["cp", "./libminini.a",
+             [
+              "cp", "./libminini.a",
               "{prefix}/lib".format(prefix=installPrefix)
              ],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

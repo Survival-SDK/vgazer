@@ -71,7 +71,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         with WorkingDir(tempPath):
             RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
-             ["tar", "--verbose", "--extract",
+             [
+              "tar", "--verbose", "--extract",
               "--gzip" if tarrballExtension == ".gz" else "--xz", "--file",
               tarballShortFilename
              ],
@@ -82,7 +83,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         buildDir = os.path.join(extractedDir, "build")
         with WorkingDir(buildDir):
             RunCommand(
-             ["meson", "setup",
+             [
+              "meson", "setup",
               "--prefix={prefix}".format(prefix=installPrefix),
               "--libdir={prefix}/lib".format(prefix=installPrefix),
               "--cross-file", configMeson.GetCrossFileName(), "-Dudev=true",
@@ -94,6 +96,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["ninja", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

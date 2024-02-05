@@ -18,7 +18,6 @@ def GetTarballUrl():
 
     maxMajor = -1
     maxMinor = -1
-    maxUrl = ""
     for link in links:
         if ("autoconf" in link.text and ".tar.gz" in link.text
          and ".sig" not in link.text and "-latest" not in link.text):
@@ -65,6 +64,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

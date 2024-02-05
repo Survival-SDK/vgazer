@@ -73,13 +73,15 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
               "meson", "setup", "build/",
               "--prefix={prefix}".format(prefix=installPrefix), "--cross-file",
               configMeson.GetCrossFileName(), "-Dscanner=false",
-              "-Dtests=false", "-Ddocumentation=false", "-Ddtd_validation=false"
+              "-Dtests=false", "-Ddocumentation=false",
+              "-Ddtd_validation=false"
              ],
              verbose)
             RunCommand(["ninja", "-C", "build/"], verbose)
             RunCommand(["ninja", "-C", "build/", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

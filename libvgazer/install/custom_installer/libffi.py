@@ -42,10 +42,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
         extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./configure", "--host={triplet}".format(triplet=targetTriplet),
+             [
+              "./configure", "--host={triplet}".format(triplet=targetTriplet),
               "--prefix={prefix}".format(prefix=installPrefix),
               "--disable-shared", "--enable-portable-binary",
-              "--with-gcc-arch={arch}".format(arch=targetTriplet.split("-")[0]),
+              "--with-gcc-arch={arch}".format(
+               arch=targetTriplet.split("-")[0]),
               "CFLAGS=-fPIC"
              ],
              verbose)
@@ -55,6 +57,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

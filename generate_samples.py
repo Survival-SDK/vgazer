@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-import os
-import stat
-
 from libvgazer          import Vgazer
 from libvgazer.platform import GetTriplet
 from libvgazer.platform import Platform
@@ -66,14 +63,16 @@ def GenerateInstallAndVersionTarget(installEntry):
      "sample-{harch}-{hos}-{hver}-version-{platform}:\n"
      "\tdocker run --net=host -i -t \\\n"
      "     -v ~/.vgazer:/root/.vgazer \\\n"
-     "     -v `pwd`:/mnt/vgazer -v `pwd`/.vgazer-{triplet}:/mnt/vgazer_output \\\n"
+     "     -v `pwd`:/mnt/vgazer \\\n"
+     "     -v `pwd`/.vgazer-{triplet}:/mnt/vgazer_output \\\n"
      "     --entrypoint ./vgazer vgazer_min_env_{harch}_{hos}_{hver} \\\n"
      "     version {targetArg} {software} | tee version.log\n"
      "\n"
      "sample-{harch}-{hos}-{hver}-install-{platform}:\n"
      "\tdocker run --net=host -i -t \\\n"
      "     -v ~/.vgazer:/root/.vgazer \\\n"
-     "     -v `pwd`:/mnt/vgazer -v `pwd`/.vgazer-{triplet}:/mnt/vgazer_output \\\n"
+     "     -v `pwd`:/mnt/vgazer \\\n"
+     "     -v `pwd`/.vgazer-{triplet}:/mnt/vgazer_output \\\n"
      "     --entrypoint ./vgazer vgazer_min_env_{harch}_{hos}_{hver} \\\n"
      "     install {targetArg} {software} | tee install.log\n"
      "\n".format(
@@ -84,7 +83,8 @@ def GenerateInstallAndVersionTarget(installEntry):
         software=software,
         triplet=targetTriplet,
         targetArg=targetArg
-    ))
+     )
+    )
 
 def GenerateSampleTargets(gazer, hostPlatformsList, targetPlatformsList,
  installList):
@@ -92,7 +92,6 @@ def GenerateSampleTargets(gazer, hostPlatformsList, targetPlatformsList,
         for hostPlatform in hostPlatformsList:
             imageLaunchTarget = GenerateImageLaunchTarget(hostPlatform)
             sampleTargetsFile.write(imageLaunchTarget)
-            targetPlatform = hostPlatform
         for installEntry in installList:
             installTarget = GenerateInstallAndVersionTarget(installEntry)
             sampleTargetsFile.write(installTarget)

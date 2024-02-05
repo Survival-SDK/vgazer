@@ -26,7 +26,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          "https://api.github.com/repos/benhoyt/inih/releases")
     except ConnectionError:
         print("VGAZER: Unable to know last version of", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     with GithubApiErrorMgr(releases, "benhoyt/inih") as errMgr:
         if errMgr.IsErrorOccured():
@@ -49,10 +50,12 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["sed", "-i",
+             [
+              "sed", "-i",
               "-e", "/#include <stdio.h>/a #define INI_HANDLER_LINENO 1",
               "-e",
-              "/#include <stdio.h>/a #define INI_CALL_HANDLER_ON_NEW_SECTION 1",
+              "/#include <stdio.h>"
+              "/a #define INI_CALL_HANDLER_ON_NEW_SECTION 1",
               "-e", "/#include <stdio.h>/a #define INI_MAX_LINE 8192",
               "./ini.h",
              ],
@@ -64,7 +67,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              "{prefix}/include".format(prefix=installPrefix)):
                 RunCommand(
                  [
-                  "mkdir", "-p", "{prefix}/include".format(prefix=installPrefix)
+                  "mkdir", "-p",
+                  "{prefix}/include".format(prefix=installPrefix)
                  ],
                  verbose
                 )
@@ -73,13 +77,16 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
                  ["mkdir", "-p", "{prefix}/lib".format(prefix=installPrefix)],
                  verbose)
             RunCommand(
-             ["cp", "./ini.h", "{prefix}/include".format(prefix=installPrefix)],
+             ["cp", "./ini.h",
+              "{prefix}/include".format(prefix=installPrefix)],
              verbose)
             RunCommand(
-             ["cp", "./libinih.a", "{prefix}/lib".format(prefix=installPrefix)],
+             ["cp", "./libinih.a",
+              "{prefix}/lib".format(prefix=installPrefix)],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

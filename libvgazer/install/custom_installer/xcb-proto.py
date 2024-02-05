@@ -40,7 +40,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
          output.splitlines()[0].split("/")[0])
         with WorkingDir(extractedDir):
             RunCommand(
-             ["./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
+             [
+              "./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
               "--prefix={prefix}".format(prefix=installPrefix),
               "ACLOCAL=aclocal -I {prefix}/share/aclocal".format(
                prefix=installPrefix
@@ -50,6 +51,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

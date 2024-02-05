@@ -8,7 +8,8 @@ from libvgazer.platform   import GetInstallPrefix
 def Install(auth, software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
-    url = "https://raw.githubusercontent.com/bilke/cmake-modules/master/CodeCoverage.cmake"
+    url = ("https://raw.githubusercontent.com/bilke/cmake-modules/master/"
+     "CodeCoverage.cmake")
 
     try:
         if not os.path.exists(installPrefix + "/lib/cmake/cmake-modules"):

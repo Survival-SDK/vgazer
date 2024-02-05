@@ -47,7 +47,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              "{prefix}/include".format(prefix=installPrefix)):
                 RunCommand(
                  [
-                  "mkdir", "-p", "{prefix}/include".format(prefix=installPrefix)
+                  "mkdir", "-p",
+                  "{prefix}/include".format(prefix=installPrefix)
                  ],
                  verbose)
             if not os.path.exists("{prefix}/lib".format(prefix=installPrefix)):
@@ -67,6 +68,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError("{software} not installed".format(software=software))
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

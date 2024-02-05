@@ -1,5 +1,11 @@
+import os
 import re
-import requests
+
+from libvgazer.command     import GetCommandOutputUtf8
+from libvgazer.command     import RunCommand
+from libvgazer.exceptions  import CommandError
+from libvgazer.store.temp  import StoreTemp
+from libvgazer.working_dir import WorkingDir
 
 def CheckGit(url):
     storeTemp = StoreTemp()
@@ -20,12 +26,14 @@ def CheckGit(url):
                 return re.sub(' +', ' ', line).split(" ")[1]
 
         clonedDir = os.path.join(tempPath, "cloned")
-        RunCommand(["rm", "-rf", clonedDir], false)
-        RunCommand(["mkdir", "-p", clonedDir], false)
+        RunCommand(["rm", "-rf", clonedDir], False)
+        RunCommand(["mkdir", "-p", clonedDir], False)
         with WorkingDir(clonedDir):
-            RunCommand(["git", "clone", ".", "--depth", "1", url], false)
+            RunCommand(["git", "clone", ".", "--depth", "1", url], False)
             output = GetCommandOutputUtf8([
              "git", "--no-pager", "log", "-1", "--format=%ai"]
             )
             splitted = output.split(" ")
             return "{date} {time}".format(date=splitted[0], time=splitted[1])
+    except CommandError:
+        return "N/A"

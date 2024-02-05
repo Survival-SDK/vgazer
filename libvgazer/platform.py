@@ -8,7 +8,6 @@ from libvgazer.exceptions    import UnknownOs
 from libvgazer.exceptions    import UnknownTargetArch
 from libvgazer.host_detector import HostDetector
 from libvgazer.utils         import FindFileInDir
-from libvgazer.utils         import NewListWithReplace
 from libvgazer.utils         import OneOfIsNone
 
 def GetFilesystemType(path):
@@ -96,7 +95,6 @@ def GetTripletFilenames(triplet, suffixes):
     filenames = []
     for suffix in suffixes:
         filenames.append(triplet + suffix)
-    currentTripletFilenamesList = filenames.copy()
 
     return filenames
 
