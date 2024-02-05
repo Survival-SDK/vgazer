@@ -77,38 +77,22 @@ image_launch:
 	@echo 'Error: variables "arch", "os" and "ver" must be defined'
 endif
 
-ifneq ($(and $(arch),$(os),$(ver)),)
-sample_platform: sample_$(arch)_$(os)_$(ver)_check_platform
+ifneq ($(and $(harch),$(hos),$(hver),$(software),$(tarch),$(tos),$(tabi)),)
+sample-version: sample-$(harch)-$(hos)-$(hver)-version-$(software)-$(tarch)-$(tos)-$(tabi)
+else ifneq ($(and $(arch),$(os),$(ver),$(software)),)
+sample-version: sample-$(arch)-$(os)-$(ver)-version-$(software)
 else
-sample_platform:
-	@echo 'Error: variables "arch", "os" and "ver" must be defined'
+sample-version:
+	@echo 'Error: variables "arch", "os", "ver" and "software" must be defined'
 endif
 
-ifneq ($(and $(harch),$(hos),$(hver),$(tarch),$(tos),$(tabi)),)
-sample_versions: sample_$(harch)_$(hos)_$(hver)_software_versions_$(tarch)_$(tos)_$(tabi)
-else ifneq ($(and $(arch),$(os),$(ver)),)
-sample_versions: sample_$(arch)_$(os)_$(ver)_software_versions_host
+ifneq ($(and $(harch),$(hos),$(hver),$(software),$(tarch),$(tos),$(tabi)),)
+sample-install: sample-$(harch)-$(hos)-$(hver)-install-$(software)-$(tarch)-$(tos)-$(tabi)
+else ifneq ($(and $(arch),$(os),$(ver),$(software)),)
+sample-install: sample-$(arch)-$(os)-$(ver)-install-$(software)
 else
-sample_versions:
-	@echo 'Error: variables "arch", "os" and "ver" must be defined'
-endif
-
-ifneq ($(and $(harch),$(hos),$(hver),$(lib),$(tarch),$(tos),$(tabi)),)
-sample_library: sample_$(harch)_$(hos)_$(hver)_install_$(lib)_$(tarch)_$(tos)_$(tabi)
-else ifneq ($(and $(arch),$(os),$(ver),$(lib)),)
-sample_library: sample_$(arch)_$(os)_$(ver)_install_$(lib)_host
-else
-sample_library:
-	@echo 'Error: variables "arch", "os", "ver" and "lib" must be defined'
-endif
-
-ifneq ($(and $(harch),$(hos),$(hver),$(tool),$(tarch),$(tos),$(tabi)),)
-sample_tool: sample_$(harch)_$(hos)_$(hver)_install_$(tool)_$(tarch)_$(tos)_$(tabi)
-else ifneq ($(and $(arch),$(os),$(ver),$(tool)),)
-sample_tool: sample_$(arch)_$(os)_$(ver)_install_$(tool)
-else
-sample_tool:
-	@echo 'Error: variables "arch", "os", "ver" and "tool" must be defined'
+sample-install:
+	@echo 'Error: variables "arch", "os", "ver" and "software" must be defined'
 endif
 
 lint:

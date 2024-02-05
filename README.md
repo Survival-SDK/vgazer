@@ -72,10 +72,19 @@ $ ./first_run.py
 ```
 
 # Usage
-For use vgazer you need write simple script. Look sample files in "samples"
-directory
+```console
+# vgazer [COMMAND] --target=<triplet> <SOFTWARE[ ...]>
+```
 
-More usage coming soon
+commands:
+
+- version - check versions of software
+- install - install software
+
+**target** (optional) - target platform for installation software and versions 
+checking. Default - host platform
+
+software - space separated list of software must be installed or version checked
 
 # Working with samples (Linux only)
 ### Generating samples
@@ -90,7 +99,7 @@ $ ./generate_samples.py
 ### Sample target's parameters
 Parameters of sample's targets passing to make in key=value form.
 
-Description of parameters:
+#### Description of parameters:
 
 **harch** - must be same as your PC architecture. Currently supported:
 
@@ -127,14 +136,8 @@ Currently supported:
 cases when not used target platform parameters such as **tarch**, **tos** and
 **tabi**
 
-**tool** - tool for installing on host platform. Currently supported:
-
-TODO complete list
-
-**lib** - library for host or target platform that must be installed in system
-paths on host platform. Currently supported:
-
-TODO complete list
+**software** - library for host or target platform that must be installed in system
+paths on host platform.
 
 ### Building Docker images
 Build docker image of environment with given architecture, OS and version of
@@ -158,61 +161,50 @@ Debian Bullseye as base image in interactive mode:
 $ make image_launch arch=x86_64 os=debian ver=bullseye
 ```
 
-### Output host platform of image
-```console
-$ make sample_platform arch=<host_arch> os=<host_os> ver=<host_os_version>
-```
-**Example**. Output info about host platform in environment with x86_64
-architecture and Debian Bullseye as base image:
-```console
-$ make sample_platform arch=x86_64 os=debian ver=bullseye
-```
-
-### Output last versions of all software for target platform on given host
-Versions of host software (compilers, git, cmake etc) may be different on
-various docker images.
-```console
-$ make sample_versions harch=<host_arch> hos=<host_os> hver=<host_os_version> \
-    tarch=<target_arch> tos=<target_os> tabi=<target_abi>
-```
-**Example**. Output last versions of all tools for building libraries to
-x86-linux-gnu target and last versions of all libraries that can be built for
-x86-linux-gnu target in environment with x86_64 architecture and Debian Bullseye
-as base image:
-```console
-$ make sample_versions harch=x86_64 hos=debian hver=bullseye tarch=x86_64 \
-    tos=linux tabi=gnu
-```
-
-### Output last versions of all software for host platform
+### Output most recent available version of software for host platform
 For most software this is last versions of appropriate packages in repos of OS
 distribution.
 ```console
-$ make sample_versions arch=<host_arch> os=<host_os> ver=<host_os_version>
+$ make sample-version software=<software> arch=<host_arch> os=<host_os> \
+    ver=<host_os_version>
 ```
-**Example**. Output last versions of all tools and all libraries that can be
-installed with apt-get or built manually on host environment with x86_64
-architecture and Debian Bullseye as base image.
+**Example**. Output most recent available version of cmake that can be
+installed with apt-get on host environment with x86_64 architecture and Debian Bullseye as base image.
 ```console
-$ make sample_versions arch=x86_64 os=debian ver=bullseye
+$ make sample-version software=cmake arch=x86_64 os=debian ver=bullseye
+```
+
+### Output most recent available version of software for target platform
+Versions of host software (compilers, git, cmake etc) may be different on
+various docker images.
+```console
+$ make sample-version software=<software> harch=<host_arch> hos=<host_os> \
+    hver=<host_os_version> tarch=<target_arch> tos=<target_os> \
+    tabi=<target_abi>
+```
+**Example**. Output most recent available version of cjson that can be
+installed download, build and copy on host environment with x86_64 architecture and Debian Bullseye as base image for x86_64-linux-gnu target.
+```console
+$ make sample-version software=cjson harch=x86_64 hos=debian hver=bullseye \
+    tarch=x86_64 tos=linux tabi=gnu
 ```
 
 ### Install tool on host platform
 For most software this is last versions of appropriate packages in repos of OS
 distribution.
 ```console
-$ make sample_tool tool=<tool> arch=<host_arch> os=<host_os> \
+$ make sample-install software=<tool> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example**. Install CMake via apt-get on host environment with x86_64
 architecture and Debian Bullseye as base image.
 ```console
-$ make sample_tool tool=cmake arch=x86_64 os=debian ver=bullseye
+$ make sample-install software=cmake arch=x86_64 os=debian ver=bullseye
 ```
 
 ### Install library for target platform on host platform
 ```console
-$ make sample_library lib=<library> harch=<host_arch> hos=<host_os> \
+$ make sample-install software=<library> harch=<host_arch> hos=<host_os> \
     hver=<host_os_version> tarch=<target_arch> tos=<target_os> \
     tabi=<target_abi>
 ```
@@ -220,7 +212,7 @@ $ make sample_library lib=<library> harch=<host_arch> hos=<host_os> \
 library for x86-linux-gnu target on host environment with x86_64 architecture
 and Debian Bullseye as base image.
 ```console
-$ make sample_library lib=cjson harch=x86_64 hos=debian hver=bullseye \
+$ make sample-install software=cjson harch=x86_64 hos=debian hver=bullseye \
     tarch=x86_64 tos=linux tabi=gnu
 ```
 
@@ -228,20 +220,20 @@ $ make sample_library lib=cjson harch=x86_64 hos=debian hver=bullseye \
 Install library from repos of OS's distribution if available. Else library will
 be downloaded, builded and installed to system paths.
 ```console
-$ make sample_library lib=<library> arch=<host_arch> os=<host_os> \
+$ make sample-install software=<library> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example 1**. Install zlib library via apt-get on host environment with x86_64
 architecture and Debian Bullseye as base image.
 ```console
-$ make sample_library lib=zlib arch=x86_64 os=debian ver=bullseye
+$ make sample-install software=zlib arch=x86_64 os=debian ver=bullseye
 ```
 **Example 2**. Try to install cjson library via apt-get on host environment
 with x86_64 architecture and Debian Stretch as base image. Repos of Debian
 Stretch do not have libcjson-dev package. This is why in this case library will
 be downloaded, built and installed manually.
 ```console
-$ make sample_library lib=cjson arch=x86_64 os=debian ver=stretch
+$ make sample-install software=cjson arch=x86_64 os=debian ver=stretch
 ```
 
 # For developers:
