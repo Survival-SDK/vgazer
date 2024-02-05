@@ -216,7 +216,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["stretch", "buster", "bullseye"],
+                "osVersion": ["buster", "bullseye"],
                 "abi": ["any"],
                 "checker": {
                     "type": "debian",

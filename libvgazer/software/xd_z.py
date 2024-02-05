@@ -175,21 +175,6 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["stretch"],
-                "abi": ["gnu"],
-                "license": ["mit", "smlnj"],
-                "checker": {
-                    "type": "debian",
-                    "source": "x11proto-core",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "x11proto-core-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["mit", "smlnj"],

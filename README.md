@@ -110,7 +110,6 @@ Distribution. This is not OS and OS's version of your PC. Typically it is OS
 and OS's version of base Docker image. Currently supported:
 
 * debian
-    * stretch (possibly not working yet)
     * buster
     * bullseye
     * bookworm
@@ -223,17 +222,10 @@ be downloaded, builded and installed to system paths.
 $ make sample-install software=<library> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
-**Example 1**. Install zlib library via apt-get on host environment with x86_64
+**Example**. Install zlib library via apt-get on host environment with x86_64
 architecture and Debian Bullseye as base image.
 ```console
 $ make sample-install software=zlib arch=x86_64 os=debian ver=bullseye
-```
-**Example 2**. Try to install cjson library via apt-get on host environment
-with x86_64 architecture and Debian Stretch as base image. Repos of Debian
-Stretch do not have libcjson-dev package. This is why in this case library will
-be downloaded, built and installed manually.
-```console
-$ make sample-install software=cjson arch=x86_64 os=debian ver=stretch
 ```
 
 # For developers:

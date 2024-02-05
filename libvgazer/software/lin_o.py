@@ -26,7 +26,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["stretch", "buster"],
+                "osVersion": ["buster"],
                 "abi": ["gnu"],
                 "license": ["mit"],
                 "checker": {
@@ -243,9 +243,6 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                # TODO: check old comment below
-                # glib requires minimal version of Meson 0.49.2. Debian Stretch
-                # repos have Meson with version smaller than 0.49.2
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["any"],
                 "checker": {
