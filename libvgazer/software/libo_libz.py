@@ -15,8 +15,8 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "xiph",
-                    "project": "libogg",
+                    "type": "git",
+                    "url": "https://gitlab.xiph.org/xiph/ogg.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -76,9 +76,9 @@ data = {
                     "xorg-macros",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "743",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess.git",
+                    "hint": r'libpciaccess-\d\.\d+$',
                 },
                 "installer": {
                     "type": "custom",
@@ -139,8 +139,9 @@ data = {
                     "zlib",
                 ],
                 "checker": {
-                    "type": "sourceforge",
-                    "project": "libpng",
+                    "type": "git",
+                    "url": "git://git.code.sf.net/p/libpng/code",
+                    "hint": r'v\d\.\d\.\d+$',
                 },
                 "installer": {
                     "type": "custom",
@@ -195,9 +196,8 @@ data = {
                     "{triplet}-gcc",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "ryanlederman",
-                    "repo": "libsir",
+                    "type": "git",
+                    "url": "https://github.com/aremmell/libsir.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -288,8 +288,8 @@ data = {
                     "libogg",
                 ],
                 "checker": {
-                    "type": "xiph",
-                    "project": "libvorbis",
+                    "type": "git",
+                    "url": "https://gitlab.xiph.org/xiph/vorbis.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -350,9 +350,9 @@ data = {
                     "xorgproto",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "714",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/lib/libxext.git",
+                    "hint": r'libXext-\d\.\d(\.\d+(\.\d)?)?$',
                 },
                 "installer": {
                     "type": "custom",

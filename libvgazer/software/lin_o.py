@@ -15,8 +15,8 @@ data = {
                     "{triplet}-gcc",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "lua",
+                    "type": "git",
+                    "url": "https://github.com/lua/lua.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -86,13 +86,8 @@ data = {
                 ],
                 # TODO(edomin): check version like in installer
                 "checker": {
-                    "type": "custom",
-                    "name": "luajit",
-                    "fallback": {
-                        "type": "github",
-                        "user": "LuaJIT",
-                        "repo": "LuaJIT",
-                    },
+                    "type": "git",
+                    "url": "https://luajit.org/git/luajit.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -146,9 +141,8 @@ data = {
                     "{triplet}-gcc",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "MaJerle",
-                    "repo": "lwrb",
+                    "type": "git",
+                    "url": "https://github.com/MaJerle/lwrb.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -271,9 +265,8 @@ data = {
                     "{triplet}-gcc",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "compuphase",
-                    "repo": "minIni",
+                    "type": "git",
+                    "url": "https://github.com/compuphase/minIni.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -344,9 +337,8 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "Immediate-Mode-UI",
-                    "repo": "Nuklear",
+                    "type": "git",
+                    "url": "https://github.com/Immediate-Mode-UI/Nuklear.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -374,9 +366,8 @@ data = {
                     "xorgproto",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "4399",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/glvnd/libglvnd.git",
                 },
                 "installer": {
                     "type": "custom",

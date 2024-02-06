@@ -44,12 +44,8 @@ data = {
                     "cmake",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "physfs",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "physfs-github",
-                    },
+                    "type": "git",
+                    "url": "https://github.com/icculus/physfs.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -160,8 +156,9 @@ data = {
                     "alsa-lib",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "portaudio",
+                    "type": "git",
+                    "url": "https://github.com/PortAudio/portaudio.git",
+                    "hint": r'v\d+\.\d\.\d$',
                 },
                 "installer": {
                     "type": "custom",
@@ -239,9 +236,8 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "2428",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -299,9 +295,9 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "rurban",
-                    "repo": "safeclib",
+                    "type": "git",
+                    "url": "https://github.com/rurban/safeclib.git",
+                    "hint": r'v\d\.\d(\.\d)?$',
                 },
                 "installer": {
                     "type": "custom",
@@ -324,9 +320,8 @@ data = {
                     "{triplet}-gcc",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "jibsen",
-                    "repo": "scv",
+                    "type": "git",
+                    "url": "https://github.com/jibsen/scv.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -349,8 +344,10 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "stb",
-                    "library": "stb_rect_pack",
+                    "type": "git",
+                    "url": "https://github.com/nothings/stb.git",
+                    "files": ["stb_rect_pack.h"],
+                    "hint": r'\d\.\d{2}',
                 },
                 "installer": {
                     "type": "stb",

@@ -15,8 +15,8 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "alsa-lib",
+                    "type": "git",
+                    "url": "https://github.com/alsa-project/alsa-lib.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -70,8 +70,8 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "autoconf",
+                    "type": "git",
+                    "url": "git://git.sv.gnu.org/autoconf",
                 },
                 "installer": {
                     "type": "custom",
@@ -125,8 +125,9 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "automake",
+                    "type": "git",
+                    "url": "https://git.savannah.gnu.org/git/automake.git",
+                    "hint": r'v\d\.\d+\w?(\.\d+)?$',
                 },
                 "installer": {
                     "type": "custom",
@@ -180,9 +181,8 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "Malvineous",
-                    "repo": "cfgpath",
+                    "type": "git",
+                    "url": "https://github.com/Malvineous/cfgpath.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -212,9 +212,8 @@ data = {
                     "cmake",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "DaveGamble",
-                    "repo": "cJSON",
+                    "type": "git",
+                    "url": "https://github.com/DaveGamble/cJSON.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -272,8 +271,8 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "cmake",
+                    "type": "git",
+                    "url": "https://gitlab.kitware.com/cmake/cmake.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -321,9 +320,8 @@ data = {
                 "abi": ["any"],
                 "license": ["cc0"],
                 "checker": {
-                    "type": "github",
-                    "user": "edomin",
-                    "repo": "cmake_barebones",
+                    "type": "git",
+                    "url": "https://github.com/edomin/cmake_barebones.git"
                 },
                 "installer": {
                     "type": "custom",
@@ -349,8 +347,8 @@ data = {
                     "cmake",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "cmocka",
+                    "type": "git",
+                    "url": "https://git.cryptomilk.org/projects/cmocka.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -388,8 +386,10 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "codecoverage",
+                    "type": "git",
+                    "url": "https://github.com/bilke/cmake-modules.git",
+                    "files": ["CodeCoverage.cmake"],
+                    "hint": r'\d{4}-\d{2}-\d{2}',
                 },
                 "installer": {
                     "type": "custom",
@@ -412,8 +412,10 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "dr_wav",
+                    "type": "git",
+                    "url": "https://github.com/mackron/dr_libs.git",
+                    "files": ["dr_wav.h"],
+                    "hint": r'v\d\.\d+\.\d+',
                 },
                 "installer": {
                     "type": "custom",

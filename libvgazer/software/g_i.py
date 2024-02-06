@@ -101,8 +101,8 @@ data = {
                     "opengl",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "mesa-glu",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/mesa/glu.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -155,9 +155,10 @@ data = {
                     "{triplet}-gcc",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "anholt",
-                    "repo": "hash_table",
+                    "type": "git",
+                    "url": "https://github.com/anholt/hash_table.git",
+                    "files": ["meson.build"],
+                    "hint": r'\d\.\d',
                 },
                 "installer": {
                     "type": "custom",
@@ -185,8 +186,9 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "icu",
+                    "type": "git",
+                    "url": "https://github.com/unicode-org/icu.git",
+                    "hint": r'release-\d+-\d$',
                 },
                 "installer": {
                     "type": "custom",
@@ -240,9 +242,8 @@ data = {
                     "{triplet}-gcc",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "benhoyt",
-                    "repo": "inih",
+                    "type": "git",
+                    "url": "https://github.com/benhoyt/inih.git",
                 },
                 "installer": {
                     "type": "custom",

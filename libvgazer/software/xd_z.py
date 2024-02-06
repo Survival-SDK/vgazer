@@ -20,9 +20,9 @@ data = {
                     "xorgproto",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "701",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/lib/libx11.git",
+                    "hint": r'libX11-\d\.\d+(?:\.\d+(?:\.\d+)?)?',
                 },
                 "installer": {
                     "type": "custom",
@@ -77,9 +77,8 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "XadillaX",
-                    "repo": "xmempool",
+                    "type": "git",
+                    "url": "https://github.com/XadillaX/xmempool.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -104,9 +103,9 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "798",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/util/macros.git",
+                    "hint": r'util-macros-\d\.\d+\.\d',
                 },
                 "installer": {
                     "type": "custom",
@@ -163,9 +162,8 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "788",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/proto/xorgproto.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -222,9 +220,9 @@ data = {
                     "xorg-macros",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "749",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/lib/libxtrans.git",
+                    "hint": r'xtrans-\d\.\d\.\d',
                 },
                 "installer": {
                     "type": "custom",
@@ -280,9 +278,8 @@ data = {
                     "cmake",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "kuba--",
-                    "repo": "zip",
+                    "type": "git",
+                    "url": "https://github.com/kuba--/zip.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -307,8 +304,8 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "zlib",
+                    "type": "git",
+                    "url": "https://github.com/madler/zlib.git",
                 },
                 "installer": {
                     "type": "custom",
