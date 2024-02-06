@@ -16,8 +16,10 @@ data = {
                     "unzip",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "tinyfiledialogs",
+                    "type": "git",
+                    "url": "https://git.code.sf.net/p/tinyfiledialogs/code",
+                    "files": ["README.txt"],
+                    "hint": r'tiny file dialogs \( cross-platform C C\+\+ \) v\d\.\d+(?:\.\d)?',
                 },
                 "installer": {
                     "type": "custom",
@@ -80,8 +82,8 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "wayland",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/wayland/wayland.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -140,8 +142,8 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "wayland",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/wayland/wayland.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -405,14 +407,9 @@ data = {
                     "xorgproto",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "706",
-                    "fallback": {
-                        "type": "github",
-                        "user": "freedesktop",
-                        "repo": "xorg-libXau",
-                    }
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/lib/libxau.git",
+                    "hint": r'libXau-\d\.\d\.\d+',
                 },
                 "installer": {
                     "type": "custom",
@@ -476,9 +473,8 @@ data = {
                     "xau",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "2429",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/lib/libxcb.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -534,9 +530,8 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "gitlab",
-                    "host": "gitlab.freedesktop.org",
-                    "id": "2430",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/xorg/proto/xcbproto.git",
                 },
                 "installer": {
                     "type": "custom",

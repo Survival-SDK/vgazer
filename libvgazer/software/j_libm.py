@@ -13,10 +13,9 @@ data = {
                     "wget",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "attractivechaos",
-                    "repo": "klib",
-                    "ignoreReleases": True,
+                    "type": "git",
+                    "url": "https://github.com/attractivechaos/klib",
+                    "files": ["ketopt.h"],
                 },
                 "installer": {
                     "type": "custom",
@@ -47,9 +46,8 @@ data = {
                     "xcb",
                 ],
                 "checker": {
-                    "type": "github",
-                    "user": "jtanx",
-                    "repo": "libclipboard",
+                    "type": "git",
+                    "url": "https://github.com/jtanx/libclipboard.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -100,8 +98,9 @@ data = {
                     "libpciaccess",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "libdrm",
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/mesa/drm.git",
+                    "hint": r'libdrm-\d\.\d\.\d+$',
                 },
                 "installer": {
                     "type": "custom",
@@ -157,8 +156,8 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "custom",
-                    "name": "libffi",
+                    "type": "git",
+                    "url": "https://github.com/libffi/libffi.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -209,8 +208,8 @@ data = {
                 "abi": ["any"],
                 "license": ["lgpl-2"],
                 "checker": {
-                    "type": "custom",
-                    "name": "libiconv",
+                    "type": "git",
+                    "url": "https://git.savannah.gnu.org/git/libiconv.git",
                 },
                 "installer": {
                     "type": "custom",
@@ -246,9 +245,9 @@ data = {
                 "abi": ["any"],
                 "license": ["bsl-1.0"],
                 "checker": {
-                    "type": "github",
-                    "user": "j-jorge",
-                    "repo": "libintl-lite",
+                    "type": "git",
+                    "url": "https://github.com/j-jorge/libintl-lite.git",
+                    "hint": r'LibIntl VERSION \d\.\d',
                 },
                 "installer": {
                     "type": "custom",
@@ -287,8 +286,9 @@ data = {
                     "make",
                 ],
                 "checker": {
-                    "type": "sourceforge",
-                    "project": "lzmautils",
+                    "type": "git",
+                    "url": "https://github.com/tukaani-project/xz.git",
+                    "hint": r'v\d\.\d.\d+$',
                 },
                 "installer": {
                     "type": "custom",
