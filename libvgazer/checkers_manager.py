@@ -18,7 +18,8 @@ class CheckersManager:
             ),
             "git": lambda auth, platform, checkerData: CheckGit(
              checkerData["url"],
-             checkerData["hint"] if "hint" in checkerData else None),
+             checkerData["hint"] if "hint" in checkerData else None,
+             checkerData["files"] if "files" in checkerData else None),
             "github": lambda auth, platform, checkerData: CheckGithub(
              auth["github"],
              checkerData["user"],
