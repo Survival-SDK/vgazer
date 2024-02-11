@@ -9,6 +9,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/attractivechaos/klib/commits/master/ketopt.h",
                 "prereqs": [
                     "wget",
                 ],
@@ -37,6 +38,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/jtanx/libclipboard/releases",
                 "prereqs": [
                     "wget",
                     "{triplet}-g++",
@@ -60,6 +62,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/jtanx/libclipboard/releases",
                 "prereqs": [
                     "wget",
                     "{triplet}-g++",
@@ -89,6 +92,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://gitlab.freedesktop.org/mesa/drm/-/tags",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -113,6 +117,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://gitlab.freedesktop.org/mesa/drm/-/tags",
                 "checker": {
                     "type": "debian",
                     "source": "libdrm",
@@ -128,6 +133,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://gitlab.freedesktop.org/mesa/drm/-/tags",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -149,6 +155,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/libffi/libffi/releases",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -170,6 +177,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://github.com/libffi/libffi/releases",
                 "checker": {
                     "type": "debian",
                     "source": "libffi",
@@ -185,6 +193,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://github.com/libffi/libffi/releases",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -207,6 +216,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["lgpl-2"],
+                "changelog": "https://savannah.gnu.org/news/?group=libiconv",
                 "checker": {
                     "type": "git",
                     "url": "https://git.savannah.gnu.org/git/libiconv.git",
@@ -222,6 +232,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["lgpl-2"],
+                "changelog": "https://savannah.gnu.org/news/?group=libiconv",
                 "checker": {
                     "type": "debian",
                     "source": "glibc",
@@ -244,9 +255,11 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["bsl-1.0"],
+                "changelog": "https://github.com/j-jorge/libintl-lite/commits/master/",
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/j-jorge/libintl-lite.git",
+                    "files": ["CMakeLists.txt"],
                     "hint": r'LibIntl VERSION \d\.\d',
                 },
                 "installer": {
@@ -260,6 +273,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["lgpl-2.1"],
+                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
                 "checker": {
                     "type": "debian",
                     "source": "glibc",
@@ -280,6 +294,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["pd"],
+                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -301,6 +316,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["pd"],
+                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -322,6 +338,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["pd"],
+                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
                 "checker": {
                     "type": "debian",
                     "source": "xz-utils",
@@ -337,6 +354,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["pd"],
+                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",

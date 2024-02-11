@@ -9,6 +9,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://www.lua.org/versions.html",
                 "prereqs": [
                     "wget",
                     "make",
@@ -29,6 +30,7 @@ data = {
                 "osVersion": ["buster"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://www.lua.org/manual/5.3/readme.html#changes",
                 "checker": {
                     "type": "debian",
                     "source": "lua5.3",
@@ -44,6 +46,7 @@ data = {
                 "osVersion": ["bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://www.lua.org/manual/5.4/readme.html#changes",
                 "checker": {
                     "type": "debian",
                     "source": "lua5.4",
@@ -59,6 +62,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://www.lua.org/manual/5.2/readme.html#changes",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -80,6 +84,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "http://luajit.org/status.html",
                 "prereqs": [
                     "make",
                     "{triplet}-gcc",
@@ -100,6 +105,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "http://luajit.org/status.html",
                 "checker": {
                     "type": "debian",
                     "source": "luajit",
@@ -115,6 +121,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "http://luajit.org/status.html",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -136,6 +143,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/MaJerle/lwrb/blob/develop/CHANGELOG.md",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -159,6 +167,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "http://savannah.gnu.org/news/?group=m4",
                 "checker": {
                     "type": "debian",
                     "source": "m4",
@@ -173,6 +182,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "http://savannah.gnu.org/news/?group=m4",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -192,6 +202,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=make",
                 "checker": {
                     "type": "debian",
                     "source": "make-dfsg",
@@ -205,6 +216,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=make",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -225,6 +237,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://mesonbuild.com/Release-notes.html",
                 "checker": {
                     "type": "pypi",
                     "package": "meson",
@@ -239,6 +252,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye", "sid"],
                 "abi": ["any"],
+                "changelog": "https://mesonbuild.com/Release-notes.html",
                 "checker": {
                     "type": "debian",
                     "source": "meson",
@@ -260,6 +274,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["apache-2.0"],
+                "changelog": "https://www.compuphase.com/minini.htm",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -279,6 +294,7 @@ data = {
                 "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["apache-2.0"],
+                "changelog": "https://www.compuphase.com/minini.htm",
                 "checker": {
                     "type": "debian",
                     "source": "libminini",
@@ -298,6 +314,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://ninja-build.org/",
                 "checker": {
                     "type": "debian",
                     "source": "ninja-build",
@@ -312,6 +329,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://ninja-build.org/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "ninja-build",
@@ -333,6 +351,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["unlicense"],
+                "changelog": "https://immediate-mode-ui.github.io/Nuklear/doc/index.html#nuklear/changelog",
                 "prereqs": [
                     "wget",
                 ],
@@ -356,6 +375,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit", "bsd-1", "bsd-3"],
+                "changelog": "https://gitlab.freedesktop.org/glvnd/libglvnd/-/tags",
                 "prereqs": [
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
@@ -380,6 +400,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
+                "changelog": "https://www.mesa3d.org/news/",
                 "checker": {
                     "type": "debian",
                     "source": "mesa",
@@ -395,6 +416,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
+                "changelog": "https://www.mesa3d.org/news/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",

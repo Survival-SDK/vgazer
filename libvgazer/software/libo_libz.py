@@ -9,6 +9,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -29,6 +30,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
                 "checker": {
                     "type": "debian",
                     "source": "libogg",
@@ -44,6 +46,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -66,6 +69,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit", "isc", "x11"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/tags",
                 "prereqs": [
                     "wget",
                     "autoconf",
@@ -95,6 +99,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "isc", "x11"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/tags",
                 "checker": {
                     "type": "debian",
                     "source": "libpciaccess",
@@ -110,6 +115,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "isc", "x11"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/tags",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -131,6 +137,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["libpng-2.0"],
+                "changelog": "http://www.libpng.org/pub/png/pngnews.html",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -154,6 +161,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["libpng-2.0"],
+                "changelog": "http://www.libpng.org/pub/png/pngnews.html",
                 "checker": {
                     "type": "debian",
                     "source": "libpng1.6",
@@ -169,6 +177,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["libpng-2.0"],
+                "changelog": "http://www.libpng.org/pub/png/pngnews.html",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -190,6 +199,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/aremmell/libsir/releases",
                 "prereqs": [
                     "wget",
                     "make",
@@ -218,6 +228,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye"],
                 "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=libtool",
                 "checker": {
                     "type": "debian",
                     "source": "libtool",
@@ -245,6 +256,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=libtool",
                 "checker": {
                     "type": "debian",
                     "source": "libtool",
@@ -259,6 +271,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=libtool",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -280,6 +293,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
                 "prereqs": [
                     "wget",
                     "{triplet}-pkg-config",
@@ -302,6 +316,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
                 "checker": {
                     "type": "debian",
                     "source": "libvorbis",
@@ -317,6 +332,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -338,6 +354,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxext/-/tags",
                 "prereqs": [
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
@@ -365,6 +382,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxext/-/tags",
                 "checker": {
                     "type": "debian",
                     "source": "libxext",
@@ -380,6 +398,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxext/-/tags",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
