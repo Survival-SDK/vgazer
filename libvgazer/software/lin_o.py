@@ -68,7 +68,7 @@ data = {
                     "package": "liblua5.2-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -126,7 +126,7 @@ data = {
                     "package": "libluajit-5.1-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -186,7 +186,7 @@ data = {
                     "package": "m4",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -205,7 +205,7 @@ data = {
                     "package": "make",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
             {
@@ -219,7 +219,7 @@ data = {
                     "package": "make",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -331,7 +331,7 @@ data = {
                     "package": "ninja-build",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -417,7 +417,7 @@ data = {
                     "package": "libgl1-mesa-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],

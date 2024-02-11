@@ -13,7 +13,7 @@ data = {
                     "package": "g++",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
             {
@@ -30,7 +30,7 @@ data = {
                     "package": "gcc-12-monolithic",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -49,7 +49,7 @@ data = {
                     "package": "gcc",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
             {
@@ -178,7 +178,7 @@ data = {
                     "package": "libglu1-mesa-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -267,7 +267,7 @@ data = {
                     "package": "libicu-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],

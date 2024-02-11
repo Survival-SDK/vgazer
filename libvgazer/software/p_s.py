@@ -85,7 +85,7 @@ data = {
                     "package": "libphysfs-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -139,7 +139,7 @@ data = {
                     "package": "pkg-config",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -220,7 +220,7 @@ data = {
                     "package": "portaudio19-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -280,7 +280,7 @@ data = {
                     "package": "libpthread-stubs0-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],

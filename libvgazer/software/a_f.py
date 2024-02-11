@@ -52,7 +52,7 @@ data = {
                     "package": "libasound2-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -109,7 +109,7 @@ data = {
                     "package": "autoconf",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -168,7 +168,7 @@ data = {
                     "package": "automake",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -316,7 +316,7 @@ data = {
                     "package": "cmake",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],

@@ -15,7 +15,7 @@ class InstallersManager:
                   in installerData else None,
                  platformData["host"],
                  verbose),
-            "not_needed": lambda software, auth, platformData, installerData,
+            "not-needed": lambda software, auth, platformData, installerData,
              mirrors, verbose:
                 True,
             "pip": lambda software, auth, platformData, installerData, mirrors,

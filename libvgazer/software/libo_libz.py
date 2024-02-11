@@ -52,7 +52,7 @@ data = {
                     "package": "libogg-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -120,7 +120,7 @@ data = {
                     "package": "libpciaccess-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -181,7 +181,7 @@ data = {
                     "package": "libpng-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -274,7 +274,7 @@ data = {
                     "package": "libtool",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -334,7 +334,7 @@ data = {
                     "package": "libvorbis-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -399,7 +399,7 @@ data = {
                     "package": "libxext-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
