@@ -259,14 +259,20 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "prereqs": [
-                    "x86_64-linux-gnu-gcc",
+                    "gcc",
                 ],
                 "checker": {
                     "type": "apt-cache",
                     "package": "gcc-12-monolithic",
                 },
                 "installer": {
-                    "type": "not-needed",
+                    "type": "cmd",
+                    "cmds": [
+                        [
+                            "update-alternatives", "--set",
+                            "x86_64-linux-gnu-g++", "/usr/bin/g++-12", "1"
+                        ],
+                    ],
                 },
             },
         ],
@@ -299,45 +305,33 @@ data = {
                     "package": "gcc-12-monolithic",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "gcc-12-monolithic",
-                    "postInstallCommands": [
+                    "type": "cmd",
+                    "cmds": [
                         [
-                            "update-alternatives", "--install",
-                            "/usr/bin/x86_64-linux-gnu-cpp",
+                            "update-alternatives", "--set",
                             "x86_64-linux-gnu-cpp", "/usr/bin/cpp-12", "1"
                         ],
                         [
-                            "update-alternatives", "--install",
-                            "/usr/bin/x86_64-linux-gnu-g++",
-                            "x86_64-linux-gnu-g++", "/usr/bin/g++-12", "1"
-                        ],
-                        [
-                            "update-alternatives", "--install",
-                            "/usr/bin/x86_64-linux-gnu-gcc",
+                            "update-alternatives", "--set",
                             "x86_64-linux-gnu-gcc", "/usr/bin/gcc-12", "1"
                         ],
                         [
-                            "update-alternatives", "--install",
-                            "/usr/bin/x86_64-linux-gnu-gcc-ar",
+                            "update-alternatives", "--set",
                             "x86_64-linux-gnu-gcc-ar", "/usr/bin/gcc-ar-12",
                             "1"
                         ],
                         [
-                            "update-alternatives", "--install",
-                            "/usr/bin/x86_64-linux-gnu-gcc-nm",
+                            "update-alternatives", "--set",
                             "x86_64-linux-gnu-gcc-nm", "/usr/bin/gcc-nm-12",
                             "1"
                         ],
                         [
-                            "update-alternatives", "--install",
-                            "/usr/bin/x86_64-linux-gnu-gcc-ranlib",
+                            "update-alternatives", "--set",
                             "x86_64-linux-gnu-gcc-ranlib",
                             "/usr/bin/gcc-ranlib-12", "1"
                         ],
                         [
-                            "update-alternatives", "--install",
-                            "/usr/bin/x86_64-linux-gnu-gcov",
+                            "update-alternatives", "--set",
                             "x86_64-linux-gnu-gcov", "/usr/bin/gcov-12", "1"
                         ]
                     ],
@@ -388,23 +382,50 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["buster"],
                 "abi": ["any"],
                 "changelog": "https://www.mingw-w64.org/changelog/",
+                "prereqs": [
+                    "x86_64-w64-mingw32-gcc",
+                ],
                 "checker": {
                     "type": "apt-cache",
                     "package": "g++-mingw-w64-x86-64",
                 },
                 "installer": {
                     "type": "apt",
-                    "package": "g++-mingw-w64-x86-64",
-                    "postInstallCommands": [
-                        ["update-alternatives", "--set",
-                         "x86_64-w64-mingw32-gcc",
-                         "/usr/bin/x86_64-w64-mingw32-gcc-posix"],
-                        ["update-alternatives", "--set",
-                         "x86_64-w64-mingw32-g++",
-                         "/usr/bin/x86_64-w64-mingw32-g++-posix"],
+                    "package": "gcc-mingw-w64-x86-64",
+                    "cmds": [
+                        [
+                            "update-alternatives", "--set",
+                            "x86_64-w64-mingw32-g++",
+                            "/usr/bin/x86_64-w64-mingw32-g++-posix"
+                        ],
+                    ],
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "trixie", "sid"],
+                "abi": ["any"],
+                "changelog": "https://www.mingw-w64.org/changelog/",
+                "prereqs": [
+                    "x86_64-w64-mingw32-gcc",
+                ],
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "g++-mingw-w64-x86-64-posix",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "gcc-mingw-w64-x86-64-posix",
+                    "cmds": [
+                        [
+                            "update-alternatives", "--set",
+                            "x86_64-w64-mingw32-g++",
+                            "/usr/bin/x86_64-w64-mingw32-g++-posix"
+                        ],
                     ],
                 },
             },
@@ -416,7 +437,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["buster"],
                 "abi": ["any"],
                 "changelog": "https://www.mingw-w64.org/changelog/",
                 "checker": {
@@ -426,6 +447,26 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "gcc-mingw-w64-x86-64",
+                    "postInstallCommands": [
+                        ["update-alternatives", "--set",
+                         "x86_64-w64-mingw32-gcc",
+                         "/usr/bin/x86_64-w64-mingw32-gcc-posix"],
+                    ],
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["bullseye", "bookworm", "trixie", "sid"],
+                "abi": ["any"],
+                "changelog": "https://www.mingw-w64.org/changelog/",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "gcc-mingw-w64-x86-64-posix",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "gcc-mingw-w64-x86-64-posix",
                     "postInstallCommands": [
                         ["update-alternatives", "--set",
                          "x86_64-w64-mingw32-gcc",

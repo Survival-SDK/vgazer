@@ -30,7 +30,13 @@ data = {
                     "package": "gcc-12-monolithic",
                 },
                 "installer": {
-                    "type": "not-needed",
+                    "type": "cmd",
+                    "cmds": [
+                        [
+                            "update-alternatives", "--install", "/usr/bin/g++",
+                            "g++", "/usr/bin/g++-12", "1"
+                        ],
+                    ],
                 },
             },
         ],
@@ -71,10 +77,6 @@ data = {
                             "cpp", "/usr/bin/cpp-12", "1"
                         ],
                         [
-                            "update-alternatives", "--install", "/usr/bin/g++",
-                            "g++", "/usr/bin/g++-12", "1"
-                        ],
-                        [
                             "update-alternatives", "--install", "/usr/bin/gcc",
                             "gcc", "/usr/bin/gcc-12", "1"
                         ],
@@ -94,8 +96,8 @@ data = {
                             "/usr/bin/gcc-ranlib-12", "1"
                         ],
                         [
-                            "update-alternatives", "--install", "/usr/bin/gcov",
-                            "gcov", "/usr/bin/gcov-12", "1"
+                            "update-alternatives", "--install",
+                            "/usr/bin/gcov", "gcov", "/usr/bin/gcov-12", "1"
                         ]
                     ],
                 },
