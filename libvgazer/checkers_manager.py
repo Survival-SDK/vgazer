@@ -1,23 +1,29 @@
-from libvgazer.exceptions     import UnknownVersionChecker
-from libvgazer.version.debian import CheckDebian
-from libvgazer.version.git    import CheckGit
-from libvgazer.version.pypi   import CheckPypi
+from libvgazer.exceptions        import UnknownVersionChecker
+from libvgazer.version.apt_cache import CheckAptCache
+from libvgazer.version.debian    import CheckDebian
+from libvgazer.version.git       import CheckGit
+from libvgazer.version.pypi      import CheckPypi
 
 class CheckersManager:
     def __init__(self):
         self.checkFuncs = {
+            "apt-cache": lambda auth, platform, checkerData: CheckAptCache(
+                checkerData["package"],
+                platform.GetArch()
+            ),
             "debian": lambda auth, platform, checkerData: CheckDebian(
-             auth["base"],
-             platform.GetOsVersion(),
-             checkerData["source"]
+                auth["base"],
+                platform.GetOsVersion(),
+                checkerData["source"]
             ),
             "git": lambda auth, platform, checkerData: CheckGit(
-             checkerData["url"],
-             checkerData["hint"] if "hint" in checkerData else None,
-             checkerData["files"] if "files" in checkerData else None),
+                checkerData["url"],
+                checkerData["hint"] if "hint" in checkerData else None,
+                checkerData["files"] if "files" in checkerData else None
+            ),
             "pypi": lambda auth, platform, checkerData: CheckPypi(
-             auth["base"],
-             checkerData["package"]
+                auth["base"],
+                checkerData["package"]
             ),
         }
 
