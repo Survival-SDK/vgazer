@@ -83,11 +83,4 @@ def CheckGit(url, hint=None, files=None):
     if version is None:
         version = GetLastCommit(url, hint, files)
 
-    version = re.sub(r'^\D(?:\D*[a-z])?[a-zA-Z]?(?:\d*\-)?' , "" , version)
-    version = re.sub(r'\.\D*$' , "" , version)
-    splitted = re.split(r'[\.\-\:\s]', version)
-
-    if len(splitted) > 4:
-        return ".".join(splitted[0:4]) + "".join(splitted[4:])
-
-    return ".".join(splitted)
+    return version

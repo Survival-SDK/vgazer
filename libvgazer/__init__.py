@@ -1,4 +1,5 @@
 from multimethod import multimethod
+import re
 
 from libvgazer.auth.base           import AuthBase
 from libvgazer.auth.github         import AuthGithub
@@ -79,6 +80,17 @@ class Vgazer:
 
         return None
 
+    def NormalizeVersion(self, version):
+        normalized = re.sub(r'^\D(?:\D*[a-z])?[a-zA-Z]?(?:\d*\-)?' , "" ,
+         version)
+        normalized = re.sub(r'\.\D*$' , "" , normalized)
+        splitted = re.split(r'[\.\-\:\s]', normalized)
+
+        if len(splitted) > 4:
+            return ".".join(splitted[0:4]) + "".join(splitted[4:])
+
+        return ".".join(splitted)
+
     def UseChecker(self, software, checker):
         softwareData = self.softwareData.GetData()
         softwarePlatform = softwareData[software]["platform"]
@@ -111,7 +123,7 @@ class Vgazer:
 
         checker = project["checker"]
 
-        return self.UseChecker(software, checker)
+        return self.NormalizeVersion(self.UseChecker(software, checker))
 
     def VersionsList(self, softwareList):
         result = []
