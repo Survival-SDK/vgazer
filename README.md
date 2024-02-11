@@ -116,7 +116,7 @@ and OS's version of base Docker image. Currently supported:
     * bullseye
     * bookworm
 * steamrt
-    * latest
+    * scout
 
 **tarch** - architecture of device for crossplatform compiling libraries.
 Currently supported:

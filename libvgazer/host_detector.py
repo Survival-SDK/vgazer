@@ -24,6 +24,10 @@ class HostDetector:
                 raise DebianReleaseDataNotFound(
                  "Unable to find data of Debian version: " + os.name)
 
+    @staticmethod
+    def GetSteamRtVersion():
+        return "scout"
+
     def __init__(self):
         self.unknownOs = False
         self.errorMsg = "No error"
@@ -35,7 +39,7 @@ class HostDetector:
                 self.osVersion = HostDetector.GetDebianVersion()
                 self.abi = "gnu"
             if self.os == "steamrt":
-                self.osVersion = "latest"
+                self.osVersion = HostDetector.GetSteamRtVersion()
                 self.abi = "gnu"
         else:
             self.unknownOs = True
