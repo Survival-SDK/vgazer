@@ -124,7 +124,7 @@ data = {
                     "package": "libwayland-egl-backend-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -182,7 +182,7 @@ data = {
                     "package": "libwayland-bin",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -201,7 +201,7 @@ data = {
                     "source": "wget",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
             {
@@ -230,7 +230,7 @@ data = {
                     "package": "wget",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -249,7 +249,7 @@ data = {
                     "package": "g++",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
             {
@@ -266,7 +266,7 @@ data = {
                     "package": "gcc-12-monolithic",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -285,7 +285,7 @@ data = {
                     "package": "gcc",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
             {
@@ -521,7 +521,7 @@ data = {
                     "package": "libxau-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -584,7 +584,7 @@ data = {
                     "package": "libx11-xcb-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -643,7 +643,7 @@ data = {
                     "package": "xcb-proto",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],

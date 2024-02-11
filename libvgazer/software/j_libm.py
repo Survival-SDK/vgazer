@@ -139,7 +139,7 @@ data = {
                     "package": "libdrm-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -198,7 +198,7 @@ data = {
                     "package": "libffi-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -236,7 +236,7 @@ data = {
                     "package": "libc6-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -277,8 +277,7 @@ data = {
                     "package": "libc6-dev",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "libc6-dev",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -358,7 +357,7 @@ data = {
                     "package": "liblzma-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],

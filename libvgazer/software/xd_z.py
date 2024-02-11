@@ -58,7 +58,7 @@ data = {
                     "package": "libx11-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -142,7 +142,7 @@ data = {
                     "package": "xutils-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -204,7 +204,7 @@ data = {
                     "package": "x11proto-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -265,7 +265,7 @@ data = {
                     "package": "xtrans-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
@@ -351,7 +351,7 @@ data = {
                     "package": "zlib1g-dev",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "not-needed",
                 },
             },
         ],
