@@ -81,8 +81,9 @@ class Vgazer:
         return None
 
     def NormalizeVersion(self, version):
+        normalized = version.split(":")[1] if ":" in version else version
         normalized = re.sub(r'^\D(?:\D*[a-z])?[a-zA-Z]?(?:\d*\-)?' , "" ,
-         version)
+         normalized)
         normalized = re.sub(r'\.\D*$' , "" , normalized)
         splitted = re.split(r'[\.\-\:\s]', normalized)
 

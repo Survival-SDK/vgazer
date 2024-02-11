@@ -32,8 +32,8 @@ data = {
                 "license": ["bsd-3"],
                 "changelog": "https://xiph.org/press/",
                 "checker": {
-                    "type": "debian",
-                    "source": "libogg",
+                    "type": "apt-cache",
+                    "package": "libogg-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -48,9 +48,8 @@ data = {
                 "license": ["bsd-3"],
                 "changelog": "https://xiph.org/press/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libogg",
+                    "type": "apt-cache",
+                    "package": "libogg-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -101,8 +100,8 @@ data = {
                 "license": ["mit", "isc", "x11"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/tags",
                 "checker": {
-                    "type": "debian",
-                    "source": "libpciaccess",
+                    "type": "apt-cache",
+                    "package": "libpciaccess-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -117,9 +116,8 @@ data = {
                 "license": ["mit", "isc", "x11"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/tags",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libpciaccess",
+                    "type": "apt-cache",
+                    "package": "libpciaccess-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -163,8 +161,8 @@ data = {
                 "license": ["libpng-2.0"],
                 "changelog": "http://www.libpng.org/pub/png/pngnews.html",
                 "checker": {
-                    "type": "debian",
-                    "source": "libpng1.6",
+                    "type": "apt-cache",
+                    "package": "libpng-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -179,9 +177,8 @@ data = {
                 "license": ["libpng-2.0"],
                 "changelog": "http://www.libpng.org/pub/png/pngnews.html",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libpng",
+                    "type": "apt-cache",
+                    "package": "libpng-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -230,8 +227,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=libtool",
                 "checker": {
-                    "type": "debian",
-                    "source": "libtool",
+                    "type": "apt-cache",
+                    "package": "libtool",
                 },
                 "installer": {
                     "type": "apt",
@@ -258,8 +255,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=libtool",
                 "checker": {
-                    "type": "debian",
-                    "source": "libtool",
+                    "type": "apt-cache",
+                    "package": "libtool",
                 },
                 "installer": {
                     "type": "apt",
@@ -273,9 +270,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=libtool",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libtool",
+                    "type": "apt-cache",
+                    "package": "libtool",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -318,8 +314,8 @@ data = {
                 "license": ["bsd-3"],
                 "changelog": "https://xiph.org/press/",
                 "checker": {
-                    "type": "debian",
-                    "source": "libvorbis",
+                    "type": "apt-cache",
+                    "package": "libvorbis-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -334,9 +330,8 @@ data = {
                 "license": ["bsd-3"],
                 "changelog": "https://xiph.org/press/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libvorbis",
+                    "type": "apt-cache",
+                    "package": "libvorbis-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -384,8 +379,8 @@ data = {
                 "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxext/-/tags",
                 "checker": {
-                    "type": "debian",
-                    "source": "libxext",
+                    "type": "apt-cache",
+                    "package": "libxext-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -400,9 +395,8 @@ data = {
                 "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxext/-/tags",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libxext",
+                    "type": "apt-cache",
+                    "package": "libxext-dev",
                 },
                 "installer": {
                     "type": "not_needed",

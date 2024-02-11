@@ -9,8 +9,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
-                    "type": "debian",
-                    "source": "gcc-defaults",
+                    "type": "apt-cache",
+                    "package": "g++",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -23,9 +23,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "gcc-4.6",
+                    "type": "apt-cache",
+                    "package": "g++",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -43,8 +42,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
-                    "type": "debian",
-                    "source": "gcc-defaults",
+                    "type": "apt-cache",
+                    "package": "gcc",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -57,9 +56,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "gcc-4.6",
+                    "type": "apt-cache",
+                    "package": "gcc",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -77,8 +75,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://github.com/KhronosGroup/glslang/blob/main/CHANGES.md",
                 "checker": {
-                    "type": "debian",
-                    "source": "glslang",
+                    "type": "apt-cache",
+                    "package": "glslang-tools",
                 },
                 "installer": {
                     "type": "apt",
@@ -123,8 +121,8 @@ data = {
                 "license": ["sgi-b-1.1", "sgi-b-2.0"],
                 "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
                 "checker": {
-                    "type": "debian",
-                    "source": "libglu",
+                    "type": "apt-cache",
+                    "package": "libglu1-mesa-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -139,9 +137,8 @@ data = {
                 "license": ["sgi-b-1.1", "sgi-b-2.0"],
                 "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "mesa",
+                    "type": "apt-cache",
+                    "package": "libglu1-mesa-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -213,8 +210,8 @@ data = {
                 "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
                 "changelog": "https://github.com/unicode-org/icu/releases",
                 "checker": {
-                    "type": "debian",
-                    "source": "icu",
+                    "type": "apt-cache",
+                    "package": "libicu-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -229,9 +226,8 @@ data = {
                 "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
                 "changelog": "https://github.com/unicode-org/icu/releases",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "icu",
+                    "type": "apt-cache",
+                    "package": "libicu-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -271,8 +267,8 @@ data = {
                 "license": ["bsd-3"],
                 "changelog": "https://github.com/benhoyt/inih/releases",
                 "checker": {
-                    "type": "debian",
-                    "source": "libinih",
+                    "type": "apt-cache",
+                    "package": "libinih-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -291,8 +287,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://include-what-you-use.org/",
                 "checker": {
-                    "type": "debian",
-                    "source": "iwyu",
+                    "type": "apt-cache",
+                    "package": "iwyu",
                 },
                 "installer": {
                     "type": "apt",

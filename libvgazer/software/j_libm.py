@@ -119,8 +119,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://gitlab.freedesktop.org/mesa/drm/-/tags",
                 "checker": {
-                    "type": "debian",
-                    "source": "libdrm",
+                    "type": "apt-cache",
+                    "package": "libdrm-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -135,9 +135,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://gitlab.freedesktop.org/mesa/drm/-/tags",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libdrm",
+                    "type": "apt-cache",
+                    "package": "libdrm-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -179,8 +178,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/libffi/libffi/releases",
                 "checker": {
-                    "type": "debian",
-                    "source": "libffi",
+                    "type": "apt-cache",
+                    "package": "libffi-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -195,9 +194,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/libffi/libffi/releases",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libffi",
+                    "type": "apt-cache",
+                    "package": "libffi-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -234,8 +232,8 @@ data = {
                 "license": ["lgpl-2"],
                 "changelog": "https://savannah.gnu.org/news/?group=libiconv",
                 "checker": {
-                    "type": "debian",
-                    "source": "glibc",
+                    "type": "apt-cache",
+                    "package": "libc6-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -275,8 +273,8 @@ data = {
                 "license": ["lgpl-2.1"],
                 "changelog": "https://fossies.org/linux/gettext/ChangeLog",
                 "checker": {
-                    "type": "debian",
-                    "source": "glibc",
+                    "type": "apt-cache",
+                    "package": "libc6-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -340,8 +338,8 @@ data = {
                 "license": ["pd"],
                 "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
                 "checker": {
-                    "type": "debian",
-                    "source": "xz-utils",
+                    "type": "apt-cache",
+                    "package": "liblzma-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -356,9 +354,8 @@ data = {
                 "license": ["pd"],
                 "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "xz-utils",
+                    "type": "apt-cache",
+                    "package": "liblzma-dev",
                 },
                 "installer": {
                     "type": "not_needed",
