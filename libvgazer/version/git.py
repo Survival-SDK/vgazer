@@ -7,17 +7,49 @@ from libvgazer.exceptions  import CommandError
 from libvgazer.store.temp  import StoreTemp
 from libvgazer.working_dir import WorkingDir
 
-def GetTag(url, hint=None, files=None):
+def GetLastTag(url, hint=None, files=None):
+    if files is not None:
+        return None
+
     storeTemp = StoreTemp()
     tempPath = storeTemp.GetDirectoryPath()
 
     try:
-        if files is not None:
-            clonedDir = os.path.join(tempPath, "cloned")
-            RunCommand(["rm", "-rf", clonedDir], False)
-            RunCommand(["mkdir", "-p", clonedDir], False)
-            with WorkingDir(clonedDir, verbose=False):
-                RunCommand(["git", "clone", "--depth", "1", url, "."], False)
+        with WorkingDir(tempPath, verbose=False):
+            output = GetCommandOutputUtf8([
+             "git", "-c", "versionsort.suffix=-", "ls-remote", "--tags",
+             "--sort=-v:refname", url]
+            )
+
+        if (output == ""):
+            return None
+
+        lines = output.splitlines()
+        for line in lines:
+            if line.endswith("^{}"):
+                continue
+            tag = line.split("/")[-1]
+            if hint is None or re.fullmatch(hint, tag) is not None:
+                return tag
+
+    except CommandError:
+        return None
+
+    return None
+
+def GetLastCommit(url, hint=None, files=None):
+    storeTemp = StoreTemp()
+    tempPath = storeTemp.GetDirectoryPath()
+
+    try:
+        clonedDir = os.path.join(tempPath, "cloned")
+        RunCommand(["rm", "-rf", clonedDir], False)
+        RunCommand(["mkdir", "-p", clonedDir], False)
+
+        with WorkingDir(clonedDir, verbose=False):
+            RunCommand(["git", "clone", "--depth", "1", url, "."], False)
+
+            if files is not None:
                 mostRecent = ""
                 for file in files:
                     if hint is None:
@@ -34,38 +66,22 @@ def GetTag(url, hint=None, files=None):
                                 if match > mostRecent:
                                     mostRecent = match
 
-                return mostRecent if mostRecent != "" else "N/A"
+                return mostRecent if mostRecent != "" else None
 
-        with WorkingDir(tempPath, verbose=False):
-            output = GetCommandOutputUtf8([
-             "git", "-c", "versionsort.suffix=-", "ls-remote", "--tags",
-             "--sort=-v:refname", url]
-            )
-
-        if (output != ""):
-            lines = output.splitlines()
-            for line in lines:
-                if line.endswith("^{}"):
-                    continue
-                tag = line.split("/")[-1]
-                if hint is None or re.fullmatch(hint, tag) is not None:
-                    return tag
-
-        clonedDir = os.path.join(tempPath, "cloned")
-        RunCommand(["rm", "-rf", clonedDir], False)
-        RunCommand(["mkdir", "-p", clonedDir], False)
-        with WorkingDir(clonedDir, verbose=False):
-            RunCommand(["git", "clone", "--depth", "1", url, "."], False)
             output = GetCommandOutputUtf8([
              "git", "--no-pager", "log", "-1", "--format=%ai"]
             )
             splitted = output.split(" ")
             return "{date} {time}".format(date=splitted[0], time=splitted[1])
     except CommandError:
-        return "N/A"
+        return None
+
+    return None
 
 def CheckGit(url, hint=None, files=None):
-    version = GetTag(url, hint, files)
+    version = GetLastTag(url, hint, files)
+    if version is None:
+        version = GetLastCommit(url, hint, files)
 
     version = re.sub(r'^\D(?:\D*[a-z])?[a-zA-Z]?(?:\d*\-)?' , "" , version)
     version = re.sub(r'\.\D*$' , "" , version)
