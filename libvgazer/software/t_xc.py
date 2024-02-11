@@ -39,8 +39,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://infozip.sourceforge.net/UnZip.html#Release",
                 "checker": {
-                    "type": "debian",
-                    "source": "unzip",
+                    "type": "apt-cache",
+                    "package": "unzip",
                 },
                 "installer": {
                     "type": "apt",
@@ -54,9 +54,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://infozip.sourceforge.net/UnZip.html#Release",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "unzip",
+                    "type": "apt-cache",
+                    "package": "unzip",
                 },
                 "installer": {
                     "type": "apt",
@@ -102,8 +101,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://wayland.freedesktop.org/releases.html",
                 "checker": {
-                    "type": "debian",
-                    "source": "wayland",
+                    "type": "apt-cache",
+                    "package": "libwayland-egl-backend-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -121,9 +120,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://wayland.freedesktop.org/releases.html",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "wayland",
+                    "type": "apt-cache",
+                    "package": "libwayland-egl-backend-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -159,14 +157,29 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "changelog": "https://wayland.freedesktop.org/releases.html",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "libwayland-bin",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libwayland-bin",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "changelog": "https://wayland.freedesktop.org/releases.html",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "wayland",
+                    "type": "apt-cache",
+                    "package": "libwayland-bin",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -194,12 +207,12 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["bookworm", "trixie", "sid"],
+                "osVersion": ["any"],
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=wget",
                 "checker": {
-                    "type": "debian",
-                    "source": "wget",
+                    "type": "apt-cache",
+                    "package": "wget",
                 },
                 "installer": {
                     "type": "apt",
@@ -213,9 +226,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=wget",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "wget",
+                    "type": "apt-cache",
+                    "package": "wget",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -233,8 +245,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
-                    "type": "debian",
-                    "source": "gcc-defaults",
+                    "type": "apt-cache",
+                    "package": "g++",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -247,9 +259,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "gcc-4.6",
+                    "type": "apt-cache",
+                    "package": "g++",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -267,8 +278,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
-                    "type": "debian",
-                    "source": "gcc-defaults",
+                    "type": "apt-cache",
+                    "package": "gcc",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -281,9 +292,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "gcc-4.6",
+                    "type": "apt-cache",
+                    "package": "gcc",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -304,8 +314,8 @@ data = {
                     "pkg-config",
                 ],
                 "checker": {
-                    "type": "debian",
-                    "source": "pkg-config",
+                    "type": "apt-cache",
+                    "package": "pkg-config",
                 },
                 "installer": {
                     "type": "pkg-config",
@@ -318,9 +328,8 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "pkg-config",
+                    "type": "apt-cache",
+                    "package": "pkg-config",
                 },
                 "installer": {
                     "type": "pkg-config",
@@ -339,8 +348,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://www.mingw-w64.org/changelog/",
                 "checker": {
-                    "type": "debian",
-                    "source": "gcc-mingw-w64",
+                    "type": "apt-cache",
+                    "package": "g++-mingw-w64-x86-64",
                 },
                 "installer": {
                     "type": "apt",
@@ -367,8 +376,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://www.mingw-w64.org/changelog/",
                 "checker": {
-                    "type": "debian",
-                    "source": "gcc-mingw-w64",
+                    "type": "apt-cache",
+                    "package": "gcc-mingw-w64-x86-64",
                 },
                 "installer": {
                     "type": "apt",
@@ -395,8 +404,8 @@ data = {
                     "pkg-config",
                 ],
                 "checker": {
-                    "type": "debian",
-                    "source": "pkg-config",
+                    "type": "apt-cache",
+                    "package": "pkg-config",
                 },
                 "installer": {
                     "type": "pkg-config",
@@ -448,8 +457,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxau/-/tags",
                 "checker": {
-                    "type": "debian",
-                    "source": "libxau",
+                    "type": "apt-cache",
+                    "package": "libxau-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -464,9 +473,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxau/-/tags",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libxau",
+                    "type": "apt-cache",
+                    "package": "libxau-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -512,8 +520,8 @@ data = {
                 "license": ["x11"],
                 "changelog": "https://xcb.freedesktop.org/",
                 "checker": {
-                    "type": "debian",
-                    "source": "libx11",
+                    "type": "apt-cache",
+                    "package": "libx11-xcb-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -528,9 +536,8 @@ data = {
                 "license": ["x11"],
                 "changelog": "https://xcb.freedesktop.org/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libx11",
+                    "type": "apt-cache",
+                    "package": "libx11-xcb-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -572,8 +579,8 @@ data = {
                 "license": ["x11"],
                 "changelog": "https://xcb.freedesktop.org/",
                 "checker": {
-                    "type": "debian",
-                    "source": "xcb-proto",
+                    "type": "apt-cache",
+                    "package": "xcb-proto",
                 },
                 "installer": {
                     "type": "apt",
@@ -588,9 +595,8 @@ data = {
                 "license": ["x11"],
                 "changelog": "https://xcb.freedesktop.org/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "xcb-proto",
+                    "type": "apt-cache",
+                    "package": "xcb-proto",
                 },
                 "installer": {
                     "type": "not_needed",

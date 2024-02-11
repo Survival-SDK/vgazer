@@ -32,8 +32,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://www.lua.org/manual/5.3/readme.html#changes",
                 "checker": {
-                    "type": "debian",
-                    "source": "lua5.3",
+                    "type": "apt-cache",
+                    "package": "liblua5.3-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -48,8 +48,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://www.lua.org/manual/5.4/readme.html#changes",
                 "checker": {
-                    "type": "debian",
-                    "source": "lua5.4",
+                    "type": "apt-cache",
+                    "package": "liblua5.4-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -64,9 +64,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://www.lua.org/manual/5.2/readme.html#changes",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "lua5.2",
+                    "type": "apt-cache",
+                    "package": "liblua5.2-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -107,8 +106,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "http://luajit.org/status.html",
                 "checker": {
-                    "type": "debian",
-                    "source": "luajit",
+                    "type": "apt-cache",
+                    "package": "libluajit-5.1-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -123,9 +122,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "http://luajit.org/status.html",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "luajit5.1",
+                    "type": "apt-cache",
+                    "package": "libluajit-5.1-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -169,8 +167,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "http://savannah.gnu.org/news/?group=m4",
                 "checker": {
-                    "type": "debian",
-                    "source": "m4",
+                    "type": "apt-cache",
+                    "package": "m4",
                 },
                 "installer": {
                     "type": "apt",
@@ -184,9 +182,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "http://savannah.gnu.org/news/?group=m4",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "m4",
+                    "type": "apt-cache",
+                    "package": "m4",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -204,8 +201,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=make",
                 "checker": {
-                    "type": "debian",
-                    "source": "make-dfsg",
+                    "type": "apt-cache",
+                    "package": "make",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -218,9 +215,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=make",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "make-dfsg",
+                    "type": "apt-cache",
+                    "package": "make",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -250,12 +246,12 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "sid"],
+                "osVersion": ["any"],
                 "abi": ["any"],
                 "changelog": "https://mesonbuild.com/Release-notes.html",
                 "checker": {
-                    "type": "debian",
-                    "source": "meson",
+                    "type": "apt-cache",
+                    "package": "meson",
                 },
                 "installer": {
                     "type": "apt",
@@ -291,13 +287,13 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
+                "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["apache-2.0"],
                 "changelog": "https://www.compuphase.com/minini.htm",
                 "checker": {
-                    "type": "debian",
-                    "source": "libminini",
+                    "type": "apt-cache",
+                    "package": "libminini-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -316,8 +312,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://ninja-build.org/",
                 "checker": {
-                    "type": "debian",
-                    "source": "ninja-build",
+                    "type": "apt-cache",
+                    "package": "ninja-build",
                 },
                 "installer": {
                     "type": "apt",
@@ -331,9 +327,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://ninja-build.org/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "ninja-build",
-                    "source": "nasm",
+                    "type": "apt-cache",
+                    "package": "ninja-build",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -402,8 +397,8 @@ data = {
                 "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
                 "changelog": "https://www.mesa3d.org/news/",
                 "checker": {
-                    "type": "debian",
-                    "source": "mesa",
+                    "type": "apt-cache",
+                    "package": "libgl1-mesa-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -418,9 +413,8 @@ data = {
                 "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
                 "changelog": "https://www.mesa3d.org/news/",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "mesa",
+                    "type": "apt-cache",
+                    "package": "libgl1-mesa-dev",
                 },
                 "installer": {
                     "type": "not_needed",

@@ -38,8 +38,8 @@ data = {
                 "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
                 "checker": {
-                    "type": "debian",
-                    "source": "libx11",
+                    "type": "apt-cache",
+                    "package": "libx11-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -54,9 +54,8 @@ data = {
                 "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libx11",
+                    "type": "apt-cache",
+                    "package": "libx11-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -124,8 +123,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/util/macros/-/tags",
                 "checker": {
-                    "type": "debian",
-                    "source": "xutils-dev",
+                    "type": "apt-cache",
+                    "package": "xutils-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -139,9 +138,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/util/macros/-/tags",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "xutils-dev",
+                    "type": "apt-cache",
+                    "package": "xutils-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -181,13 +179,13 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
+                "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "smlnj"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/tags",
                 "checker": {
-                    "type": "debian",
-                    "source": "xorgproto",
+                    "type": "apt-cache",
+                    "package": "x11proto-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -202,9 +200,8 @@ data = {
                 "license": ["mit", "smlnj"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/tags",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "x11proto-core",
+                    "type": "apt-cache",
+                    "package": "x11proto-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -248,8 +245,8 @@ data = {
                 "license": ["mit", "hpnd", "x11", "hpnd-sv"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxtrans/-/tags",
                 "checker": {
-                    "type": "debian",
-                    "source": "xtrans",
+                    "type": "apt-cache",
+                    "package": "xtrans-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -264,9 +261,8 @@ data = {
                 "license": ["mit", "hpnd", "x11", "hpnd-sv"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxtrans/-/tags",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "xtrans",
+                    "type": "apt-cache",
+                    "package": "xtrans-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -335,8 +331,8 @@ data = {
                 "license": ["zlib"],
                 "changelog": "https://www.zlib.net/ChangeLog.txt",
                 "checker": {
-                    "type": "debian",
-                    "source": "zlib",
+                    "type": "apt-cache",
+                    "package": "zlib1g-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -351,9 +347,8 @@ data = {
                 "license": ["zlib"],
                 "changelog": "https://www.zlib.net/ChangeLog.txt",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "zlib",
+                    "type": "apt-cache",
+                    "package": "zlib1g-dev",
                 },
                 "installer": {
                     "type": "not_needed",

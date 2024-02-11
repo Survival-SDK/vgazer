@@ -32,8 +32,8 @@ data = {
                 "license": ["lgpl-2.1"],
                 "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
                 "checker": {
-                    "type": "debian",
-                    "source": "alsa-lib",
+                    "type": "apt-cache",
+                    "package": "libasound2-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -48,9 +48,8 @@ data = {
                 "license": ["lgpl-2.1"],
                 "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "alsa-lib",
+                    "type": "apt-cache",
+                    "package": "libasound2-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -91,8 +90,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://fossies.org/linux/autoconf/NEWS",
                 "checker": {
-                    "type": "debian",
-                    "source": "autoconf",
+                    "type": "apt-cache",
+                    "package": "autoconf",
                 },
                 "installer": {
                     "type": "apt",
@@ -106,9 +105,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://fossies.org/linux/autoconf/NEWS",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "autoconf",
+                    "type": "apt-cache",
+                    "package": "autoconf",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -151,8 +149,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://fossies.org/linux/automake/NEWS",
                 "checker": {
-                    "type": "debian",
-                    "source": "automake-1.16",
+                    "type": "apt-cache",
+                    "package": "automake",
                 },
                 "installer": {
                     "type": "apt",
@@ -166,9 +164,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://fossies.org/linux/automake/NEWS",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "automake1.11",
+                    "type": "apt-cache",
+                    "package": "automake",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -234,13 +231,13 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
+                "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
                 "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
                 "checker": {
-                    "type": "debian",
-                    "source": "cjson",
+                    "type": "apt-cache",
+                    "package": "libcjson-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -259,8 +256,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://clang.llvm.org/extra/ReleaseNotes.html#improvements-to-clang-tidy",
                 "checker": {
-                    "type": "debian",
-                    "source": "llvm-defaults",
+                    "type": "apt-cache",
+                    "package": "clang-tidy",
                 },
                 "installer": {
                     "type": "apt",
@@ -300,8 +297,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
                 "checker": {
-                    "type": "debian",
-                    "source": "cmake",
+                    "type": "apt-cache",
+                    "package": "cmake",
                 },
                 "installer": {
                     "type": "apt",
@@ -315,9 +312,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "cmake",
+                    "type": "apt-cache",
+                    "package": "cmake",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -381,8 +377,8 @@ data = {
                 "license": ["apache-2.0"],
                 "changelog": "https://cmocka.org/#news",
                 "checker": {
-                    "type": "debian",
-                    "source": "cmocka",
+                    "type": "apt-cache",
+                    "package": "libcmocka-dev",
                 },
                 "installer": {
                     "type": "apt",

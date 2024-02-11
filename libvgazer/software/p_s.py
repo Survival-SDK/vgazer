@@ -65,8 +65,8 @@ data = {
                 "license": ["zlib"],
                 "changelog": "https://github.com/icculus/physfs/releases",
                 "checker": {
-                    "type": "debian",
-                    "source": "libphysfs",
+                    "type": "apt-cache",
+                    "package": "libphysfs-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -81,9 +81,8 @@ data = {
                 "license": ["zlib"],
                 "changelog": "https://github.com/icculus/physfs/releases",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "libphysfs",
+                    "type": "apt-cache",
+                    "package": "libphysfs-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -101,8 +100,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "checker": {
-                    "type": "debian",
-                    "source": "pkg-config",
+                    "type": "apt-cache",
+                    "package": "pkg-config",
                 },
                 "installer": {
                     "type": "apt",
@@ -121,8 +120,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "checker": {
-                    "type": "debian",
-                    "source": "pkgconf",
+                    "type": "apt-cache",
+                    "package": "pkg-config",
                 },
                 "installer": {
                     "type": "apt",
@@ -136,9 +135,8 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "pkg-config",
+                    "type": "apt-cache",
+                    "package": "pkg-config",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -202,8 +200,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/PortAudio/portaudio/wiki/ReleaseNotes",
                 "checker": {
-                    "type": "debian",
-                    "source": "portaudio19",
+                    "type": "apt-cache",
+                    "package": "portaudio19-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -218,9 +216,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/PortAudio/portaudio/wiki/ReleaseNotes",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "portaudio19",
+                    "type": "apt-cache",
+                    "package": "portaudio19-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -263,8 +260,8 @@ data = {
                 "license": ["x11"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs/-/tags",
                 "checker": {
-                    "type": "debian",
-                    "source": "pthread-stubs",
+                    "type": "apt-cache",
+                    "package": "libpthread-stubs0-dev",
                 },
                 "installer": {
                     "type": "apt",
@@ -279,9 +276,8 @@ data = {
                 "license": ["x11"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs/-/tags",
                 "checker": {
-                    "type": "launchpad",
-                    "distribution": "precise",
-                    "source": "pthread-stubs",
+                    "type": "apt-cache",
+                    "package": "libpthread-stubs0-dev",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -316,6 +312,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "safeclib",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs/-/tags",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "libsafec-dev",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "libsafec-dev",
                 },
             },
         ],
@@ -373,13 +385,13 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
+                "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
                 "checker": {
-                    "type": "debian",
-                    "source": "libstb",
+                    "type": "apt-cache",
+                    "package": "libstb-dev",
                 },
                 "installer": {
                     "type": "apt",

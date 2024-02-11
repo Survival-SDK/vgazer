@@ -1,6 +1,5 @@
 from libvgazer.exceptions        import UnknownVersionChecker
 from libvgazer.version.apt_cache import CheckAptCache
-from libvgazer.version.debian    import CheckDebian
 from libvgazer.version.git       import CheckGit
 from libvgazer.version.pypi      import CheckPypi
 
@@ -10,11 +9,6 @@ class CheckersManager:
             "apt-cache": lambda auth, platform, checkerData: CheckAptCache(
                 checkerData["package"],
                 platform.GetArch()
-            ),
-            "debian": lambda auth, platform, checkerData: CheckDebian(
-                auth["base"],
-                platform.GetOsVersion(),
-                checkerData["source"]
             ),
             "git": lambda auth, platform, checkerData: CheckGit(
                 checkerData["url"],
