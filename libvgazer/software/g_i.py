@@ -120,6 +120,20 @@ data = {
                     "package": "glslang-tools",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://github.com/KhronosGroup/glslang/blob/main/CHANGES.md",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "glslang-tools",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
         ],
     },
     "glu": {

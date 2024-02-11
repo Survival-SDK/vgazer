@@ -258,6 +258,20 @@ data = {
                     "package": "meson",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://mesonbuild.com/Release-notes.html",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "meson",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
         ],
     },
     "minini": {
