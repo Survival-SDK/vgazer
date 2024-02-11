@@ -258,9 +258,12 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
+                "prereqs": [
+                    "x86_64-linux-gnu-gcc",
+                ],
                 "checker": {
                     "type": "apt-cache",
-                    "package": "g++",
+                    "package": "gcc-12-monolithic",
                 },
                 "installer": {
                     "type": "not_needed",
@@ -293,10 +296,51 @@ data = {
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
                     "type": "apt-cache",
-                    "package": "gcc",
+                    "package": "gcc-12-monolithic",
                 },
                 "installer": {
-                    "type": "not_needed",
+                    "type": "apt",
+                    "package": "gcc-12-monolithic",
+                    "postInstallCommands": [
+                        [
+                            "update-alternatives", "--install",
+                            "/usr/bin/x86_64-linux-gnu-cpp",
+                            "x86_64-linux-gnu-cpp", "/usr/bin/cpp-12", "1"
+                        ],
+                        [
+                            "update-alternatives", "--install",
+                            "/usr/bin/x86_64-linux-gnu-g++",
+                            "x86_64-linux-gnu-g++", "/usr/bin/g++-12", "1"
+                        ],
+                        [
+                            "update-alternatives", "--install",
+                            "/usr/bin/x86_64-linux-gnu-gcc",
+                            "x86_64-linux-gnu-gcc", "/usr/bin/gcc-12", "1"
+                        ],
+                        [
+                            "update-alternatives", "--install",
+                            "/usr/bin/x86_64-linux-gnu-gcc-ar",
+                            "x86_64-linux-gnu-gcc-ar", "/usr/bin/gcc-ar-12",
+                            "1"
+                        ],
+                        [
+                            "update-alternatives", "--install",
+                            "/usr/bin/x86_64-linux-gnu-gcc-nm",
+                            "x86_64-linux-gnu-gcc-nm", "/usr/bin/gcc-nm-12",
+                            "1"
+                        ],
+                        [
+                            "update-alternatives", "--install",
+                            "/usr/bin/x86_64-linux-gnu-gcc-ranlib",
+                            "x86_64-linux-gnu-gcc-ranlib",
+                            "/usr/bin/gcc-ranlib-12", "1"
+                        ],
+                        [
+                            "update-alternatives", "--install",
+                            "/usr/bin/x86_64-linux-gnu-gcov",
+                            "x86_64-linux-gnu-gcov", "/usr/bin/gcov-12", "1"
+                        ]
+                    ],
                 },
             },
         ],
