@@ -9,6 +9,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["lgpl-2.1"],
+                "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -29,6 +30,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["lgpl-2.1"],
+                "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
                 "checker": {
                     "type": "debian",
                     "source": "alsa-lib",
@@ -44,6 +46,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["lgpl-2.1"],
+                "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -64,6 +67,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://fossies.org/linux/autoconf/NEWS",
                 "prereqs": [
                     "m4",
                     "make",
@@ -85,6 +89,7 @@ data = {
                 # Debian bullseye has only 2.69
                 "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
+                "changelog": "https://fossies.org/linux/autoconf/NEWS",
                 "checker": {
                     "type": "debian",
                     "source": "autoconf",
@@ -99,6 +104,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://fossies.org/linux/autoconf/NEWS",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -119,6 +125,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://fossies.org/linux/automake/NEWS",
                 "prereqs": [
                     "autoconf",
                     "make",
@@ -142,6 +149,7 @@ data = {
                 # automake depends on autoconf
                 "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
+                "changelog": "https://fossies.org/linux/automake/NEWS",
                 "checker": {
                     "type": "debian",
                     "source": "automake-1.16",
@@ -156,6 +164,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://fossies.org/linux/automake/NEWS",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -177,6 +186,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["unlicense"],
+                "changelog": "https://github.com/Malvineous/cfgpath/commits/master/",
                 "prereqs": [
                     "wget",
                 ],
@@ -205,6 +215,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -226,6 +237,7 @@ data = {
                 "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
                 "checker": {
                     "type": "debian",
                     "source": "cjson",
@@ -245,6 +257,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://clang.llvm.org/extra/ReleaseNotes.html#improvements-to-clang-tidy",
                 "checker": {
                     "type": "debian",
                     "source": "llvm-defaults",
@@ -265,6 +278,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
                 "prereqs": [
                     "wget",
                     "g++",
@@ -284,6 +298,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
                 "checker": {
                     "type": "debian",
                     "source": "cmake",
@@ -298,6 +313,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -319,6 +335,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["cc0"],
+                "changelog": "https://github.com/edomin/cmake_barebones/commits/main/",
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/edomin/cmake_barebones.git"
@@ -340,6 +357,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["apache-2.0"],
+                "changelog": "https://cmocka.org/#news",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -361,6 +379,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["apache-2.0"],
+                "changelog": "https://cmocka.org/#news",
                 "checker": {
                     "type": "debian",
                     "source": "cmocka",
@@ -382,6 +401,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["bsd-3"],
+                "changelog": "https://github.com/bilke/cmake-modules/blob/master/CodeCoverage.cmake#L29",
                 "prereqs": [
                     "wget",
                 ],
@@ -408,6 +428,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["unlicense"],
+                "changelog": "https://github.com/mackron/dr_libs/blob/master/dr_wav.h#L8351",
                 "prereqs": [
                     "wget",
                 ],

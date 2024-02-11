@@ -36,6 +36,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["zlib"],
+                "changelog": "https://github.com/icculus/physfs/releases",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -62,6 +63,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["zlib"],
+                "changelog": "https://github.com/icculus/physfs/releases",
                 "checker": {
                     "type": "debian",
                     "source": "libphysfs",
@@ -77,6 +79,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["zlib"],
+                "changelog": "https://github.com/icculus/physfs/releases",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -96,6 +99,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye"],
                 "abi": ["any"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "checker": {
                     "type": "debian",
                     "source": "pkg-config",
@@ -115,6 +119,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "checker": {
                     "type": "debian",
                     "source": "pkgconf",
@@ -129,6 +134,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -149,6 +155,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/PortAudio/portaudio/wiki/ReleaseNotes",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -171,6 +178,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/PortAudio/portaudio/wiki/ReleaseNotes",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -192,6 +200,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://github.com/PortAudio/portaudio/wiki/ReleaseNotes",
                 "checker": {
                     "type": "debian",
                     "source": "portaudio19",
@@ -207,6 +216,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://github.com/PortAudio/portaudio/wiki/ReleaseNotes",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -228,6 +238,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["x11"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs/-/tags",
                 "prereqs": [
                     "{triplet}-gcc",
                     "autoconf",
@@ -250,6 +261,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["x11"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs/-/tags",
                 "checker": {
                     "type": "debian",
                     "source": "pthread-stubs",
@@ -265,6 +277,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["x11"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs/-/tags",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -286,6 +299,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/rurban/safeclib/blob/master/ChangeLog",
                 "prereqs": [
                     "autoconf",
                     "automake",
@@ -316,6 +330,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/jibsen/scv/commits/master/",
                 "prereqs": [
                     "{triplet}-gcc",
                 ],
@@ -340,6 +355,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
                 "prereqs": [
                     "wget",
                 ],
@@ -360,6 +376,7 @@ data = {
                 "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["any"],
                 "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
                 "checker": {
                     "type": "debian",
                     "source": "libstb",

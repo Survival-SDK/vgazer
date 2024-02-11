@@ -7,6 +7,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
                 "checker": {
                     "type": "debian",
                     "source": "gcc-defaults",
@@ -20,6 +21,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -39,6 +41,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
                 "checker": {
                     "type": "debian",
                     "source": "gcc-defaults",
@@ -52,6 +55,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -71,6 +75,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://github.com/KhronosGroup/glslang/blob/main/CHANGES.md",
                 "checker": {
                     "type": "debian",
                     "source": "glslang",
@@ -91,6 +96,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["sgi-b-1.1", "sgi-b-2.0"],
+                "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -115,6 +121,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["sgi-b-1.1", "sgi-b-2.0"],
+                "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
                 "checker": {
                     "type": "debian",
                     "source": "libglu",
@@ -130,6 +137,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["sgi-b-1.1", "sgi-b-2.0"],
+                "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -151,6 +159,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/anholt/hash_table/commits/master/",
                 "prereqs": [
                     "{triplet}-gcc",
                 ],
@@ -177,6 +186,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
+                "changelog": "https://github.com/unicode-org/icu/releases",
                 "prereqs": [
                     "wget",
                     "{hostTriplet}-gcc",
@@ -201,6 +211,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
+                "changelog": "https://github.com/unicode-org/icu/releases",
                 "checker": {
                     "type": "debian",
                     "source": "icu",
@@ -216,6 +227,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
+                "changelog": "https://github.com/unicode-org/icu/releases",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -237,6 +249,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["bsd-3"],
+                "changelog": "https://github.com/benhoyt/inih/releases",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -256,6 +269,7 @@ data = {
                 "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["bsd-3"],
+                "changelog": "https://github.com/benhoyt/inih/releases",
                 "checker": {
                     "type": "debian",
                     "source": "libinih",
@@ -275,6 +289,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://include-what-you-use.org/",
                 "checker": {
                     "type": "debian",
                     "source": "iwyu",

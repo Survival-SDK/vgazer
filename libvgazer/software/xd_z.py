@@ -9,6 +9,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
                 "prereqs": [
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
@@ -35,6 +36,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
                 "checker": {
                     "type": "debian",
                     "source": "libx11",
@@ -50,6 +52,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -71,6 +74,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://github.com/XadillaX/xmempool/tags",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -96,6 +100,7 @@ data = {
                 "os": ["any"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/util/macros/-/tags",
                 "prereqs": [
                     "autoconf",
                     "automake",
@@ -117,6 +122,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/util/macros/-/tags",
                 "checker": {
                     "type": "debian",
                     "source": "xutils-dev",
@@ -131,6 +137,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/util/macros/-/tags",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -155,6 +162,7 @@ data = {
                     "bsd-2", "hpnd", "hpnd-sv", "icu", "mit", "sgi-b-2",
                     "smlnj", "x11"
                 ],
+                "changelog": "https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/tags",
                 "prereqs": [
                     "{triplet}-gcc",
                     "meson",
@@ -176,6 +184,7 @@ data = {
                 "osVersion": ["buster", "bullseye", "bookworm", "sid"],
                 "abi": ["gnu"],
                 "license": ["mit", "smlnj"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/tags",
                 "checker": {
                     "type": "debian",
                     "source": "xorgproto",
@@ -191,6 +200,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "smlnj"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/tags",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -212,6 +222,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit", "hpnd", "x11", "hpnd-sv"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxtrans/-/tags",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -235,6 +246,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "hpnd", "x11", "hpnd-sv"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxtrans/-/tags",
                 "checker": {
                     "type": "debian",
                     "source": "xtrans",
@@ -250,6 +262,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit", "hpnd", "x11", "hpnd-sv"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxtrans/-/tags",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -271,6 +284,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["unlicense"],
+                "changelog": "https://github.com/kuba--/zip/releases",
                 "prereqs": [
                     "wget",
                     "{triplet}-g++",
@@ -298,6 +312,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["zlib"],
+                "changelog": "https://www.zlib.net/ChangeLog.txt",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -318,6 +333,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["zlib"],
+                "changelog": "https://www.zlib.net/ChangeLog.txt",
                 "checker": {
                     "type": "debian",
                     "source": "zlib",
@@ -333,6 +349,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["zlib"],
+                "changelog": "https://www.zlib.net/ChangeLog.txt",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",

@@ -10,6 +10,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["zlib"],
+                "changelog": "https://sourceforge.net/p/tinyfiledialogs/activity/?page=0&limit=100#65c79b2c7e19948b1b33b56a",
                 "prereqs": [
                     "wget",
                     "{triplet}-gcc",
@@ -36,6 +37,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://infozip.sourceforge.net/UnZip.html#Release",
                 "checker": {
                     "type": "debian",
                     "source": "unzip",
@@ -50,6 +52,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://infozip.sourceforge.net/UnZip.html#Release",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -72,6 +75,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://wayland.freedesktop.org/releases.html",
                 "prereqs": [
                     "{triplet}-g++",
                     "{triplet}-gcc",
@@ -96,6 +100,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://wayland.freedesktop.org/releases.html",
                 "checker": {
                     "type": "debian",
                     "source": "wayland",
@@ -114,6 +119,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://wayland.freedesktop.org/releases.html",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -135,6 +141,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://wayland.freedesktop.org/releases.html",
                 "prereqs": [
                     "gcc",
                     "meson",
@@ -155,6 +162,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://wayland.freedesktop.org/releases.html",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -174,6 +182,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye"],
                 "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=wget",
                 "checker": {
                     "type": "debian",
                     "source": "wget",
@@ -187,6 +196,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=wget",
                 "checker": {
                     "type": "debian",
                     "source": "wget",
@@ -201,6 +211,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=wget",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -220,6 +231,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
                 "checker": {
                     "type": "debian",
                     "source": "gcc-defaults",
@@ -233,6 +245,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -252,6 +265,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
                 "checker": {
                     "type": "debian",
                     "source": "gcc-defaults",
@@ -265,6 +279,7 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -284,6 +299,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "prereqs": [
                     "pkg-config",
                 ],
@@ -321,6 +337,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://www.mingw-w64.org/changelog/",
                 "checker": {
                     "type": "debian",
                     "source": "gcc-mingw-w64",
@@ -348,6 +365,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "changelog": "https://www.mingw-w64.org/changelog/",
                 "checker": {
                     "type": "debian",
                     "source": "gcc-mingw-w64",
@@ -372,6 +390,7 @@ data = {
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "prereqs": [
                     "pkg-config",
                 ],
@@ -396,6 +415,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["mit"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxau/-/tags",
                 "prereqs": [
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
@@ -426,6 +446,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxau/-/tags",
                 "checker": {
                     "type": "debian",
                     "source": "libxau",
@@ -441,6 +462,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["mit"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxau/-/tags",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -462,6 +484,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["x11"],
+                "changelog": "https://xcb.freedesktop.org/",
                 "prereqs": [
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
@@ -487,6 +510,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["x11"],
+                "changelog": "https://xcb.freedesktop.org/",
                 "checker": {
                     "type": "debian",
                     "source": "libx11",
@@ -502,6 +526,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["x11"],
+                "changelog": "https://xcb.freedesktop.org/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
@@ -523,6 +548,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["x11"],
+                "changelog": "https://xcb.freedesktop.org/",
                 "prereqs": [
                     "autoconf",
                     "automake",
@@ -544,6 +570,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["x11"],
+                "changelog": "https://xcb.freedesktop.org/",
                 "checker": {
                     "type": "debian",
                     "source": "xcb-proto",
@@ -559,6 +586,7 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["x11"],
+                "changelog": "https://xcb.freedesktop.org/",
                 "checker": {
                     "type": "launchpad",
                     "distribution": "precise",
