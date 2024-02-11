@@ -1,5 +1,6 @@
 from libvgazer.exceptions         import UnknownInstaller
 from libvgazer.install.apt        import InstallApt
+from libvgazer.install.cmd        import InstallCmd
 from libvgazer.install.pip        import InstallPip
 from libvgazer.install.pip3       import InstallPip3
 from libvgazer.install.pkg_config import InstallPkgConfig
@@ -15,6 +16,9 @@ class InstallersManager:
                   in installerData else None,
                  platformData["host"],
                  verbose),
+            "cmd": lambda software, auth, platformData, installerData, mirrors,
+             verbose:
+                InstallCmd(software, installerData["cmds"], verbose),
             "not-needed": lambda software, auth, platformData, installerData,
              mirrors, verbose:
                 True,
