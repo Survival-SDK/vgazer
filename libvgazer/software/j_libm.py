@@ -239,6 +239,21 @@ data = {
                     "type": "not-needed",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["lgpl-2"],
+                "changelog": "https://savannah.gnu.org/news/?group=libiconv",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "libc6-dev",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
         ],
     },
     # libintl under GNU LGPL 2.1
@@ -268,6 +283,21 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
+                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "libc6-dev",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
                 "license": ["lgpl-2.1"],

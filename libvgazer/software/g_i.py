@@ -77,6 +77,10 @@ data = {
                             "cpp", "/usr/bin/cpp-12", "1"
                         ],
                         [
+                            "update-alternatives", "--set", "/usr/bin/cpp",
+                            "cpp-bin", "/usr/bin/cpp-12", "1"
+                        ],
+                        [
                             "update-alternatives", "--install", "/usr/bin/gcc",
                             "gcc", "/usr/bin/gcc-12", "1"
                         ],
@@ -326,6 +330,22 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libinih-dev",
+                },
+            },
+            # Temporary stub
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["bsd-3"],
+                "changelog": "https://github.com/benhoyt/inih/releases",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "libinih-dev",
+                },
+                "installer": {
+                    "type": "not-needed",
                 },
             },
         ],
