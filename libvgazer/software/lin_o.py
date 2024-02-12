@@ -314,6 +314,22 @@ data = {
                     "package": "libminini-dev",
                 },
             },
+            # Temporary stub
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["apache-2.0"],
+                "changelog": "https://www.compuphase.com/minini.htm",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "libminini-dev",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
         ],
     },
     "ninja": {

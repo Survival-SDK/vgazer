@@ -244,6 +244,21 @@ data = {
                     "package": "libcjson-dev",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "libcjson-dev",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
         ],
     },
     "clang-tidy": {

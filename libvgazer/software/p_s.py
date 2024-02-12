@@ -330,6 +330,22 @@ data = {
                     "package": "libsafec-dev",
                 },
             },
+            # Temporary stub
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs/-/tags",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "libsafec-dev",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
         ],
     },
     "scv": {
@@ -396,6 +412,22 @@ data = {
                 "installer": {
                     "type": "apt",
                     "package": "libstb-dev",
+                },
+            },
+            # Temporary stub
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "libstb-dev",
+                },
+                "installer": {
+                    "type": "not-needed",
                 },
             },
         ],
