@@ -84,6 +84,10 @@ class UnknownOs(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+class UnknownOsVersion(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class UnknownPlatform(Exception):
     def __init__(self, message):
         super().__init__(message)
