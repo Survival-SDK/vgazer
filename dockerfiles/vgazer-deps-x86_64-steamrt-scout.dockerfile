@@ -3,11 +3,9 @@ MAINTAINER Vasiliy Edomin <Vasiliy.Edomin@gmail.com>
 RUN apt-get update \
  && apt-get remove -y libssl-dev \
  && update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-9 1 \
- && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 1 \
+ # && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 1 \
  && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 1 \
  && update-alternatives --set cpp-bin /usr/bin/cpp-9 \
- && update-alternatives --set g++ /usr/bin/g++-9 \
- && update-alternatives --set gcc /usr/bin/gcc-9 \
  && update-alternatives --install /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-9 1 \
  && update-alternatives --install /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-9 1 \
  && update-alternatives --install /usr/bin/gcc-ranlib gcc-ranlib \
