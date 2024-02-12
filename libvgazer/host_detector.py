@@ -3,6 +3,7 @@ import platform
 
 from libvgazer.exceptions import DebianReleaseDataNotFound
 from libvgazer.exceptions import OsDataNotFound
+from libvgazer.exceptions import UnknownOsVersion
 from libvgazer.os_release import OsRelease
 
 class HostDetector:
@@ -26,7 +27,10 @@ class HostDetector:
 
     @staticmethod
     def GetSteamRtVersion():
-        return "scout"
+        # TODO
+        # May be reference - https://gitlab.steamos.cloud/steamrt/steam-runtime-tools/-/blob/main/docs/distro-assumptions.md#environment-variables
+        raise UnknownOsVersion(
+                 "Unable to detect version of Steam Runtime")
 
     def __init__(self):
         self.unknownOs = False
@@ -34,6 +38,7 @@ class HostDetector:
         self.arch = platform.machine()
         osType = platform.system()
         if osType == "Linux":
+            # TODO steamrt not being detected by HostDetector.GetLinuxOs()
             self.os = HostDetector.GetLinuxOs()
             if self.os == "debian":
                 self.osVersion = HostDetector.GetDebianVersion()
