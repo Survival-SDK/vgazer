@@ -1,12 +1,12 @@
-from vgazer.exceptions  import UnknownTargetArch
-from vgazer.platform    import GetAr
-from vgazer.platform    import GetCc
-from vgazer.platform    import GetCmake
-from vgazer.platform    import GetCxx
-from vgazer.platform    import GetPkgConfig
-from vgazer.platform    import GetStrip
-from vgazer.platform    import Platform
-from vgazer.store.temp  import StoreTemp
+from libvgazer.exceptions import UnknownTargetArch
+from libvgazer.platform   import GetAr
+from libvgazer.platform   import GetCc
+from libvgazer.platform   import GetCmake
+from libvgazer.platform   import GetCxx
+from libvgazer.platform   import GetPkgConfig
+from libvgazer.platform   import GetStrip
+from libvgazer.platform   import Platform
+from libvgazer.store.temp import StoreTemp
 
 class ConfigMeson():
     def __init__(self, platformData):
