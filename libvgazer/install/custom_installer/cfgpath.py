@@ -1,27 +1,40 @@
 import os
 
-from libvgazer.command    import RunCommand
-from libvgazer.exceptions import CommandError
-from libvgazer.exceptions import InstallError
-from libvgazer.platform   import GetInstallPrefix
+from libvgazer.command     import RunCommand
+from libvgazer.exceptions  import CommandError
+from libvgazer.exceptions  import InstallError
+from libvgazer.platform    import GetInstallPrefix
+from libvgazer.store.temp  import StoreTemp
+from libvgazer.working_dir import WorkingDir
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
-    url = (
-     "https://raw.githubusercontent.com/Malvineous/cfgpath/master/cfgpath.h")
+    storeTemp = StoreTemp()
+    storeTemp.ResolveEmptySubdirectory(software)
+    tempPath = storeTemp.GetSubdirectoryPath(software)
 
     try:
-        if not os.path.exists("{prefix}/include".format(prefix=installPrefix)):
+        with WorkingDir(tempPath):
             RunCommand(
-             ["mkdir", "-p", "{prefix}/include".format(prefix=installPrefix)],
+             ["git", "clone", "https://github.com/Malvineous/cfgpath.git"],
              verbose)
-        RunCommand(
-         [
-          "wget", "--read-timeout=10", "-P",
-          "{prefix}/include".format(prefix=installPrefix), url
-         ],
-         verbose)
+        clonedDir = os.path.join(tempPath, "cfgpath")
+        with WorkingDir(clonedDir):
+            if not os.path.exists(
+             "{prefix}/include".format(prefix=installPrefix)):
+                RunCommand(
+                 [
+                  "mkdir", "-p",
+                  "{prefix}/include".format(prefix=installPrefix)
+                 ],
+                 verbose)
+            RunCommand(
+             [
+              "cp", "./cfgpath.h",
+              "{prefix}/include".format(prefix=installPrefix)
+             ],
+             verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(

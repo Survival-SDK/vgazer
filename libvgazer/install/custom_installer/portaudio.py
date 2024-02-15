@@ -1,42 +1,21 @@
 import os
-import requests
-from bs4 import BeautifulSoup
 
 from libvgazer.command     import RunCommand
 from libvgazer.exceptions  import CommandError
 from libvgazer.exceptions  import InstallError
-from libvgazer.exceptions  import TarballLost
 from libvgazer.platform    import GetInstallPrefix
 from libvgazer.platform    import GetTriplet
 from libvgazer.store.temp  import StoreTemp
+from libvgazer.version.git import GetLastTag
 from libvgazer.working_dir import WorkingDir
 
-def GetTarballUrl():
-    response = requests.get("http://www.portaudio.com/download.html")
-    html = response.content.decode("utf-8")
-    parsedHtml = BeautifulSoup(html, "html.parser")
-
-    links = parsedHtml.find_all("a")
-
-    for link in links:
-        if link["href"].find("archives/pa_stable_") != -1:
-            strongs = link.findChildren("strong")
-            if len(strongs) == 1:
-                return "http://www.portaudio.com/" + link["href"]
-
-    raise TarballLost(
-     "Unable to find tarball with last stable release of portaudio")
-
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])
 
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
-
-    tarballUrl = GetTarballUrl()
-    tarballShortFilename = tarballUrl.split("/")[-1]
 
     libs = {
         "linux": "LIBS=-lasound",
@@ -45,13 +24,18 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
 
     try:
         with WorkingDir(tempPath):
-            RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
-             ["tar", "--verbose", "--extract", "--gzip", "--file",
-              tarballShortFilename],
+             [
+              "git", "clone", "https://github.com/PortAudio/portaudio.git", "."
+             ],
              verbose)
-        extractedDir = os.path.join(tempPath, "portaudio")
-        with WorkingDir(extractedDir):
+            RunCommand(
+             [
+              "git", "checkout",
+              GetLastTag("https://github.com/PortAudio/portaudio.git",
+              hint=r'v\d+\.\d\.\d$')
+             ],
+             verbose)
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix, "--disable-shared",

@@ -1,16 +1,15 @@
 import os
-import requests
 
-from libvgazer.command       import RunCommand
-from libvgazer.exceptions    import CommandError
-from libvgazer.exceptions    import InstallError
-from libvgazer.install.utils import SourceforgeDownloadTarballWhileErrorcodeFour
-from libvgazer.platform      import GetInstallPrefix
-from libvgazer.platform      import GetTriplet
-from libvgazer.store.temp    import StoreTemp
-from libvgazer.working_dir   import WorkingDir
+from libvgazer.command     import RunCommand
+from libvgazer.exceptions  import CommandError
+from libvgazer.exceptions  import InstallError
+from libvgazer.platform    import GetInstallPrefix
+from libvgazer.platform    import GetTriplet
+from libvgazer.store.temp  import StoreTemp
+from libvgazer.version.git import GetLastTag
+from libvgazer.working_dir import WorkingDir
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])
 
@@ -18,24 +17,18 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    sourceforgeMirrorsManager = mirrors["sourceforge"].CreateMirrorsManager(
-     ["https", "http"])
-
-    filename = requests.get(
-     "https://sourceforge.net/projects/libpng/best_release.json"
-    ).json()["release"]["filename"]
-    tarballShortFilename = filename.split("/")[-1]
-
     try:
         with WorkingDir(tempPath):
-            SourceforgeDownloadTarballWhileErrorcodeFour(
-             sourceforgeMirrorsManager, "libpng", filename, verbose)
             RunCommand(
-             ["tar", "--verbose", "--extract", "--xz", "--file",
-              tarballShortFilename],
+             ["git", "clone", "git://git.code.sf.net/p/libpng/code", "."],
              verbose)
-        extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
-        with WorkingDir(extractedDir):
+            RunCommand(
+             [
+              "git", "checkout",
+              GetLastTag("git://git.code.sf.net/p/libpng/code",
+               hint=r'v\d\.\d\.\d+$')
+             ],
+             verbose)
             RunCommand(
              [
               "./configure", "--host={triplet}".format(triplet=targetTriplet),

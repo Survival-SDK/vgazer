@@ -1,78 +1,4 @@
 data = {
-    "lua": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://www.lua.org/versions.html",
-                "prereqs": [
-                    "wget",
-                    "make",
-                    "{triplet}-gcc",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://github.com/lua/lua.git",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "lua",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["buster"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://www.lua.org/manual/5.3/readme.html#changes",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "liblua5.3-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "liblua5.3-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["bullseye", "bookworm", "sid"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://www.lua.org/manual/5.4/readme.html#changes",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "liblua5.4-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "liblua5.4-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://www.lua.org/manual/5.2/readme.html#changes",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "liblua5.2-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-        ],
-    },
     "luajit": {
         "platform": "target",
         "projects": [
@@ -85,10 +11,9 @@ data = {
                 "license": ["mit"],
                 "changelog": "http://luajit.org/status.html",
                 "prereqs": [
-                    "make",
                     "{triplet}-gcc",
+                    "make",
                 ],
-                # TODO(edomin): check version like in installer
                 "checker": {
                     "type": "git",
                     "url": "https://luajit.org/git/luajit.git",
@@ -143,7 +68,6 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/MaJerle/lwrb/blob/develop/CHANGELOG.md",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                 ],
                 "checker": {
@@ -224,6 +148,40 @@ data = {
             },
         ],
     },
+    "makeinfo": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://git.savannah.gnu.org/cgit/texinfo.git/plain/NEWS",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "texinfo",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "texinfo",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://git.savannah.gnu.org/cgit/texinfo.git/plain/NEWS",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "texinfo",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
+        ],
+    },
     "meson": {
         "platform": "host",
         "projects": [
@@ -267,64 +225,6 @@ data = {
                 "checker": {
                     "type": "apt-cache",
                     "package": "meson",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-        ],
-    },
-    "minini": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["apache-2.0"],
-                "changelog": "https://www.compuphase.com/minini.htm",
-                "prereqs": [
-                    "wget",
-                    "{triplet}-gcc",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://github.com/compuphase/minIni.git",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "minini",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["apache-2.0"],
-                "changelog": "https://www.compuphase.com/minini.htm",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libminini-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libminini-dev",
-                },
-            },
-            # Temporary stub
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["apache-2.0"],
-                "changelog": "https://www.compuphase.com/minini.htm",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libminini-dev",
                 },
                 "installer": {
                     "type": "not-needed",
@@ -377,9 +277,6 @@ data = {
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://immediate-mode-ui.github.io/Nuklear/doc/index.html#nuklear/changelog",
-                "prereqs": [
-                    "wget",
-                ],
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/Immediate-Mode-UI/Nuklear.git",
@@ -406,7 +303,6 @@ data = {
                     "{triplet}-pkg-config",
                     "autoconf",
                     "libxext",
-                    "wget",
                     "xlib",
                     "xorgproto",
                 ],

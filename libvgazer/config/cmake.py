@@ -29,8 +29,9 @@ class ConfigCmake():
         cxx = GetCxx(self.platformData["target"])
         ar = GetAr(self.platformData["target"])
 
-        pkgConfigLibdirs = ("{prefix}/lib/pkgconfig:"
-         "/usr/lib/{triplet}/pkgconfig").format(
+        pkgConfigLibdirs = ("/usr/{triplet}/lib/pkgconfig"
+         ":{prefix}/lib/pkgconfig:{prefix}/share/pkgconfig"
+         ":/usr/lib/{triplet}/pkgconfig").format(
           prefix=prefix,
           triplet=targetTriplet
          )

@@ -36,7 +36,7 @@ def GetTarballUrl():
 
     raise TarballLost("Tarball url not found")
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)

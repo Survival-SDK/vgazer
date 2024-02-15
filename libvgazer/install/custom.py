@@ -9,7 +9,7 @@ class InstallCustom:
     def AddData(self, customInstallers):
         self.customInstallers = {**self.customInstallers, **customInstallers}
 
-    def Install(self, auth, software, installerName, platform, platformData,
+    def Install(self, software, installerName, platform, platformData,
      mirrors, verbose):
         try:
             installer = importlib.import_module(
@@ -22,5 +22,5 @@ class InstallCustom:
                 if customInstaller["name"] == installerName:
                     installer = customInstaller["installer"]
 
-        return installer.Install(auth, software, platform, platformData,
-         mirrors, verbose)
+        return installer.Install(software, platform, platformData, mirrors,
+         verbose)

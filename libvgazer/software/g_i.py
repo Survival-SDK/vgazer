@@ -153,7 +153,6 @@ data = {
                 "license": ["sgi-b-1.1", "sgi-b-2.0"],
                 "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "{triplet}-g++",
                     "{triplet}-pkg-config",
@@ -230,6 +229,40 @@ data = {
             },
         ],
     },
+    "help2man": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "help2man",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "help2man",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "help2man",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
+        ],
+    },
     "icu": {
         "platform": "target",
         "projects": [
@@ -242,7 +275,6 @@ data = {
                 "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
                 "changelog": "https://github.com/unicode-org/icu/releases",
                 "prereqs": [
-                    "wget",
                     "{hostTriplet}-gcc",
                     "{hostTriplet}-g++",
                     "{triplet}-gcc",
@@ -304,7 +336,6 @@ data = {
                 "license": ["bsd-3"],
                 "changelog": "https://github.com/benhoyt/inih/releases",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                 ],
                 "checker": {

@@ -10,9 +10,6 @@ data = {
                 "abi": ["any"],
                 "license": ["mit"],
                 "changelog": "https://github.com/attractivechaos/klib/commits/master/ketopt.h",
-                "prereqs": [
-                    "wget",
-                ],
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/attractivechaos/klib",
@@ -20,11 +17,7 @@ data = {
                 },
                 "installer": {
                     "type": "custom",
-                    "name": "ketopt",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "ketopt-master",
-                    }
+                    "name": "ketopt"
                 },
             },
         ],
@@ -40,10 +33,9 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/jtanx/libclipboard/releases",
                 "prereqs": [
-                    "wget",
                     "{triplet}-g++",
-                    "make",
                     "{triplet}-pkg-config",
+                    "make",
                     "cmake",
                     "xcb",
                 ],
@@ -64,11 +56,10 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/jtanx/libclipboard/releases",
                 "prereqs": [
-                    "wget",
                     "{triplet}-g++",
-                    "make",
                     "{triplet}-pkg-config",
                     "cmake",
+                    "make",
                 ],
                 "checker": {
                     "type": "github",
@@ -78,68 +69,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libclipboard",
-                },
-            },
-        ],
-    },
-    "libdrm": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://gitlab.freedesktop.org/mesa/drm/-/tags",
-                "prereqs": [
-                    "wget",
-                    "{triplet}-gcc",
-                    "{triplet}-pkg-config",
-                    "meson",
-                    "xlib",
-                    "libpciaccess",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://gitlab.freedesktop.org/mesa/drm.git",
-                    "hint": r'libdrm-\d\.\d\.\d+$',
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "libdrm",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://gitlab.freedesktop.org/mesa/drm/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libdrm-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libdrm-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://gitlab.freedesktop.org/mesa/drm/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libdrm-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -156,9 +85,11 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/libffi/libffi/releases",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "{triplet}-g++",
+                    "autoconf",
+                    "automake",
+                    "libtool",
                     "make",
                 ],
                 "checker": {
@@ -196,59 +127,6 @@ data = {
                 "checker": {
                     "type": "apt-cache",
                     "package": "libffi-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-        ],
-    },
-    "libiconv": {
-        "platform": "target",
-        # TODO
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["lgpl-2"],
-                "changelog": "https://savannah.gnu.org/news/?group=libiconv",
-                "checker": {
-                    "type": "git",
-                    "url": "https://git.savannah.gnu.org/git/libiconv.git",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "libiconv",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["lgpl-2"],
-                "changelog": "https://savannah.gnu.org/news/?group=libiconv",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libc6-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["lgpl-2"],
-                "changelog": "https://savannah.gnu.org/news/?group=libiconv",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libc6-dev",
                 },
                 "installer": {
                     "type": "not-needed",
@@ -323,8 +201,11 @@ data = {
                 "license": ["pd"],
                 "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
+                    "autoconf",
+                    "automake",
+                    "autopoint",
+                    "libtool",
                     "make",
                 ],
                 "checker": {
@@ -345,8 +226,11 @@ data = {
                 "license": ["pd"],
                 "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
+                    "autoconf",
+                    "automake",
+                    "autopoint",
+                    "libtool",
                     "make",
                     # "libintl",
                 ],

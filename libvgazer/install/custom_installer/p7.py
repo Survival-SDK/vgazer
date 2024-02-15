@@ -10,7 +10,7 @@ from libvgazer.platform     import GetInstallPrefix
 from libvgazer.store.temp   import StoreTemp
 from libvgazer.working_dir  import WorkingDir
 
-def GetArchiveUrl(auth):
+def GetArchiveUrl():
     response = requests.get("http://baical.net/downloads.html")
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")
@@ -21,7 +21,7 @@ def GetArchiveUrl(auth):
         if link["title"] == "P7 library":
             return "http://baical.net{link}".format(link=link["href"])
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     configCmake = ConfigCmake(platformData)
     configCmake.GenerateCrossFile()
     toolchainFile = configCmake.GetCrossFileName()
@@ -32,7 +32,7 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    archiveUrl = GetArchiveUrl(auth)
+    archiveUrl = GetArchiveUrl()
     arhiveShortFilename = archiveUrl.split("/")[-1]
 
     try:

@@ -9,7 +9,7 @@ from libvgazer.platform    import GetInstallPrefix
 from libvgazer.store.temp  import StoreTemp
 from libvgazer.working_dir import WorkingDir
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     ar = GetAr(platformData["target"])
     cc = GetCc(platformData["target"])
@@ -21,10 +21,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     try:
         with WorkingDir(tempPath):
             RunCommand(
-             ["git", "clone", "https://github.com/jibsen/scv.git"],
+             ["git", "clone", "https://github.com/jibsen/scv.git", "."],
              verbose)
-        clonedDir = os.path.join(tempPath, "scv")
-        with WorkingDir(clonedDir):
             RunCommand([cc, "-O2", "-fPIC", "-o", "scv.o", "-c", "scv.c"],
              verbose)
             RunCommand([ar, "rcs", "libscv.a", "scv.o"], verbose)

@@ -1,19 +1,17 @@
 import os
 
-from libvgazer.command              import GetCommandOutputUtf8
-from libvgazer.command              import RunCommand
-from libvgazer.exceptions           import CommandError
-from libvgazer.exceptions           import GithubApiError
-from libvgazer.exceptions           import InstallError
-from libvgazer.exceptions           import UnknownOs
-from libvgazer.github_api_error_mgr import GithubApiErrorMgr
-from libvgazer.platform             import GetBitness
-from libvgazer.platform             import GetCc
-from libvgazer.platform             import GetCxx
-from libvgazer.platform             import GetInstallPrefix
-from libvgazer.platform             import GetTriplet
-from libvgazer.store.temp           import StoreTemp
-from libvgazer.working_dir          import WorkingDir
+from libvgazer.command     import RunCommand
+from libvgazer.exceptions  import CommandError
+from libvgazer.exceptions  import InstallError
+from libvgazer.exceptions  import UnknownOs
+from libvgazer.platform    import GetBitness
+from libvgazer.platform    import GetCc
+from libvgazer.platform    import GetCxx
+from libvgazer.platform    import GetInstallPrefix
+from libvgazer.platform    import GetTriplet
+from libvgazer.store.temp  import StoreTemp
+from libvgazer.version.git import GetLastTag
+from libvgazer.working_dir import WorkingDir
 
 def GetIcuPlatformName(osName):
     if osName == "linux":
@@ -23,7 +21,7 @@ def GetIcuPlatformName(osName):
     else:
         raise UnknownOs("Unknown generic OS: " + osName)
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     isCrossbuild = not (
      platformData["target"].PlatformsEqual(platformData["host"])
     )
@@ -51,34 +49,19 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
     try:
-        releases = auth["github"].GetJson(
-         "https://api.github.com/repos/unicode-org/icu/releases")
-    except ConnectionError:
-        print("VGAZER: Unable to know last version of", software)
-        raise InstallError(software + " not installed")
-
-    with GithubApiErrorMgr(releases, "unicode-org/icu") as errMgr:
-        if errMgr.IsErrorOccured():
-            raise GithubApiError(errMgr.GetErrorText())
-
-    tarballUrl = releases[0]["tarball_url"]
-    tarballShortFilename = tarballUrl.split("/")[-1]
-
-    try:
         with WorkingDir(tempPath):
-            RunCommand(["wget", "-P", "./", tarballUrl], verbose)
             RunCommand(
-             ["tar", "--verbose", "--extract", "--gzip", "--file",
-              tarballShortFilename],
+             ["git", "clone", "https://github.com/unicode-org/icu.git", "."],
              verbose)
-            output = GetCommandOutputUtf8(
-             ["tar", "--list", "--file", tarballShortFilename]
-            )
-        extractedDir = os.path.join(tempPath,
-         output.splitlines()[0].split("/")[0])
-        with WorkingDir(extractedDir):
+            RunCommand(
+             [
+              "git", "checkout",
+              GetLastTag("https://github.com/unicode-org/icu.git",
+               hint=r'release-\d+-\d$')
+             ],
+             verbose)
             RunCommand(["mkdir", "icu4c/hostBuild"], verbose)
-        hostBuildDir = os.path.join(extractedDir, "icu4c/hostBuild")
+        hostBuildDir = os.path.join(tempPath, "icu4c/hostBuild")
         with WorkingDir(hostBuildDir):
             RunCommand(
              ["../source/runConfigureICU", hostIcuPlatformName,
@@ -95,9 +78,9 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
             if not isCrossbuild:
                 RunCommand(["make", "install"], verbose)
         if isCrossbuild:
-            with WorkingDir(extractedDir):
+            with WorkingDir(tempPath):
                 RunCommand(["mkdir", "icu4c/targetBuild"], verbose)
-            targetBuildDir = os.path.join(extractedDir, "icu4c/targetBuild")
+            targetBuildDir = os.path.join(tempPath, "icu4c/targetBuild")
             with WorkingDir(targetBuildDir):
                 RunCommand(
                  ["../source/runConfigureICU", targetIcuPlatformName,

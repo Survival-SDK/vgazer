@@ -11,8 +11,10 @@ data = {
                 "license": ["bsd-3"],
                 "changelog": "https://xiph.org/press/",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
+                    "autoconf",
+                    "automake",
+                    "libtool",
                     "make",
                 ],
                 "checker": {
@@ -57,74 +59,6 @@ data = {
             },
         ],
     },
-    # MinGW version here: https://github.com/smurfy/libpciaccess
-    "libpciaccess": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit", "isc", "x11"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/tags",
-                "prereqs": [
-                    "wget",
-                    "autoconf",
-                    "libtool",
-                    "{triplet}-pkg-config",
-                    "{triplet}-gcc",
-                    "make",
-                    "xorg-macros",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess.git",
-                    "hint": r'libpciaccess-\d\.\d+$',
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "libpciaccess",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "libpciaccess-github",
-                    },
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "isc", "x11"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libpciaccess-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libpciaccess-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "isc", "x11"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libpciaccess/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libpciaccess-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-        ],
-    },
     "libpng": {
         "platform": "target",
         "projects": [
@@ -137,7 +71,6 @@ data = {
                 "license": ["libpng-2.0"],
                 "changelog": "http://www.libpng.org/pub/png/pngnews.html",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
                     "make",
@@ -198,7 +131,6 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/aremmell/libsir/releases",
                 "prereqs": [
-                    "wget",
                     "make",
                     "{triplet}-gcc",
                 ],
@@ -209,10 +141,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libsir",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "libsir-master",
-                    }
                 },
             },
         ],
@@ -222,30 +150,26 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["buster", "bullseye"],
+                "os": ["any"],
+                "osVersion": ["any"],
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=libtool",
+                "prereqs": [
+                    "{triplet}-gcc",
+                    "autoconf",
+                    "automake",
+                    "help2man",
+                    "make",
+                    "makeinfo",
+                    "xz",
+                ],
                 "checker": {
-                    "type": "apt-cache",
-                    "package": "libtool",
+                    "type": "git",
+                    "url": "git://git.savannah.gnu.org/libtool.git",
                 },
                 "installer": {
-                    "type": "apt",
-                    "package": "libtool",
-                    "postInstallCommands": [
-                        ["mkdir", "-p", "/usr/local/share/aclocal"],
-                        ["ln", "-s", "/usr/share/aclocal/libtool.m4",
-                         "/usr/local/share/aclocal/libtool.m4"],
-                        ["ln", "-s", "/usr/share/aclocal/ltoptions.m4",
-                         "/usr/local/share/aclocal/ltoptions.m4"],
-                        ["ln", "-s", "/usr/share/aclocal/ltsugar.m4",
-                         "/usr/local/share/aclocal/ltsugar.m4"],
-                        ["ln", "-s", "/usr/share/aclocal/ltversion.m4",
-                         "/usr/local/share/aclocal/ltversion.m4"],
-                        ["ln", "-s", "/usr/share/aclocal/lt~obsolete.m4",
-                         "/usr/local/share/aclocal/lt~obsolete.m4"],
-                    ],
+                    "type": "custom",
+                    "name": "libtool",
                 },
             },
             {
@@ -260,7 +184,7 @@ data = {
                 },
                 "installer": {
                     "type": "apt",
-                    "package": "libtool",
+                    "package": ["libtool", "libltdl-dev"],
                 },
             },
             {
@@ -291,11 +215,13 @@ data = {
                 "license": ["bsd-3"],
                 "changelog": "https://xiph.org/press/",
                 "prereqs": [
-                    "wget",
                     "{triplet}-pkg-config",
                     "{triplet}-gcc",
-                    "make",
+                    "autoconf",
+                    "automake",
                     "libogg",
+                    "libtool",
+                    "make",
                 ],
                 "checker": {
                     "type": "git",
@@ -356,7 +282,6 @@ data = {
                     "autoconf",
                     "libtool",
                     "make",
-                    "wget",
                     "xlib",
                     "xorg-macros",
                     "xorgproto",
