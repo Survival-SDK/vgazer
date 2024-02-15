@@ -2,7 +2,6 @@ from multimethod import multimethod
 import re
 
 from libvgazer.auth.base           import AuthBase
-from libvgazer.auth.github         import AuthGithub
 from libvgazer.checkers_manager    import CheckersManager
 from libvgazer.exceptions          import CompatibleProjectNotFound
 from libvgazer.exceptions          import InstallError
@@ -25,7 +24,6 @@ class Vgazer:
         if not supportOnly:
             self.auth = {
                 "base": AuthBase(),
-                "github": AuthGithub(),
             }
             self.versionCustom = VersionCustom(self.auth["base"],
              customCheckers)
@@ -135,8 +133,7 @@ class Vgazer:
             })
         return result
 
-    def UseInstaller(self, software, installer, verbose,
-     fallbackPreinstallList):
+    def UseInstaller(self, software, installer, verbose):
         softwareData = self.softwareData.GetData()
         softwarePlatform = softwareData[software]["platform"]
 
@@ -145,29 +142,44 @@ class Vgazer:
 
         try:
             if installer["type"] == "custom":
-                self.installCustom.Install(self.auth, software,
-                 installer["name"], softwarePlatform, self.platform,
-                 self.mirrors, verbose)
+                self.installCustom.Install(software, installer["name"],
+                 softwarePlatform, self.platform, self.mirrors, verbose)
             else:
                 installFunc = self.installersManager.GetInstallFunc(
                  installer["type"])
-                installFunc(software, self.auth, self.platform,
-                 installer, self.mirrors, verbose)
+                installFunc(software, self.platform, installer, self.mirrors,
+                 verbose)
             self.installedSoftware.append(software)
         except InstallError as installError:
-            if "fallback" in installer:
+            raise installError
+
+    def InstallProject(self, software, project, verbose):
+        prereqs = project["prereqs"] if "prereqs" in project else []
+
+        for prereq in prereqs:
+            prereq = prereq.format(
+             hostTriplet=GetGenericTriplet(self.platform["host"]),
+             triplet=GetGenericTriplet(self.platform["target"]),
+             arch=self.platform["target"].GetArch())
+            if prereq not in self.installedSoftware:
+                self.Install(prereq, verbose)
+
+        installer = project["installer"]
+
+        try:
+            self.UseInstaller(software, installer, verbose)
+        except InstallError as installError:
+            fallbackProject = self.SearchFallbackProject(softwareProjects);
+            if (fallbackProject is not None and fallbackProject is not project):
                 print(
-                 "VGAZER: Something went wrong. Starting fallback "
-                 "installation steps"
+                 "VGAZER: Something went wrong. Starting fallback installation "
+                 "steps"
                 )
-                if fallbackPreinstallList is not None:
-                    self.InstallList(fallbackPreinstallList, verbose)
-                self.UseInstaller(software, installer["fallback"], verbose,
-                 None)
+                self.InstallProject(software, fallbackProject, verbose)
             else:
                 raise installError
 
-    def Install(self, software, verbose=False, fallbackPreinstallList=None):
+    def Install(self, software, verbose=False):
         if software in self.installedSoftware:
             return
 
@@ -180,16 +192,8 @@ class Vgazer:
             raise CompatibleProjectNotFound(
              "Unable to find compatible project for software: " + software)
 
-        prereqs = project["prereqs"] if "prereqs" in project else []
-
-        for prereq in prereqs:
-            prereq = prereq.format(
-             hostTriplet=GetGenericTriplet(self.platform["host"]),
-             triplet=GetGenericTriplet(self.platform["target"]),
-             arch=self.platform["target"].GetArch())
-            if prereq not in self.installedSoftware:
-                self.Install(prereq, verbose, None)
+        self.InstallProject(software, project, verbose)
 
     def InstallList(self, softwareList, verbose=False):
         for software in softwareList:
-            self.Install(software, verbose, None)
+            self.Install(software, verbose)

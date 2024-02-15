@@ -15,10 +15,9 @@ data = {
                     "{triplet}-pkg-config",
                     "autoconf",
                     "make",
-                    "wget",
                     "xcb",
-                    "xtrans",
                     "xorgproto",
+                    "xtrans",
                 ],
                 "checker": {
                     "type": "git",
@@ -75,7 +74,6 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/XadillaX/xmempool/tags",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "make",
                 ],
@@ -104,7 +102,6 @@ data = {
                     "autoconf",
                     "automake",
                     "make",
-                    "wget",
                 ],
                 "checker": {
                     "type": "git",
@@ -165,7 +162,6 @@ data = {
                     "{triplet}-gcc",
                     "meson",
                     "ninja",
-                    "wget",
                 ],
                 "checker": {
                     "type": "git",
@@ -221,7 +217,6 @@ data = {
                 "license": ["mit", "hpnd", "x11", "hpnd-sv"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxtrans/-/tags",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "{triplet}-pkg-config",
                     "make",
@@ -270,6 +265,41 @@ data = {
             },
         ],
     },
+    "xz": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "xz-utils",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "xz-utils",
+                },
+            },
+            # Temporary stub
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "xz-utils",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
+        ],
+    },
     "zip": {
         "platform": "target",
         "projects": [
@@ -282,10 +312,9 @@ data = {
                 "license": ["unlicense"],
                 "changelog": "https://github.com/kuba--/zip/releases",
                 "prereqs": [
-                    "wget",
                     "{triplet}-g++",
-                    "make",
                     "cmake",
+                    "make",
                 ],
                 "checker": {
                     "type": "git",
@@ -310,7 +339,6 @@ data = {
                 "license": ["zlib"],
                 "changelog": "https://www.zlib.net/ChangeLog.txt",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "make",
                 ],

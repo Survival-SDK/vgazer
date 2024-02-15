@@ -7,7 +7,7 @@ from libvgazer.platform    import GetInstallPrefix
 from libvgazer.store.temp  import StoreTemp
 from libvgazer.working_dir import WorkingDir
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()

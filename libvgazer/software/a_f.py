@@ -11,8 +11,9 @@ data = {
                 "license": ["lgpl-2.1"],
                 "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
+                    "automake",
+                    "libtool",
                     "make",
                 ],
                 "checker": {
@@ -72,9 +73,12 @@ data = {
                     "make",
                     "wget",
                 ],
+                # Using custom checker and installer because we dont have
+                # automake for generating .configure when building autoconf
+                # from git source
                 "checker": {
-                    "type": "git",
-                    "url": "git://git.sv.gnu.org/autoconf",
+                    "type": "custom",
+                    "name": "autoconf",
                 },
                 "installer": {
                     "type": "custom",
@@ -127,7 +131,6 @@ data = {
                 "prereqs": [
                     "autoconf",
                     "make",
-                    "wget",
                 ],
                 "checker": {
                     "type": "git",
@@ -173,6 +176,41 @@ data = {
             },
         ],
     },
+    "autopoint": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["debian"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "autopoint",
+                },
+                "installer": {
+                    "type": "apt",
+                    "package": "autopoint",
+                },
+            },
+            # Temporary stub
+            {
+                "arch": ["any"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "autopoint",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
+        ],
+    },
     "cfgpath": {
         "platform": "target",
         "projects": [
@@ -184,9 +222,6 @@ data = {
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://github.com/Malvineous/cfgpath/commits/master/",
-                "prereqs": [
-                    "wget",
-                ],
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/Malvineous/cfgpath.git",
@@ -194,10 +229,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "cfgpath",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "cfgpath-master",
-                    }
                 },
             },
         ],
@@ -214,7 +245,6 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "make",
                     "cmake",
@@ -284,6 +314,8 @@ data = {
     "cmake": {
         "platform": "host",
         "projects": [
+            # This project por that case when we can not install cmake via
+            # package manager
             {
                 "fallback": True,
                 "arch": ["any"],
@@ -292,7 +324,6 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
                 "prereqs": [
-                    "wget",
                     "g++",
                     "make",
                 ],
@@ -370,7 +401,6 @@ data = {
                 "license": ["apache-2.0"],
                 "changelog": "https://cmocka.org/#news",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "make",
                     "cmake",
@@ -413,9 +443,6 @@ data = {
                 "abi": ["any"],
                 "license": ["bsd-3"],
                 "changelog": "https://github.com/bilke/cmake-modules/blob/master/CodeCoverage.cmake#L29",
-                "prereqs": [
-                    "wget",
-                ],
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/bilke/cmake-modules.git",
@@ -440,9 +467,6 @@ data = {
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://github.com/mackron/dr_libs/blob/master/dr_wav.h#L8351",
-                "prereqs": [
-                    "wget",
-                ],
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/mackron/dr_libs.git",

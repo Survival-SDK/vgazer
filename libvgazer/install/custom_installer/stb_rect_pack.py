@@ -7,7 +7,7 @@ from libvgazer.platform    import GetInstallPrefix
 from libvgazer.store.temp  import StoreTemp
 from libvgazer.working_dir import WorkingDir
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()
@@ -17,27 +17,24 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     try:
         with WorkingDir(tempPath):
             RunCommand(
-             ["git", "clone", "https://github.com/Malvineous/cfgpath.git"],
+             ["git", "clone", "https://github.com/nothings/stb.git", "."],
              verbose)
-        clonedDir = os.path.join(tempPath, "cfgpath")
-        with WorkingDir(clonedDir):
             if not os.path.exists(
-             "{prefix}/include".format(prefix=installPrefix)):
+             "{prefix}/include/stb".format(prefix=installPrefix)):
                 RunCommand(
                  [
                   "mkdir", "-p",
-                  "{prefix}/include".format(prefix=installPrefix)
+                  "{prefix}/include/stb".format(prefix=installPrefix)
                  ],
                  verbose)
             RunCommand(
              [
-              "cp", "./cfgpath.h",
-              "{prefix}/include".format(prefix=installPrefix)
+              "cp", "./stb_rect_pack.h",
+              "{prefix}/include/stb".format(prefix=installPrefix)
              ],
              verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(
-         "{software} not installed".format(software=software))
+        raise InstallError(software + " not installed")
 
     print("VGAZER:", software, "installed")

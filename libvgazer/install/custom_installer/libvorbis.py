@@ -9,26 +9,10 @@ from libvgazer.exceptions  import TarballLost
 from libvgazer.platform    import GetInstallPrefix
 from libvgazer.platform    import GetTriplet
 from libvgazer.store.temp  import StoreTemp
+from libvgazer.version.git import GetLastTag
 from libvgazer.working_dir import WorkingDir
 
-def GetTarballUrl():
-    response = requests.get("https://www.xiph.org/downloads/")
-    html = response.content.decode("utf-8")
-    parsedHtml = BeautifulSoup(html, "html.parser")
-
-    tables = parsedHtml.find_all("table")
-
-    rows = tables[1].findChildren("tr")
-    for row in rows[1:]:
-        cells = row.findChildren("td")
-        if cells[0].text == "libvorbis":
-            return ("http://downloads.xiph.org/releases/vorbis/libvorbis-"
-             + cells[1].text + ".tar.gz")
-
-    raise TarballLost(
-     "Unable to find tarball with last stable release of libvorbis")
-
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])
 
@@ -36,20 +20,20 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    tarballUrl = GetTarballUrl()
-    tarballShortFilename = tarballUrl.split("/")[-1]
-
     try:
         with WorkingDir(tempPath):
             RunCommand(
-             ["wget", "-P", "./", "-O", tarballShortFilename, tarballUrl],
+             ["git", "clone", "https://gitlab.xiph.org/xiph/vorbis.git", "."],
              verbose)
             RunCommand(
-             ["tar", "--verbose", "--extract", "--gzip", "--file",
-              tarballShortFilename],
+             [
+              "git", "checkout",
+              GetLastTag("https://gitlab.xiph.org/xiph/vorbis.git")
+             ],
              verbose)
-        extractedDir = os.path.join(tempPath, tarballShortFilename[0:-7])
-        with WorkingDir(extractedDir):
+            RunCommand(
+             ["./autogen.sh"],
+             verbose)
             RunCommand(
              ["./configure", "--host=" + targetTriplet,
               "--prefix=" + installPrefix, "--disable-shared",

@@ -1,19 +1,40 @@
 import os
 
-from libvgazer.command    import RunCommand
-from libvgazer.exceptions import CommandError
-from libvgazer.exceptions import InstallError
-from libvgazer.platform   import GetInstallPrefix
+from libvgazer.command     import RunCommand
+from libvgazer.exceptions  import CommandError
+from libvgazer.exceptions  import InstallError
+from libvgazer.platform    import GetInstallPrefix
+from libvgazer.store.temp  import StoreTemp
+from libvgazer.working_dir import WorkingDir
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
 
-    url = "https://raw.githubusercontent.com/mackron/dr_libs/master/dr_wav.h"
+    storeTemp = StoreTemp()
+    storeTemp.ResolveEmptySubdirectory(software)
+    tempPath = storeTemp.GetSubdirectoryPath(software)
 
     try:
-        if not os.path.exists(installPrefix + "/include"):
-            RunCommand(["mkdir", "-p", installPrefix + "/include"], verbose)
-        RunCommand(["wget", "-P", installPrefix + "/include", url], verbose)
+        with WorkingDir(tempPath):
+            RunCommand(
+             ["git", "clone", "https://github.com/mackron/dr_libs.git"],
+             verbose)
+        srcDir = os.path.join(tempPath, "dr_libs")
+        with WorkingDir(srcDir):
+            if not os.path.exists(
+             "{prefix}/include/dr_libs".format(prefix=installPrefix)):
+                RunCommand(
+                 [
+                  "mkdir", "-p",
+                  "{prefix}/include/dr_libs".format(prefix=installPrefix)
+                 ],
+                 verbose)
+            RunCommand(
+             [
+              "cp", "./dr_wav.h",
+              "{prefix}/include/dr_libs".format(prefix=installPrefix)
+             ],
+             verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(software + " not installed")

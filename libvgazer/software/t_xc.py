@@ -12,9 +12,7 @@ data = {
                 "license": ["zlib"],
                 "changelog": "https://sourceforge.net/p/tinyfiledialogs/activity/?page=0&limit=100#65c79b2c7e19948b1b33b56a",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
-                    "unzip",
                 ],
                 "checker": {
                     "type": "git",
@@ -82,7 +80,6 @@ data = {
                     "libffi",
                     "meson",
                     "wayland-scanner",
-                    "wget",
                 ],
                 "checker": {
                     "type": "git",
@@ -144,7 +141,6 @@ data = {
                     "gcc",
                     "meson",
                     "pkg-config",
-                    "wget",
                 ],
                 "checker": {
                     "type": "git",
@@ -155,10 +151,11 @@ data = {
                     "name": "wayland-scanner",
                 },
             },
+            # >= 1.22.0 required for build wayland-libs
             {
                 "arch": ["any"],
                 "os": ["debian"],
-                "osVersion": ["any"],
+                "osVersion": ["trixie", "sid"],
                 "abi": ["any"],
                 "license": ["mit"],
                 "changelog": "https://wayland.freedesktop.org/releases.html",
@@ -190,20 +187,6 @@ data = {
     "wget": {
         "platform": "host",
         "projects": [
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["buster", "bullseye"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=wget",
-                "checker": {
-                    "type": "debian",
-                    "source": "wget",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -516,7 +499,6 @@ data = {
                     "autoconf",
                     "libtool",
                     "make",
-                    "wget",
                     "xorg-macros",
                     "xorgproto",
                 ],
@@ -645,7 +627,6 @@ data = {
                     "autoconf",
                     "automake",
                     "make",
-                    "wget",
                 ],
                 "checker": {
                     "type": "git",

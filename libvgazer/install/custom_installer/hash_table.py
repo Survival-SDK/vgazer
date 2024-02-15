@@ -9,7 +9,7 @@ from libvgazer.platform    import GetInstallPrefix
 from libvgazer.store.temp  import StoreTemp
 from libvgazer.working_dir import WorkingDir
 
-def Install(auth, software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, mirrors, verbose):
     installPrefix = GetInstallPrefix(platformData)
     includeDir = "{prefix}/include".format(prefix=installPrefix)
     libDir = "{prefix}/lib".format(prefix=installPrefix)
@@ -23,10 +23,8 @@ def Install(auth, software, platform, platformData, mirrors, verbose):
     try:
         with WorkingDir(tempPath):
             RunCommand(
-             ["git", "clone", "https://github.com/anholt/hash_table.git"],
+             ["git", "clone", "https://github.com/anholt/hash_table.git", "."],
              verbose)
-        clonedDir = os.path.join(tempPath, "hash_table")
-        with WorkingDir(clonedDir):
             RunCommand(
              ["sed", "-i", "-e",
               "s/int (\*\+key_equals_function)/bool (*key_equals_function)/",

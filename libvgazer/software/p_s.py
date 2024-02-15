@@ -26,70 +26,6 @@ data = {
             },
         ],
     },
-    "physfs": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["zlib"],
-                "changelog": "https://github.com/icculus/physfs/releases",
-                "prereqs": [
-                    "wget",
-                    "{triplet}-gcc",
-                    "{triplet}-g++",
-                    "make",
-                    "cmake",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://github.com/icculus/physfs.git",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "physfs",
-                    "fallback": {
-                        "type": "custom",
-                        "name": "physfs-github",
-                    }
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["zlib"],
-                "changelog": "https://github.com/icculus/physfs/releases",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libphysfs-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libphysfs-dev",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["zlib"],
-                "changelog": "https://github.com/icculus/physfs/releases",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libphysfs-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-        ],
-    },
     "pkg-config": {
         "platform": "host",
         "projects": [
@@ -155,10 +91,9 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/PortAudio/portaudio/wiki/ReleaseNotes",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
-                    "make",
                     "alsa-lib",
+                    "make",
                 ],
                 "checker": {
                     "type": "git",
@@ -178,7 +113,6 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/PortAudio/portaudio/wiki/ReleaseNotes",
                 "prereqs": [
-                    "wget",
                     "{triplet}-gcc",
                     "{triplet}-g++",
                     "make",
@@ -241,7 +175,6 @@ data = {
                     "autoconf",
                     "automake",
                     "make",
-                    "wget",
                 ],
                 "checker": {
                     "type": "git",
@@ -297,12 +230,11 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/rurban/safeclib/blob/master/ChangeLog",
                 "prereqs": [
+                    "{triplet}-gcc",
                     "autoconf",
                     "automake",
                     "libtool",
                     "make",
-                    "{triplet}-gcc",
-                    "wget",
                 ],
                 "checker": {
                     "type": "git",
@@ -384,9 +316,6 @@ data = {
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
-                "prereqs": [
-                    "wget",
-                ],
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/nothings/stb.git",
@@ -394,8 +323,8 @@ data = {
                     "hint": r'\d\.\d{2}',
                 },
                 "installer": {
-                    "type": "stb",
-                    "library": "stb_rect_pack",
+                    "type": "custom",
+                    "name": "stb_rect_pack",
                 },
             },
             {

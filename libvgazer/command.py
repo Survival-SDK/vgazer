@@ -2,7 +2,7 @@ import subprocess
 
 from libvgazer.exceptions import CommandError
 
-def RunCommand(command, verbose):
+def RunCommand(command, verbose, allowedReturncodes=None):
     if verbose:
         print(" ".join(command))
     try:
@@ -11,12 +11,14 @@ def RunCommand(command, verbose):
         else:
             subprocess.check_output(command, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
-        if not verbose:
-            print("Output:")
-            print(e.output)
-        print("VGAZER: Error occured while running utility:", command[0])
-        raise CommandError("Error occured while running utility:" + command[0],
-         e.cmd, e.returncode)
+        if (allowedReturncodes is None
+         or e.returncode not in allowedReturncodes):
+            if not verbose:
+                print("Output:", e.output)
+            print("VGAZER: Error occured while running utility:", command[0])
+            raise CommandError(
+             "Error occured while running utility:" + command[0], e.cmd,
+             e.returncode)
 
 def GetCommandOutputUtf8(command, verbose=False):
     try:
