@@ -27,6 +27,22 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
+                "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
+                "checker": {
+                    "type": "pacman",
+                    "package": "alsa-lib",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "alsa-lib",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -83,6 +99,21 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "autoconf",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/autoconf/NEWS",
+                "checker": {
+                    "type": "pacman",
+                    "package": "autoconf",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "autoconf",
                 },
             },
             {
@@ -144,6 +175,21 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/automake/NEWS",
+                "checker": {
+                    "type": "pacman",
+                    "package": "automake",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "automake",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 # autoconf >=2.70 required for building xlib
                 # Debian bullseye has only 2.69
@@ -179,6 +225,21 @@ data = {
     "autopoint": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
+                "checker": {
+                    "type": "pacman",
+                    "package": "gettext",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "gettext",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -260,6 +321,22 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
+                "checker": {
+                    "type": "pacman",
+                    "package": "cjson",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "cjson",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -291,9 +368,44 @@ data = {
             },
         ],
     },
+    "clang": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://clang.llvm.org/extra/ReleaseNotes.html#what-s-new-in-extra-clang-tools-release",
+                "checker": {
+                    "type": "pacman",
+                    "package": "clang",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "clang",
+                },
+            },
+        ],
+    },
     "clang-tidy": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://clang.llvm.org/extra/ReleaseNotes.html#improvements-to-clang-tidy",
+                "prereqs": ["clang"],
+                "checker": {
+                    "type": "pacman",
+                    "package": "clang",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -334,6 +446,21 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "cmake",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
+                "checker": {
+                    "type": "pacman",
+                    "package": "cmake",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "cmake",
                 },
             },
             {
@@ -412,6 +539,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "cmocka",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["any"],
+                "abi": ["gnu"],
+                "license": ["apache-2.0"],
+                "changelog": "https://cmocka.org/#news",
+                "checker": {
+                    "type": "pacman",
+                    "package": "cmocka",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "cmocka",
                 },
             },
             {

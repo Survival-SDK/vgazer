@@ -28,6 +28,22 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
+                "checker": {
+                    "type": "pacman",
+                    "package": "libogg",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "libogg",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -84,6 +100,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libpng",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
+                "checker": {
+                    "type": "pacman",
+                    "package": "libpng",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "libpng",
                 },
             },
             {
@@ -174,6 +206,21 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=libtool",
+                "checker": {
+                    "type": "pacman",
+                    "package": "libtool",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "libtool",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["bookworm", "trixie", "sid"],
                 "abi": ["any"],
@@ -230,6 +277,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libvorbis",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
+                "checker": {
+                    "type": "pacman",
+                    "package": "libvorbis",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "libvorbis",
                 },
             },
             {
@@ -294,6 +357,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libxext",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxext/-/tags",
+                "checker": {
+                    "type": "pacman",
+                    "package": "libxext",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "libxext",
                 },
             },
             {

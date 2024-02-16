@@ -31,6 +31,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
+                "checker": {
+                    "type": "pacman",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "pkgconf",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["buster", "bullseye"],
                 "abi": ["any"],
@@ -124,6 +139,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "portaudio",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "https://github.com/PortAudio/portaudio/wiki/ReleaseNotes",
+                "checker": {
+                    "type": "pacman",
+                    "package": "portaudio",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "portaudio",
                 },
             },
             {
@@ -325,6 +356,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "stb_rect_pack",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
+                "checker": {
+                    "type": "pacman",
+                    "package": "stb",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "stb",
                 },
             },
             {

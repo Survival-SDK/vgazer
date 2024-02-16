@@ -1,6 +1,7 @@
 from libvgazer.exceptions        import UnknownVersionChecker
 from libvgazer.version.apt_cache import CheckAptCache
 from libvgazer.version.git       import CheckGit
+from libvgazer.version.pacman    import CheckPacman
 from libvgazer.version.pypi      import CheckPypi
 
 class CheckersManager:
@@ -14,6 +15,9 @@ class CheckersManager:
                 checkerData["url"],
                 checkerData["hint"] if "hint" in checkerData else None,
                 checkerData["files"] if "files" in checkerData else None
+            ),
+            "pacman": lambda auth, platform, checkerData: CheckPacman(
+                checkerData["package"]
             ),
             "pypi": lambda auth, platform, checkerData: CheckPypi(
                 auth["base"],

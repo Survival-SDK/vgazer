@@ -36,10 +36,9 @@ class ConfigCmake():
           triplet=targetTriplet
          )
 
-        if self.platformData["target"].PlatformsEqual(
-         self.platformData["host"]):
+        if self.platformData["target"].IsHost():
             findMode = "BOTH"
-            pkgConfigLibdirs += ":/usr/share/pkgconfig"
+            pkgConfigLibdirs += ":/usr/share/pkgconfig:/usr/lib/pkgconfig"
         else:
             findMode = "ONLY"
 

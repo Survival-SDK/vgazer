@@ -5,13 +5,10 @@ Library for tracking and installing new versions of software
 This software required for working vgazer:
 
 * python3
-* git
-
-Also required these python packages:
-
 * bs4
 * requests
 * multimethod
+* git
 
 Optional Requirements for running samples (Linux only):
 
@@ -20,7 +17,7 @@ Optional Requirements for running samples (Linux only):
 Installing requirements on Debian:
 
 ```console
-# apt-get install python3 python3-pip python3-bs4 python3-requests docker git
+# apt-get install python3 python3-pip python3-bs4 python3-requests git
 # pip3 install multimethod
 ```
 
@@ -88,7 +85,7 @@ checking. Default - host platform
 
 software - space separated list of software must be installed or version checked
 
-# Working with samples (Linux only)
+# For developers
 ### Generating samples
 Before trying samples you need generate it.
 Generate samples with one on this commands:
@@ -111,6 +108,8 @@ Parameters of sample's targets passing to make in key=value form.
 Distribution. This is not OS and OS's version of your PC. Typically it is OS
 and OS's version of base Docker image. Currently supported:
 
+* archlinux
+    * latest
 * debian
     * buster
     * bullseye
@@ -231,8 +230,7 @@ architecture and Debian Bullseye as base image.
 $ make sample-install software=zlib arch=x86_64 os=debian ver=bullseye
 ```
 
-# For developers:
-### Additional requirements
+## Additional requirements
 Project use pylama for check code errors and some style errors. On Debian you
 can install it with command:
 ```console
@@ -241,7 +239,7 @@ can install it with command:
 You can also use pip but I did try install it with pip and pylama did not
 available in bash out of the box.
 
-### Check code
+## Check code
 You can check code with command:
 ```console
 $ make lint

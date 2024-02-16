@@ -32,6 +32,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://infozip.sourceforge.net/UnZip.html#Release",
+                "checker": {
+                    "type": "pacman",
+                    "package": "unzip",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "unzip",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -88,6 +103,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "wayland",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "changelog": "https://wayland.freedesktop.org/releases.html",
+                "checker": {
+                    "type": "pacman",
+                    "package": "wayland",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "wayland",
                 },
             },
             {
@@ -151,6 +182,22 @@ data = {
                     "name": "wayland-scanner",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "changelog": "https://wayland.freedesktop.org/releases.html",
+                "checker": {
+                    "type": "pacman",
+                    "package": "wayland",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "wayland",
+                },
+            },
             # >= 1.22.0 required for build wayland-libs
             {
                 "arch": ["any"],
@@ -189,6 +236,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=wget",
+                "checker": {
+                    "type": "pacman",
+                    "package": "wget",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "wget",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -221,6 +283,21 @@ data = {
     "x86_64-linux-gnu-g++": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["archlinux"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "prereqs": ["g++"],
+                "checker": {
+                    "type": "pacman",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
             {
                 "arch": ["x86_64"],
                 "os": ["debian"],
@@ -263,6 +340,21 @@ data = {
     "x86_64-linux-gnu-gcc": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["archlinux"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "prereqs": ["gcc"],
+                "checker": {
+                    "type": "pacman",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
             {
                 "arch": ["x86_64"],
                 "os": ["debian"],
@@ -327,6 +419,24 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "pacman",
+                    "package": "pkg-config",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "x86_64-linux-gnu",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -348,6 +458,9 @@ data = {
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
+                "prereqs": [
+                    "pkg-config",
+                ],
                 "checker": {
                     "type": "apt-cache",
                     "package": "pkg-config",
@@ -362,6 +475,21 @@ data = {
     "x86_64-w64-mingw32-g++": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://www.mingw-w64.org/changelog/",
+                "prereqs": ["x86_64-w64-mingw32-gcc"],
+                "checker": {
+                    "type": "pacman",
+                    "package": "mingw-w64-gcc",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -419,6 +547,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://www.mingw-w64.org/changelog/",
+                "checker": {
+                    "type": "pacman",
+                    "package": "mingw-w64-gcc",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "mingw-w64-gcc",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["buster"],
                 "abi": ["any"],
@@ -462,6 +605,24 @@ data = {
     "x86_64-w64-mingw32-pkg-config": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "pacman",
+                    "package": "pkgconf",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "x86_64-w64-mingw32",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -514,6 +675,22 @@ data = {
                         "type": "custom",
                         "name": "xau-github",
                     },
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxau/-/tags",
+                "checker": {
+                    "type": "pacman",
+                    "package": "libxau",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "libxau",
                 },
             },
             {
@@ -581,6 +758,22 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["x11"],
+                "changelog": "https://xcb.freedesktop.org/",
+                "checker": {
+                    "type": "pacman",
+                    "package": "libxcb",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "libxcb",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -635,6 +828,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "xcb-proto",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["x11"],
+                "changelog": "https://xcb.freedesktop.org/",
+                "checker": {
+                    "type": "pacman",
+                    "package": "xcb-proto",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "xcb-proto",
                 },
             },
             {
