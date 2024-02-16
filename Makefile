@@ -7,9 +7,6 @@ endif
 samples:
 	./generate_samples.py
 
-first-run:
-	./first_run.py
-
 image-x86_64-archlinux-latest-build:
 ifeq ($(ARCH),x86_64)
 	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \

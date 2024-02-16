@@ -21,55 +21,6 @@ Installing requirements on Debian:
 # pip3 install multimethod
 ```
 
-# Store your github data on PC
-Library gets some data about repositories from Github via Rest API. For this
-reason it important to store your authentification data on your PC. Library
-will use your authentification data for interacting with Github.
-
-If you will skip this steps before using library you will be asked your
-authentification data on first run.
-
-I know it is uncertain security way but I can not find out better way for
-interacting with Github API. Feel free to offer better way for resolving this
-problem.
-### Step 1:
-Generate new access token.
-
-1. Open settings of your Github profile.
-
-2. Choose "Developer Settings". Then choose "Personal access tokens".
-
-3. Click "Generate new token".
-
-4. Important: for security reasons deselect all scopes of access.
-
-5. Then click "Generate token".
-
-### Step 2:
-Copy or write your token.
-### Step 3:
-Store your authentification data on your PC.
-#### Variant 1 (Linux only):
-
-1. Create directory ".vgazer" in your home directory.
-
-2. Create directory "~/.vgazer/github"
-
-3. Create file "~/.vgazer/github/username" and store your Github username in
-this file.
-
-4. Create file "~/.vgazer/github/token" and store your Github access token in
-this file.
-
-#### Variant 2:
-Run one of this commands and input your autentification data:
-```console
-$ make first_run
-```
-```console
-$ ./first_run.py
-```
-
 # Usage
 ```console
 # vgazer [COMMAND] --target=<triplet> <SOFTWARE[ ...]>
