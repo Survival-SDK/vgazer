@@ -103,6 +103,22 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "https://github.com/libffi/libffi/releases",
+                "checker": {
+                    "type": "pacman",
+                    "package": "libffi",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "libffi",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -241,6 +257,24 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "liblzma",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["pd"],
+                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
+                "prereqs": [
+                    "xz",
+                ],
+                "checker": {
+                    "type": "pacman",
+                    "package": "xz",
+                },
+                "installer": {
+                    "type": "not-needed",
                 },
             },
             {

@@ -11,7 +11,10 @@ class HostDetector:
     def GetLinuxOs():
         with OsRelease() as osRelease:
             try:
-                return osRelease.GetEntry("ID")
+                return {
+                    "arch": "archlinux",
+                    "debian": "debian",
+                }[osRelease.GetEntry("ID")]
             except KeyError:
                 raise OsDataNotFound(
                  "Unable to find data of host OS: " + os.name)
@@ -40,6 +43,9 @@ class HostDetector:
         if osType == "Linux":
             # TODO steamrt not being detected by HostDetector.GetLinuxOs()
             self.os = HostDetector.GetLinuxOs()
+            if self.os == "archlinux":
+                self.osVersion = "latest"
+                self.abi = "gnu"
             if self.os == "debian":
                 self.osVersion = HostDetector.GetDebianVersion()
                 self.abi = "gnu"

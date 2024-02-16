@@ -1,4 +1,24 @@
 data = {
+    "llvm": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://llvm.org/docs/ReleaseNotes.html",
+                "checker": {
+                    "type": "pacman",
+                    "package": "llvm",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "llvm",
+                },
+            },
+        ],
+    },
     "luajit": {
         "platform": "target",
         "projects": [
@@ -21,6 +41,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "luajit",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "http://luajit.org/status.html",
+                "checker": {
+                    "type": "pacman",
+                    "package": "luajit",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "luajit",
                 },
             },
             {
@@ -86,6 +122,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "http://savannah.gnu.org/news/?group=m4",
+                "checker": {
+                    "type": "pacman",
+                    "package": "m4",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "m4",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -120,6 +171,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=make",
+                "checker": {
+                    "type": "pacman",
+                    "package": "make",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "make",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -151,6 +217,21 @@ data = {
     "makeinfo": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://git.savannah.gnu.org/cgit/texinfo.git/plain/NEWS",
+                "checker": {
+                    "type": "pacman",
+                    "package": "texinfo",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "texinfo",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -203,6 +284,21 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://mesonbuild.com/Release-notes.html",
+                "checker": {
+                    "type": "pacman",
+                    "package": "meson",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "meson",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -235,6 +331,21 @@ data = {
     "ninja": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://ninja-build.org/",
+                "checker": {
+                    "type": "pacman",
+                    "package": "ninja",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "ninja",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["debian"],
@@ -313,6 +424,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libglvnd",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["gnu"],
+                "license": ["mit", "bsd-1", "bsd-3"],
+                "changelog": "https://gitlab.freedesktop.org/glvnd/libglvnd/-/tags",
+                "checker": {
+                    "type": "pacman",
+                    "package": "libglvnd",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "libglvnd",
                 },
             },
             {

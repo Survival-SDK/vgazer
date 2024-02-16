@@ -188,7 +188,7 @@ class Platform:
 
     @staticmethod
     def OsIsLinux(os):
-        return (os in ["linux", "debian", "steamrt"])
+        return (os in ["linux", "archlinux", "debian", "steamrt"])
 
     @staticmethod
     def GetGenericOs(os):
@@ -203,9 +203,9 @@ class Platform:
 
     def __init__(self, arch=None, os=None, osVersion=None, abi=None,
      suppressGenericFallback=False):
-        self.host = OneOfIsNone(arch, os, osVersion, abi)
+        self.isHost = OneOfIsNone(arch, os, osVersion, abi)
 
-        if self.host:
+        if self.isHost:
             with HostDetector() as hostDetector:
                 if hostDetector.OsIsUnknown():
                     raise UnexpectedOsType(hostDetector.GetErrorMsg)
@@ -225,6 +225,9 @@ class Platform:
             self.os = os
             self.osVersion = osVersion
             self.abi = abi
+
+    def IsHost(self):
+        return self.isHost
 
     def GetArch(self):
         return self.arch

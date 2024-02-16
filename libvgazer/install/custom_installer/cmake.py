@@ -1,6 +1,4 @@
 import os
-import requests
-from bs4 import BeautifulSoup
 
 from libvgazer.command     import RunCommand
 from libvgazer.exceptions  import CommandError
