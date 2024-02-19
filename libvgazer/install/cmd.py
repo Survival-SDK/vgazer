@@ -5,7 +5,7 @@ from libvgazer.exceptions import InstallError
 def InstallCmd(software, cmds, verbose):
     for cmd in cmds:
         try:
-            RunCommand(command, verbose)
+            RunCommand(cmd, verbose)
         except CommandError:
             print("VGAZER: Unable to install", software)
             raise InstallError(
