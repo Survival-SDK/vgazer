@@ -1,5 +1,7 @@
-from multimethod import multimethod
+import os
 import re
+
+from multimethod import multimethod
 
 from libvgazer.checkers_manager    import CheckersManager
 from libvgazer.exceptions          import CompatibleProjectNotFound
@@ -169,6 +171,18 @@ class Vgazer:
 
         self.InstallProject(software, project, verbose)
 
+    def InstallListFromFile(self, filename, verbose=False):
+        with open(filename) as file:
+            for line in file:
+                line = line.rstrip("\n")
+                if os.path.isfile(line):
+                    self.InstallListFromFile(line, verbose)
+                else:
+                    self.Install(line, verbose)
+
     def InstallList(self, softwareList, verbose=False):
         for software in softwareList:
-            self.Install(software, verbose)
+            if os.path.isfile(software):
+                self.InstallListFromFile(software, verbose)
+            else:
+                self.Install(software, verbose)
