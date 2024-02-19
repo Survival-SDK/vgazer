@@ -13,9 +13,6 @@ from libvgazer.version.git  import GetLastTag
 from libvgazer.working_dir  import WorkingDir
 
 def Install(software, platform, platformData, mirrors, verbose):
-    configCmake = ConfigCmake(platformData)
-    configCmake.GenerateCrossFile()
-
     installPrefix = GetInstallPrefix(platformData)
     ar = GetArFullPath(platformData["target"])
 
@@ -27,27 +24,28 @@ def Install(software, platform, platformData, mirrors, verbose):
         with WorkingDir(tempPath):
             RunCommand(
              [
-              "git", "clone", "https://git.cryptomilk.org/projects/cmocka.git"
+              "git", "clone", "https://git.cryptomilk.org/projects/cmocka.git",
+              "."
              ],
              verbose)
-        clonedDir = os.path.join(tempPath, "cmocka")
-        with WorkingDir(clonedDir):
-            RunCommand(["mkdir", "build"], verbose)
-        buildDir = os.path.join(clonedDir, "build")
-        with WorkingDir(buildDir):
             RunCommand(
              [
               "git", "checkout",
               GetLastTag("https://git.cryptomilk.org/projects/cmocka.git")
              ],
              verbose)
+            RunCommand(["mkdir", "build"], verbose)
+        buildDir = os.path.join(tempPath, "build")
+        with WorkingDir(buildDir), ConfigCmake(platformData) as conf:
             RunCommand(
-             ["cmake", "..",
-              "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
+             [
+              "cmake", "..",
+              "-DCMAKE_TOOLCHAIN_FILE={conf}".format(conf=conf.filename()),
               "-DCMAKE_BUILD_TYPE=Debug",
-              "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
-              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON", "-DCMAKE_AR=" + ar,
-              "-DWITH_STATIC_LIB=ON"],
+              "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),
+              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
+              "-DCMAKE_AR={ar}".format(ar=ar), "-DWITH_STATIC_LIB=ON"
+             ],
              verbose)
             RunCommand(
              ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
@@ -55,6 +53,7 @@ def Install(software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")

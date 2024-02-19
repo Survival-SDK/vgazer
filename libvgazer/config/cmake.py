@@ -7,27 +7,21 @@ from libvgazer.platform   import Platform
 from libvgazer.store.temp import StoreTemp
 
 class ConfigCmake():
-    def __init__(self, platformData):
-        self.storeTemp = StoreTemp(".vgazer/cmake")
-        self.crossFileName = self.storeTemp.GetDirectoryFilePath(
-         "toolchain.cmake")
-        self.storeTemp.ResolveDirectory()
-        self.platformData = platformData
-
-    def GetCrossFileName(self):
-        return self.crossFileName
-
-    def GenerateCrossFile(self, cflags=None):
+    def __init__(self, platformData, cflags=None):
         print("VGAZER: Generating CMake toolchain file...")
-        cmakeOs = Platform.GetGenericOs(
-          self.platformData["target"].GetOs()
-         ).capitalize()
-        prefix = GetInstallPrefix(self.platformData)
-        targetTriplet = GetTriplet(self.platformData["target"])
+        
+        storeTemp = StoreTemp(".vgazer/cmake")
+        self.crossFileName = storeTemp.GetDirectoryFilePath("toolchain.cmake")
+        storeTemp.ResolveDirectory()
 
-        cc = GetCc(self.platformData["target"])
-        cxx = GetCxx(self.platformData["target"])
-        ar = GetAr(self.platformData["target"])
+        cmakeOs = Platform.GetGenericOs(
+         platformData["target"].GetOs()).capitalize()
+        prefix = GetInstallPrefix(platformData)
+        targetTriplet = GetTriplet(platformData["target"])
+
+        cc = GetCc(platformData["target"])
+        cxx = GetCxx(platformData["target"])
+        ar = GetAr(platformData["target"])
 
         pkgConfigLibdirs = ("/usr/{triplet}/lib/pkgconfig"
          ":{prefix}/lib/pkgconfig:{prefix}/share/pkgconfig"
@@ -36,13 +30,13 @@ class ConfigCmake():
           triplet=targetTriplet
          )
 
-        if self.platformData["target"].IsHost():
+        if platformData["target"].IsHost():
             findMode = "BOTH"
             pkgConfigLibdirs += ":/usr/share/pkgconfig:/usr/lib/pkgconfig"
         else:
             findMode = "ONLY"
 
-        self.storeTemp.DirectoryWriteTextFile("toolchain.cmake",
+        storeTemp.DirectoryWriteTextFile("toolchain.cmake",
          "set(CMAKE_SYSTEM_NAME {cmakeOs})\n"
          "set(CMAKE_SYSTEM_PROCESSOR {cpu})\n"
          "set(CMAKE_C_COMPILER {cc})\n"
@@ -58,7 +52,7 @@ class ConfigCmake():
          "SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY {findMode})\n"
          "SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE {findMode})".format(
           cmakeOs=cmakeOs,
-          cpu=self.platformData["target"].GetArch(),
+          cpu=platformData["target"].GetArch(),
           cc=cc,
           cflags=cflags if cflags is not None else "",
           cxx=cxx,
@@ -68,3 +62,12 @@ class ConfigCmake():
           findMode=findMode
          )
         )
+
+    def __enter__(self):
+        pass
+
+    def __exit__(self, etype, value, traceback):
+        pass
+
+    def filename(self):
+        return self.crossFileName
