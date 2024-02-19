@@ -29,7 +29,8 @@ def Install(software, platform, platformData, mirrors, verbose):
             RunCommand(
              [
               "git", "checkout",
-              GetLastTag("https://github.com/DaveGamble/cJSON.git")
+              GetLastTag("https://github.com/DaveGamble/cJSON.git",
+               hint=r'v1\.7\.\d\d')
              ],
              verbose)
             RunCommand(["mkdir", "build"], verbose)

@@ -22,7 +22,8 @@ def Install(software, platform, platformData, mirrors, verbose):
             RunCommand(
              [
               "git", "checkout",
-              GetLastTag("https://gitlab.kitware.com/cmake/cmake.git")
+              GetLastTag("https://gitlab.kitware.com/cmake/cmake.git",
+               hint=r'v3\.\d\d\.\d+')
              ],
              verbose)
             RunCommand(

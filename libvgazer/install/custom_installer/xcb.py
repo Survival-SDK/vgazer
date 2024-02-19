@@ -32,7 +32,8 @@ def Install(software, platform, platformData, mirrors, verbose):
             RunCommand(
              [
               "git", "checkout",
-              GetLastTag("https://gitlab.freedesktop.org/xorg/lib/libxcb.git")
+              GetLastTag("https://gitlab.freedesktop.org/xorg/lib/libxcb.git",
+               hint=r'libxcb-1\.\d\d')
              ],
              verbose)
             RunCommand(

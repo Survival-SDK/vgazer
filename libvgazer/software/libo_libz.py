@@ -95,7 +95,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "git://git.code.sf.net/p/libpng/code",
-                    "hint": r'v\d\.\d\.\d+$',
+                    "hint": r'(:?v1\.6\.\d\d$)|(:?v1\.7\.\d+$)',
                 },
                 "installer": {
                     "type": "custom",
@@ -163,8 +163,8 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://github.com/aremmell/libsir/releases",
                 "prereqs": [
-                    "make",
                     "{triplet}-gcc",
+                    "make",
                 ],
                 "checker": {
                     "type": "git",
@@ -187,9 +187,9 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=libtool",
                 "prereqs": [
-                    "{triplet}-gcc",
                     "autoconf",
                     "automake",
+                    "gcc",
                     "help2man",
                     "make",
                     "makeinfo",
@@ -217,6 +217,31 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libtool",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=libtool",
+                "prereqs": [
+                    "autoconf",
+                    "automake",
+                    "gcc",
+                    "help2man",
+                    "make",
+                    "makeinfo",
+                    "patch",
+                    "xz",
+                ],
+                "checker": {
+                    "type": "git",
+                    "url": "git://git.savannah.gnu.org/libtool.git",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libtool",
                 },
             },
             {
@@ -262,8 +287,8 @@ data = {
                 "license": ["bsd-3"],
                 "changelog": "https://xiph.org/press/",
                 "prereqs": [
-                    "{triplet}-pkg-config",
                     "{triplet}-gcc",
+                    "{triplet}-pkg-config",
                     "autoconf",
                     "automake",
                     "libogg",

@@ -188,16 +188,16 @@ class Platform:
 
     @staticmethod
     def OsIsLinux(os):
-        return (os in ["linux", "archlinux", "debian", "steamrt"])
+        return (os in [
+            "linux", "archlinux", "oraclelinux", "debian", "steamrt"
+        ])
 
     @staticmethod
     def GetGenericOs(os):
         if Platform.OsIsLinux(os):
             return "linux"
-        elif os == "windows":
-            return "windows"
-        elif os == "any":
-            return "any"
+        elif os == "windows" or os == "any":
+            return os
         else:
             raise UnknownOs("Unknown OS: " + os)
 

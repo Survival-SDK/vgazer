@@ -1,8 +1,6 @@
 import os
-import requests
 
 from libvgazer.command     import RunCommand
-from libvgazer.env_vars    import EnvVar
 from libvgazer.exceptions  import CommandError
 from libvgazer.exceptions  import InstallError
 from libvgazer.platform    import GetInstallPrefix
@@ -19,37 +17,31 @@ def Install(software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
-    aclocal = "aclocal -I {prefix}/share/aclocal".format(prefix=installPrefix)
-    aclocalPath = "{prefix}/share/aclocal".format(prefix=installPrefix)
-
     try:
-        with WorkingDir(tempPath), EnvVar("ACLOCAL", aclocal), EnvVar("ACLOCAL_PATH", aclocalPath):
+        with WorkingDir(tempPath):
             RunCommand(
-             [
-              "git", "clone",
-              "https://gitlab.freedesktop.org/xorg/lib/libxau.git", "."
-             ],
+             ["git", "clone", "https://github.com/libexpat/libexpat.git", "."],
              verbose)
             RunCommand(
              [
               "git", "checkout",
-              GetLastTag("https://gitlab.freedesktop.org/xorg/lib/libxau.git",
-               hint=r'libXau-1\.0\.\d\d')
+              GetLastTag("https://github.com/libexpat/libexpat.git",
+               hint=r'R\_\d\_\d\_\d')
              ],
              verbose)
+        expatDir = os.path.join(tempPath, "expat")
+        with WorkingDir(expatDir):
+            RunCommand(["./buildconf.sh"], verbose)
             RunCommand(
              [
-              "./autogen.sh", "--host={triplet}".format(triplet=targetTriplet),
+              "./configure", "--host={triplet}".format(triplet=targetTriplet),
               "--prefix={prefix}".format(prefix=installPrefix),
-              "PKG_CONFIG_PATH={prefix}/lib/pkgconfig:"
-              "{prefix}/share/pkgconfig".format(prefix=installPrefix)
+              "--disable-shared", "--without-examples", "--without-docbook"
              ],
              verbose)
-            RunCommand(
-             ["make", "-j{cores_count}".format(cores_count=os.cpu_count())],
-             verbose)
+            RunCommand(["make", "-j{jobs}".format(jobs=os.cpu_count())],
+             verbose, allowedReturncodes=[2])
             RunCommand(["make", "install"], verbose)
-
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(

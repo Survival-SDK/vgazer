@@ -122,7 +122,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://gitlab.freedesktop.org/xorg/util/macros.git",
-                    "hint": r'util-macros-\d\.\d+\.\d',
+                    "hint": r'util-macros-1\.\d\d\.\d',
                 },
                 "installer": {
                     "type": "custom",
@@ -344,6 +344,21 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
+                    "package": "xz",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
+                "checker": {
+                    "type": "yum",
+                    "package": "xz",
+                },
+                "installer": {
+                    "type": "yum",
                     "package": "xz",
                 },
             },

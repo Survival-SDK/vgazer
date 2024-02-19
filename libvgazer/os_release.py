@@ -6,8 +6,9 @@ class OsRelease:
             data = osReleaseFile.read()
         lines = data.splitlines()
         for line in lines:
-            kv = line.split("=")
-            self.entries[kv[0]] = kv[1]
+            if "=" in line:
+                kv = line.split("=")
+                self.entries[kv[0]] = kv[1]
 
     def __enter__(self):
         return self
@@ -17,4 +18,4 @@ class OsRelease:
 
     def GetEntry(self, key):
         if key in self.entries:
-            return self.entries[key]
+            return self.entries[key].strip("\"")

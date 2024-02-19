@@ -5,6 +5,7 @@ from libvgazer.install.pacman     import InstallPacman
 from libvgazer.install.pip        import InstallPip
 from libvgazer.install.pip3       import InstallPip3
 from libvgazer.install.pkg_config import InstallPkgConfig
+from libvgazer.install.yum        import InstallYum
 
 class InstallersManager:
     def __init__(self):
@@ -35,6 +36,13 @@ class InstallersManager:
              mirrors, verbose:
                 InstallPkgConfig(software, installerData["triplet"],
                  platformData, verbose),
+            "yum": lambda software, platformData, installerData, mirrors,
+             verbose:
+                InstallYum(software, installerData["package"],
+                 installerData["repo"] if "repo" in installerData else None,
+                 installerData["postInstallCommands"] if "postInstallCommands"
+                  in installerData else None,
+                 verbose),
         }
 
     def GetInstallFunc(self, installerType):

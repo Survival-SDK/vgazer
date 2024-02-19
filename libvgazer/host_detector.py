@@ -12,12 +12,22 @@ class HostDetector:
         with OsRelease() as osRelease:
             try:
                 return {
-                    "arch": "archlinux",
+                    "arch":   "archlinux",
+                    "ol":     "oraclelinux",
                     "debian": "debian",
                 }[osRelease.GetEntry("ID")]
             except KeyError:
                 raise OsDataNotFound(
                  "Unable to find data of host OS: " + os.name)
+
+    @staticmethod
+    def GetOracleLinuxVersion():
+        with OsRelease() as osRelease:
+            try:
+                return osRelease.GetEntry("VERSION").strip("\"").split(".")[0]
+            except KeyError:
+                raise DebianReleaseDataNotFound(
+                 "Unable to find data of Debian version: " + os.name)
 
     @staticmethod
     def GetDebianVersion():
@@ -45,6 +55,9 @@ class HostDetector:
             self.os = HostDetector.GetLinuxOs()
             if self.os == "archlinux":
                 self.osVersion = "latest"
+                self.abi = "gnu"
+            if self.os == "oraclelinux":
+                self.osVersion = HostDetector.GetOracleLinuxVersion()
                 self.abi = "gnu"
             if self.os == "debian":
                 self.osVersion = HostDetector.GetDebianVersion()

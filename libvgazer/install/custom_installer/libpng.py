@@ -26,7 +26,7 @@ def Install(software, platform, platformData, mirrors, verbose):
              [
               "git", "checkout",
               GetLastTag("git://git.code.sf.net/p/libpng/code",
-               hint=r'v\d\.\d\.\d+$')
+               hint=r'(:?v1\.6\.\d\d$)|(:?v1\.7\.\d+$)')
              ],
              verbose)
             RunCommand(
