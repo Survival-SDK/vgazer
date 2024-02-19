@@ -1,8 +1,10 @@
 import os
 
 from libvgazer.command     import RunCommand
+from libvgazer.env_vars    import EnvVar
 from libvgazer.exceptions  import CommandError
 from libvgazer.exceptions  import InstallError
+from libvgazer.platform    import GetInstallPrefix
 from libvgazer.store.temp  import StoreTemp
 from libvgazer.version.git import GetLastTag
 from libvgazer.working_dir import WorkingDir
@@ -12,8 +14,16 @@ def Install(software, platform, platformData, mirrors, verbose):
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
+    installPrefix = GetInstallPrefix(platformData)
+
+    if "PKG_CONFIG_PATH" in os.environ:
+        pkg_config_path = "{prefix}/lib/pkgconfig:{old}".format(
+         prefix=installPrefix, old=os.environ["PKG_CONFIG_PATH"])
+    else:
+        pkg_config_path = "{prefix}/lib/pkgconfig".format(prefix=installPrefix)
+
     try:
-        with WorkingDir(tempPath):
+        with WorkingDir(tempPath), EnvVar("PKG_CONFIG_PATH", pkg_config_path):
             RunCommand(
              [
               "git", "clone",
@@ -23,7 +33,8 @@ def Install(software, platform, platformData, mirrors, verbose):
             RunCommand(
              [
               "git", "checkout",
-              GetLastTag("https://gitlab.freedesktop.org/wayland/wayland.git")
+              GetLastTag("https://gitlab.freedesktop.org/wayland/wayland.git",
+               hint=r'1\.\d\d.\d+')
              ],
              verbose)
             RunCommand(

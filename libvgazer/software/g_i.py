@@ -19,6 +19,21 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "checker": {
+                    "type": "yum",
+                    "package": "gcc-c++",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "gcc-c++",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -71,6 +86,21 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
+                    "package": "gcc",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["gnu"],
+                "changelog": "https://gcc.gnu.org/",
+                "checker": {
+                    "type": "yum",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "yum",
                     "package": "gcc",
                 },
             },
@@ -310,6 +340,23 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
+                "checker": {
+                    "type": "yum",
+                    "repo": "ol7_optional_latest",
+                    "package": "help2man",
+                },
+                "installer": {
+                    "type": "yum",
+                    "repo": "ol7_optional_latest",
+                    "package": "help2man",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -351,10 +398,10 @@ data = {
                 "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
                 "changelog": "https://github.com/unicode-org/icu/releases",
                 "prereqs": [
-                    "{hostTriplet}-gcc",
-                    "{hostTriplet}-g++",
                     "{triplet}-gcc",
                     "{triplet}-g++",
+                    "g++",
+                    "gcc",
                     "make",
                 ],
                 "checker": {
@@ -381,6 +428,30 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "icu",
+                },
+            },
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["gnu"],
+                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
+                "changelog": "https://github.com/unicode-org/icu/releases",
+                "prereqs": [
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "g++",
+                    "gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "fixed",
+                    "version": "67.1",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "icu-67",
                 },
             },
             {
@@ -412,6 +483,35 @@ data = {
                 },
                 "installer": {
                     "type": "not-needed",
+                },
+            },
+        ],
+    },
+    "icu-54.2": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
+                "changelog": "https://github.com/unicode-org/icu/releases",
+                "prereqs": [
+                    "{triplet}-gcc",
+                    "{triplet}-g++",
+                    "g++",
+                    "gcc",
+                    "make",
+                ],
+                "checker": {
+                    "type": "fixed",
+                    "version": "54.2",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "icu_54_2",
                 },
             },
         ],
@@ -510,6 +610,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/include-what-you-use/include-what-you-use.git",
+                    "hint": r'\d.\d+',
                 },
                 "installer": {
                     "type": "custom",

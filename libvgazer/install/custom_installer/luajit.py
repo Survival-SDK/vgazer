@@ -34,7 +34,9 @@ def Install(software, platform, platformData, mirrors, verbose):
               "CFLAGS=-fPIC", "BUILDMODE=static",
               "CROSS={triplet}-".format(triplet=triplet),
               "TARGET_SYS={os}".format(
-               os=platformData["target"].GetOs().capitalize())
+               os=platformData["target"].GetOs().capitalize()),
+              "TARGET_AR={triplet}-gcc-ar rcus".format(triplet=triplet),
+              "E=@:", "Q="
              ],
              verbose)
             RunCommand(

@@ -26,7 +26,7 @@ def Install(software, platform, platformData, mirrors, verbose):
              [
               "git", "checkout",
               GetLastTag("https://gitlab.freedesktop.org/xorg/util/macros.git",
-               hint=r'util-macros-\d\.\d+\.\d')
+               hint=r'util-macros-1\.\d\d\.\d')
              ],
              verbose)
             RunCommand(["./autogen.sh",

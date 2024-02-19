@@ -17,20 +17,23 @@ def GetLastTag(url, hint=None, files=None):
     try:
         with WorkingDir(tempPath, verbose=False):
             output = GetCommandOutputUtf8([
-             "git", "-c", "versionsort.suffix=-", "ls-remote", "--tags",
-             "--sort=-v:refname", url]
+             "git", "-c", "versionsort.suffix=-", "ls-remote", "--tags", url]
             )
 
         if (output == ""):
             return None
 
         lines = output.splitlines()
+        tags = []
         for line in lines:
             if line.endswith("^{}"):
                 continue
             tag = line.split("/")[-1]
             if hint is None or re.fullmatch(hint, tag) is not None:
-                return tag
+                tags.append(tag)
+
+        tags.sort(reverse=True)
+        return tags[0]
 
     except CommandError:
         return None

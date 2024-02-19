@@ -94,11 +94,13 @@ data = {
                     "{triplet}-pkg-config",
                     "libffi",
                     "meson",
+                    "ninja",
                     "wayland-scanner",
                 ],
                 "checker": {
                     "type": "git",
                     "url": "https://gitlab.freedesktop.org/wayland/wayland.git",
+                    "hint": r'1\.\d\d.\d+',
                 },
                 "installer": {
                     "type": "custom",
@@ -169,13 +171,16 @@ data = {
                 "license": ["mit"],
                 "changelog": "https://wayland.freedesktop.org/releases.html",
                 "prereqs": [
+                    "expat",
                     "gcc",
                     "meson",
+                    "ninja",
                     "pkg-config",
                 ],
                 "checker": {
                     "type": "git",
                     "url": "https://gitlab.freedesktop.org/wayland/wayland.git",
+                    "hint": r'1\.\d\d.\d+',
                 },
                 "installer": {
                     "type": "custom",
@@ -251,6 +256,21 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=wget",
+                "checker": {
+                    "type": "yum",
+                    "package": "wget",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "wget",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -280,6 +300,50 @@ data = {
             },
         ],
     },
+    "x86_64-linux-gnu-binutils": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/binutils/binutils/NEWS",
+                "checker": {
+                    "type": "yum",
+                    "package": "binutils",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin"],
+                        [
+                            "ln", "-s", "/usr/bin/ar",
+                            "/usr/local/bin/x86_64-linux-gnu-ar"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/strip",
+                            "/usr/local/bin/x86_64-linux-gnu-strip"
+                        ],
+                    ]
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["steamrt"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/binutils/binutils/NEWS",
+                "checker": {
+                    "type": "apt-cache",
+                    "package": "binutils-x86-64-linux-gnu",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
+        ],
+    },
     "x86_64-linux-gnu-g++": {
         "platform": "host",
         "projects": [
@@ -300,6 +364,28 @@ data = {
             },
             {
                 "arch": ["x86_64"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "prereqs": ["g++"],
+                "checker": {
+                    "type": "yum",
+                    "package": "g++",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin"],
+                        [
+                            "ln", "-s", "/usr/bin/g++",
+                            "/usr/local/bin/x86_64-linux-gnu-g++"
+                        ],
+                    ]
+                },
+            },
+            {
+                "arch": ["x86_64"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -313,7 +399,7 @@ data = {
                 },
             },
             {
-                "arch": ["any"],
+                "arch": ["x86_64"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -357,6 +443,44 @@ data = {
             },
             {
                 "arch": ["x86_64"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "prereqs": ["gcc"],
+                "checker": {
+                    "type": "yum",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin"],
+                        [
+                            "ln", "-s", "/usr/bin/gcc",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcc-ar",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc-ar"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcc-nm",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc-nm"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcc-ranlib",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc-ranlib"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcov",
+                            "/usr/local/bin/x86_64-linux-gnu-gcov"
+                        ],
+                    ]
+                },
+            },
+            {
+                "arch": ["x86_64"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -370,7 +494,7 @@ data = {
                 },
             },
             {
-                "arch": ["any"],
+                "arch": ["x86_64"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -429,6 +553,24 @@ data = {
                 "checker": {
                     "type": "pacman",
                     "package": "pkg-config",
+                },
+                "installer": {
+                    "type": "pkg-config",
+                    "triplet": "x86_64-linux-gnu",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["gnu"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "yum",
+                    "package": "pkgconfig",
                 },
                 "installer": {
                     "type": "pkg-config",
@@ -666,7 +808,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://gitlab.freedesktop.org/xorg/lib/libxau.git",
-                    "hint": r'libXau-\d\.\d\.\d+',
+                    "hint": r'libXau-1\.0\.\d\d',
                 },
                 "installer": {
                     "type": "custom",
@@ -750,6 +892,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://gitlab.freedesktop.org/xorg/lib/libxcb.git",
+                    "hint": r'libxcb-1\.\d\d',
                 },
                 "installer": {
                     "type": "custom",
@@ -824,6 +967,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://gitlab.freedesktop.org/xorg/proto/xcbproto.git",
+                    "hint": r'xcb-proto-1\.\d\d\.\d',
                 },
                 "installer": {
                     "type": "custom",

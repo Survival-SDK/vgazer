@@ -11,7 +11,7 @@ from libvgazer.working_dir  import WorkingDir
 
 def Install(software, platform, platformData, mirrors, verbose):
     configCmake = ConfigCmake(platformData)
-    configCmake.GenerateCrossFile()
+    configCmake.GenerateCrossFile(cflags="-std=gnu99")
     crossfile = configCmake.GetCrossFileName()
 
     installPrefix = GetInstallPrefix(platformData)

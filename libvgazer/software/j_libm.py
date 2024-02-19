@@ -35,8 +35,8 @@ data = {
                 "prereqs": [
                     "{triplet}-g++",
                     "{triplet}-pkg-config",
-                    "make",
                     "cmake",
+                    "make",
                     "xcb",
                 ],
                 "checker": {

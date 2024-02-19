@@ -31,6 +31,7 @@ data = {
                 "license": ["mit"],
                 "changelog": "http://luajit.org/status.html",
                 "prereqs": [
+                    "{triplet}-binutils",
                     "{triplet}-gcc",
                     "make",
                 ],
@@ -92,6 +93,7 @@ data = {
             },
         ],
     },
+    # Need stdatomic.h from GCC >=4.9
     "lwrb": {
         "platform": "target",
         "projects": [
@@ -109,6 +111,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/MaJerle/lwrb.git",
+                    "hint": r'v\d\.\d\.\d$',
                 },
                 "installer": {
                     "type": "custom",
@@ -132,6 +135,21 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
+                    "package": "m4",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "http://savannah.gnu.org/news/?group=m4",
+                "checker": {
+                    "type": "yum",
+                    "package": "m4",
+                },
+                "installer": {
+                    "type": "yum",
                     "package": "m4",
                 },
             },
@@ -186,6 +204,21 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=make",
+                "checker": {
+                    "type": "yum",
+                    "package": "make",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "make",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -229,6 +262,21 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
+                    "package": "texinfo",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://git.savannah.gnu.org/cgit/texinfo.git/plain/NEWS",
+                "checker": {
+                    "type": "yum",
+                    "package": "texinfo",
+                },
+                "installer": {
+                    "type": "yum",
                     "package": "texinfo",
                 },
             },
@@ -332,6 +380,26 @@ data = {
         "platform": "host",
         "projects": [
             {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "changelog": "https://ninja-build.org/",
+                "prereqs": [
+                    "g++",
+                ],
+                "checker": {
+                    "type": "git",
+                    "url": "https://github.com/ninja-build/ninja.git",
+                    "hint": r'v1\.\d\d\.\d+',
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "ninja",
+                },
+            },
+            {
                 "arch": ["any"],
                 "os": ["archlinux"],
                 "osVersion": ["latest"],
@@ -391,6 +459,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/Immediate-Mode-UI/Nuklear.git",
+                    "hint": r'4\.\d\d\.\d',
                 },
                 "installer": {
                     "type": "custom",

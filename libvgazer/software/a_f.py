@@ -19,6 +19,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/alsa-project/alsa-lib.git",
+                    "hint": r'v1\.2\.\d\d',
                 },
                 "installer": {
                     "type": "custom",
@@ -118,6 +119,27 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/autoconf/NEWS",
+                "prereqs": [
+                    "m4",
+                    "make",
+                    "perl-data-dumper",
+                    "wget",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "autoconf",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "autoconf",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["debian"],
                 # autoconf >=2.70 required for building xlib
                 # Debian bullseye has only 2.69
@@ -161,6 +183,7 @@ data = {
                 "changelog": "https://fossies.org/linux/automake/NEWS",
                 "prereqs": [
                     "autoconf",
+                    "gcc",
                     "make",
                 ],
                 "checker": {
@@ -186,6 +209,31 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "automake",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                # autoconf >=2.70 required for building xlib
+                # Oracle Linux 7 has only 2.69
+                # automake depends on autoconf
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/automake/NEWS",
+                "prereqs": [
+                    "autoconf",
+                    "gcc",
+                    "make",
+                    "perl-thread-queue",
+                ],
+                "checker": {
+                    "type": "git",
+                    "url": "https://git.savannah.gnu.org/git/automake.git",
+                    "hint": r'v\d\.\d+\w?(\.\d+)?$',
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "automake",
                 },
             },
             {
@@ -238,6 +286,21 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "gettext",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
+                "checker": {
+                    "type": "yum",
+                    "package": "gettext-devel",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "gettext-devel",
                 },
             },
             {
@@ -313,6 +376,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://github.com/DaveGamble/cJSON.git",
+                    "hint": r'v1\.7\.\d\d',
                 },
                 "installer": {
                     "type": "custom",
@@ -426,8 +490,6 @@ data = {
     "cmake": {
         "platform": "host",
         "projects": [
-            # This project por that case when we can not install cmake via
-            # package manager
             {
                 "fallback": True,
                 "arch": ["any"],
@@ -442,6 +504,7 @@ data = {
                 "checker": {
                     "type": "git",
                     "url": "https://gitlab.kitware.com/cmake/cmake.git",
+                    "hint": r'v3\.\d\d\.\d+',
                 },
                 "installer": {
                     "type": "custom",
@@ -619,6 +682,37 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "dr_wav",
+                },
+            },
+        ],
+    },
+    "expat": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "changelog": "https://github.com/libexpat/libexpat/blob/master/expat/Changes",
+                "prereqs": [
+                    "{triplet}-g++",
+                    "{triplet}-gcc",
+                    "autoconf",
+                    "automake",
+                    "libtool",
+                    "make",
+                ],
+                "checker": {
+                    "type": "git",
+                    "url": "https://github.com/libexpat/libexpat.git",
+                    "hint": r'R_\d_\d_\d',
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "expat",
                 },
             },
         ],

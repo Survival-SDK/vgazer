@@ -27,12 +27,13 @@ def Install(software, platform, platformData, mirrors, verbose):
             RunCommand(
              [
               "git", "checkout",
-              GetLastTag("https://github.com/MaJerle/lwrb.git")
+              GetLastTag("https://github.com/MaJerle/lwrb.git",
+               hint=r'v\d\.\d\.\d$')
              ],
              verbose)
             RunCommand(
              [
-              cc, "-O2", "-fPIC", "-I", "lwrb/src/include", "-c",
+              cc, "-O2", "-fPIC", "-std=c11", "-I", "lwrb/src/include", "-c",
               "lwrb/src/lwrb/lwrb.c", "-o", "lwrb.o"
              ],
              verbose

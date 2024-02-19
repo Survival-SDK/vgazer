@@ -17,7 +17,7 @@ class ConfigCmake():
     def GetCrossFileName(self):
         return self.crossFileName
 
-    def GenerateCrossFile(self):
+    def GenerateCrossFile(self, cflags=None):
         print("VGAZER: Generating CMake toolchain file...")
         cmakeOs = Platform.GetGenericOs(
           self.platformData["target"].GetOs()
@@ -46,6 +46,7 @@ class ConfigCmake():
          "set(CMAKE_SYSTEM_NAME {cmakeOs})\n"
          "set(CMAKE_SYSTEM_PROCESSOR {cpu})\n"
          "set(CMAKE_C_COMPILER {cc})\n"
+         "set(CMAKE_C_FLAGS {cflags})\n"
          "set(CMAKE_CXX_COMPILER {cxx})\n"
          "set(CMAKE_AR {ar})\n"
          "set(CMAKE_FIND_ROOT_PATH {prefix})\n"
@@ -59,6 +60,7 @@ class ConfigCmake():
           cmakeOs=cmakeOs,
           cpu=self.platformData["target"].GetArch(),
           cc=cc,
+          cflags=cflags if cflags is not None else "",
           cxx=cxx,
           ar=ar,
           prefix=prefix,

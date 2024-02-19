@@ -80,10 +80,10 @@ class Vgazer:
 
     def NormalizeVersion(self, version):
         normalized = version.split(":")[1] if ":" in version else version
-        normalized = re.sub(r'^\D(?:\D*[a-z])?[a-zA-Z]?(?:\d*\-)?' , "" ,
+        normalized = re.sub(r'^\D(?:\D*[a-z])?[a-zA-Z_]?(?:\d*\-)?' , "" ,
          normalized)
         normalized = re.sub(r'\.\D*$' , "" , normalized)
-        splitted = re.split(r'[\.\-\:\s]', normalized)
+        splitted = re.split(r'[\.\_\-\:\s]', normalized)
 
         if len(splitted) > 4:
             return ".".join(splitted[0:4]) + "".join(splitted[4:])
@@ -158,9 +158,7 @@ class Vgazer:
 
         for prereq in prereqs:
             prereq = prereq.format(
-             hostTriplet=GetGenericTriplet(self.platform["host"]),
-             triplet=GetGenericTriplet(self.platform["target"]),
-             arch=self.platform["target"].GetArch())
+             triplet=GetGenericTriplet(self.platform["target"]))
             if prereq not in self.installedSoftware:
                 self.Install(prereq, verbose)
 

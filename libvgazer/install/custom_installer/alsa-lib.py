@@ -28,7 +28,8 @@ def Install(software, platform, platformData, mirrors, verbose):
             RunCommand(
              [
               "git", "checkout",
-              GetLastTag("https://github.com/alsa-project/alsa-lib.git")
+              GetLastTag("https://github.com/alsa-project/alsa-lib.git",
+               hint=r'v1\.2\.\d\d')
              ],
              verbose)
             RunCommand(["touch", "ltconfig"], verbose)

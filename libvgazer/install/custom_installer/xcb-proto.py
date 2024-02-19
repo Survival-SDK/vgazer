@@ -29,7 +29,8 @@ def Install(software, platform, platformData, mirrors, verbose):
              [
               "git", "checkout",
               GetLastTag(
-               "https://gitlab.freedesktop.org/xorg/proto/xcbproto.git")
+               "https://gitlab.freedesktop.org/xorg/proto/xcbproto.git",
+               hint=r'xcb-proto-1\.\d\d\.\d')
              ],
              verbose)
             RunCommand(
