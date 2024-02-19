@@ -10,9 +10,6 @@ from libvgazer.version.git  import GetLastTag
 from libvgazer.working_dir  import WorkingDir
 
 def Install(software, platform, platformData, mirrors, verbose):
-    configMeson = ConfigMeson(platformData)
-    configMeson.GenerateCrossFile()
-
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()
@@ -20,7 +17,7 @@ def Install(software, platform, platformData, mirrors, verbose):
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
     try:
-        with WorkingDir(tempPath):
+        with WorkingDir(tempPath), ConfigMeson(platformData) as conf:
             RunCommand(
              [
               "git", "clone", "https://gitlab.freedesktop.org/mesa/glu.git",
@@ -37,8 +34,7 @@ def Install(software, platform, platformData, mirrors, verbose):
              [
               "meson", "setup", "build/",
               "--prefix={prefix}".format(prefix=installPrefix),
-              "--cross-file", configMeson.GetCrossFileName(),
-              "-Dgl_provider=gl"
+              "--cross-file", conf.filename(), "-Dgl_provider=gl"
              ],
              verbose)
             RunCommand(["ninja", "-C", "build/"], verbose)

@@ -11,9 +11,6 @@ from libvgazer.version.git  import GetLastTag
 from libvgazer.working_dir  import WorkingDir
 
 def Install(software, platform, platformData, mirrors, verbose):
-    configMeson = ConfigMeson(platformData)
-    configMeson.GenerateCrossFile()
-
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()
@@ -28,7 +25,7 @@ def Install(software, platform, platformData, mirrors, verbose):
         pkgConfigLibdir = "/usr/local/lib/pkgconfig:/usr/local/lib64/pkgconfig"
 
     try:
-        with WorkingDir(tempPath), EnvVar("PKG_CONFIG_LIBDIR", pkgConfigLibdir):
+        with WorkingDir(tempPath), EnvVar("PKG_CONFIG_LIBDIR", pkgConfigLibdir), ConfigMeson(platformData) as conf:
             RunCommand(
              [
               "git", "clone",
@@ -46,9 +43,8 @@ def Install(software, platform, platformData, mirrors, verbose):
              [
               "meson", "setup", "build/",
               "--prefix={prefix}".format(prefix=installPrefix), "--cross-file",
-              configMeson.GetCrossFileName(), "-Dscanner=false",
-              "-Dtests=false", "-Ddocumentation=false",
-              "-Ddtd_validation=false"
+              conf.filename(), "-Dscanner=false", "-Dtests=false",
+              "-Ddocumentation=false", "-Ddtd_validation=false"
              ],
              verbose)
             RunCommand(["ninja", "-C", "build/"], verbose)
