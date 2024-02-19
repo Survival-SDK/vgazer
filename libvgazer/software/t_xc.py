@@ -461,8 +461,29 @@ data = {
                     "package": "pkg-config",
                 },
                 "installer": {
-                    "type": "pkg-config",
-                    "triplet": "x86_64-linux-gnu",
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin/"],
+                        ["sh", "-c", "echo "
+                            "'#!/bin/sh\\\n"
+                            "export PKG_CONFIG_DIR=\\\n"
+                            "export PKG_CONFIG_PATH="
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\\\n"
+                            "export PKG_CONFIG_LIBDIR="
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\\\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\\\n"
+                            "exec pkg-config \"$@\"' "
+                            ">> /usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                        [
+                            "chmod", "+x",
+                            "/usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                    ],
                 },
             },
             {
@@ -479,8 +500,29 @@ data = {
                     "package": "pkgconfig",
                 },
                 "installer": {
-                    "type": "pkg-config",
-                    "triplet": "x86_64-linux-gnu",
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin/"],
+                        ["sh", "-c", "echo "
+                            "'#!/bin/sh\\\n"
+                            "export PKG_CONFIG_DIR=\\\n"
+                            "export PKG_CONFIG_PATH="
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\\\n"
+                            "export PKG_CONFIG_LIBDIR="
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\\\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\\\n"
+                            "exec pkg-config \"$@\"' "
+                            ">> /usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                        [
+                            "chmod", "+x",
+                            "/usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                    ],
                 },
             },
             {
@@ -496,8 +538,28 @@ data = {
                     "package": "pkg-config",
                 },
                 "installer": {
-                    "type": "pkg-config",
-                    "triplet": "x86_64-linux-gnu",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin/"],
+                        ["sh", "-c", "echo "
+                            "'#!/bin/sh\\\n"
+                            "export PKG_CONFIG_DIR=\\\n"
+                            "export PKG_CONFIG_PATH="
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\\\n"
+                            "export PKG_CONFIG_LIBDIR="
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\\\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\\\n"
+                            "exec pkg-config \"$@\"' "
+                            ">> /usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                        [
+                            "chmod", "+x",
+                            "/usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                    ],
                 },
             },
         ],
@@ -559,8 +621,28 @@ data = {
                     "package": "pkgconf",
                 },
                 "installer": {
-                    "type": "pkg-config",
-                    "triplet": "x86_64-w64-mingw32",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin/"],
+                        ["sh", "-c", "echo "
+                            "'#!/bin/sh\\\n"
+                            "export PKG_CONFIG_DIR=\\\n"
+                            "export PKG_CONFIG_PATH="
+                                "/usr/local/x86_64-w64-mingw32/lib/pkgconfig:"
+                                "/usr/local/x86_64-w64-mingw32/share/pkgconfig"
+                                "\\\n"
+                            "export PKG_CONFIG_LIBDIR="
+                                "/usr/local/x86_64-w64-mingw32/lib/pkgconfig:"
+                                "/usr/local/x86_64-w64-mingw32/share/pkgconfig"
+                                "\\\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\\\n"
+                            "exec pkg-config \"$@\"' "
+                            ">> /usr/local/bin/x86_64-w64-mingw32-pkg-config",
+                        ],
+                        [
+                            "chmod", "+x",
+                            "/usr/local/bin/x86_64-w64-mingw32-pkg-config",
+                        ],
+                    ],
                 },
             },
         ],
