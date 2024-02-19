@@ -168,55 +168,6 @@ data = {
             },
         ],
     },
-    "glslangvalidator": {
-        "platform": "host",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://github.com/KhronosGroup/glslang/blob/main/CHANGES.md",
-                "checker": {
-                    "type": "pacman",
-                    "package": "glslang",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "glslang",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://github.com/KhronosGroup/glslang/blob/main/CHANGES.md",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "glslang-tools",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "glslang-tools",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://github.com/KhronosGroup/glslang/blob/main/CHANGES.md",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "glslang-tools",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-        ],
-    },
     "glu": {
         "platform": "target",
         "projects": [
