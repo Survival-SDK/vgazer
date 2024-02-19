@@ -15,10 +15,10 @@ def Install(software, platform, platformData, mirrors, verbose):
     try:
         with WorkingDir(tempPath):
             RunCommand(
-             ["git", "clone", "https://gitlab.kitware.com/cmake/cmake.git"],
+             [
+              "git", "clone", "https://gitlab.kitware.com/cmake/cmake.git", "."
+             ],
              verbose)
-        clonedDir = os.path.join(tempPath, "cmake")
-        with WorkingDir(clonedDir):
             RunCommand(
              [
               "git", "checkout",
