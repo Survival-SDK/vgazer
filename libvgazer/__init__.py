@@ -30,6 +30,12 @@ class Vgazer:
             "target": Platform(arch, os, osVersion, abi),
         }
 
+    def __del__(self):
+        if len(self.installedSoftware) != 0:
+            print("VGAZER: Installed software (widh dependencies):")
+            for software in self.installedSoftware:
+                print("VGAZER:   {software}".format(software=software))
+
     def GetHostPlatform(self):
         return self.platform["host"]
 
