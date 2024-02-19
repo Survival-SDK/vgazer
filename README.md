@@ -10,17 +10,6 @@ This software required for working vgazer:
 * multimethod
 * git
 
-Optional Requirements for running samples (Linux only):
-
-* docker
-
-Installing requirements on Debian:
-
-```console
-# apt-get install python3 python3-pip python3-bs4 python3-requests git
-# pip3 install multimethod
-```
-
 # Usage
 ```console
 # vgazer [COMMAND] --target=<triplet> <SOFTWARE[ ...]>
@@ -37,6 +26,11 @@ checking. Default - host platform
 software - space separated list of software must be installed or version checked
 
 # For developers
+Optional Requirements for running samples (Linux only):
+
+* docker
+* pylama
+
 ### Generating samples
 Before trying samples you need generate it.
 Generate samples with one on this commands:
@@ -63,12 +57,8 @@ and OS's version of base Docker image. Currently supported:
     * latest
 * oraclelinux
     * 7
-* debian
-    * buster
-    * bullseye
-    * bookworm
 * steamrt
-    * scout
+    * scout (broken)
     * sniper (WIP)
 
 **tarch** - architecture of device for crossplatform compiling libraries.
@@ -100,9 +90,9 @@ OS:
 $ make image-build arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
 **Example**. Build docker image of environment with x86_64 architecture (your
-PC's arch must be x86_64) and Debian Bullseye as base image:
+PC's arch must be x86_64) and Oracle Linux 7 as base image:
 ```console
-$ make image-build arch=x86_64 os=debian ver=bullseye
+$ make image-build arch=x86_64 os=oraclelinux ver=7
 ```
 
 ### Run test image in interactive mode (bash or sh)
@@ -110,9 +100,9 @@ $ make image-build arch=x86_64 os=debian ver=bullseye
 $ make image_launch arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
 **Example**. Launch docker image of environment with x86_64 architecture and
-Debian Bullseye as base image in interactive mode:
+Oracle Linux 7 as base image in interactive mode:
 ```console
-$ make image_launch arch=x86_64 os=debian ver=bullseye
+$ make image_launch arch=x86_64 os=oraclelinux ver=7
 ```
 
 ### Output most recent available version of software for host platform
@@ -123,9 +113,10 @@ $ make sample-version software=<software> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example**. Output most recent available version of cmake that can be
-installed with apt-get on host environment with x86_64 architecture and Debian Bullseye as base image.
+installed with apt-get on host environment with x86_64 architecture and Oracle
+Linux 7 as base image.
 ```console
-$ make sample-version software=cmake arch=x86_64 os=debian ver=bullseye
+$ make sample-version software=cmake arch=x86_64 os=oraclelinux ver=7
 ```
 
 ### Output most recent available version of software for target platform
@@ -137,9 +128,10 @@ $ make sample-version software=<software> harch=<host_arch> hos=<host_os> \
     tabi=<target_abi>
 ```
 **Example**. Output most recent available version of cjson that can be
-installed download, build and copy on host environment with x86_64 architecture and Debian Bullseye as base image for x86_64-linux-gnu target.
+installed download, build and copy on host environment with x86_64 architecture
+and Oracle Linux 7 as base image for x86_64-linux-gnu target.
 ```console
-$ make sample-version software=cjson harch=x86_64 hos=debian hver=bullseye \
+$ make sample-version software=cjson harch=x86_64 hos=oraclelinux hver=7 \
     tarch=x86_64 tos=linux tabi=gnu
 ```
 
@@ -151,9 +143,9 @@ $ make sample-install software=<tool> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example**. Install CMake via apt-get on host environment with x86_64
-architecture and Debian Bullseye as base image.
+architecture and Oracle Linux 7 as base image.
 ```console
-$ make sample-install software=cmake arch=x86_64 os=debian ver=bullseye
+$ make sample-install software=cmake arch=x86_64 os=oraclelinux ver=7
 ```
 
 ### Install library for target platform on host platform
@@ -164,9 +156,9 @@ $ make sample-install software=<library> harch=<host_arch> hos=<host_os> \
 ```
 **Example**. Install manually (download, build and copy to system path) cjson
 library for x86-linux-gnu target on host environment with x86_64 architecture
-and Debian Bullseye as base image.
+and Oracle Linux 7 as base image.
 ```console
-$ make sample-install software=cjson harch=x86_64 hos=debian hver=bullseye \
+$ make sample-install software=cjson harch=x86_64 hos=oraclelinux hver=7 \
     tarch=x86_64 tos=linux tabi=gnu
 ```
 
@@ -178,19 +170,10 @@ $ make sample-install software=<library> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example**. Install zlib library via apt-get on host environment with x86_64
-architecture and Debian Bullseye as base image.
+architecture and Oracle Linux 7 as base image.
 ```console
-$ make sample-install software=zlib arch=x86_64 os=debian ver=bullseye
+$ make sample-install software=zlib arch=x86_64 os=oraclelinux ver=7
 ```
-
-## Additional requirements
-Project use pylama for check code errors and some style errors. On Debian you
-can install it with command:
-```console
-# apt-get install pylama
-```
-You can also use pip but I did try install it with pip and pylama did not
-available in bash out of the box.
 
 ## Check code
 You can check code with command:

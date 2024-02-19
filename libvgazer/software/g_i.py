@@ -34,20 +34,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "g++",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -102,20 +88,6 @@ data = {
                 "installer": {
                     "type": "yum",
                     "package": "gcc",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "gcc",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
             {
@@ -213,22 +185,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["sgi-b-1.1", "sgi-b-2.0"],
-                "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libglu1-mesa-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libglu1-mesa-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -303,21 +259,6 @@ data = {
                 "installer": {
                     "type": "yum",
                     "repo": "ol7_optional_latest",
-                    "package": "help2man",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "help2man",
-                },
-                "installer": {
-                    "type": "apt",
                     "package": "help2man",
                 },
             },
@@ -407,22 +348,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
-                "changelog": "https://github.com/unicode-org/icu/releases",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libicu-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libicu-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -506,22 +431,6 @@ data = {
                     "package": "libinih",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["buster", "bullseye", "bookworm", "sid"],
-                "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://github.com/benhoyt/inih/releases",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libinih-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libinih-dev",
-                },
-            },
             # Temporary stub
             {
                 "arch": ["any"],
@@ -566,21 +475,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "iwyu",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://include-what-you-use.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "iwyu",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "iwyu",
                 },
             },
         ],

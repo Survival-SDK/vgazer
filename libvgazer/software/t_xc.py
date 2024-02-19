@@ -47,21 +47,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://infozip.sourceforge.net/UnZip.html#Release",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "unzip",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "unzip",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -125,25 +110,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://wayland.freedesktop.org/releases.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libwayland-egl-backend-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": [
-                        "libwayland-dev",
-                        "libwayland-egl-backend-dev"
-                    ],
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -203,23 +169,6 @@ data = {
                     "package": "wayland",
                 },
             },
-            # >= 1.22.0 required for build wayland-libs
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["trixie", "sid"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://wayland.freedesktop.org/releases.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libwayland-bin",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libwayland-bin",
-                },
-            },
             {
                 "arch": ["any"],
                 "os": ["steamrt"],
@@ -266,21 +215,6 @@ data = {
                 },
                 "installer": {
                     "type": "yum",
-                    "package": "wget",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=wget",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "wget",
-                },
-                "installer": {
-                    "type": "apt",
                     "package": "wget",
                 },
             },
@@ -386,20 +320,6 @@ data = {
             },
             {
                 "arch": ["x86_64"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "g++",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-            {
-                "arch": ["x86_64"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -477,20 +397,6 @@ data = {
                             "/usr/local/bin/x86_64-linux-gnu-gcov"
                         ],
                     ]
-                },
-            },
-            {
-                "arch": ["x86_64"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "gcc",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
             {
@@ -579,24 +485,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
-                "prereqs": [
-                    "pkg-config",
-                ],
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "pkg-config",
-                },
-                "installer": {
-                    "type": "pkg-config",
-                    "triplet": "x86_64-linux-gnu",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -632,56 +520,6 @@ data = {
                     "type": "not-needed",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["buster"],
-                "abi": ["any"],
-                "changelog": "https://www.mingw-w64.org/changelog/",
-                "prereqs": [
-                    "x86_64-w64-mingw32-gcc",
-                ],
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "g++-mingw-w64-x86-64",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "gcc-mingw-w64-x86-64",
-                    "cmds": [
-                        [
-                            "update-alternatives", "--set",
-                            "x86_64-w64-mingw32-g++",
-                            "/usr/bin/x86_64-w64-mingw32-g++-posix"
-                        ],
-                    ],
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["bullseye", "bookworm", "trixie", "sid"],
-                "abi": ["any"],
-                "changelog": "https://www.mingw-w64.org/changelog/",
-                "prereqs": [
-                    "x86_64-w64-mingw32-gcc",
-                ],
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "g++-mingw-w64-x86-64-posix",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "gcc-mingw-w64-x86-64-posix",
-                    "cmds": [
-                        [
-                            "update-alternatives", "--set",
-                            "x86_64-w64-mingw32-g++",
-                            "/usr/bin/x86_64-w64-mingw32-g++-posix"
-                        ],
-                    ],
-                },
-            },
         ],
     },
     "x86_64-w64-mingw32-gcc": {
@@ -702,46 +540,6 @@ data = {
                     "package": "mingw-w64-gcc",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["buster"],
-                "abi": ["any"],
-                "changelog": "https://www.mingw-w64.org/changelog/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "gcc-mingw-w64-x86-64",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "gcc-mingw-w64-x86-64",
-                    "postInstallCommands": [
-                        ["update-alternatives", "--set",
-                         "x86_64-w64-mingw32-gcc",
-                         "/usr/bin/x86_64-w64-mingw32-gcc-posix"],
-                    ],
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["bullseye", "bookworm", "trixie", "sid"],
-                "abi": ["any"],
-                "changelog": "https://www.mingw-w64.org/changelog/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "gcc-mingw-w64-x86-64-posix",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "gcc-mingw-w64-x86-64-posix",
-                    "postInstallCommands": [
-                        ["update-alternatives", "--set",
-                         "x86_64-w64-mingw32-gcc",
-                         "/usr/bin/x86_64-w64-mingw32-gcc-posix"],
-                    ],
-                },
-            },
         ],
     },
     "x86_64-w64-mingw32-pkg-config": {
@@ -759,24 +557,6 @@ data = {
                 "checker": {
                     "type": "pacman",
                     "package": "pkgconf",
-                },
-                "installer": {
-                    "type": "pkg-config",
-                    "triplet": "x86_64-w64-mingw32",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
-                "prereqs": [
-                    "pkg-config",
-                ],
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "pkg-config",
                 },
                 "installer": {
                     "type": "pkg-config",
@@ -833,22 +613,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libxau",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxau/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libxau-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libxau-dev",
                 },
             },
             {
@@ -917,22 +681,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "changelog": "https://xcb.freedesktop.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libx11-xcb-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libx11-xcb-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -987,22 +735,6 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
-                    "package": "xcb-proto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "changelog": "https://xcb.freedesktop.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "xcb-proto",
-                },
-                "installer": {
-                    "type": "apt",
                     "package": "xcb-proto",
                 },
             },

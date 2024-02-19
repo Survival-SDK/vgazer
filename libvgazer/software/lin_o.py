@@ -62,22 +62,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "http://luajit.org/status.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libluajit-5.1-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libluajit-5.1-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -155,21 +139,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "http://savannah.gnu.org/news/?group=m4",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "m4",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "m4",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -219,20 +188,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=make",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "make",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -277,21 +232,6 @@ data = {
                 },
                 "installer": {
                     "type": "yum",
-                    "package": "texinfo",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://git.savannah.gnu.org/cgit/texinfo.git/plain/NEWS",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "texinfo",
-                },
-                "installer": {
-                    "type": "apt",
                     "package": "texinfo",
                 },
             },
@@ -347,21 +287,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://mesonbuild.com/Release-notes.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "meson",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "meson",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -412,21 +337,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "ninja",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://ninja-build.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "ninja-build",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "ninja-build",
                 },
             },
             {
@@ -509,22 +419,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libglvnd",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "sgi-b-2.0", "bsl-1.0"],
-                "changelog": "https://www.mesa3d.org/news/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libgl1-mesa-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libgl1-mesa-dev",
                 },
             },
             {

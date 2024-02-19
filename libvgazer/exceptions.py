@@ -8,14 +8,6 @@ class CompatibleProjectNotFound(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class DebianPackageUnavailable(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class DebianReleaseDataNotFound(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
 class DirectoryUnavailable(Exception):
     def __init__(self, message):
         super().__init__(message)
@@ -61,6 +53,10 @@ class OsDataNotFound(Exception):
         super().__init__(message)
 
 class ProjectPubNotFound(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+class ReleaseDataNotFound(Exception):
     def __init__(self, message):
         super().__init__(message)
 

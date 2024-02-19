@@ -1,8 +1,8 @@
 import os
 import platform
 
-from libvgazer.exceptions import DebianReleaseDataNotFound
 from libvgazer.exceptions import OsDataNotFound
+from libvgazer.exceptions import ReleaseDataNotFound
 from libvgazer.exceptions import UnknownOsVersion
 from libvgazer.os_release import OsRelease
 
@@ -26,7 +26,7 @@ class HostDetector:
             try:
                 return osRelease.GetEntry("VERSION").strip("\"").split(".")[0]
             except KeyError:
-                raise DebianReleaseDataNotFound(
+                raise ReleaseDataNotFound(
                  "Unable to find data of Debian version: " + os.name)
 
     @staticmethod
@@ -35,7 +35,7 @@ class HostDetector:
             try:
                 return osRelease.GetEntry("VERSION").split("(")[1][:-2:]
             except KeyError:
-                raise DebianReleaseDataNotFound(
+                raise ReleaseDataNotFound(
                  "Unable to find data of Debian version: " + os.name)
 
     @staticmethod
