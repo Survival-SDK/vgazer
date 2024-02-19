@@ -8,10 +8,6 @@ class CompatibleProjectNotFound(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class DirectoryUnavailable(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
 class DirNameEngaged(Exception):
     def __init__(self, message):
         super().__init__(message)
@@ -21,10 +17,6 @@ class FilenameEngaged(Exception):
         super().__init__(message)
 
 class FileNotFound(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class GithubApiError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
@@ -48,15 +40,7 @@ class OsDataNotFound(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class ProjectPubNotFound(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
 class ReleaseDataNotFound(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class SourceforgeReleaseArchiveLost(Exception):
     def __init__(self, message):
         super().__init__(message)
 
@@ -80,14 +64,6 @@ class UnknownOsVersion(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class UnknownPlatform(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class UnknownProtocol(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
 class UnknownSoftware(Exception):
     def __init__(self, message):
         super().__init__(message)
@@ -97,9 +73,5 @@ class UnknownTargetArch(Exception):
         super().__init__(message)
 
 class UnknownVersionChecker(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class VersionCheckError(Exception):
     def __init__(self, message):
         super().__init__(message)
