@@ -119,22 +119,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://github.com/libffi/libffi/releases",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libffi-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libffi-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -172,21 +156,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libintl-lite",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["lgpl-2.1"],
-                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libc6-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
             {
@@ -275,22 +244,6 @@ data = {
                 },
                 "installer": {
                     "type": "not-needed",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["pd"],
-                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "liblzma-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "liblzma-dev",
                 },
             },
             {

@@ -44,22 +44,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://xiph.org/press/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libogg-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libogg-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -116,22 +100,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libpng",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["libpng-2.0"],
-                "changelog": "http://www.libpng.org/pub/png/pngnews.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libpng-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libpng-dev",
                 },
             },
             {
@@ -246,21 +214,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["bookworm", "trixie", "sid"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=libtool",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libtool",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": ["libtool", "libltdl-dev"],
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -318,22 +271,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libvorbis",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://xiph.org/press/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libvorbis-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libvorbis-dev",
                 },
             },
             {
@@ -398,22 +335,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libxext",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxext/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libxext-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libxext-dev",
                 },
             },
             {

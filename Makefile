@@ -25,33 +25,6 @@ else
 	echo "Error: host system's arch is not x86_64"
 endif
 
-image-x86_64-debian-buster-build:
-ifeq ($(ARCH),x86_64)
-	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer-deps-x86_64-debian-buster.dockerfile \
-     -t vgazer-deps:x86_64-debian-buster .
-else
-	echo "Error: host system's arch is not x86_64"
-endif
-
-image-x86_64-debian-bullseye-build:
-ifeq ($(ARCH),x86_64)
-	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer-deps-x86_64-debian-bullseye.dockerfile \
-     -t vgazer-deps:x86_64-debian-bullseye .
-else
-	echo "Error: host system's arch is not x86_64"
-endif
-
-image-x86_64-debian-bookworm-build:
-ifeq ($(ARCH),x86_64)
-	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer-deps-x86_64-debian-bookworm.dockerfile \
-     -t vgazer-deps:x86_64-debian-bookworm .
-else
-	echo "Error: host system's arch is not x86_64"
-endif
-
 image-x86_64-steamrt-scout-build:
 ifeq ($(ARCH),x86_64)
 	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \

@@ -44,22 +44,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["lgpl-2.1"],
-                "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libasound2-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libasound2-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -136,23 +120,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "autoconf",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                # autoconf >=2.70 required for building xlib
-                # Debian bullseye has only 2.69
-                "osVersion": ["bookworm", "trixie", "sid"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/autoconf/NEWS",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "autoconf",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "autoconf",
                 },
             },
             {
@@ -238,24 +205,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                # autoconf >=2.70 required for building xlib
-                # Debian bullseye has only 2.69
-                # automake depends on autoconf
-                "osVersion": ["bookworm", "trixie", "sid"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/automake/NEWS",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "automake",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "automake",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -301,21 +250,6 @@ data = {
                 "installer": {
                     "type": "yum",
                     "package": "gettext-devel",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "autopoint",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "autopoint",
                 },
             },
             # Temporary stub
@@ -401,22 +335,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libcjson-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libcjson-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -470,21 +388,6 @@ data = {
                     "type": "not-needed",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://clang.llvm.org/extra/ReleaseNotes.html#improvements-to-clang-tidy",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "clang-tidy",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "clang-tidy",
-                },
-            },
         ],
     },
     "cmake": {
@@ -523,21 +426,6 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
-                    "package": "cmake",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "cmake",
-                },
-                "installer": {
-                    "type": "apt",
                     "package": "cmake",
                 },
             },
@@ -618,22 +506,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "cmocka",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["apache-2.0"],
-                "changelog": "https://cmocka.org/#news",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libcmocka-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libcmocka-dev",
                 },
             },
         ],

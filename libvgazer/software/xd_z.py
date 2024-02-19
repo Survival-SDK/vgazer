@@ -47,22 +47,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libx11-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "libx11-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -146,21 +130,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/util/macros/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "xutils-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "xutils-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["any"],
@@ -217,22 +186,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "xorgproto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "smlnj"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "x11proto-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "x11proto-dev",
                 },
             },
             {
@@ -297,22 +250,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "hpnd", "x11", "hpnd-sv"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxtrans/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "xtrans-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "xtrans-dev",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["steamrt"],
                 "osVersion": ["any"],
                 "abi": ["gnu"],
@@ -360,21 +297,6 @@ data = {
                 "installer": {
                     "type": "yum",
                     "package": "xz",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "xz-utils",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "xz-utils",
                 },
             },
             # Temporary stub
@@ -459,22 +381,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "zlib",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["debian"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["zlib"],
-                "changelog": "https://www.zlib.net/ChangeLog.txt",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "zlib1g-dev",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "zlib1g-dev",
                 },
             },
             {
