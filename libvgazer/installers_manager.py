@@ -10,34 +10,29 @@ from libvgazer.install.yum        import InstallYum
 class InstallersManager:
     def __init__(self):
         self.installFuncs = {
-            "apt": lambda software, platformData, installerData, mirrors,
-             verbose:
+            "apt": lambda software, platformData, installerData, verbose:
                 InstallApt(software, installerData["package"],
                  installerData["postInstallCommands"] if "postInstallCommands"
                   in installerData else None,
                  platformData["host"],
                  verbose),
-            "cmd": lambda software, platformData, installerData, mirrors,
-             verbose:
+            "cmd": lambda software, platformData, installerData, verbose:
                 InstallCmd(software, installerData["cmds"], verbose),
             "not-needed": lambda software, platformData, installerData,
-             mirrors, verbose:
+             verbose:
                 True,
-            "pacman": lambda software, platformData, installerData, mirrors,
-             verbose:
+            "pacman": lambda software, platformData, installerData, verbose:
                 InstallPacman(software, installerData["package"], verbose),
-            "pip": lambda software, platformData, installerData, mirrors,
-             verbose:
+            "pip": lambda software, platformData, installerData, verbose:
                 InstallPip(software, installerData["package"], verbose),
             "pip3": lambda software, platformData, installerData,
-             mirrors, verbose:
+             verbose:
                 InstallPip3(software, installerData["package"], verbose),
             "pkg-config": lambda software, platformData, installerData,
-             mirrors, verbose:
+             verbose:
                 InstallPkgConfig(software, installerData["triplet"],
                  platformData, verbose),
-            "yum": lambda software, platformData, installerData, mirrors,
-             verbose:
+            "yum": lambda software, platformData, installerData, verbose:
                 InstallYum(software, installerData["package"],
                  installerData["repo"] if "repo" in installerData else None,
                  installerData["postInstallCommands"] if "postInstallCommands"

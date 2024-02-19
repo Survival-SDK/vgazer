@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def Check(auth, mirrors):
+def Check(auth):
     response = requests.get("https://ftp.gnu.org/gnu/autoconf/")
     html = response.content.decode("utf-8")
     parsedHtml = BeautifulSoup(html, "html.parser")

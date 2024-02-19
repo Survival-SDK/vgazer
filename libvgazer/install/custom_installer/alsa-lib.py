@@ -10,7 +10,7 @@ from libvgazer.version.git import GetLastTag
 from libvgazer.working_dir import WorkingDir
 from libvgazer.working_dir import WorkingDir
 
-def Install(software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, verbose):
     installPrefix = GetInstallPrefix(platformData)
     targetTriplet = GetTriplet(platformData["target"])
 

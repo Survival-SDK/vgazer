@@ -44,10 +44,6 @@ class MissingInstaller(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-class NoSuitableMirrors(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
 class OsDataNotFound(Exception):
     def __init__(self, message):
         super().__init__(message)

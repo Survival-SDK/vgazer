@@ -9,9 +9,6 @@ from libvgazer.exceptions          import UnknownSoftware
 from libvgazer.exceptions          import VersionCheckError
 from libvgazer.install.custom      import InstallCustom
 from libvgazer.installers_manager  import InstallersManager
-from libvgazer.mirrors.gnu         import MirrorsGnu
-from libvgazer.mirrors.sourceforge import MirrorsSourceforge
-from libvgazer.mirrors.xorg        import MirrorsXorg
 from libvgazer.platform            import GetGenericTriplet
 from libvgazer.platform            import Platform
 from libvgazer.software            import SoftwareData
@@ -29,11 +26,6 @@ class Vgazer:
              customCheckers)
             self.checkersManager = CheckersManager()
             self.installersManager = InstallersManager()
-            self.mirrors = {
-                "gnu": MirrorsGnu(),
-                "sourceforge": MirrorsSourceforge(),
-                "xorg": MirrorsXorg(),
-            }
             self.installCustom = InstallCustom(customInstallers)
             self.installedSoftware = []
         self.softwareData = SoftwareData(customSoftwareData)
@@ -96,7 +88,7 @@ class Vgazer:
 
         try:
             if checker["type"] == "custom":
-                return self.versionCustom.Check(checker["name"], self.mirrors)
+                return self.versionCustom.Check(checker["name"])
             else:
                 checkFunc = self.checkersManager.GetCheckFunc(checker["type"])
                 return checkFunc(self.auth, self.platform[softwarePlatform],
@@ -143,12 +135,11 @@ class Vgazer:
         try:
             if installer["type"] == "custom":
                 self.installCustom.Install(software, installer["name"],
-                 softwarePlatform, self.platform, self.mirrors, verbose)
+                 softwarePlatform, self.platform, verbose)
             else:
                 installFunc = self.installersManager.GetInstallFunc(
                  installer["type"])
-                installFunc(software, self.platform, installer, self.mirrors,
-                 verbose)
+                installFunc(software, self.platform, installer, verbose)
             self.installedSoftware.append(software)
         except InstallError as installError:
             raise installError
