@@ -6,7 +6,6 @@ from libvgazer.checkers_manager    import CheckersManager
 from libvgazer.exceptions          import CompatibleProjectNotFound
 from libvgazer.exceptions          import InstallError
 from libvgazer.exceptions          import UnknownSoftware
-from libvgazer.exceptions          import VersionCheckError
 from libvgazer.install.custom      import InstallCustom
 from libvgazer.installers_manager  import InstallersManager
 from libvgazer.platform            import GetGenericTriplet
@@ -86,19 +85,12 @@ class Vgazer:
         softwareData = self.softwareData.GetData()
         softwarePlatform = softwareData[software]["platform"]
 
-        try:
-            if checker["type"] == "custom":
-                return self.versionCustom.Check(checker["name"])
-            else:
-                checkFunc = self.checkersManager.GetCheckFunc(checker["type"])
-                return checkFunc(self.auth, self.platform[softwarePlatform],
-                 checker)
-
-        except VersionCheckError as versionCheckError:
-            if "fallback" in checker:
-                return self.UseChecker(software, checker["fallback"])
-            else:
-                raise versionCheckError
+        if checker["type"] == "custom":
+            return self.versionCustom.Check(checker["name"])
+        else:
+            checkFunc = self.checkersManager.GetCheckFunc(checker["type"])
+            return checkFunc(self.auth, self.platform[softwarePlatform],
+             checker)
 
     def CheckVersion(self, software):
         softwareData = self.softwareData.GetData()
