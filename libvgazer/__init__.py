@@ -1,7 +1,6 @@
 from multimethod import multimethod
 import re
 
-from libvgazer.auth.base           import AuthBase
 from libvgazer.checkers_manager    import CheckersManager
 from libvgazer.exceptions          import CompatibleProjectNotFound
 from libvgazer.exceptions          import InstallError
@@ -18,11 +17,7 @@ class Vgazer:
      customCheckers={}, customInstallers={}, customSoftwareData={},
      supportOnly=False):
         if not supportOnly:
-            self.auth = {
-                "base": AuthBase(),
-            }
-            self.versionCustom = VersionCustom(self.auth["base"],
-             customCheckers)
+            self.versionCustom = VersionCustom(customCheckers)
             self.checkersManager = CheckersManager()
             self.installersManager = InstallersManager()
             self.installCustom = InstallCustom(customInstallers)
@@ -89,8 +84,7 @@ class Vgazer:
             return self.versionCustom.Check(checker["name"])
         else:
             checkFunc = self.checkersManager.GetCheckFunc(checker["type"])
-            return checkFunc(self.auth, self.platform[softwarePlatform],
-             checker)
+            return checkFunc(self.platform[softwarePlatform], checker)
 
     def CheckVersion(self, software):
         softwareData = self.softwareData.GetData()
