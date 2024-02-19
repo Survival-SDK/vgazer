@@ -3,9 +3,8 @@ import importlib
 from libvgazer.exceptions import MissingChecker
 
 class VersionCustom:
-    def __init__(self, auth, customCheckers={}):
+    def __init__(self, customCheckers={}):
         self.customCheckers = customCheckers
-        self.auth = auth
 
     def AddData(self, customCheckers):
         self.customCheckers = {**self.customCheckers, **customCheckers}
@@ -22,4 +21,4 @@ class VersionCustom:
                 if customChecker["name"] == checker:
                     versionChecker = customChecker["checker"]
 
-        return versionChecker.Check(self.auth)
+        return versionChecker.Check()
