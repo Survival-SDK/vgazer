@@ -24,7 +24,10 @@ commands:
 **target** (optional) - target platform for installation software and versions 
 checking. Default - host platform
 
-software - space separated list of software must be installed or version checked
+software - space separated list of software must be installed or version
+checked. Can be file names that contains newline separated list of software of
+subinclude files. For prevent vgazer mischoose filename instead software name
+name your files with extension ("deps" for example)
 
 # For developers
 Optional Requirements for running samples (Linux only):
