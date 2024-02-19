@@ -10,33 +10,30 @@ from libvgazer.store.temp import StoreTemp
 
 class ConfigMeson():
     def __init__(self, platformData):
-        self.storeTemp = StoreTemp(".vgazer/meson")
-        self.crossFileName = self.storeTemp.GetDirectoryFilePath("cross-file")
-        self.storeTemp.ResolveDirectory()
-        self.platformData = platformData
-
-    def GetCrossFileName(self):
-        return self.crossFileName
-
-    def GenerateCrossFile(self):
         print("VGAZER: Generating Meson cross-build definition file...")
-        ar = GetAr(self.platformData["target"])
-        cc = GetCc(self.platformData["target"])
-        cxx = GetCxx(self.platformData["target"])
-        pkgConfig = GetPkgConfig(self.platformData["target"])
-        strip = GetStrip(self.platformData["target"])
-        cmake = GetCmake(self.platformData["target"])
-        genericOs = Platform.GetGenericOs(self.platformData["target"].GetOs())
-        if self.platformData["target"].GetArch() == "x86_64":
+
+        storeTemp = StoreTemp(".vgazer/meson")
+        self.crossFileName = storeTemp.GetDirectoryFilePath("cross-file")
+        storeTemp.ResolveDirectory()
+        platformData = platformData
+
+        ar = GetAr(platformData["target"])
+        cc = GetCc(platformData["target"])
+        cxx = GetCxx(platformData["target"])
+        pkgConfig = GetPkgConfig(platformData["target"])
+        strip = GetStrip(platformData["target"])
+        cmake = GetCmake(platformData["target"])
+        genericOs = Platform.GetGenericOs(platformData["target"].GetOs())
+        if platformData["target"].GetArch() == "x86_64":
             mesonCpuFamily = "x86_64"
             mesonCpu = "x86_64"
         else:
             raise UnknownTargetArch(
-             "Unknown target architecture: "
-              + self.platformData["target"].GetArch()
+             "Unknown target architecture: {arch}".format(
+              arch=platformData["target"].GetArch())
             )
 
-        self.storeTemp.DirectoryWriteTextFile("cross-file",
+        storeTemp.DirectoryWriteTextFile("cross-file",
          "[binaries]\n"
          "c = '{cc}'\n"
          "cpp = '{cxx}'\n"
@@ -53,3 +50,12 @@ class ConfigMeson():
           pkgConfig=pkgConfig, strip=strip, genericOs=genericOs,
           mesonCpuFamily=mesonCpuFamily, mesonCpu=mesonCpu)
         )
+
+    def __enter__(self):
+        pass
+
+    def __exit__(self, etype, value, traceback):
+        pass
+
+    def filename(self):
+        return self.crossFileName

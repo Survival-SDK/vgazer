@@ -10,9 +10,6 @@ from libvgazer.version.git  import GetLastTag
 from libvgazer.working_dir  import WorkingDir
 
 def Install(software, platform, platformData, mirrors, verbose):
-    configMeson = ConfigMeson(platformData)
-    configMeson.GenerateCrossFile()
-
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()
@@ -20,7 +17,7 @@ def Install(software, platform, platformData, mirrors, verbose):
     tempPath = storeTemp.GetSubdirectoryPath(software)
 
     try:
-        with WorkingDir(tempPath):
+        with WorkingDir(tempPath), ConfigMeson(platformData) as conf:
             RunCommand(
              [
               "git", "clone",
@@ -38,7 +35,7 @@ def Install(software, platform, platformData, mirrors, verbose):
              [
               "meson", "setup", "build/",
               "--prefix={prefix}".format(prefix=installPrefix), "--cross-file",
-              configMeson.GetCrossFileName()
+              conf.filename()
              ],
              verbose)
             RunCommand(["ninja", "-C", "build/", "install"], verbose)
