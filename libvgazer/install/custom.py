@@ -10,7 +10,7 @@ class InstallCustom:
         self.customInstallers = {**self.customInstallers, **customInstallers}
 
     def Install(self, software, installerName, platform, platformData,
-     mirrors, verbose):
+     verbose):
         try:
             installer = importlib.import_module(
              'libvgazer.install.custom_installer.' + installerName)
@@ -22,5 +22,4 @@ class InstallCustom:
                 if customInstaller["name"] == installerName:
                     installer = customInstaller["installer"]
 
-        return installer.Install(software, platform, platformData, mirrors,
-         verbose)
+        return installer.Install(software, platform, platformData, verbose)

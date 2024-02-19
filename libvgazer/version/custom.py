@@ -10,7 +10,7 @@ class VersionCustom:
     def AddData(self, customCheckers):
         self.customCheckers = {**self.customCheckers, **customCheckers}
 
-    def Check(self, checker, mirrors):
+    def Check(self, checker):
         try:
             versionChecker = importlib.import_module(
              'libvgazer.version.custom_checker.' + checker)
@@ -22,4 +22,4 @@ class VersionCustom:
                 if customChecker["name"] == checker:
                     versionChecker = customChecker["checker"]
 
-        return versionChecker.Check(self.auth, mirrors)
+        return versionChecker.Check(self.auth)

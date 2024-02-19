@@ -21,7 +21,7 @@ def GetIcuPlatformName(osName):
     else:
         raise UnknownOs("Unknown generic OS: " + osName)
 
-def Install(software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, verbose):
     isCrossbuild = not (
      platformData["target"].PlatformsEqual(platformData["host"])
     )

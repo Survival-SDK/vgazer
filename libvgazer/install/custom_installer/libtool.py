@@ -7,7 +7,7 @@ from libvgazer.store.temp  import StoreTemp
 from libvgazer.version.git import GetLastTag
 from libvgazer.working_dir import WorkingDir
 
-def Install(software, platform, platformData, mirrors, verbose):
+def Install(software, platform, platformData, verbose):
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
