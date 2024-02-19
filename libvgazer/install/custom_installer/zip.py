@@ -10,10 +10,6 @@ from libvgazer.version.git  import GetLastTag
 from libvgazer.working_dir  import WorkingDir
 
 def Install(software, platform, platformData, mirrors, verbose):
-    configCmake = ConfigCmake(platformData)
-    configCmake.GenerateCrossFile(cflags="-std=gnu99")
-    crossfile = configCmake.GetCrossFileName()
-
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()
@@ -33,10 +29,10 @@ def Install(software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(tempPath, "build")
-        with WorkingDir(buildDir):
+        with WorkingDir(buildDir), ConfigCmake(platformData, flags="-std=gnu99") as conf:
             RunCommand(
              ["cmake", "..",
-              "-DCMAKE_TOOLCHAIN_FILE={crossfile}".format(crossfile=crossfile),
+              "-DCMAKE_TOOLCHAIN_FILE={crossfile}".format(crossfile=conf),
               "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),
               "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
               "-DCMAKE_DISABLE_TESTING=ON"],

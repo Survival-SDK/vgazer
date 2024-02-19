@@ -10,9 +10,6 @@ from libvgazer.version.git  import GetLastTag
 from libvgazer.working_dir  import WorkingDir
 
 def Install(software, platform, platformData, mirrors, verbose):
-    configCmake = ConfigCmake(platformData)
-    configCmake.GenerateCrossFile()
-
     installPrefix = GetInstallPrefix(platformData)
 
     storeTemp = StoreTemp()
@@ -35,13 +32,13 @@ def Install(software, platform, platformData, mirrors, verbose):
              verbose)
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(clonedDir, "build")
-        with WorkingDir(buildDir):
+        with WorkingDir(buildDir), ConfigCmake(platformData) as conf:
             RunCommand(
              ["cmake", "..",
-              "-DCMAKE_TOOLCHAIN_FILE=" + configCmake.GetCrossFileName(),
+              "-DCMAKE_TOOLCHAIN_FILE={conf}".format(conf=conf.filename()),
               '-DCMAKE_C_FLAGS="-fPIC"', "-DENABLE_CJSON_TEST=Off",
               "-DBUILD_SHARED_LIBS=Off",
-              "-DCMAKE_INSTALL_PREFIX=" + installPrefix,
+              "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),
               "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"],
              verbose)
             RunCommand(
@@ -50,6 +47,7 @@ def Install(software, platform, platformData, mirrors, verbose):
             RunCommand(["make", "install"], verbose)
     except CommandError:
         print("VGAZER: Unable to install", software)
-        raise InstallError(software + " not installed")
+        raise InstallError(
+         "{software} not installed".format(software=software))
 
     print("VGAZER:", software, "installed")
