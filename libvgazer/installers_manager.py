@@ -2,7 +2,6 @@ from libvgazer.exceptions     import UnknownInstaller
 from libvgazer.install.apt    import InstallApt
 from libvgazer.install.cmd    import InstallCmd
 from libvgazer.install.pacman import InstallPacman
-from libvgazer.install.pip    import InstallPip
 from libvgazer.install.pip3   import InstallPip3
 from libvgazer.install.yum    import InstallYum
 
@@ -22,8 +21,6 @@ class InstallersManager:
                 True,
             "pacman": lambda software, platformData, installerData, verbose:
                 InstallPacman(software, installerData["package"], verbose),
-            "pip": lambda software, platformData, installerData, verbose:
-                InstallPip(software, installerData["package"], verbose),
             "pip3": lambda software, platformData, installerData,
              verbose:
                 InstallPip3(software, installerData["package"], verbose),
