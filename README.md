@@ -5,9 +5,10 @@ Library for tracking and installing new versions of software
 This software required for working vgazer:
 
 * python3
-* bs4
-* requests
-* multimethod
+* [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
+* [requests](https://pypi.org/project/requests/)
+* [multimethod](https://pypi.org/project/multimethod/)
+* [yolk3k](https://pypi.org/project/yolk3k/)
 * git
 
 # Usage
