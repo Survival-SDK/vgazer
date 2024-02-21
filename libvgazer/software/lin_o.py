@@ -77,7 +77,6 @@ data = {
             },
         ],
     },
-    # Need stdatomic.h from GCC >=4.9
     "lwrb": {
         "platform": "target",
         "projects": [

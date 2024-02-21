@@ -31,6 +31,14 @@ def Install(software, platform, platformData, verbose):
                hint=r'v\d\.\d\.\d$')
              ],
              verbose)
+            # TODO Remove sed when we get rid gcc-4.8
+            RunCommand(
+             [
+              "sed", "-i", "1i #define LWRB_DISABLE_ATOMIC",
+              "lwrb/src/include/lwrb/lwrb.h"
+             ],
+             verbose
+            )
             RunCommand(
              [
               cc, "-O2", "-fPIC", "-std=c11", "-I", "lwrb/src/include", "-c",
