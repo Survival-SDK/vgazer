@@ -29,7 +29,7 @@ def Install(software, platform, platformData, verbose):
              verbose)
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(tempPath, "build")
-        with WorkingDir(buildDir), ConfigCmake(platformData, flags="-std=gnu99") as conf:
+        with WorkingDir(buildDir), ConfigCmake(platformData, cflags="-std=gnu99") as conf:
             RunCommand(
              ["cmake", "..",
               "-DCMAKE_TOOLCHAIN_FILE={crossfile}".format(crossfile=conf),
