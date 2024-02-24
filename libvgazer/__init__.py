@@ -3,16 +3,16 @@ import re
 
 from multimethod import multimethod
 
-from libvgazer.checkers_manager    import CheckersManager
-from libvgazer.exceptions          import CompatibleProjectNotFound
-from libvgazer.exceptions          import InstallError
-from libvgazer.exceptions          import UnknownSoftware
-from libvgazer.install.custom      import InstallCustom
-from libvgazer.installers_manager  import InstallersManager
-from libvgazer.platform            import GetGenericTriplet
-from libvgazer.platform            import Platform
-from libvgazer.software            import SoftwareData
-from libvgazer.version.custom      import VersionCustom
+from libvgazer.checkers_manager   import CheckersManager
+from libvgazer.exceptions         import CompatibleProjectNotFound
+from libvgazer.exceptions         import InstallError
+from libvgazer.exceptions         import UnknownSoftware
+from libvgazer.install.custom     import InstallCustom
+from libvgazer.installers_manager import InstallersManager
+from libvgazer.platform           import GetGenericTriplet
+from libvgazer.platform           import Platform
+from libvgazer.software           import SoftwareData
+from libvgazer.version.custom     import VersionCustom
 
 class Vgazer:
     def __init__(self, arch=None, os=None, osVersion=None, abi=None,
