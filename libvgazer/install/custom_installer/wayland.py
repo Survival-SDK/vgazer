@@ -43,7 +43,7 @@ def Install(software, platform, platformData, verbose):
              [
               "meson", "setup", "build/",
               "--prefix={prefix}".format(prefix=installPrefix), "--cross-file",
-              conf.filename(), "-Dscanner=false", "-Dtests=false",
+              conf, "-Dscanner=false", "-Dtests=false",
               "-Ddocumentation=false", "-Ddtd_validation=false"
              ],
              verbose)

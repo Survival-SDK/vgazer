@@ -35,7 +35,7 @@ def Install(software, platform, platformData, verbose):
              [
               "meson", "setup", "build/",
               "--prefix={prefix}".format(prefix=installPrefix), "--cross-file",
-              conf.filename()
+              conf
              ],
              verbose)
             RunCommand(["ninja", "-C", "build/", "install"], verbose)

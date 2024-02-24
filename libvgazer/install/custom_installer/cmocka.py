@@ -40,7 +40,7 @@ def Install(software, platform, platformData, verbose):
             RunCommand(
              [
               "cmake", "..",
-              "-DCMAKE_TOOLCHAIN_FILE={conf}".format(conf=conf.filename()),
+              "-DCMAKE_TOOLCHAIN_FILE={conf}".format(conf=conf),
               "-DCMAKE_BUILD_TYPE=Debug",
               "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),
               "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",

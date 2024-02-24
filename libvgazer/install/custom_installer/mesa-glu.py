@@ -34,7 +34,7 @@ def Install(software, platform, platformData, verbose):
              [
               "meson", "setup", "build/",
               "--prefix={prefix}".format(prefix=installPrefix),
-              "--cross-file", conf.filename(), "-Dgl_provider=gl"
+              "--cross-file", conf, "-Dgl_provider=gl"
              ],
              verbose)
             RunCommand(["ninja", "-C", "build/"], verbose)

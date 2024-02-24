@@ -64,10 +64,7 @@ class ConfigCmake():
         )
 
     def __enter__(self):
-        pass
+        return self.crossFileName
 
     def __exit__(self, etype, value, traceback):
         pass
-
-    def filename(self):
-        return self.crossFileName

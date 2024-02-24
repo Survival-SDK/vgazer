@@ -35,7 +35,7 @@ def Install(software, platform, platformData, verbose):
         with WorkingDir(buildDir), ConfigCmake(platformData) as conf:
             RunCommand(
              ["cmake", "..",
-              "-DCMAKE_TOOLCHAIN_FILE={conf}".format(conf=conf.filename()),
+              "-DCMAKE_TOOLCHAIN_FILE={conf}".format(conf=conf),
               '-DCMAKE_C_FLAGS="-fPIC"', "-DENABLE_CJSON_TEST=Off",
               "-DBUILD_SHARED_LIBS=Off",
               "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),

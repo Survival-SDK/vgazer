@@ -35,8 +35,7 @@ def Install(software, platform, platformData, verbose):
             RunCommand(
              [
               "cmake", "..",
-              "-DCMAKE_TOOLCHAIN_FILE={toolchain}".format(
-               toolchain=conf.filename()),
+              "-DCMAKE_TOOLCHAIN_FILE={toolchain}".format(toolchain=conf),
               "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),
               "-DLIB_INSTALL_DIR=lib",
               "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
