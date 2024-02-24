@@ -73,12 +73,12 @@ Currently supported:
 **tos** - generic name of target's OS. Currently supported:
 
 * linux
-* windows
+* windows (WIP)
 
 **tabi** - target's ABI. Currently supported:
 
 * gnu
-* mingw32
+* mingw32 (WIP)
 
 **arch**, **os** and **ver** - same as **harch**, **hos** and **hver** in that
 cases when not used target platform parameters such as **tarch**, **tos** and
