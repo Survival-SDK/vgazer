@@ -2,17 +2,13 @@ import os
 
 from libvgazer.command      import GetCommandOutputUtf8
 from libvgazer.command      import RunCommand
-from libvgazer.config.cmake import ConfigCmake
 from libvgazer.exceptions   import CommandError
 from libvgazer.exceptions   import InstallError
-from libvgazer.platform     import GetInstallPrefix
 from libvgazer.store.temp   import StoreTemp
 from libvgazer.version.git  import GetLastTag
 from libvgazer.working_dir  import WorkingDir
 
 def Install(software, platform, platformData, verbose):
-    installPrefix = GetInstallPrefix(platformData)
-
     storeTemp = StoreTemp()
     storeTemp.ResolveEmptySubdirectory(software)
     tempPath = storeTemp.GetSubdirectoryPath(software)
@@ -34,15 +30,11 @@ def Install(software, platform, platformData, verbose):
              verbose)
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(tempPath, "build")
-        with WorkingDir(buildDir), ConfigCmake(platformData) as conf:
+        with WorkingDir(buildDir):
             RunCommand(
              [
-              "cmake", "..",
-              "-DCMAKE_TOOLCHAIN_FILE={toolchain}".format(
-               toolchain=conf.filename()),
-              "-DCMAKE_INSTALL_PREFIX={prefix}".format(prefix=installPrefix),
-              "-DCMAKE_PREFIX_PATH=/usr",
-              "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
+              "cmake", "..", "-DCMAKE_INSTALL_PREFIX=/usr/local",
+              "-DCMAKE_PREFIX_PATH=/usr", "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
              ],
              verbose)
             RunCommand(
