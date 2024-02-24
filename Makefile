@@ -92,6 +92,6 @@ package-build:
 	python3 setup.py sdist bdist_wheel
 
 package-upload:
-	python3 -m twine upload -r testpypi dist/*
+	twine upload dist/*
 
 -include ./sample_targets.mk
