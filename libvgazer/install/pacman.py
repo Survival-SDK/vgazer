@@ -6,9 +6,21 @@ def InstallPacman(software, packages, verbose):
     try:
         if isinstance(packages, list):
             for package in packages:
-                RunCommand(["pacman", "--noconfirm", "-S", package], verbose)
+                RunCommand(
+                 [
+                  "pacman", "--noconfirm", "--disable-download-timeout", "-S",
+                  package
+                 ],
+                 verbose
+                )
         else:
-            RunCommand(["pacman", "--noconfirm", "-S", packages], verbose)
+            RunCommand(
+             [
+              "pacman", "--noconfirm", "--disable-download-timeout", "-S",
+              packages
+             ],
+             verbose
+            )
     except CommandError:
         print("VGAZER: Unable to install", software)
         raise InstallError(
