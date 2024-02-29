@@ -465,19 +465,19 @@ data = {
                     "cmds": [
                         ["mkdir", "-p", "/usr/local/bin/"],
                         ["sh", "-c", "echo "
-                            "'#!/bin/sh\\\n"
-                            "export PKG_CONFIG_DIR=\\\n"
+                            "'#!/bin/sh\n"
+                            "export PKG_CONFIG_DIR=\n"
                             "export PKG_CONFIG_PATH="
                                 "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
                                 "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\\\n"
+                                "\n"
                             "export PKG_CONFIG_LIBDIR="
                                 "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
                                 "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\\\n"
-                            "export PKG_CONFIG_SYSROOT_DIR=/\\\n"
+                                "\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\n"
                             "exec pkg-config \"$@\"' "
-                            ">> /usr/local/bin/x86_64-linux-gnu-pkg-config",
+                            "> /usr/local/bin/x86_64-linux-gnu-pkg-config",
                         ],
                         [
                             "chmod", "+x",
@@ -504,19 +504,19 @@ data = {
                     "cmds": [
                         ["mkdir", "-p", "/usr/local/bin/"],
                         ["sh", "-c", "echo "
-                            "'#!/bin/sh\\\n"
-                            "export PKG_CONFIG_DIR=\\\n"
+                            "'#!/bin/sh\n"
+                            "export PKG_CONFIG_DIR=\n"
                             "export PKG_CONFIG_PATH="
                                 "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
                                 "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\\\n"
+                                "\n"
                             "export PKG_CONFIG_LIBDIR="
                                 "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
                                 "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\\\n"
-                            "export PKG_CONFIG_SYSROOT_DIR=/\\\n"
+                                "\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\n"
                             "exec pkg-config \"$@\"' "
-                            ">> /usr/local/bin/x86_64-linux-gnu-pkg-config",
+                            "> /usr/local/bin/x86_64-linux-gnu-pkg-config",
                         ],
                         [
                             "chmod", "+x",
@@ -541,19 +541,19 @@ data = {
                     "cmds": [
                         ["mkdir", "-p", "/usr/local/bin/"],
                         ["sh", "-c", "echo "
-                            "'#!/bin/sh\\\n"
-                            "export PKG_CONFIG_DIR=\\\n"
+                            "'#!/bin/sh\n"
+                            "export PKG_CONFIG_DIR=\n"
                             "export PKG_CONFIG_PATH="
                                 "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
                                 "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\\\n"
+                                "\n"
                             "export PKG_CONFIG_LIBDIR="
                                 "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
                                 "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\\\n"
-                            "export PKG_CONFIG_SYSROOT_DIR=/\\\n"
+                                "\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\n"
                             "exec pkg-config \"$@\"' "
-                            ">> /usr/local/bin/x86_64-linux-gnu-pkg-config",
+                            "> /usr/local/bin/x86_64-linux-gnu-pkg-config",
                         ],
                         [
                             "chmod", "+x",
@@ -624,17 +624,17 @@ data = {
                     "cmds": [
                         ["mkdir", "-p", "/usr/local/bin/"],
                         ["sh", "-c", "echo "
-                            "'#!/bin/sh\\\n"
-                            "export PKG_CONFIG_DIR=\\\n"
+                            "'#!/bin/sh\n"
+                            "export PKG_CONFIG_DIR=\n"
                             "export PKG_CONFIG_PATH="
                                 "/usr/local/x86_64-w64-mingw32/lib/pkgconfig:"
                                 "/usr/local/x86_64-w64-mingw32/share/pkgconfig"
-                                "\\\n"
+                                "\n"
                             "export PKG_CONFIG_LIBDIR="
                                 "/usr/local/x86_64-w64-mingw32/lib/pkgconfig:"
                                 "/usr/local/x86_64-w64-mingw32/share/pkgconfig"
-                                "\\\n"
-                            "export PKG_CONFIG_SYSROOT_DIR=/\\\n"
+                                "\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\n"
                             "exec pkg-config \"$@\"' "
                             ">> /usr/local/bin/x86_64-w64-mingw32-pkg-config",
                         ],
