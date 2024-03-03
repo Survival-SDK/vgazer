@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="vgazer",
-    version="66",
+    version="67",
     url="https://github.com/edomin/vgazer",
     license="CC0",
     author="Vasiliy Edomin",

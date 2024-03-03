@@ -62,6 +62,26 @@ data = {
             },
         ],
     },
+    "valgrind": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "changelog": "https://valgrind.org/docs/manual/dist.news.html",
+                "checker": {
+                    "type": "pacman",
+                    "package": "valgrind",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "valgrind",
+                },
+            },
+        ],
+    },
     "wayland-libs": {
         "platform": "target",
         "projects": [
