@@ -77,7 +77,7 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
-                    "package": "valgrind",
+                    "package": ["valgrind", "debuginfod"],
                 },
             },
         ],
