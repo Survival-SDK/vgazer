@@ -29,7 +29,10 @@ def Install(software, platform, platformData, verbose):
              ],
              verbose)
             RunCommand(
-             [cc, "-O2", "-c", "path_normalize.c", "-o", "path_normalize.o"],
+             [
+              cc, "-O2", "-fPIC", "-c", "path_normalize.c",
+              "-o", "path_normalize.o"
+             ],
              verbose)
             RunCommand([ar, "rcs", "libpath_normalize.a", "path_normalize.o"],
              verbose)
