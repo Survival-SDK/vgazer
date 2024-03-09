@@ -36,7 +36,7 @@ def Install(software, platform, platformData, verbose):
               "--prefix={prefix}".format(prefix=installPrefix),
               "--disable-shared", "--enable-unsafe", "--disable-doc",
               "--enable-compile-warnings=no", "--disable-Werror",
-              "--enable-strmax=268435456"
+              "--enable-strmax=268435456", "--with-pic"
              ],
              verbose)
             RunCommand(
