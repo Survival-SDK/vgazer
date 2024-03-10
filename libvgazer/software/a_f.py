@@ -534,6 +534,33 @@ data = {
             },
         ],
     },
+    "cwalk": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["mit"],
+                "changelog": "https://github.com/likle/cwalk/releases",
+                "prereqs": [
+                    "{triplet}-gcc",
+                    "make",
+                    "cmake",
+                ],
+                "checker": {
+                    "type": "git",
+                    "url": "https://github.com/likle/cwalk",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "cwalk",
+                },
+            },
+        ],
+    },
     "dr_wav": {
         "platform": "target",
         "projects": [

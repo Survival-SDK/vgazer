@@ -19,33 +19,6 @@ data = {
             },
         ],
     },
-    "path_normalize": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://github.com/takatak/path_normalize/commits/master/",
-                "prereqs": [
-                    "{triplet}-gcc",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://github.com/takatak/path_normalize.git",
-                    "files": ["Makefile"],
-                    "hint": r'v\d-\d\d',
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "path_normalize",
-                },
-            },
-        ],
-    },
     "perl-data-dumper": {
         "platform": "host",
         "projects": [
