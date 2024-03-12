@@ -157,52 +157,6 @@ data = {
             },
         ],
     },
-    "safeclib": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://github.com/rurban/safeclib/blob/master/ChangeLog",
-                "prereqs": [
-                    "{triplet}-gcc",
-                    "autoconf",
-                    "automake",
-                    "libtool",
-                    "make",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://github.com/rurban/safeclib.git",
-                    "hint": r'v\d\.\d(\.\d)?$',
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "safeclib",
-                },
-            },
-            # Temporary stub
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libsafec-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-        ],
-    },
     "scv": {
         "platform": "target",
         "projects": [
