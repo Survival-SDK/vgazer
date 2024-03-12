@@ -140,66 +140,6 @@ data = {
             },
         ],
     },
-    "glu": {
-        "platform": "target",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["linux"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["sgi-b-1.1", "sgi-b-2.0"],
-                "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
-                "prereqs": [
-                    "{triplet}-gcc",
-                    "{triplet}-g++",
-                    "{triplet}-pkg-config",
-                    "meson",
-                    "ninja",
-                    "opengl",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://gitlab.freedesktop.org/mesa/glu.git",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "mesa-glu",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["sgi-b-1.1", "sgi-b-2.0"],
-                "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
-                "checker": {
-                    "type": "pacman",
-                    "package": "glu",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "glu",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["sgi-b-1.1", "sgi-b-2.0"],
-                "changelog": "https://gitlab.freedesktop.org/mesa/glu/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libglu1-mesa-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-        ],
-    },
     "hash_table": {
         "platform": "target",
         "projects": [
