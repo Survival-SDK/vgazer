@@ -42,21 +42,6 @@ data = {
                     "package": "alsa-lib",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["lgpl-2.1"],
-                "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libasound2-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "autoconf": {
@@ -120,20 +105,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "autoconf",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/autoconf/NEWS",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "autoconf",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -203,20 +174,6 @@ data = {
                     "name": "automake",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/automake/NEWS",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "automake",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "autopoint": {
@@ -250,21 +207,6 @@ data = {
                 "installer": {
                     "type": "yum",
                     "package": "gettext-devel",
-                },
-            },
-            # Temporary stub
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "autopoint",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -331,21 +273,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "cjson",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libcjson-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -427,20 +354,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "cmake",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "cmake",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],

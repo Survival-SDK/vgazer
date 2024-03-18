@@ -45,21 +45,6 @@ data = {
                     "package": "libx11",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libx11-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "xmempool": {
@@ -128,20 +113,6 @@ data = {
                     "package": "xorg-util-macros",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/util/macros/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "xutils-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "xorgproto": {
@@ -186,21 +157,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "xorgproto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "smlnj"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "x11proto-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -248,21 +204,6 @@ data = {
                     "package": "xtrans",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "hpnd", "x11", "hpnd-sv"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxtrans/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "xtrans-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "xz": {
@@ -297,21 +238,6 @@ data = {
                 "installer": {
                     "type": "yum",
                     "package": "xz",
-                },
-            },
-            # Temporary stub
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "xz-utils",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -381,21 +307,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "zlib",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["zlib"],
-                "changelog": "https://www.zlib.net/ChangeLog.txt",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "zlib1g-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],

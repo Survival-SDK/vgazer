@@ -98,20 +98,6 @@ data = {
                     ],
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "pkg-config",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "pthread-stubs": {
@@ -138,21 +124,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "pthread-stubs",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libpthread-stubs0-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -218,22 +189,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "stb",
-                },
-            },
-            # Temporary stub
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["unlicense"],
-                "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libstb-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],

@@ -45,21 +45,6 @@ data = {
                     "package": "unzip",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://infozip.sourceforge.net/UnZip.html#Release",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "unzip",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "unzip",
-                },
-            },
         ],
     },
     "valgrind": {
@@ -128,21 +113,6 @@ data = {
                     "package": "wayland",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://wayland.freedesktop.org/releases.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libwayland-egl-backend-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "wayland-scanner": {
@@ -189,20 +159,6 @@ data = {
                     "package": "wayland",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://wayland.freedesktop.org/releases.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libwayland-bin",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "wget": {
@@ -238,20 +194,6 @@ data = {
                     "package": "wget",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=wget",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "wget",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "x86_64-linux-gnu-binutils": {
@@ -280,20 +222,6 @@ data = {
                             "/usr/local/bin/x86_64-linux-gnu-strip"
                         ],
                     ]
-                },
-            },
-            {
-                "arch": ["x86_64"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/binutils/binutils/NEWS",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "binutils-x86-64-linux-gnu",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -336,29 +264,6 @@ data = {
                             "/usr/local/bin/x86_64-linux-gnu-g++"
                         ],
                     ]
-                },
-            },
-            {
-                "arch": ["x86_64"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "prereqs": [
-                    "gcc",
-                ],
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "gcc-12-monolithic",
-                },
-                "installer": {
-                    "type": "cmd",
-                    "cmds": [
-                        [
-                            "update-alternatives", "--set",
-                            "x86_64-linux-gnu-g++", "/usr/bin/g++-12", "1"
-                        ],
-                    ],
                 },
             },
         ],
@@ -417,49 +322,6 @@ data = {
                             "/usr/local/bin/x86_64-linux-gnu-gcov"
                         ],
                     ]
-                },
-            },
-            {
-                "arch": ["x86_64"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "gcc-12-monolithic",
-                },
-                "installer": {
-                    "type": "cmd",
-                    "cmds": [
-                        [
-                            "update-alternatives", "--set",
-                            "x86_64-linux-gnu-cpp", "/usr/bin/cpp-12", "1"
-                        ],
-                        [
-                            "update-alternatives", "--set",
-                            "x86_64-linux-gnu-gcc", "/usr/bin/gcc-12", "1"
-                        ],
-                        [
-                            "update-alternatives", "--set",
-                            "x86_64-linux-gnu-gcc-ar", "/usr/bin/gcc-ar-12",
-                            "1"
-                        ],
-                        [
-                            "update-alternatives", "--set",
-                            "x86_64-linux-gnu-gcc-nm", "/usr/bin/gcc-nm-12",
-                            "1"
-                        ],
-                        [
-                            "update-alternatives", "--set",
-                            "x86_64-linux-gnu-gcc-ranlib",
-                            "/usr/bin/gcc-ranlib-12", "1"
-                        ],
-                        [
-                            "update-alternatives", "--set",
-                            "x86_64-linux-gnu-gcov", "/usr/bin/gcov-12", "1"
-                        ]
-                    ],
                 },
             },
         ],
@@ -521,43 +383,6 @@ data = {
                 },
                 "installer": {
                     "type": "cmd",
-                    "cmds": [
-                        ["mkdir", "-p", "/usr/local/bin/"],
-                        ["sh", "-c", "echo "
-                            "'#!/bin/sh\n"
-                            "export PKG_CONFIG_DIR=\n"
-                            "export PKG_CONFIG_PATH="
-                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
-                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\n"
-                            "export PKG_CONFIG_LIBDIR="
-                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
-                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\n"
-                            "export PKG_CONFIG_SYSROOT_DIR=/\n"
-                            "exec pkg-config \"$@\"' "
-                            "> /usr/local/bin/x86_64-linux-gnu-pkg-config",
-                        ],
-                        [
-                            "chmod", "+x",
-                            "/usr/local/bin/x86_64-linux-gnu-pkg-config",
-                        ],
-                    ],
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "prereqs": [
-                    "pkg-config",
-                ],
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "pkg-config",
-                },
-                "installer": {
                     "cmds": [
                         ["mkdir", "-p", "/usr/local/bin/"],
                         ["sh", "-c", "echo "
@@ -717,21 +542,6 @@ data = {
                     "package": "libxau",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxau/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libxau-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "xcb": {
@@ -781,21 +591,6 @@ data = {
                     "package": "libxcb",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "changelog": "https://xcb.freedesktop.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libx11-xcb-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "xcb-proto": {
@@ -838,21 +633,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "xcb-proto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "changelog": "https://xcb.freedesktop.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "xcb-proto",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],

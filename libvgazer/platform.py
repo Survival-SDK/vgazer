@@ -188,9 +188,7 @@ class Platform:
 
     @staticmethod
     def OsIsLinux(os):
-        return (os in [
-            "linux", "archlinux", "oraclelinux", "debian", "steamrt"
-        ])
+        return (os in ["linux", "archlinux", "oraclelinux", "debian"])
 
     @staticmethod
     def GetGenericOs(os):

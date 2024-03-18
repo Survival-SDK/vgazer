@@ -32,29 +32,6 @@ data = {
                     "package": "gcc-c++",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "prereqs": [
-                    "gcc",
-                ],
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "gcc-12-monolithic",
-                },
-                "installer": {
-                    "type": "cmd",
-                    "cmds": [
-                        [
-                            "update-alternatives", "--install", "/usr/bin/g++",
-                            "g++", "/usr/bin/g++-12", "1"
-                        ],
-                    ],
-                },
-            },
         ],
     },
     "gcc": {
@@ -88,54 +65,6 @@ data = {
                 "installer": {
                     "type": "yum",
                     "package": "gcc",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "gcc-12-monolithic",
-                },
-                "installer": {
-                    "type": "apt",
-                    "package": "gcc-12-monolithic",
-                    "postInstallCommands": [
-                        [
-                            "update-alternatives", "--install", "/usr/bin/cpp",
-                            "cpp", "/usr/bin/cpp-12", "1"
-                        ],
-                        [
-                            "update-alternatives", "--set", "/usr/bin/cpp",
-                            "cpp-bin", "/usr/bin/cpp-12", "1"
-                        ],
-                        [
-                            "update-alternatives", "--install", "/usr/bin/gcc",
-                            "gcc", "/usr/bin/gcc-12", "1"
-                        ],
-                        [
-                            "update-alternatives", "--install",
-                            "/usr/bin/gcc-ar", "gcc-ar", "/usr/bin/gcc-ar-12",
-                            "1"
-                        ],
-                        [
-                            "update-alternatives", "--install",
-                            "/usr/bin/gcc-nm", "gcc-nm", "/usr/bin/gcc-nm-12",
-                            "1"
-                        ],
-                        [
-                            "update-alternatives", "--install",
-                            "/usr/bin/gcc-ranlib", "gcc-ranlib",
-                            "/usr/bin/gcc-ranlib-12", "1"
-                        ],
-                        [
-                            "update-alternatives", "--install",
-                            "/usr/bin/gcov", "gcov", "/usr/bin/gcov-12", "1"
-                        ]
-                    ],
                 },
             },
         ],
@@ -200,20 +129,6 @@ data = {
                     "type": "yum",
                     "repo": "ol7_optional_latest",
                     "package": "help2man",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "help2man",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -286,21 +201,6 @@ data = {
                     "name": "icu-67",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
-                "changelog": "https://github.com/unicode-org/icu/releases",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libicu-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "icu-54.2": {
@@ -369,22 +269,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libinih",
-                },
-            },
-            # Temporary stub
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://github.com/benhoyt/inih/releases",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libinih-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],

@@ -38,20 +38,12 @@ class HostDetector:
                 raise ReleaseDataNotFound(
                  "Unable to find data of Debian version: " + os.name)
 
-    @staticmethod
-    def GetSteamRtVersion():
-        # TODO
-        # May be reference - https://gitlab.steamos.cloud/steamrt/steam-runtime-tools/-/blob/main/docs/distro-assumptions.md#environment-variables
-        raise UnknownOsVersion(
-                 "Unable to detect version of Steam Runtime")
-
     def __init__(self):
         self.unknownOs = False
         self.errorMsg = "No error"
         self.arch = platform.machine()
         osType = platform.system()
         if osType == "Linux":
-            # TODO steamrt not being detected by HostDetector.GetLinuxOs()
             self.os = HostDetector.GetLinuxOs()
             if self.os == "archlinux":
                 self.osVersion = "latest"
@@ -61,9 +53,6 @@ class HostDetector:
                 self.abi = "gnu"
             if self.os == "debian":
                 self.osVersion = HostDetector.GetDebianVersion()
-                self.abi = "gnu"
-            if self.os == "steamrt":
-                self.osVersion = HostDetector.GetSteamRtVersion()
                 self.abi = "gnu"
         else:
             self.unknownOs = True

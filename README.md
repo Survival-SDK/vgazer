@@ -61,9 +61,6 @@ and OS's version of base Docker image. Currently supported:
     * latest
 * oraclelinux
     * 7
-* steamrt
-    * scout (broken)
-    * sniper (WIP)
 
 **tarch** - architecture of device for crossplatform compiling libraries.
 Currently supported:

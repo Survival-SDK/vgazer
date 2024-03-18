@@ -42,21 +42,6 @@ data = {
                     "package": "libogg",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://xiph.org/press/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libogg-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "libpng": {
@@ -100,21 +85,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libpng",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["libpng-2.0"],
-                "changelog": "http://www.libpng.org/pub/png/pngnews.html",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libpng-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -212,20 +182,6 @@ data = {
                     "name": "libtool",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=libtool",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libtool",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     "libvorbis": {
@@ -271,21 +227,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libvorbis",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://xiph.org/press/",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libvorbis-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -335,21 +276,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libxext",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit", "x11", "hpnd", "hpnd-sv", "smlnj"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxext/-/tags",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libxext-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],

@@ -117,21 +117,6 @@ data = {
                     "package": "libffi",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://github.com/libffi/libffi/releases",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libffi-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
         ],
     },
     # libintl under GNU LGPL 2.1
@@ -156,21 +141,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "libintl-lite",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["lgpl-2.1"],
-                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "libc6-dev",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
         ],
@@ -241,21 +211,6 @@ data = {
                 "checker": {
                     "type": "pacman",
                     "package": "xz",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["steamrt"],
-                "osVersion": ["any"],
-                "abi": ["gnu"],
-                "license": ["pd"],
-                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
-                "checker": {
-                    "type": "apt-cache",
-                    "package": "liblzma-dev",
                 },
                 "installer": {
                     "type": "not-needed",
