@@ -153,6 +153,86 @@ data = {
             },
         ],
     },
+    "stb_image": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_image.h#L51",
+                "checker": {
+                    "type": "git",
+                    "url": "https://github.com/nothings/stb.git",
+                    "files": ["stb_image.h"],
+                    "hint": r'v\d\.\d{2}',
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "stb_image",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_image.h#L51",
+                "checker": {
+                    "type": "pacman",
+                    "package": "stb",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "stb",
+                },
+            },
+        ],
+    },
+    "stb_image_write": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_image_write.h#L1630",
+                "checker": {
+                    "type": "git",
+                    "url": "https://github.com/nothings/stb.git",
+                    "files": ["stb_image_write.h"],
+                    "hint": r'v\d\.\d{2}',
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "stb_image_write",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_image_write.h#L1630",
+                "checker": {
+                    "type": "pacman",
+                    "package": "stb",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "stb",
+                },
+            },
+        ],
+    },
     "stb_rect_pack": {
         "platform": "target",
         "projects": [
@@ -168,7 +248,7 @@ data = {
                     "type": "git",
                     "url": "https://github.com/nothings/stb.git",
                     "files": ["stb_rect_pack.h"],
-                    "hint": r'\d\.\d{2}',
+                    "hint": r'v\d\.\d{2}',
                 },
                 "installer": {
                     "type": "custom",
@@ -182,6 +262,46 @@ data = {
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
+                "checker": {
+                    "type": "pacman",
+                    "package": "stb",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "stb",
+                },
+            },
+        ],
+    },
+    "stb_vorbis": {
+        "platform": "target",
+        "projects": [
+            {
+                "fallback": True,
+                "arch": ["any"],
+                "os": ["any"],
+                "osVersion": ["any"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_vorbis.c#L39",
+                "checker": {
+                    "type": "git",
+                    "url": "https://github.com/nothings/stb.git",
+                    "files": ["stb_vorbis.c"],
+                    "hint": r'v\d\.\d{2}',
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "stb_vorbis",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["archlinux"],
+                "osVersion": ["latest"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_vorbis.c#L39",
                 "checker": {
                     "type": "pacman",
                     "package": "stb",
