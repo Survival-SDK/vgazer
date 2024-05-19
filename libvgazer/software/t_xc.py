@@ -27,26 +27,6 @@ data = {
             },
         ],
     },
-    "unzip": {
-        "platform": "host",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://infozip.sourceforge.net/UnZip.html#Release",
-                "checker": {
-                    "type": "pacman",
-                    "package": "unzip",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "unzip",
-                },
-            },
-        ],
-    },
     "valgrind": {
         "platform": "host",
         "projects": [
@@ -65,98 +45,19 @@ data = {
                     "package": ["valgrind", "debuginfod"],
                 },
             },
-        ],
-    },
-    "wayland-libs": {
-        "platform": "target",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://wayland.freedesktop.org/releases.html",
-                "prereqs": [
-                    "{triplet}-g++",
-                    "{triplet}-gcc",
-                    "{triplet}-pkg-config",
-                    "libffi",
-                    "meson",
-                    "ninja",
-                    "wayland-scanner",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://gitlab.freedesktop.org/wayland/wayland.git",
-                    "hint": r'1\.\d\d.\d+',
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "wayland",
-                },
-            },
             {
                 "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
                 "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://wayland.freedesktop.org/releases.html",
+                "changelog": "https://valgrind.org/docs/manual/dist.news.html",
                 "checker": {
-                    "type": "pacman",
-                    "package": "wayland",
+                    "type": "dnf",
+                    "package": "valgrind",
                 },
                 "installer": {
-                    "type": "pacman",
-                    "package": "wayland",
-                },
-            },
-        ],
-    },
-    "wayland-scanner": {
-        "platform": "host",
-        "projects": [
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://wayland.freedesktop.org/releases.html",
-                "prereqs": [
-                    "expat",
-                    "gcc",
-                    "meson",
-                    "ninja",
-                    "pkg-config",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://gitlab.freedesktop.org/wayland/wayland.git",
-                    "hint": r'1\.\d\d.\d+',
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "wayland-scanner",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://wayland.freedesktop.org/releases.html",
-                "checker": {
-                    "type": "pacman",
-                    "package": "wayland",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "wayland",
+                    "type": "dnf",
+                    "package": "valgrind",
                 },
             },
         ],
@@ -246,6 +147,28 @@ data = {
             },
             {
                 "arch": ["x86_64"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "prereqs": ["g++"],
+                "checker": {
+                    "type": "dnf",
+                    "package": "gcc-c++",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin"],
+                        [
+                            "ln", "-s", "/usr/bin/g++",
+                            "/usr/local/bin/x86_64-linux-gnu-g++"
+                        ],
+                    ]
+                },
+            },
+            {
+                "arch": ["x86_64"],
                 "os": ["oraclelinux"],
                 "osVersion": ["7"],
                 "abi": ["any"],
@@ -284,6 +207,44 @@ data = {
                 },
                 "installer": {
                     "type": "not-needed",
+                },
+            },
+            {
+                "arch": ["x86_64"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "prereqs": ["gcc"],
+                "checker": {
+                    "type": "dnf",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin"],
+                        [
+                            "ln", "-s", "/usr/bin/gcc",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcc-ar",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc-ar"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcc-nm",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc-nm"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcc-ranlib",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc-ranlib"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcov",
+                            "/usr/local/bin/x86_64-linux-gnu-gcov"
+                        ],
+                    ]
                 },
             },
             {
@@ -341,6 +302,45 @@ data = {
                 "checker": {
                     "type": "pacman",
                     "package": "pkg-config",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin/"],
+                        ["sh", "-c", "echo "
+                            "'#!/bin/sh\n"
+                            "export PKG_CONFIG_DIR=\n"
+                            "export PKG_CONFIG_PATH="
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\n"
+                            "export PKG_CONFIG_LIBDIR="
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\n"
+                            "exec pkg-config \"$@\"' "
+                            "> /usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                        [
+                            "chmod", "+x",
+                            "/usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                    ],
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "dnf",
+                    "package": "pkgconf-pkg-config",
                 },
                 "installer": {
                     "type": "cmd",

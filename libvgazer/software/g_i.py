@@ -19,6 +19,21 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "checker": {
+                    "type": "dnf",
+                    "package": "gcc-c++",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "gcc-c++",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["oraclelinux"],
                 "osVersion": ["7"],
                 "abi": ["any"],
@@ -49,6 +64,21 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
+                    "package": "gcc",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "changelog": "https://gcc.gnu.org/",
+                "checker": {
+                    "type": "dnf",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "dnf",
                     "package": "gcc",
                 },
             },
@@ -178,6 +208,22 @@ data = {
                 },
             },
             {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
+                "changelog": "https://github.com/unicode-org/icu/releases",
+                "checker": {
+                    "type": "dnf",
+                    "package": "libicu-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "libicu-devel",
+                },
+            },
+            {
                 "fallback": True,
                 "arch": ["any"],
                 "os": ["oraclelinux"],
@@ -271,6 +317,22 @@ data = {
                     "package": "libinih",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["bsd-3"],
+                "changelog": "https://github.com/benhoyt/inih/releases",
+                "checker": {
+                    "type": "dnf",
+                    "package": "inih-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "inih-devel",
+                },
+            },
         ],
     },
     "iwyu": {
@@ -299,6 +361,22 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "iwyu",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "license": ["bsd-3"],
+                "changelog": "https://include-what-you-use.org/",
+                "checker": {
+                    "type": "dnf",
+                    "package": "iwyu",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "iwyu",
                 },
             },
         ],

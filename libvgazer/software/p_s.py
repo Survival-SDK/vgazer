@@ -79,6 +79,21 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
+                "checker": {
+                    "type": "dnf",
+                    "package": "pkgconf-pkg-config",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "pkgconf-pkg-config",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["oraclelinux"],
                 "osVersion": ["7"],
                 "abi": ["any"],
@@ -191,6 +206,22 @@ data = {
                     "package": "stb",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_image.h#L51",
+                "checker": {
+                    "type": "dnf",
+                    "package": "stb_image-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "stb_image-devel",
+                },
+            },
         ],
     },
     "stb_image_write": {
@@ -229,6 +260,22 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "stb",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_image_write.h#L1630",
+                "checker": {
+                    "type": "dnf",
+                    "package": "stb_image_write-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "stb_image_write-devel",
                 },
             },
         ],
@@ -271,6 +318,22 @@ data = {
                     "package": "stb",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
+                "checker": {
+                    "type": "dnf",
+                    "package": "stb_rect_pack-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "stb_rect_pack-devel",
+                },
+            },
         ],
     },
     "stb_vorbis": {
@@ -309,6 +372,22 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "stb",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/nothings/stb/blob/master/stb_vorbis.c#L39",
+                "checker": {
+                    "type": "dnf",
+                    "package": "stb_vorbis-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "stb_vorbis-devel",
                 },
             },
         ],

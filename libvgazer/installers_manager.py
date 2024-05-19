@@ -1,6 +1,7 @@
 from libvgazer.exceptions     import UnknownInstaller
 from libvgazer.install.apt    import InstallApt
 from libvgazer.install.cmd    import InstallCmd
+from libvgazer.install.dnf    import InstallDnf
 from libvgazer.install.pacman import InstallPacman
 from libvgazer.install.pip3   import InstallPip3
 from libvgazer.install.yum    import InstallYum
@@ -16,6 +17,12 @@ class InstallersManager:
                  verbose),
             "cmd": lambda software, platformData, installerData, verbose:
                 InstallCmd(software, installerData["cmds"], verbose),
+            "dnf": lambda software, platformData, installerData, verbose:
+                InstallDnf(software, installerData["package"],
+                 installerData["repo"] if "repo" in installerData else None,
+                 installerData["postInstallCommands"] if "postInstallCommands"
+                  in installerData else None,
+                 verbose),
             "not-needed": lambda software, platformData, installerData,
              verbose:
                 True,

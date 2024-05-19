@@ -60,6 +60,22 @@ data = {
                     "package": "luajit",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "http://luajit.org/status.html",
+                "checker": {
+                    "type": "dnf",
+                    "package": "luajit-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "luajit-devel",
+                },
+            },
         ],
     },
     "lwrb": {
@@ -138,6 +154,21 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
+                    "package": "make",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=make",
+                "checker": {
+                    "type": "dnf",
+                    "package": "make",
+                },
+                "installer": {
+                    "type": "dnf",
                     "package": "make",
                 },
             },
@@ -333,6 +364,22 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libglvnd",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["mit", "bsd-1", "bsd-3"],
+                "changelog": "https://gitlab.freedesktop.org/glvnd/libglvnd/-/tags",
+                "checker": {
+                    "type": "dnf",
+                    "package": "libglvnd-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "libglvnd-devel",
                 },
             },
         ],

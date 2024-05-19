@@ -59,6 +59,8 @@ and OS's version of base Docker image. Currently supported:
 
 * archlinux
     * latest
+* fedora
+    * 40
 * oraclelinux
     * 7
 

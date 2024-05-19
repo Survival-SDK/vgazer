@@ -42,6 +42,22 @@ data = {
                     "package": "alsa-lib",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["lgpl-2.1"],
+                "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
+                "checker": {
+                    "type": "dnf",
+                    "package": "alsa-lib-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "alsa-lib-devel",
+                },
+            },
         ],
     },
     "autoconf": {
@@ -275,6 +291,22 @@ data = {
                     "package": "cjson",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["mit"],
+                "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
+                "checker": {
+                    "type": "dnf",
+                    "package": "cjson",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "cjson",
+                },
+            },
         ],
     },
     "clang": {
@@ -315,6 +347,21 @@ data = {
                     "type": "not-needed",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "changelog": "https://clang.llvm.org/extra/ReleaseNotes.html#improvements-to-clang-tidy",
+                "checker": {
+                    "type": "dnf",
+                    "package": "clang-tools-extra",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "clang-tools-extra",
+                },
+            },
         ],
     },
     "cmake": {
@@ -353,6 +400,21 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
+                    "package": "cmake",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["any"],
+                "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
+                "checker": {
+                    "type": "dnf",
+                    "package": "cmake",
+                },
+                "installer": {
+                    "type": "dnf",
                     "package": "cmake",
                 },
             },
@@ -419,6 +481,22 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "cmocka",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["apache-2.0"],
+                "changelog": "https://cmocka.org/#news",
+                "checker": {
+                    "type": "dnf",
+                    "package": "libcmocka-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "libcmocka-devel",
                 },
             },
         ],
@@ -496,35 +574,20 @@ data = {
                     "name": "dr_wav",
                 },
             },
-        ],
-    },
-    "expat": {
-        "platform": "target",
-        "projects": [
             {
-                "fallback": True,
                 "arch": ["any"],
-                "os": ["any"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "license": ["mit"],
-                "changelog": "https://github.com/libexpat/libexpat/blob/master/expat/Changes",
-                "prereqs": [
-                    "{triplet}-g++",
-                    "{triplet}-gcc",
-                    "autoconf",
-                    "automake",
-                    "libtool",
-                    "make",
-                ],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["unlicense"],
+                "changelog": "https://github.com/mackron/dr_libs/blob/master/dr_wav.h#L8351",
                 "checker": {
-                    "type": "git",
-                    "url": "https://github.com/libexpat/libexpat.git",
-                    "hint": r'R_\d_\d_\d',
+                    "type": "dnf",
+                    "package": "dr_wav-devel",
                 },
                 "installer": {
-                    "type": "custom",
-                    "name": "expat",
+                    "type": "dnf",
+                    "package": "dr_wav-devel",
                 },
             },
         ],

@@ -42,6 +42,22 @@ data = {
                     "package": "libogg",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
+                "checker": {
+                    "type": "dnf",
+                    "package": "libogg-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "libogg-devel",
+                },
+            },
         ],
     },
     "libpng": {
@@ -85,6 +101,22 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libpng",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
+                "checker": {
+                    "type": "dnf",
+                    "package": "libpng-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "libpng-devel",
                 },
             },
         ],
@@ -227,6 +259,22 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "libvorbis",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["bsd-3"],
+                "changelog": "https://xiph.org/press/",
+                "checker": {
+                    "type": "dnf",
+                    "package": "libvorbis-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "libvorbis-devel",
                 },
             },
         ],

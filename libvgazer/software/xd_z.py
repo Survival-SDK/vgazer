@@ -45,6 +45,22 @@ data = {
                     "package": "libx11",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
+                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
+                "checker": {
+                    "type": "dnf",
+                    "package": "libX11-devel",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "libX11-devel",
+                },
+            },
         ],
     },
     "xmempool": {
@@ -307,6 +323,22 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "zlib",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["40"],
+                "abi": ["gnu"],
+                "license": ["zlib"],
+                "changelog": "https://github.com/zlib-ng/zlib-ng/releases",
+                "checker": {
+                    "type": "dnf",
+                    "package": "zlib-ng-compat-devel",
+                },
+                "installer": {
+                    "type": "pacman",
+                    "package": "zlib-ng-compat-devel",
                 },
             },
         ],
