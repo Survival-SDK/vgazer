@@ -27,6 +27,11 @@ def Install(software, platform, platformData, verbose):
               GetLastTag("https://github.com/kuba--/zip.git")
              ],
              verbose)
+            RunCommand(
+             ["sed", "-i",
+              "s/  set(CMAKE_C_FLAGS \"${CMAKE_C_FLAGS} -Wall -Wextra -Werror -pedantic\")/  set(CMAKE_C_FLAGS \"${CMAKE_C_FLAGS} -Wall -Wextra -pedantic\")/",
+              "./CMakeLists.txt"],
+             verbose)
             RunCommand(["mkdir", "build"], verbose)
         buildDir = os.path.join(tempPath, "build")
         with WorkingDir(buildDir), ConfigCmake(platformData, cflags="-std=gnu99") as conf:
