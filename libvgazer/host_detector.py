@@ -27,7 +27,7 @@ class HostDetector:
                 return osRelease.GetEntry("VERSION").strip("\"").split(".")[0]
             except KeyError:
                 raise ReleaseDataNotFound(
-                 "Unable to find data of Debian version: " + os.name)
+                 "Unable to find data of Oracle Linux version: " + os.name)
 
     @staticmethod
     def GetDebianVersion():
