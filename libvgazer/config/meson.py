@@ -1,3 +1,4 @@
+from libvgazer.exceptions import FileNotFound
 from libvgazer.exceptions import UnknownTargetArch
 from libvgazer.platform   import GetAr
 from libvgazer.platform   import GetCc
@@ -19,7 +20,10 @@ class ConfigMeson():
 
         ar = GetAr(platformData["target"])
         cc = GetCc(platformData["target"])
-        cxx = GetCxx(platformData["target"])
+        try:
+            cxxDef = "cpp = '{cxx}'".format(cxx=GetCxx(platformData["target"]))
+        except FileNotFound:
+            cxxDef = ""
         pkgConfig = GetPkgConfig(platformData["target"])
         strip = GetStrip(platformData["target"])
         cmake = GetCmake(platformData["target"])
@@ -36,7 +40,7 @@ class ConfigMeson():
         storeTemp.DirectoryWriteTextFile("cross-file",
          "[binaries]\n"
          "c = '{cc}'\n"
-         "cpp = '{cxx}'\n"
+         "{cxxDef}\n"
          "ar = '{ar}'\n"
          "strip = '{strip}'\n"
          "pkgconfig = '{pkgConfig}'\n"
@@ -46,7 +50,7 @@ class ConfigMeson():
          "system = '{genericOs}'\n"
          "cpu_family = '{mesonCpuFamily}'\n"
          "cpu = '{mesonCpu}'\n"
-         "endian = 'little'".format(ar=ar, cc=cc, cmake=cmake, cxx=cxx,
+         "endian = 'little'".format(ar=ar, cc=cc, cmake=cmake, cxxDef=cxxDef,
           pkgConfig=pkgConfig, strip=strip, genericOs=genericOs,
           mesonCpuFamily=mesonCpuFamily, mesonCpu=mesonCpu)
         )

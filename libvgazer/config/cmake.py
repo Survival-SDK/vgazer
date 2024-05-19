@@ -1,3 +1,4 @@
+from libvgazer.exceptions import FileNotFound
 from libvgazer.platform   import GetAr
 from libvgazer.platform   import GetCc
 from libvgazer.platform   import GetCxx
@@ -20,7 +21,11 @@ class ConfigCmake():
         targetTriplet = GetTriplet(platformData["target"])
 
         cc = GetCc(platformData["target"])
-        cxx = GetCxx(platformData["target"])
+        try:
+            cxxDef = "set(CMAKE_CXX_COMPILER {cxx})".format(cxx=GetCxx(platformData["target"]))
+        except FileNotFound:
+            cxxDef = ""
+
         ar = GetAr(platformData["target"])
 
         pkgConfigLibdirs = ("/usr/{triplet}/lib/pkgconfig"
@@ -41,7 +46,7 @@ class ConfigCmake():
          "set(CMAKE_SYSTEM_PROCESSOR {cpu})\n"
          "set(CMAKE_C_COMPILER {cc})\n"
          "set(CMAKE_C_FLAGS {cflags})\n"
-         "set(CMAKE_CXX_COMPILER {cxx})\n"
+         "{cxxDef}\n"
          "set(CMAKE_AR {ar})\n"
          "set(CMAKE_FIND_ROOT_PATH {prefix})\n"
          "SET("
@@ -55,7 +60,7 @@ class ConfigCmake():
           cpu=platformData["target"].GetArch(),
           cc=cc,
           cflags=cflags if cflags is not None else "",
-          cxx=cxx,
+          cxxDef=cxxDef,
           ar=ar,
           prefix=prefix,
           pkgConfigLibdirs=pkgConfigLibdirs,
