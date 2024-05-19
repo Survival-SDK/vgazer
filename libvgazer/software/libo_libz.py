@@ -92,8 +92,8 @@ data = {
                 "os": ["archlinux"],
                 "osVersion": ["latest"],
                 "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://xiph.org/press/",
+                "license": ["libpng-2.0"],
+                "changelog": "http://www.libpng.org/pub/png/pngnews.html",
                 "checker": {
                     "type": "pacman",
                     "package": "libpng",
@@ -108,8 +108,8 @@ data = {
                 "os": ["fedora"],
                 "osVersion": ["40"],
                 "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://xiph.org/press/",
+                "license": ["libpng-2.0"],
+                "changelog": "http://www.libpng.org/pub/png/pngnews.html",
                 "checker": {
                     "type": "dnf",
                     "package": "libpng-devel",
