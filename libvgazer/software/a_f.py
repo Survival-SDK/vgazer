@@ -430,10 +430,10 @@ data = {
                 "osVersion": ["any"],
                 "abi": ["any"],
                 "license": ["cc0"],
-                "changelog": "https://github.com/edomin/cmake_barebones/commits/main/",
+                "changelog": "https://github.com/Survival-SDK/cmake_barebones/commits/main/",
                 "checker": {
                     "type": "git",
-                    "url": "https://github.com/edomin/cmake_barebones.git"
+                    "url": "https://github.com/Survival-SDK/cmake_barebones.git"
                 },
                 "installer": {
                     "type": "custom",
