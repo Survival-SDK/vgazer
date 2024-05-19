@@ -26,13 +26,13 @@ def Install(software, platform, platformData, verbose):
                 RunCommand(
                  [
                   "mkdir", "-p",
-                  "{prefix}/include/dr_libs".format(prefix=installPrefix)
+                  "{prefix}/include".format(prefix=installPrefix)
                  ],
                  verbose)
             RunCommand(
              [
               "cp", "./dr_wav.h",
-              "{prefix}/include/dr_libs".format(prefix=installPrefix)
+              "{prefix}/include".format(prefix=installPrefix)
              ],
              verbose)
     except CommandError:
