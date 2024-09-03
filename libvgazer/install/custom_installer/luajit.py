@@ -36,6 +36,7 @@ def Install(software, platform, platformData, verbose):
               "TARGET_SYS={os}".format(
                os=platformData["target"].GetOs().capitalize()),
               "TARGET_AR={triplet}-gcc-ar rcus".format(triplet=triplet),
+              "TARGET_LIBS=-ldl",
               "E=@:", "Q="
              ],
              verbose)
