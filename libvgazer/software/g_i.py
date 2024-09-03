@@ -4,6 +4,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "checker": {
+                    "type": "yum",
+                    "package": "gcc-c++",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "gcc-c++",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["archlinux"],
                 "osVersion": ["latest"],
                 "abi": ["any"],
@@ -52,6 +67,21 @@ data = {
     "gcc": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["gnu"],
+                "changelog": "https://gcc.gnu.org/",
+                "checker": {
+                    "type": "yum",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "gcc",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["archlinux"],
@@ -129,6 +159,21 @@ data = {
     "help2man": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
+                "checker": {
+                    "type": "yum",
+                    "package": "help2man",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "help2man",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["archlinux"],

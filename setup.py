@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="vgazer",
-    version="78",
+    version="79",
     url="https://github.com/Survival-SDK/vgazer",
     license="CC0",
     author="Vasiliy Edomin",

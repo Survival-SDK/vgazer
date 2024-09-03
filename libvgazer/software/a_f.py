@@ -89,6 +89,28 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/autoconf/NEWS",
+                "prereqs": [
+                    "m4",
+                    "make",
+                    "perl-data-dumper",
+                    "tar",
+                    "wget",
+                ],
+                "checker": {
+                    "type": "custom",
+                    "name": "autoconf",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "autoconf",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["archlinux"],
                 "osVersion": ["latest"],
                 "abi": ["any"],
@@ -152,6 +174,31 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["amazonlinux"],
+                # autoconf >=2.70 required for building xlib
+                # Amazon Linux 7 has only 2.69
+                # automake depends on autoconf
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/automake/NEWS",
+                "prereqs": [
+                    "autoconf",
+                    "gcc",
+                    "make",
+                    "perl-thread-queue",
+                ],
+                "checker": {
+                    "type": "git",
+                    "url": "https://git.savannah.gnu.org/git/automake.git",
+                    "hint": r'v\d\.\d+\w?(\.\d+)?$',
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "automake",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["archlinux"],
                 "osVersion": ["latest"],
                 "abi": ["any"],
@@ -188,41 +235,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "automake",
-                },
-            },
-        ],
-    },
-    "autopoint": {
-        "platform": "host",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
-                "checker": {
-                    "type": "pacman",
-                    "package": "gettext",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "gettext",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/gettext/ChangeLog",
-                "checker": {
-                    "type": "yum",
-                    "package": "gettext-devel",
-                },
-                "installer": {
-                    "type": "yum",
-                    "package": "gettext-devel",
                 },
             },
         ],
@@ -386,6 +398,27 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "cmake",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
+                "checker": {
+                    "type": "yum",
+                    "package": "cmake3",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "cmake3",
+                    "postInstallCommands": [
+                        [
+                            "ln", "-s", "/usr/bin/cmake3",
+                            "/usr/local/bin/cmake"
+                        ],
+                    ],
                 },
             },
             {

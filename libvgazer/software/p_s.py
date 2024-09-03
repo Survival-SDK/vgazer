@@ -4,6 +4,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=patch",
+                "checker": {
+                    "type": "yum",
+                    "package": "patch",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "patch",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["oraclelinux"],
                 "osVersion": ["7"],
                 "abi": ["any"],
@@ -22,6 +37,21 @@ data = {
     "perl-data-dumper": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://perldoc.perl.org/perldelta",
+                "checker": {
+                    "type": "yum",
+                    "package": "perl-Data-Dumper",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "perl-Data-Dumper",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["oraclelinux"],
@@ -44,6 +74,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://metacpan.org/dist/Thread-Queue",
+                "checker": {
+                    "type": "yum",
+                    "package": "perl-Thread-Queue",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "perl-Thread-Queue",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["oraclelinux"],
                 "osVersion": ["7"],
                 "abi": ["any"],
@@ -62,6 +107,28 @@ data = {
     "pkg-config": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
+                "checker": {
+                    "type": "yum",
+                    "package": "pkgconfig",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "pkgconfig",
+                    "postInstallCommands": [
+                        ["mkdir", "-p", "/usr/local/share/aclocal"],
+                        [
+                            "ln", "-s", "/usr/share/aclocal/pkg.m4",
+                            "/usr/local/share/aclocal/pkg.m4"
+                        ],
+                    ],
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["archlinux"],

@@ -57,6 +57,8 @@ Parameters of sample's targets passing to make in key=value form.
 Distribution. This is not OS and OS's version of your PC. Typically it is OS
 and OS's version of base Docker image. Currently supported:
 
+* amazonlinux
+    * 2
 * archlinux
     * latest
 * fedora

@@ -1,4 +1,38 @@
 data = {
+    "tar": {
+        "platform": "host",
+        "projects": [
+            {
+                "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=tar",
+                "checker": {
+                    "type": "yum",
+                    "package": "tar",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "tar",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["oraclelinux"],
+                "osVersion": ["7"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=tar",
+                "checker": {
+                    "type": "yum",
+                    "package": "tar",
+                },
+                "installer": {
+                    "type": "not-needed",
+                },
+            },
+        ],
+    },
     "tinyfiledialogs": {
         "type": "library",
         "platform": "target",
@@ -67,6 +101,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=wget",
+                "checker": {
+                    "type": "yum",
+                    "package": "wget",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "wget",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["archlinux"],
                 "osVersion": ["latest"],
                 "abi": ["any"],
@@ -102,6 +151,31 @@ data = {
         "projects": [
             {
                 "arch": ["x86_64"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://fossies.org/linux/binutils/binutils/NEWS",
+                "checker": {
+                    "type": "yum",
+                    "package": "binutils",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin"],
+                        [
+                            "ln", "-s", "/usr/bin/ar",
+                            "/usr/local/bin/x86_64-linux-gnu-ar"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/strip",
+                            "/usr/local/bin/x86_64-linux-gnu-strip"
+                        ],
+                    ]
+                },
+            },
+            {
+                "arch": ["x86_64"],
                 "os": ["oraclelinux"],
                 "osVersion": ["7"],
                 "abi": ["any"],
@@ -130,6 +204,28 @@ data = {
     "x86_64-linux-gnu-g++": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "prereqs": ["g++"],
+                "checker": {
+                    "type": "yum",
+                    "package": "g++",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin"],
+                        [
+                            "ln", "-s", "/usr/bin/g++",
+                            "/usr/local/bin/x86_64-linux-gnu-g++"
+                        ],
+                    ]
+                },
+            },
             {
                 "arch": ["x86_64"],
                 "os": ["archlinux"],
@@ -194,6 +290,44 @@ data = {
     "x86_64-linux-gnu-gcc": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://gcc.gnu.org/",
+                "prereqs": ["gcc"],
+                "checker": {
+                    "type": "yum",
+                    "package": "gcc",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin"],
+                        [
+                            "ln", "-s", "/usr/bin/gcc",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcc-ar",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc-ar"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcc-nm",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc-nm"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcc-ranlib",
+                            "/usr/local/bin/x86_64-linux-gnu-gcc-ranlib"
+                        ],
+                        [
+                            "ln", "-s", "/usr/bin/gcov",
+                            "/usr/local/bin/x86_64-linux-gnu-gcov"
+                        ],
+                    ]
+                },
+            },
             {
                 "arch": ["x86_64"],
                 "os": ["archlinux"],
@@ -290,6 +424,49 @@ data = {
     "x86_64-linux-gnu-pkg-config": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["x86_64"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["gnu"],
+                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
+                "prereqs": [
+                    "pkg-config",
+                ],
+                "checker": {
+                    "type": "yum",
+                    "package": "pkgconfig",
+                },
+                "installer": {
+                    "type": "cmd",
+                    "cmds": [
+                        ["mkdir", "-p", "/usr/local/bin/"],
+                        ["sh", "-c", "echo "
+                            "'#!/bin/sh\n"
+                            "export PKG_CONFIG_DIR=\n"
+                            "export PKG_CONFIG_PATH="
+                                "/usr/local/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/share/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\n"
+                            "export PKG_CONFIG_LIBDIR="
+                                "/usr/local/lib/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
+                                "/usr/local/share/pkgconfig:"
+                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
+                                "\n"
+                            "export PKG_CONFIG_SYSROOT_DIR=/\n"
+                            "exec pkg-config \"$@\"' "
+                            "> /usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                        [
+                            "chmod", "+x",
+                            "/usr/local/bin/x86_64-linux-gnu-pkg-config",
+                        ],
+                    ],
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["archlinux"],

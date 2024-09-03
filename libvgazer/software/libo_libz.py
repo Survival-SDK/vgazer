@@ -176,6 +176,32 @@ data = {
             },
             {
                 "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=libtool",
+                "prereqs": [
+                    "autoconf",
+                    "automake",
+                    "gcc",
+                    "help2man",
+                    "make",
+                    "makeinfo",
+                    "patch",
+                    "pkg-config",
+                    "xz",
+                ],
+                "checker": {
+                    "type": "git",
+                    "url": "git://git.savannah.gnu.org/libtool.git",
+                },
+                "installer": {
+                    "type": "custom",
+                    "name": "libtool",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["archlinux"],
                 "osVersion": ["latest"],
                 "abi": ["any"],

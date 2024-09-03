@@ -12,10 +12,11 @@ class HostDetector:
         with OsRelease() as osRelease:
             try:
                 return {
+                    "amzn":   "amazonlinux",
                     "arch":   "archlinux",
+                    "debian": "debian",
                     "fedora": "fedora",
                     "ol":     "oraclelinux",
-                    "debian": "debian",
                 }[osRelease.GetEntry("ID")]
             except KeyError:
                 raise OsDataNotFound(
@@ -31,13 +32,13 @@ class HostDetector:
                  "Unable to find data of Fedora version: " + os.name)
 
     @staticmethod
-    def GetOracleLinuxVersion():
+    def GetQuottedLinuxVersion():
         with OsRelease() as osRelease:
             try:
                 return osRelease.GetEntry("VERSION").strip("\"").split(".")[0]
             except KeyError:
                 raise ReleaseDataNotFound(
-                 "Unable to find data of Oracle Linux version: " + os.name)
+                 "Unable to find data of Linux Distro version: " + os.name)
 
     @staticmethod
     def GetDebianVersion():
@@ -61,8 +62,8 @@ class HostDetector:
             if self.os == "fedora":
                 self.osVersion = HostDetector.GetFedoraVersion()
                 self.abi = "gnu"
-            if self.os == "oraclelinux":
-                self.osVersion = HostDetector.GetOracleLinuxVersion()
+            if self.os == "oraclelinux" or self.os == "amazonlinux":
+                self.osVersion = HostDetector.GetQuottedLinuxVersion()
                 self.abi = "gnu"
             if self.os == "debian":
                 self.osVersion = HostDetector.GetDebianVersion()

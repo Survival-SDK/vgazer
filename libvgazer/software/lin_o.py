@@ -109,6 +109,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "http://savannah.gnu.org/news/?group=m4",
+                "checker": {
+                    "type": "yum",
+                    "package": "m4",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "m4",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["archlinux"],
                 "osVersion": ["latest"],
                 "abi": ["any"],
@@ -142,6 +157,21 @@ data = {
     "make": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://savannah.gnu.org/news/?group=make",
+                "checker": {
+                    "type": "yum",
+                    "package": "make",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "make",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["archlinux"],
@@ -192,6 +222,21 @@ data = {
     "makeinfo": {
         "platform": "host",
         "projects": [
+            {
+                "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://git.savannah.gnu.org/cgit/texinfo.git/plain/NEWS",
+                "checker": {
+                    "type": "yum",
+                    "package": "texinfo",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "texinfo",
+                },
+            },
             {
                 "arch": ["any"],
                 "os": ["archlinux"],
@@ -263,6 +308,8 @@ data = {
     "ninja": {
         "platform": "host",
         "projects": [
+            # xorgproto requires ninja >= 1.8.2
+            # Amazon Linux has ninja 1.7.2
             {
                 "fallback": True,
                 "arch": ["any"],

@@ -99,6 +99,8 @@ def GenerateSampleTargets(gazer, hostPlatformsList, targetPlatformsList,
 def main():
     gazer = Vgazer(supportOnly=True)
     hostPlatformsList = [
+        Platform(arch=gazer.GetHostPlatform().GetArch(), os="amazonlinux",
+         osVersion="2", abi="gnu", suppressGenericFallback=True),
         Platform(arch=gazer.GetHostPlatform().GetArch(), os="archlinux",
          osVersion="latest", abi="gnu", suppressGenericFallback=True),
         Platform(arch=gazer.GetHostPlatform().GetArch(), os="fedora",

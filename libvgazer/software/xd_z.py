@@ -227,6 +227,21 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
+                "os": ["amazonlinux"],
+                "osVersion": ["2"],
+                "abi": ["any"],
+                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
+                "checker": {
+                    "type": "yum",
+                    "package": "xz",
+                },
+                "installer": {
+                    "type": "yum",
+                    "package": "xz",
+                },
+            },
+            {
+                "arch": ["any"],
                 "os": ["archlinux"],
                 "osVersion": ["latest"],
                 "abi": ["gnu"],
