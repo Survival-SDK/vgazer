@@ -20,7 +20,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
@@ -55,7 +55,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["gnu"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
@@ -217,7 +217,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["gnu"],
                 "license": ["bsd-3"],
                 "changelog": "https://github.com/benhoyt/inih/releases",
@@ -263,7 +263,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["any"],
                 "license": ["bsd-3"],
                 "changelog": "https://include-what-you-use.org/",

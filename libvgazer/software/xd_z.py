@@ -32,7 +32,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["gnu"],
                 "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",

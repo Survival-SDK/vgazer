@@ -219,7 +219,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["any"],
                 "changelog": "https://clang.llvm.org/extra/ReleaseNotes.html#improvements-to-clang-tidy",
                 "checker": {
@@ -281,7 +281,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["any"],
                 "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
                 "checker": {

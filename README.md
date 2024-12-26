@@ -61,6 +61,7 @@ and OS's version of base Docker image. Currently supported:
     * 2
 * fedora
     * 40
+    * 41
 
 **tarch** - architecture of device for crossplatform compiling libraries.
 Currently supported:

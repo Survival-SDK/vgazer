@@ -74,7 +74,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["gnu"],
                 "license": ["libpng-2.0"],
                 "changelog": "http://www.libpng.org/pub/png/pngnews.html",

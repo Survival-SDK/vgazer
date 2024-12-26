@@ -27,7 +27,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["gnu"],
                 "license": ["mit"],
                 "changelog": "http://luajit.org/status.html",
@@ -109,7 +109,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["any"],
                 "changelog": "https://savannah.gnu.org/news/?group=make",
                 "checker": {
@@ -244,7 +244,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["40", "41"],
                 "abi": ["gnu"],
                 "license": ["mit", "bsd-1", "bsd-3"],
                 "changelog": "https://gitlab.freedesktop.org/glvnd/libglvnd/-/tags",
