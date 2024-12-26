@@ -124,27 +124,6 @@ data = {
                     "package": "autoconf",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/autoconf/NEWS",
-                "prereqs": [
-                    "m4",
-                    "make",
-                    "perl-data-dumper",
-                    "wget",
-                ],
-                "checker": {
-                    "type": "custom",
-                    "name": "autoconf",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "autoconf",
-                },
-            },
         ],
     },
     "automake": {
@@ -210,31 +189,6 @@ data = {
                 "installer": {
                     "type": "pacman",
                     "package": "automake",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                # autoconf >=2.70 required for building xlib
-                # Oracle Linux 7 has only 2.69
-                # automake depends on autoconf
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "https://fossies.org/linux/automake/NEWS",
-                "prereqs": [
-                    "autoconf",
-                    "gcc",
-                    "make",
-                    "perl-thread-queue",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "https://git.savannah.gnu.org/git/automake.git",
-                    "hint": r'v\d\.\d+\w?(\.\d+)?$',
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "automake",
                 },
             },
         ],

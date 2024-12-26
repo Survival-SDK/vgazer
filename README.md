@@ -63,8 +63,6 @@ and OS's version of base Docker image. Currently supported:
     * latest
 * fedora
     * 40
-* oraclelinux
-    * 7
 
 **tarch** - architecture of device for crossplatform compiling libraries.
 Currently supported:
@@ -95,9 +93,9 @@ OS:
 $ make image-build arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
 **Example**. Build docker image of environment with x86_64 architecture (your
-PC's arch must be x86_64) and Oracle Linux 7 as base image:
+PC's arch must be x86_64) and Amazon Linux 2 as base image:
 ```console
-$ make image-build arch=x86_64 os=oraclelinux ver=7
+$ make image-build arch=x86_64 os=amazonlinux ver=2
 ```
 
 ### Run test image in interactive mode (bash or sh)
@@ -105,9 +103,9 @@ $ make image-build arch=x86_64 os=oraclelinux ver=7
 $ make image_launch arch=<host_arch> os=<host_os> ver=<host_os_version>
 ```
 **Example**. Launch docker image of environment with x86_64 architecture and
-Oracle Linux 7 as base image in interactive mode:
+Amazon Linux 2 as base image in interactive mode:
 ```console
-$ make image_launch arch=x86_64 os=oraclelinux ver=7
+$ make image_launch arch=x86_64 os=amazonlinux ver=2
 ```
 
 ### Output most recent available version of software for host platform
@@ -118,10 +116,10 @@ $ make sample-version software=<software> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example**. Output most recent available version of cmake that can be
-installed with apt-get on host environment with x86_64 architecture and Oracle
-Linux 7 as base image.
+installed with apt-get on host environment with x86_64 architecture and Amazon
+Linux 2 as base image.
 ```console
-$ make sample-version software=cmake arch=x86_64 os=oraclelinux ver=7
+$ make sample-version software=cmake arch=x86_64 os=amazonlinux ver=2
 ```
 
 ### Output most recent available version of software for target platform
@@ -134,9 +132,9 @@ $ make sample-version software=<software> harch=<host_arch> hos=<host_os> \
 ```
 **Example**. Output most recent available version of cjson that can be
 installed download, build and copy on host environment with x86_64 architecture
-and Oracle Linux 7 as base image for x86_64-linux-gnu target.
+and Amazon Linux 2 as base image for x86_64-linux-gnu target.
 ```console
-$ make sample-version software=cjson harch=x86_64 hos=oraclelinux hver=7 \
+$ make sample-version software=cjson harch=x86_64 hos=amazonlinux hver=2 \
     tarch=x86_64 tos=linux tabi=gnu
 ```
 
@@ -148,9 +146,9 @@ $ make sample-install software=<tool> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example**. Install CMake via apt-get on host environment with x86_64
-architecture and Oracle Linux 7 as base image.
+architecture and Amazon Linux 2 as base image.
 ```console
-$ make sample-install software=cmake arch=x86_64 os=oraclelinux ver=7
+$ make sample-install software=cmake arch=x86_64 os=amazonlinux ver=2
 ```
 
 ### Install library for target platform on host platform
@@ -161,9 +159,9 @@ $ make sample-install software=<library> harch=<host_arch> hos=<host_os> \
 ```
 **Example**. Install manually (download, build and copy to system path) cjson
 library for x86-linux-gnu target on host environment with x86_64 architecture
-and Oracle Linux 7 as base image.
+and Amazon Linux 2 as base image.
 ```console
-$ make sample-install software=cjson harch=x86_64 hos=oraclelinux hver=7 \
+$ make sample-install software=cjson harch=x86_64 hos=amazonlinux hver=2 \
     tarch=x86_64 tos=linux tabi=gnu
 ```
 
@@ -175,9 +173,9 @@ $ make sample-install software=<library> arch=<host_arch> os=<host_os> \
     ver=<host_os_version>
 ```
 **Example**. Install zlib library via apt-get on host environment with x86_64
-architecture and Oracle Linux 7 as base image.
+architecture and Amazon Linux 2 as base image.
 ```console
-$ make sample-install software=zlib arch=x86_64 os=oraclelinux ver=7
+$ make sample-install software=zlib arch=x86_64 os=amazonlinux ver=2
 ```
 
 ## Check code

@@ -34,15 +34,6 @@ else
 	echo "Error: host system's arch is not x86_64"
 endif
 
-image-x86_64-oraclelinux-7-build:
-ifeq ($(ARCH),x86_64)
-	docker build --network=host --progress=plain $(DOCKER_NO_CACHE) \
-     -f dockerfiles/vgazer-deps-x86_64-oraclelinux-7.dockerfile \
-     -t vgazer-deps:x86_64-oraclelinux-7 .
-else
-	echo "Error: host system's arch is not x86_64"
-endif
-
 ifneq ($(and $(arch),$(os),$(ver)),)
 image-build: image-$(arch)-$(os)-$(ver)-build
 else

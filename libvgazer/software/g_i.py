@@ -47,21 +47,6 @@ data = {
                     "package": "gcc-c++",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "checker": {
-                    "type": "yum",
-                    "package": "gcc-c++",
-                },
-                "installer": {
-                    "type": "yum",
-                    "package": "gcc-c++",
-                },
-            },
         ],
     },
     "gcc": {
@@ -109,21 +94,6 @@ data = {
                 },
                 "installer": {
                     "type": "dnf",
-                    "package": "gcc",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["gnu"],
-                "changelog": "https://gcc.gnu.org/",
-                "checker": {
-                    "type": "yum",
-                    "package": "gcc",
-                },
-                "installer": {
-                    "type": "yum",
                     "package": "gcc",
                 },
             },
@@ -189,23 +159,6 @@ data = {
                     "package": "help2man",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
-                "checker": {
-                    "type": "yum",
-                    "repo": "ol7_optional_latest",
-                    "package": "help2man",
-                },
-                "installer": {
-                    "type": "yum",
-                    "repo": "ol7_optional_latest",
-                    "package": "help2man",
-                },
-            },
         ],
     },
     "icu": {
@@ -266,30 +219,6 @@ data = {
                 "installer": {
                     "type": "dnf",
                     "package": "libicu-devel",
-                },
-            },
-            {
-                "fallback": True,
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["gnu"],
-                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
-                "changelog": "https://github.com/unicode-org/icu/releases",
-                "prereqs": [
-                    "{triplet}-gcc",
-                    "{triplet}-g++",
-                    "g++",
-                    "gcc",
-                    "make",
-                ],
-                "checker": {
-                    "type": "fixed",
-                    "version": "67.1",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "icu-67",
                 },
             },
         ],

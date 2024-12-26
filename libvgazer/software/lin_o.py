@@ -137,21 +137,6 @@ data = {
                     "package": "m4",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "http://savannah.gnu.org/news/?group=m4",
-                "checker": {
-                    "type": "yum",
-                    "package": "m4",
-                },
-                "installer": {
-                    "type": "yum",
-                    "package": "m4",
-                },
-            },
         ],
     },
     "make": {
@@ -202,21 +187,6 @@ data = {
                     "package": "make",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=make",
-                "checker": {
-                    "type": "yum",
-                    "package": "make",
-                },
-                "installer": {
-                    "type": "yum",
-                    "package": "make",
-                },
-            },
         ],
     },
     "makeinfo": {
@@ -249,21 +219,6 @@ data = {
                 },
                 "installer": {
                     "type": "pacman",
-                    "package": "texinfo",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "https://git.savannah.gnu.org/cgit/texinfo.git/plain/NEWS",
-                "checker": {
-                    "type": "yum",
-                    "package": "texinfo",
-                },
-                "installer": {
-                    "type": "yum",
                     "package": "texinfo",
                 },
             },

@@ -256,21 +256,6 @@ data = {
                     "package": "xz",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
-                "checker": {
-                    "type": "yum",
-                    "package": "xz",
-                },
-                "installer": {
-                    "type": "yum",
-                    "package": "xz",
-                },
-            },
         ],
     },
     "zip": {

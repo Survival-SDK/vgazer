@@ -215,31 +215,6 @@ data = {
                     "package": "libtool",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["oraclelinux"],
-                "osVersion": ["7"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=libtool",
-                "prereqs": [
-                    "autoconf",
-                    "automake",
-                    "gcc",
-                    "help2man",
-                    "make",
-                    "makeinfo",
-                    "patch",
-                    "xz",
-                ],
-                "checker": {
-                    "type": "git",
-                    "url": "git://git.savannah.gnu.org/libtool.git",
-                },
-                "installer": {
-                    "type": "custom",
-                    "name": "libtool",
-                },
-            },
         ],
     },
     "libvorbis": {

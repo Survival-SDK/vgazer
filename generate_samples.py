@@ -105,8 +105,6 @@ def main():
          osVersion="latest", abi="gnu", suppressGenericFallback=True),
         Platform(arch=gazer.GetHostPlatform().GetArch(), os="fedora",
          osVersion="40", abi="gnu", suppressGenericFallback=True),
-        Platform(arch=gazer.GetHostPlatform().GetArch(), os="oraclelinux",
-         osVersion="7", abi="gnu", suppressGenericFallback=True),
     ]
     targetPlatformsList = [
         Platform(arch="x86_64", os="linux", osVersion="any", abi="gnu"),
