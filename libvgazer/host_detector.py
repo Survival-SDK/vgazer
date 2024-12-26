@@ -17,6 +17,7 @@ class HostDetector:
                     "debian": "debian",
                     "fedora": "fedora",
                     "ol":     "oraclelinux",
+                    "ubuntu": "ubuntu",
                 }[osRelease.GetEntry("ID")]
             except KeyError:
                 raise OsDataNotFound(
@@ -49,6 +50,15 @@ class HostDetector:
                 raise ReleaseDataNotFound(
                  "Unable to find data of Debian version: " + os.name)
 
+    @staticmethod
+    def GetUbuntuVersion():
+        with OsRelease() as osRelease:
+            try:
+                return osRelease.GetEntry("VERSION_ID").strip("\"")
+            except KeyError:
+                raise ReleaseDataNotFound(
+                 "Unable to find data of Ubuntu version: " + os.name)
+
     def __init__(self):
         self.unknownOs = False
         self.errorMsg = "No error"
@@ -67,6 +77,9 @@ class HostDetector:
                 self.abi = "gnu"
             if self.os == "debian":
                 self.osVersion = HostDetector.GetDebianVersion()
+                self.abi = "gnu"
+            if self.os == "ubuntu":
+                self.osVersion = HostDetector.GetUbuntuVersion()
                 self.abi = "gnu"
         else:
             self.unknownOs = True
