@@ -31,22 +31,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
-                "checker": {
-                    "type": "pacman",
-                    "package": "libx11",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "libx11",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["fedora"],
                 "osVersion": ["40"],
                 "abi": ["gnu"],
@@ -114,21 +98,6 @@ data = {
                     "name": "xorg-macros",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/util/macros/-/tags",
-                "checker": {
-                    "type": "pacman",
-                    "package": "xorg-util-macros",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "xorg-util-macros",
-                },
-            },
         ],
     },
     "xorgproto": {
@@ -157,22 +126,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "xorgproto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["mit", "smlnj"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/proto/xorgproto/-/tags",
-                "checker": {
-                    "type": "pacman",
-                    "package": "xorgproto",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "xorgproto",
                 },
             },
         ],
@@ -204,22 +157,6 @@ data = {
                     "name": "xtrans",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["mit", "hpnd", "x11", "hpnd-sv"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxtrans/-/tags",
-                "checker": {
-                    "type": "pacman",
-                    "package": "xtrans",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "xtrans",
-                },
-            },
         ],
     },
     "xz": {
@@ -237,22 +174,6 @@ data = {
                 },
                 "installer": {
                     "type": "yum",
-                    "package": "xz",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["pd"],
-                "changelog": "https://github.com/tukaani-project/xz/blob/master/NEWS",
-                "checker": {
-                    "type": "pacman",
-                    "package": "xz",
-                },
-                "installer": {
-                    "type": "pacman",
                     "package": "xz",
                 },
             },
@@ -307,22 +228,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "zlib",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["zlib"],
-                "changelog": "https://www.zlib.net/ChangeLog.txt",
-                "checker": {
-                    "type": "pacman",
-                    "package": "zlib",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "zlib",
                 },
             },
             {

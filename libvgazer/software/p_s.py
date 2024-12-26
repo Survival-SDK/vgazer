@@ -86,21 +86,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
-                "checker": {
-                    "type": "pacman",
-                    "package": "pkgconf",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "pkgconf",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["fedora"],
                 "osVersion": ["40"],
                 "abi": ["any"],
@@ -193,22 +178,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "license": ["unlicense"],
-                "changelog": "https://github.com/nothings/stb/blob/master/stb_image.h#L51",
-                "checker": {
-                    "type": "pacman",
-                    "package": "stb",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "stb",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["fedora"],
                 "osVersion": ["40"],
                 "abi": ["any"],
@@ -245,22 +214,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "stb_image_write",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "license": ["unlicense"],
-                "changelog": "https://github.com/nothings/stb/blob/master/stb_image_write.h#L1630",
-                "checker": {
-                    "type": "pacman",
-                    "package": "stb",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "stb",
                 },
             },
             {
@@ -305,22 +258,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "license": ["unlicense"],
-                "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
-                "checker": {
-                    "type": "pacman",
-                    "package": "stb",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "stb",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["fedora"],
                 "osVersion": ["40"],
                 "abi": ["any"],
@@ -357,22 +294,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "stb_vorbis",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "license": ["unlicense"],
-                "changelog": "https://github.com/nothings/stb/blob/master/stb_vorbis.c#L39",
-                "checker": {
-                    "type": "pacman",
-                    "package": "stb",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "stb",
                 },
             },
             {

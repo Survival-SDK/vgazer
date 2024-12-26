@@ -19,21 +19,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "prereqs": ["gcc"],
-                "checker": {
-                    "type": "pacman",
-                    "package": "gcc",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["fedora"],
                 "osVersion": ["40"],
                 "abi": ["any"],
@@ -64,21 +49,6 @@ data = {
                 },
                 "installer": {
                     "type": "yum",
-                    "package": "gcc",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "checker": {
-                    "type": "pacman",
-                    "package": "gcc",
-                },
-                "installer": {
-                    "type": "pacman",
                     "package": "gcc",
                 },
             },
@@ -144,21 +114,6 @@ data = {
                     "package": "help2man",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=coreutils",
-                "checker": {
-                    "type": "pacman",
-                    "package": "help2man",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "help2man",
-                },
-            },
         ],
     },
     "icu": {
@@ -187,22 +142,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "icu",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
-                "changelog": "https://github.com/unicode-org/icu/releases",
-                "checker": {
-                    "type": "pacman",
-                    "package": "icu",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "icu",
                 },
             },
             {
@@ -273,22 +212,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "inih",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://github.com/benhoyt/inih/releases",
-                "checker": {
-                    "type": "pacman",
-                    "package": "libinih",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "libinih",
                 },
             },
             {

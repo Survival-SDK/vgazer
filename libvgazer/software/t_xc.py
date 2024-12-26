@@ -52,21 +52,6 @@ data = {
         "projects": [
             {
                 "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://valgrind.org/docs/manual/dist.news.html",
-                "checker": {
-                    "type": "pacman",
-                    "package": "valgrind",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": ["valgrind", "debuginfod"],
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["fedora"],
                 "osVersion": ["40"],
                 "abi": ["any"],
@@ -97,21 +82,6 @@ data = {
                 },
                 "installer": {
                     "type": "yum",
-                    "package": "wget",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://savannah.gnu.org/news/?group=wget",
-                "checker": {
-                    "type": "pacman",
-                    "package": "wget",
-                },
-                "installer": {
-                    "type": "pacman",
                     "package": "wget",
                 },
             },
@@ -170,21 +140,6 @@ data = {
                             "/usr/local/bin/x86_64-linux-gnu-g++"
                         ],
                     ]
-                },
-            },
-            {
-                "arch": ["x86_64"],
-                "os": ["archlinux"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "prereqs": ["g++"],
-                "checker": {
-                    "type": "pacman",
-                    "package": "gcc",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
             {
@@ -250,21 +205,6 @@ data = {
                             "/usr/local/bin/x86_64-linux-gnu-gcov"
                         ],
                     ]
-                },
-            },
-            {
-                "arch": ["x86_64"],
-                "os": ["archlinux"],
-                "osVersion": ["any"],
-                "abi": ["any"],
-                "changelog": "https://gcc.gnu.org/",
-                "prereqs": ["gcc"],
-                "checker": {
-                    "type": "pacman",
-                    "package": "gcc",
-                },
-                "installer": {
-                    "type": "not-needed",
                 },
             },
             {
@@ -355,45 +295,6 @@ data = {
             },
             {
                 "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
-                "prereqs": [
-                    "pkg-config",
-                ],
-                "checker": {
-                    "type": "pacman",
-                    "package": "pkg-config",
-                },
-                "installer": {
-                    "type": "cmd",
-                    "cmds": [
-                        ["mkdir", "-p", "/usr/local/bin/"],
-                        ["sh", "-c", "echo "
-                            "'#!/bin/sh\n"
-                            "export PKG_CONFIG_DIR=\n"
-                            "export PKG_CONFIG_PATH="
-                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
-                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\n"
-                            "export PKG_CONFIG_LIBDIR="
-                                "/usr/local/x86_64-linux-gnu/lib/pkgconfig:"
-                                "/usr/local/x86_64-linux-gnu/share/pkgconfig"
-                                "\n"
-                            "export PKG_CONFIG_SYSROOT_DIR=/\n"
-                            "exec pkg-config \"$@\"' "
-                            "> /usr/local/bin/x86_64-linux-gnu-pkg-config",
-                        ],
-                        [
-                            "chmod", "+x",
-                            "/usr/local/bin/x86_64-linux-gnu-pkg-config",
-                        ],
-                    ],
-                },
-            },
-            {
-                "arch": ["any"],
                 "os": ["fedora"],
                 "osVersion": ["40"],
                 "abi": ["gnu"],
@@ -427,89 +328,6 @@ data = {
                         [
                             "chmod", "+x",
                             "/usr/local/bin/x86_64-linux-gnu-pkg-config",
-                        ],
-                    ],
-                },
-            },
-        ],
-    },
-    "x86_64-w64-mingw32-g++": {
-        "platform": "host",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://www.mingw-w64.org/changelog/",
-                "prereqs": ["x86_64-w64-mingw32-gcc"],
-                "checker": {
-                    "type": "pacman",
-                    "package": "mingw-w64-gcc",
-                },
-                "installer": {
-                    "type": "not-needed",
-                },
-            },
-        ],
-    },
-    "x86_64-w64-mingw32-gcc": {
-        "platform": "host",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["any"],
-                "changelog": "https://www.mingw-w64.org/changelog/",
-                "checker": {
-                    "type": "pacman",
-                    "package": "mingw-w64-gcc",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "mingw-w64-gcc",
-                },
-            },
-        ],
-    },
-    "x86_64-w64-mingw32-pkg-config": {
-        "platform": "host",
-        "projects": [
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
-                "prereqs": [
-                    "pkg-config",
-                ],
-                "checker": {
-                    "type": "pacman",
-                    "package": "pkgconf",
-                },
-                "installer": {
-                    "cmds": [
-                        ["mkdir", "-p", "/usr/local/bin/"],
-                        ["sh", "-c", "echo "
-                            "'#!/bin/sh\n"
-                            "export PKG_CONFIG_DIR=\n"
-                            "export PKG_CONFIG_PATH="
-                                "/usr/local/x86_64-w64-mingw32/lib/pkgconfig:"
-                                "/usr/local/x86_64-w64-mingw32/share/pkgconfig"
-                                "\n"
-                            "export PKG_CONFIG_LIBDIR="
-                                "/usr/local/x86_64-w64-mingw32/lib/pkgconfig:"
-                                "/usr/local/x86_64-w64-mingw32/share/pkgconfig"
-                                "\n"
-                            "export PKG_CONFIG_SYSROOT_DIR=/\n"
-                            "exec pkg-config \"$@\"' "
-                            ">> /usr/local/bin/x86_64-w64-mingw32-pkg-config",
-                        ],
-                        [
-                            "chmod", "+x",
-                            "/usr/local/bin/x86_64-w64-mingw32-pkg-config",
                         ],
                     ],
                 },
@@ -550,22 +368,6 @@ data = {
                     },
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://gitlab.freedesktop.org/xorg/lib/libxau/-/tags",
-                "checker": {
-                    "type": "pacman",
-                    "package": "libxau",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "libxau",
-                },
-            },
         ],
     },
     "xcb": {
@@ -599,22 +401,6 @@ data = {
                     "name": "xcb",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "changelog": "https://xcb.freedesktop.org/",
-                "checker": {
-                    "type": "pacman",
-                    "package": "libxcb",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "libxcb",
-                },
-            },
         ],
     },
     "xcb-proto": {
@@ -641,22 +427,6 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "xcb-proto",
-                },
-            },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["x11"],
-                "changelog": "https://xcb.freedesktop.org/",
-                "checker": {
-                    "type": "pacman",
-                    "package": "xcb-proto",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "xcb-proto",
                 },
             },
         ],

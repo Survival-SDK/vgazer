@@ -101,22 +101,6 @@ data = {
                     "name": "libffi",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["archlinux"],
-                "osVersion": ["latest"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://github.com/libffi/libffi/releases",
-                "checker": {
-                    "type": "pacman",
-                    "package": "libffi",
-                },
-                "installer": {
-                    "type": "pacman",
-                    "package": "libffi",
-                },
-            },
         ],
     },
     # libintl under GNU LGPL 2.1

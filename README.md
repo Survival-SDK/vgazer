@@ -59,8 +59,6 @@ and OS's version of base Docker image. Currently supported:
 
 * amazonlinux
     * 2
-* archlinux
-    * latest
 * fedora
     * 40
 
