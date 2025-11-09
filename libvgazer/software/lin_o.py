@@ -154,7 +154,7 @@ data = {
                 "abi": ["any"],
                 "changelog": "https://mesonbuild.com/Release-notes.html",
                 "checker": {
-                    "type": "yolk3k",
+                    "type": "pypi",
                     "package": "meson",
                 },
                 "installer": {

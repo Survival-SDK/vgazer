@@ -3,7 +3,7 @@ from libvgazer.version.apt_cache import CheckAptCache
 from libvgazer.version.dnf       import CheckDnf
 from libvgazer.version.git       import CheckGit
 from libvgazer.version.pacman    import CheckPacman
-from libvgazer.version.yolk3k    import CheckYolk3k
+from libvgazer.version.pypi      import CheckPyPi
 from libvgazer.version.yum       import CheckYum
 
 class CheckersManager:
@@ -27,11 +27,7 @@ class CheckersManager:
             "pacman": lambda platform, checkerData: CheckPacman(
                 checkerData["package"]
             ),
-            "pypi": lambda platform, checkerData: CheckPypi(
-                auth["base"],
-                checkerData["package"]
-            ),
-            "yolk3k": lambda platform, checkerData: CheckYolk3k(
+            "pypi": lambda platform, checkerData: CheckPyPi(
                 checkerData["package"]
             ),
             "yum": lambda platform, checkerData: CheckYum(

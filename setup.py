@@ -18,7 +18,6 @@ setup(
         "bs4",
         "multimethod",
         "requests",
-        "yolk3k",
     ],
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
