@@ -37,7 +37,7 @@ def CreateInstallList(gazer, hostPlatformsList, targetPlatformsList):
 def GenerateImageLaunchTarget(hostPlatform):
     return ("image-{1}-{2}-{3}-launch:\n"
      "\tdocker run --net=host -i -t \\\n"
-     "     -v ~/.vgazer:/root/.vgazer -v `pwd`:/mnt/vgazer \\\n"
+     "     -v ~/.vgazer:/root/.vgazer -v $(pwd):/mnt/vgazer \\\n"
      "     --entrypoint {0} vgazer-deps:{1}-{2}-{3} \\\n"
      "\n".format("/bin/bash", hostPlatform.GetArch(), hostPlatform.GetOs(),
       hostPlatform.GetOsVersion()))
