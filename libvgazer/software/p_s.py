@@ -87,7 +87,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "checker": {
@@ -179,7 +179,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://github.com/nothings/stb/blob/master/stb_image.h#L51",
@@ -219,7 +219,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://github.com/nothings/stb/blob/master/stb_image_write.h#L1630",
@@ -259,7 +259,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://github.com/nothings/stb/blob/master/stb_rect_pack.h#L42",
@@ -299,7 +299,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "license": ["unlicense"],
                 "changelog": "https://github.com/nothings/stb/blob/master/stb_vorbis.c#L39",

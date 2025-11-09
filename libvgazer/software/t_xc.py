@@ -53,7 +53,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "changelog": "https://valgrind.org/docs/manual/dist.news.html",
                 "checker": {
@@ -145,7 +145,7 @@ data = {
             {
                 "arch": ["x86_64"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "prereqs": ["g++"],
@@ -210,7 +210,7 @@ data = {
             {
                 "arch": ["x86_64"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "prereqs": ["gcc"],
@@ -296,7 +296,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["43"],
                 "abi": ["gnu"],
                 "changelog": "https://gitlab.freedesktop.org/pkg-config/pkg-config/-/blob/master/NEWS?ref_type=heads",
                 "prereqs": [

@@ -20,7 +20,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
@@ -55,7 +55,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["gnu"],
                 "changelog": "https://gcc.gnu.org/",
                 "checker": {
@@ -144,22 +144,22 @@ data = {
                     "name": "icu",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["fedora"],
-                "osVersion": ["40"],
-                "abi": ["gnu"],
-                "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
-                "changelog": "https://github.com/unicode-org/icu/releases",
-                "checker": {
-                    "type": "dnf",
-                    "package": "libicu-devel",
-                },
-                "installer": {
-                    "type": "dnf",
-                    "package": "libicu-devel",
-                },
-            },
+            # {
+            #     "arch": ["any"],
+            #     "os": ["fedora"],
+            #     "osVersion": ["40"],
+            #     "abi": ["gnu"],
+            #     "license": ["unicode", "icu", "bsd-3", "naist", "bsd-2"],
+            #     "changelog": "https://github.com/unicode-org/icu/releases",
+            #     "checker": {
+            #         "type": "dnf",
+            #         "package": "libicu-devel",
+            #     },
+            #     "installer": {
+            #         "type": "dnf",
+            #         "package": "libicu-devel",
+            #     },
+            # },
         ],
     },
     "icu-54.2": {
@@ -217,7 +217,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["gnu"],
                 "license": ["bsd-3"],
                 "changelog": "https://github.com/benhoyt/inih/releases",
@@ -263,7 +263,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "license": ["bsd-3"],
                 "changelog": "https://include-what-you-use.org/",

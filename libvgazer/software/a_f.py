@@ -26,22 +26,22 @@ data = {
                     "name": "alsa-lib",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["fedora"],
-                "osVersion": ["40"],
-                "abi": ["gnu"],
-                "license": ["lgpl-2.1"],
-                "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
-                "checker": {
-                    "type": "dnf",
-                    "package": "alsa-lib-devel",
-                },
-                "installer": {
-                    "type": "dnf",
-                    "package": "alsa-lib-devel",
-                },
-            },
+            # {
+            #     "arch": ["any"],
+            #     "os": ["fedora"],
+            #     "osVersion": ["40"],
+            #     "abi": ["gnu"],
+            #     "license": ["lgpl-2.1"],
+            #     "changelog": "https://www.alsa-project.org/wiki/Main_Page_News",
+            #     "checker": {
+            #         "type": "dnf",
+            #         "package": "alsa-lib-devel",
+            #     },
+            #     "installer": {
+            #         "type": "dnf",
+            #         "package": "alsa-lib-devel",
+            #     },
+            # },
         ],
     },
     "autoconf": {
@@ -91,6 +91,21 @@ data = {
                 "installer": {
                     "type": "custom",
                     "name": "autoconf",
+                },
+            },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["43"],
+                "abi": ["gnu"],
+                "changelog": "https://fossies.org/linux/autoconf/NEWS",
+                "checker": {
+                    "type": "dnf",
+                    "package": "autoconf",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "autoconf",
                 },
             },
         ],
@@ -145,6 +160,21 @@ data = {
                     "name": "automake",
                 },
             },
+            {
+                "arch": ["any"],
+                "os": ["fedora"],
+                "osVersion": ["43"],
+                "abi": ["gnu"],
+                "changelog": "https://fossies.org/linux/automake/NEWS",
+                "checker": {
+                    "type": "dnf",
+                    "package": "automake",
+                },
+                "installer": {
+                    "type": "dnf",
+                    "package": "automake",
+                },
+            },
         ],
     },
     "cfgpath": {
@@ -195,22 +225,22 @@ data = {
                     "name": "cjson",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["fedora"],
-                "osVersion": ["40"],
-                "abi": ["gnu"],
-                "license": ["mit"],
-                "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
-                "checker": {
-                    "type": "dnf",
-                    "package": "cjson",
-                },
-                "installer": {
-                    "type": "dnf",
-                    "package": "cjson",
-                },
-            },
+            # {
+            #     "arch": ["any"],
+            #     "os": ["fedora"],
+            #     "osVersion": ["40"],
+            #     "abi": ["gnu"],
+            #     "license": ["mit"],
+            #     "changelog": "https://github.com/DaveGamble/cJSON/blob/master/CHANGELOG.md",
+            #     "checker": {
+            #         "type": "dnf",
+            #         "package": "cjson",
+            #     },
+            #     "installer": {
+            #         "type": "dnf",
+            #         "package": "cjson",
+            #     },
+            # },
         ],
     },
     "clang-tidy": {
@@ -219,7 +249,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "changelog": "https://clang.llvm.org/extra/ReleaseNotes.html#improvements-to-clang-tidy",
                 "checker": {
@@ -281,7 +311,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["any"],
                 "changelog": "https://cmake.org/cmake/help/latest/release/index.html",
                 "checker": {
@@ -342,22 +372,22 @@ data = {
                     "name": "cmocka",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["fedora"],
-                "osVersion": ["40"],
-                "abi": ["gnu"],
-                "license": ["apache-2.0"],
-                "changelog": "https://cmocka.org/#news",
-                "checker": {
-                    "type": "dnf",
-                    "package": "libcmocka-devel",
-                },
-                "installer": {
-                    "type": "dnf",
-                    "package": "libcmocka-devel",
-                },
-            },
+            # {
+            #     "arch": ["any"],
+            #     "os": ["fedora"],
+            #     "osVersion": ["40"],
+            #     "abi": ["gnu"],
+            #     "license": ["apache-2.0"],
+            #     "changelog": "https://cmocka.org/#news",
+            #     "checker": {
+            #         "type": "dnf",
+            #         "package": "libcmocka-devel",
+            #     },
+            #     "installer": {
+            #         "type": "dnf",
+            #         "package": "libcmocka-devel",
+            #     },
+            # },
         ],
     },
     "codecoverage": {
@@ -433,22 +463,22 @@ data = {
                     "name": "dr_wav",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["fedora"],
-                "osVersion": ["40"],
-                "abi": ["gnu"],
-                "license": ["unlicense"],
-                "changelog": "https://github.com/mackron/dr_libs/blob/master/dr_wav.h#L8351",
-                "checker": {
-                    "type": "dnf",
-                    "package": "dr_wav-devel",
-                },
-                "installer": {
-                    "type": "dnf",
-                    "package": "dr_wav-devel",
-                },
-            },
+            # {
+            #     "arch": ["any"],
+            #     "os": ["fedora"],
+            #     "osVersion": ["40"],
+            #     "abi": ["gnu"],
+            #     "license": ["unlicense"],
+            #     "changelog": "https://github.com/mackron/dr_libs/blob/master/dr_wav.h#L8351",
+            #     "checker": {
+            #         "type": "dnf",
+            #         "package": "dr_wav-devel",
+            #     },
+            #     "installer": {
+            #         "type": "dnf",
+            #         "package": "dr_wav-devel",
+            #     },
+            # },
         ],
     },
 }

@@ -32,7 +32,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["gnu"],
                 "license": ["mit", "x11", "hpnd-sv", "smlnj", "hpnd", "bsd-1"],
                 "changelog": "https://gitlab.freedesktop.org/xorg/lib/libx11#release-187",
@@ -233,7 +233,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40"],
+                "osVersion": ["43"],
                 "abi": ["gnu"],
                 "license": ["zlib"],
                 "changelog": "https://github.com/zlib-ng/zlib-ng/releases",

@@ -26,22 +26,22 @@ data = {
                     "name": "libogg",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["fedora"],
-                "osVersion": ["40"],
-                "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://xiph.org/press/",
-                "checker": {
-                    "type": "dnf",
-                    "package": "libogg-devel",
-                },
-                "installer": {
-                    "type": "dnf",
-                    "package": "libogg-devel",
-                },
-            },
+            # {
+            #     "arch": ["any"],
+            #     "os": ["fedora"],
+            #     "osVersion": ["40"],
+            #     "abi": ["gnu"],
+            #     "license": ["bsd-3"],
+            #     "changelog": "https://xiph.org/press/",
+            #     "checker": {
+            #         "type": "dnf",
+            #         "package": "libogg-devel",
+            #     },
+            #     "installer": {
+            #         "type": "dnf",
+            #         "package": "libogg-devel",
+            #     },
+            # },
         ],
     },
     "libpng": {
@@ -74,7 +74,7 @@ data = {
             {
                 "arch": ["any"],
                 "os": ["fedora"],
-                "osVersion": ["40", "41"],
+                "osVersion": ["43"],
                 "abi": ["gnu"],
                 "license": ["libpng-2.0"],
                 "changelog": "http://www.libpng.org/pub/png/pngnews.html",
@@ -199,22 +199,22 @@ data = {
                     "name": "libvorbis",
                 },
             },
-            {
-                "arch": ["any"],
-                "os": ["fedora"],
-                "osVersion": ["40"],
-                "abi": ["gnu"],
-                "license": ["bsd-3"],
-                "changelog": "https://xiph.org/press/",
-                "checker": {
-                    "type": "dnf",
-                    "package": "libvorbis-devel",
-                },
-                "installer": {
-                    "type": "dnf",
-                    "package": "libvorbis-devel",
-                },
-            },
+            # {
+            #     "arch": ["any"],
+            #     "os": ["fedora"],
+            #     "osVersion": ["40"],
+            #     "abi": ["gnu"],
+            #     "license": ["bsd-3"],
+            #     "changelog": "https://xiph.org/press/",
+            #     "checker": {
+            #         "type": "dnf",
+            #         "package": "libvorbis-devel",
+            #     },
+            #     "installer": {
+            #         "type": "dnf",
+            #         "package": "libvorbis-devel",
+            #     },
+            # },
         ],
     },
     "libxext": {
