@@ -6,11 +6,11 @@ with open("README.md", "r") as fh:
 
 setup(
     name="vgazer",
-    version="79",
+    version="80",
     url="https://github.com/Survival-SDK/vgazer",
     license="CC0",
     author="Vasiliy Edomin",
-    author_email="Vasiliy.Edomin@gmail.com",
+    author_email="vasiliy.edomin@gmail.com",
     description="Library for checking versions and installing various software",
     packages=find_packages(),
     scripts=["vgazer"],

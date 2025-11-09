@@ -168,7 +168,7 @@ data = {
         "platform": "host",
         "projects": [
             # xorgproto requires ninja >= 1.8.2
-            # Amazon Linux has ninja 1.7.2
+            # Amazon Linux 2 has ninja 1.7.2
             {
                 "fallback": True,
                 "arch": ["any"],
